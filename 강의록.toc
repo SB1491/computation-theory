@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {1}Introduction}{7}%
+\contentsline {section}{\numberline {1.1}Motivation}{7}%
+\contentsline {section}{\numberline {1.2}언어}{7}%
+\contentsline {chapter}{\numberline {2}정규 언어와 유한 오토마타}{9}%
+\contentsline {section}{\numberline {2.1}정규 언어}{9}%
+\contentsline {section}{\numberline {2.2}유한 오토마타}{10}%
+\contentsline {section}{\numberline {2.3}비결정론적 유한 오토마타}{11}%
+\contentsline {section}{\numberline {2.4}DFA와 NFA는 동등하다!}{13}%
+\contentsline {section}{\numberline {2.5}정규 언어 = DFA = NFA}{14}%
+\contentsline {paragraph}{증명.}{15}%
+\contentsline {section}{\numberline {2.6}정규언어의 특징}{16}%
+\contentsline {section}{\numberline {2.7}정규언어가 아닌 것들}{17}%
+\contentsline {section}{\numberline {2.8}연습 문제}{18}%
+\contentsline {chapter}{\numberline {3}문법과 오토마타}{19}%
+\contentsline {section}{\numberline {3.1}문법}{19}%
+\contentsline {section}{\numberline {3.2}정규문법}{20}%
+\contentsline {section}{\numberline {3.3}파스 트리}{22}%
+\contentsline {section}{\numberline {3.4}표준형}{24}%
+\contentsline {section}{\numberline {3.5}내리누름 오토마타}{27}%
+\contentsline {section}{\numberline {3.6}PA = CFG}{28}%
+\contentsline {section}{\numberline {3.7}문맥무관 언어의 성질}{29}%
+\contentsline {section}{\numberline {3.8}결정 내리누름 오토마타}{31}%
+\contentsline {chapter}{\numberline {4}튜링 기계와 재귀 언어}{33}%
+\contentsline {section}{\numberline {4.1}튜링 기계}{33}%
+\contentsline {section}{\numberline {4.2}튜링 기계의 확장}{35}%
+\contentsline {section}{\numberline {4.3}비결정론적 튜링기계}{35}%
+\contentsline {section}{\numberline {4.4}랜덤 접근 기계}{35}%
+\contentsline {section}{\numberline {4.5}$\mu $-재귀 함수}{36}%
+\contentsline {chapter}{\numberline {5}계산 가능성}{45}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{47}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{47}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{48}%
+\contentsline {section}{\numberline {6.3}P}{51}%
+\contentsline {section}{\numberline {6.4}NP}{52}%
+\contentsline {section}{\numberline {6.5}NP-완비}{54}%
+\contentsline {section}{\numberline {6.6}최적화 문제}{59}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{61}%
