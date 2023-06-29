@@ -78,7 +78,7 @@
 Hopcroft의 Introduction to Automata Theory, Languages and Computation
 \item Michael Sipser의 Introduction to the Theory of Computation
 \item Sanjeev Arora의 Computational Complexity: A Modern Approach
-\item Harry R. Lewis의 Elements of the Thoery of Computation
+\item Harry R. Lewis의 Elements of the Theory of Computation
 \item Charles E. Leiserson의 Introduction to Algorithms
 \item 문병로 교수님의 쉽게 배우는 알고리즘
 \end{itemize}
@@ -1403,6 +1403,8 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 이 책에서는 랜덤 접근 기계의 좀 더 정확한 정의를 다루지 않으나, 위에서 정의한 내용만으로 
 충분히 이해할 수 있을거라 믿는다. 
 
+\section{무제한 문법}
+
 \section{$\mu$-재귀 함수}
 튜링기계가 받아들일 수 있는 언어는 재귀열거 언어, 그 중에서도 튜링기계가 항상 정지하면 계산 가능한 문제, 즉 재귀 언어라 한다. 
 그런데 왜 하필 `재귀'일까? 이는 재귀적인 방식으로 정의되는 함수를 통해 계산 가능한 함수를 모두 표현할 수 있기
@@ -1720,7 +1722,6 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     $m$의 값을 구할 수 있다. 이때 $f$는 계산 가능한 함수라고 했으므로 정지상황이 항상 존재하므로 당연히 최소화 가능하다. \\ 
     따라서 튜링 기계에 의해 계산 가능한 함수 $f$는 $\mu$-재귀 함수이다. 
 \end{pf*}
-
 \chapter{계산 가능성}
 우리는 지금까지 튜링기계의 뛰어난 계산능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
 이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링기계는 정말 모든 일을
@@ -1729,8 +1730,59 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
 \section{튜링 기계의 부호화}
 먼저 튜링 기계를 0과 1만으로 잘 표현하는 방법에 대해서 알아보자. 다음 절에서 튜링 기계의 설계도를 
 입력으로 넣기 위해서 이런 작업을 한다. 혹시 이런 세세하고 귀찮은 과정에 관심이 없다면, `아니 튜링기계는
-테입 빼면 적당히 유한한데 당연히 알잘딱하게 되는거 아님???'라고 생각하고 넘어가도 무방하다. 
+테입 빼면 적당히 유한한데 당연히 알잘딱하게 되는거 아님???'라고 생각하고 넘어가도 무방하다.\\ 
+일단 $\Sigma = \{0, 1\}, \Gamma = \{0, 1, \#\}$라고 하자. 제한된 언어로 계산 불가능함을 보이며
+어차피 더 일반적인 문제는 당연히 계산이 불가능하기 때문이다. (다른 알파벳이 있다고 하더라도 ASCII 코드 처럼 
+적당히 부호화를 하면 된다.) \\ 
+튜링기계 $M = (Q, \{0,1\}, \{0, 1, \#\}, \delta, q_1, H)$를 다음과 같은 방시긍로
+$\{0,1\}$상의 스트링으로 만들자.
+\begin{enumerate}
+    \item $Q = \{q_1, \cdots, q_n\}$에 대해 $q_i$는 각각 $0^i$로 표시한다. 
+    \item $\Sigma = \{0,1\}$에서 0과 1은 각각 0과 00으로 표시한다. 
+    \item $\Gamma = \{0,1,\#\}$에서 0, 1, \#는 각각 0, 00, 000으로 표시한다.
+    \item $L, R, S$는 각각 0, 00, 000으로 표시한다.
+    \item $\delta(q,a) = (p, b, d)$는 각 $q,a,p,b,d$의 부호들 사이에 $1$을 두고
+    차례로 나열한다. 즉, $\delta(q_1, 0) = (q_2, 1, L)$은 01010010010이다. 
+    \item TM $M$의 부호는 전이의 부호들 사이에 11을 두고 사전 순서로 나열하고, 
+    앞뒤에 111을 붙인것이다. 
+    \item 초기 상태는 항상 $q_1$이다. 
+    \item 정지 상태는 전이의 첫째 원소에 나타나지 않는 상태이다. 만약 무조건
+    결정되게 하고 싶다면 $H = \{y, n\}$인데, 이때 $y$는 두 정지 상태 중 
+    사전 순서가 작은 것이고 $n$은 큰 것이다.
+\end{enumerate}
+우리는 $M$을 적당한 스트링으로 대응시킨 것을 $M$의 \textbf{부호화}라고 하고, $\langle M \rangle$으로 
+표시한다.
+\begin{ex}
+    TM $M = (\{q_1, q_2, q_3\}, \{0, 1\}, \{0, 1, \#\}, \delta , q_1, \{q_3\})$이고 
+    \begin{align*}
+        \delta(q_1, \#) &= (q_2, \# , R) \\ 
+        \delta(q_2, 0) &= (q_2, 1, R) \\ 
+        \delta(q_2, 1) &= (q_2, 0, R) \\ 
+        \delta(q_2, \#) &= (q_3, \#, S) 
+    \end{align*}
+    이다. $\langle M \rangle$을 구하라. 
+    \begin{align*}
+        &11101000100100010011001010010010011\\ 
+        &001001001010011001000100010001000111
+    \end{align*}
+\end{ex}
+튜링 기계 $M$에 들어가는 입력 스트링 $w$도 0과 1을 각각 0과 00으로 표시하고 글자 사이에 1을 넣어 
+부호 $\langle w \rangle$을 만들 수 있다. 즉, $\langle 0110 \rangle = 010010010$이다. $\langle M \rangle$과
+$\langle w \rangle$를 접합한 것을 $\langle M, w \rangle$로 표시한다. 
 \section{보편 만능 기계}
+컴퓨터가 지금까지 인류가 만들어온 기계와 다른 점은 무엇일까? 형광등은 불을 밝힐 수만 있다. 세탁기는 세탁만 할 수 있다.
+하지만 컴퓨터는 이렇게 책도 쓸 수 있고, 게임도 할 수 있고, 계산도 할 수 있다. 즉, 어디에서나 사용가능한 
+\textbf{보편 만능 기계}다. 이러한 보편 만능성은 튜링 기계가 다른 튜링 기계를 흉내낼 수 있다는 점에서 출발한다. \\ 
+보편 만능 튜링 기계 $M_u$는 $\langle M, w\rangle$를 입력으로 받아서 $M$이 $w$를 가지고 돌린 후
+그 결과를 출력하는 튜링 기계다. 
+\begin{defn}
+    \textbf{보편 만능 튜링 기계} $M_u$는 3-테입 튜링 기계로 다음과 같이 정의된다.
+    \begin{enumerate}
+        \item 첫 번째 테입은 $\langle M \rangle$을 저장한다. 먼저, 첫째 
+        \item 두 번째 테입은 
+        \item 세 번째 테입은
+    \end{enumerate}
+\end{defn}
 \section{정지 문제}
 \section{정지 문제의 응용}
 정지 문제는 우리가 해결하고 싶어하는 컴퓨터 과학의 문제들에 대해서 `그건 불가능하다.'라고 말할 수 있게
@@ -1770,6 +1822,33 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 사용된 코드의 경우, 아마 python IDE에서 사용하는 type checker의 경우 빨간 줄을 표시할 것이다. 
 즉, 최소한 type checker가 된다고 했으면 무조건 type에 있어서는 오류를 내뿜지 않는 프로그램이다. 
 (그렇다면 syntax error는 어떨까? 궁금하면 3장으로 돌아가자.)
+\section{람다 대수}
+튜링 기계는 이름에서 알 수 있듯이 영국의 수학자 앨런 튜링이 만든 개념이다. 그럼 튜링은 이런 복잡한 기계를
+왜 만들었을까? 지금의 컴퓨터처럼 무언가 많은 일을 할 수 있는 자동화된 기계를 만들기 위해서 이런 기계를 
+제안했을 것이라고 오해할 수 있지만, 사실은 그렇지 않다. 앨런 튜링이 하고 싶었던 것은 괴델의 불완전성 
+정리(Gödel’s incompleteness theorems)를 자신만의 방식으로 증명하고 싶었던 것이다.
+\begin{thm}
+    \textbf{(제 1 괴델의 불완전성 정리)} 모든 공리계는 무모순인 동시에 완전할 수 없다.
+\end{thm}
+\begin{thm}
+    \textbf{(제 2 괴델의 불완전성 정리)} 어떤 공리계가 무모순일 경우, 그 공리계로부터 그 공리계 자신의
+    무모순성을 도출할 수 없다. 
+\end{thm}
+매우 어렵게 들리지만, 간단하게 이야기하면 참인지 거짓인지 판별할 수 없는 명제는 항상 존재한다는 것이다. 그
+예시로는 \textbf{연속성 가설}(continuum hypothesis) 등이 있다. 튜링은 수학의 추론 규칙들을 튜링 기계라는
+기계적인 방식으로 환원하였고, 이를 통해 정지 문제와 같은 증명할 수 없는 문제들을 제시해냈다. \\
+그런데 앨런 튜링보다 먼저 알론조 처치(Alonzo Church)가 비슷한 방식으로 이러한 증명을 제안해냈는데, 이를 
+\textbf{람다 대수}(lambda calculus)라고 한다. 
+\begin{defn}
+    \textbf{람다식}(lambda expression)은 다음과 같이 귀납적으로 정의된다.
+    \begin{center}
+        \begin{tabular}{ccll}
+            $E$ & $\rightarrow$ & $x$ & 변수(variable) \\ 
+            & $\vert$ & $\lambda x . E$ & 추상화(abstraction) \\ 
+            & $\vert$ & $E \, E$ & 적용(application)
+        \end{tabular}    
+    \end{center}
+\end{defn}
 \chapter{시간 복잡도}
 \section{점근적 표기법}
 지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다.
@@ -2396,4 +2475,7 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
 \end{defn} 
 \chapter{공간 복잡도}
 
+\bibliographystyle{plain}
+\bibliography{ref}
+\nocite{*}
 \end{document}

@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+
+\bibitem{arora2009computational}
+Sanjeev Arora and Boaz Barak.
+\newblock {\em Computational complexity: a modern approach}.
+\newblock Cambridge University Press, 2009.
+
+\bibitem{hopcroft2001introduction}
+John~E Hopcroft, Rajeev Motwani, and Jeffrey~D Ullman.
+\newblock Introduction to automata theory, languages, and computation.
+\newblock {\em Acm Sigact News}, 32(1):60--65, 2001.
+
+\bibitem{lewis1998elements}
+Harry~R Lewis and Christos~H Papadimitriou.
+\newblock Elements of the theory of computation.
+\newblock {\em ACM SIGACT News}, 29(3):62--78, 1998.
+
+\bibitem{sipser1996introduction}
+Michael Sipser.
+\newblock Introduction to the theory of computation.
+\newblock {\em ACM Sigact News}, 27(1):27--29, 1996.
+
+\bibitem{moon}
+문병로.
+\newblock {\em 쉽게 배우는 알고리즘}.
+\newblock 한빛미디어, 2018.
+
+\bibitem{park}
+박근수.
+\newblock 오토마타 이론 강의록, 2021.
+
+\end{thebibliography}

@@ -25,17 +25,19 @@
 \contentsline {section}{\numberline {4.2}튜링 기계의 확장}{35}%
 \contentsline {section}{\numberline {4.3}비결정론적 튜링기계}{35}%
 \contentsline {section}{\numberline {4.4}랜덤 접근 기계}{35}%
-\contentsline {section}{\numberline {4.5}$\mu $-재귀 함수}{36}%
+\contentsline {section}{\numberline {4.5}무제한 문법}{37}%
+\contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{37}%
 \contentsline {chapter}{\numberline {5}계산 가능성}{45}%
 \contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{45}%
-\contentsline {section}{\numberline {5.2}보편 만능 기계}{45}%
-\contentsline {section}{\numberline {5.3}정지 문제}{45}%
-\contentsline {section}{\numberline {5.4}정지 문제의 응용}{45}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{47}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{47}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{48}%
-\contentsline {section}{\numberline {6.3}P}{51}%
-\contentsline {section}{\numberline {6.4}NP}{52}%
-\contentsline {section}{\numberline {6.5}NP-완비}{55}%
-\contentsline {section}{\numberline {6.6}최적화 문제}{59}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{61}%
+\contentsline {section}{\numberline {5.2}보편 만능 기계}{46}%
+\contentsline {section}{\numberline {5.3}정지 문제}{47}%
+\contentsline {section}{\numberline {5.4}정지 문제의 응용}{47}%
+\contentsline {section}{\numberline {5.5}람다 대수}{48}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{49}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{49}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{50}%
+\contentsline {section}{\numberline {6.3}P}{53}%
+\contentsline {section}{\numberline {6.4}NP}{54}%
+\contentsline {section}{\numberline {6.5}NP-완비}{57}%
+\contentsline {section}{\numberline {6.6}최적화 문제}{61}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{63}%
