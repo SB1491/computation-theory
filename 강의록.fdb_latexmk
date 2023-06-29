@@ -1,18 +1,18 @@
 # Fdb version 3
-["bibtex 강의록"] 1688052457 "강의록.aux" "강의록.bbl" "강의록" 1688052794
+["bibtex 강의록"] 1688052457 "강의록.aux" "강의록.bbl" "강의록" 1688055248
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "ref.bib" 1688047249 1276 aea3fd61ca60362d600e785b56acc5df ""
-  "강의록.aux" 1688052794 9452 6c84192555dc17360fa988d91f4e1294 "xelatex"
+  "강의록.aux" 1688055248 9452 6c84192555dc17360fa988d91f4e1294 "xelatex"
   (generated)
   "강의록.blg"
   "강의록.bbl"
-["xdvipdfmx"] 1688052794 "강의록.xdv" "강의록.pdf" "강의록" 1688052794
-  "강의록.xdv" 1688052794 809100 a476c456c87e929ca8bb4cd975be7763 "xelatex"
+["xdvipdfmx"] 1688055248 "강의록.xdv" "강의록.pdf" "강의록" 1688055248
+  "강의록.xdv" 1688055248 809100 15741223bfd3f7a5623fcbed87aeaf48 "xelatex"
   (generated)
   "강의록.pdf"
-["xelatex"] 1688052792 "/home/rty/computation-theory/강의록.tex" "강의록.xdv" "강의록" 1688052794
+["xelatex"] 1688055246 "/home/rty/computation-theory/강의록.tex" "강의록.xdv" "강의록" 1688055248
   "/etc/texmf/web2c/texmf.cnf" 1685809494 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rty/computation-theory/강의록.tex" 1688052791 133598 ebade6c45485939203f30a359e5e25af ""
+  "/home/rty/computation-theory/강의록.tex" 1688055246 133598 f26d685084024bc67b82503a20c8bddd ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -193,12 +193,12 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1685809542 4648753 f4780fcbb2e53a21bbbb5ff4d1745d32 ""
-  "강의록.aux" 1688052794 9452 6c84192555dc17360fa988d91f4e1294 "xelatex"
+  "강의록.aux" 1688055248 9452 6c84192555dc17360fa988d91f4e1294 "xelatex"
   "강의록.bbl" 1688052457 946 f5946070bc503613b3a5ad192cee131c "bibtex 강의록"
-  "강의록.tex" 1688052791 133598 ebade6c45485939203f30a359e5e25af ""
-  "강의록.toc" 1688052794 2796 bcd83317bc52548d375ba67c0ea8887c "xelatex"
+  "강의록.tex" 1688055246 133598 f26d685084024bc67b82503a20c8bddd ""
+  "강의록.toc" 1688055248 2796 bcd83317bc52548d375ba67c0ea8887c "xelatex"
   (generated)
-  "강의록.log"
+  "강의록.toc"
   "강의록.aux"
   "강의록.xdv"
-  "강의록.toc"
+  "강의록.log"
