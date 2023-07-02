@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.6.4)  30 JUN 2023 01:21
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.6.4)  2 JUL 2023 21:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -867,60 +867,60 @@ Underfull \vbox (badness 2237) has occurred while \output is active []
 Chapter 4.
 [33
 
-] [34] [35]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [36] [37]
-Overfull \hbox (1.72488pt too wide) in paragraph at lines 1485--1486
+] [34] [35] [36] [37] [38]
+Overfull \hbox (1.72488pt too wide) in paragraph at lines 1510--1511
 []\TU/UnBatang.ttf(0)/bx/n/10 예 제 \TU/lmr/bx/n/10 4.12\TU/UnBatang.ttf(0)/bx/n/10 . []$\OML/cmm/m/it/10 m \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 n$ \TU/UnBatang.ttf(0)/m/up/10 이 면 \TU/lmr/m/n/10 1 \TU/UnBatang.ttf(0)/m/up/10 이 고 이 외 에 는 \TU/lmr/m/n/10 0 \TU/UnBatang.ttf(0)/m/up/10 인 원 시 재 귀 술 어 $\OML/cmm/m/it/10 greater[]or[]equal\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m; n\OT1/cmr/m/n/10 )$
  []
 
-[38] [39]
-Overfull \hbox (2.57982pt too wide) in paragraph at lines 1559--1562
+
+Underfull \vbox (badness 6252) has occurred while \output is active []
+
+ [39] [40]
+Overfull \hbox (2.57982pt too wide) in paragraph at lines 1584--1587
 \TU/UnBatang.ttf(0)/m/up/10 대 해 닫 혀 있 음 을 보 이 면 된 다. 여 기 서 $\OML/cmm/m/it/10 x \OT1/cmr/m/n/10 = []\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; []  ; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; y \OT1/cmr/m/n/10 = []\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; []  ; y[]\OMS/cmsy/m/n/10 g$
  []
 
-[40]
-Overfull \hbox (7.80676pt too wide) in paragraph at lines 1594--1599
+[41]
+Overfull \hbox (7.80676pt too wide) in paragraph at lines 1619--1624
 \TU/UnBatang.ttf(0)/m/up/10 이 때 $\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; []  ; x[]; n\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 < Ack\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; n \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )$ \TU/UnBatang.ttf(0)/m/up/10 라 하 자. 그 럼 $\OML/cmm/m/it/10 z \OT1/cmr/m/n/10 = []\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x; n; f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; []  ; x[]; n\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 g$
  []
 
-
+[42] [43]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [41] [42] [43] [44]
-Chapter 5.
-[45
+ [44] [45] [46
 
-] [46] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+]
+Chapter 5.
+[47] [48] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1795.
- [47] [48]
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1820.
+ [49] [50]
 Chapter 6.
-[49
+[51
 
-] [50] [51] [52] [53] [54] [55] [56] [57]
-Overfull \hbox (7.59088pt too wide) in paragraph at lines 2237--2238
+] [52] [53] [54] [55] [56] [57] [58] [59]
+Overfull \hbox (7.59088pt too wide) in paragraph at lines 2262--2263
 []\TU/UnBatang.ttf(0)/bx/n/10 정 의 \TU/lmr/bx/n/10 6.13\TU/UnBatang.ttf(0)/bx/n/10 . []\TU/UnBatang.ttf(0)/m/up/10 언 어 $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 가 다 음 두 가 지 조 건 을 만 족 시 키 면 $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 를 \TU/lmr/bx/n/10 NP- \TU/UnBatang.ttf(0)/bx/n/10 완 비\TU/lmr/m/n/10 (NP-Complete)
  []
 
-[58]
+[60]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59] [60] [61] [62]
+ [61] [62] [63] [64]
 Chapter 7.
-(./강의록.bbl [63
+(./강의록.bbl [65
 
-] [64
+] [66
 
 ]
 
 LaTeX Font Warning: Font shape `TU/UnBatang.ttf(0)/m/it' undefined
 (Font)              using `TU/UnBatang.ttf(0)/m/n' instead on input line 25.
 
-) [65] (./강의록.aux)
+) [67] (./강의록.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -928,10 +928,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  35816 strings out of 479819
  803193 string characters out of 5895847
- 1238636 words of memory out of 5000000
+ 1238637 words of memory out of 5000000
  52430 multiletter control sequences out of 15000+600000
  540571 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  153i,16n,182p,1629b,2559s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 강의록.xdv (65 pages, 809100 bytes).
+Output written on 강의록.xdv (67 pages, 817840 bytes).
