@@ -23,7 +23,7 @@
 \contentsline {chapter}{\numberline {4}튜링 기계와 재귀 언어}{33}{}%
 \contentsline {section}{\numberline {4.1}튜링 기계}{33}{}%
 \contentsline {section}{\numberline {4.2}튜링 기계의 확장}{35}{}%
-\contentsline {section}{\numberline {4.3}비결정론적 튜링 기계}{35}{}%
+\contentsline {section}{\numberline {4.3}비결정론적 튜링 기계}{36}{}%
 \contentsline {section}{\numberline {4.4}랜덤 접근 기계}{36}{}%
 \contentsline {section}{\numberline {4.5}무제한 문법}{37}{}%
 \contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{37}{}%
