@@ -1889,7 +1889,52 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
             & $\vert$ & $E \, E$ & 적용(application)
         \end{tabular}    
     \end{center}
+    \begin{enumerate}
+        \item $x$는 어떤 변수를 의미한다.
+        \item $\lambda x. E$는 $x$를 입력으로 갖고 $E$를 반환하는 함수를 의미한다. 예를 들어
+        $\lambda x . x$의 경우 $f(x) = x$를 표현한 것이라 생각하면 된다.
+        \item $E_1 E_2$는 $E_1$에 $E_2$를 넣는다는 뜻이다. 예를 들어, $\lambda x. x \, x$의 경우
+        이를 적용하면 $x$가 된다.
+    \end{enumerate} 
 \end{defn}
+이러한 계산 모델은 아주 간단해 보이지만 실은 우리가 앞서 힘들게 정의했던 튜링 기계와 계산 능력이
+동등하다. 어떻게 계산이 이루어지는지 알아보기 위해 먼저 여러가지 것들을 정의하자.
+\begin{defn}
+    람다식 $E$의 \textbf{자유변수}(free variable) $FV(E)$는 $E$에서 $\lambda$에 의해 묶여있지 않은
+    변수들의 집합이다. 즉 다음과 같이 정의된다.
+    \begin{align*}
+        FV(x) &= \{ x \} \\ 
+        FV(\lambda x. E) &= FV(E) \backslash \{x\} \\ 
+        FV(E_1 \, E_2) &= FV(E_1) \cup FV(E_2) 
+    \end{align*}
+\end{defn}
+\begin{defn}
+    \textbf{치환}(substitution)은 변수를 다른 것으로 바꿔주는 연산이다. 치환 $S$는 변수 $x_i$를
+    $Y_i$로 바꿔주는 $x_i \mapsto Y_i$의 집합이다.
+    \begin{align*}
+        S = \{ x_1 \mapsto Y_1, \cdots, x_n \mapsto Y_n\}
+    \end{align*}
+    또는 다음과 같이 쓰기도 한다.
+    \begin{align*}
+        S = \{ Y_1 / x_1, \cdots, Y_n / x_n \}
+    \end{align*}
+\end{defn}
+\begin{defn}
+    치환 $S$를 람다식 $E$에 적용하는 것을 $S \, E$로 쓰고 다음과 같이 정의된다.
+    \begin{align*}
+        S \, x &= 
+            \begin{cases}
+                E & E/x \in S \\
+                I & \text{otherwise} \\ 
+            \end{cases}
+    \end{align*} 
+\end{defn}
+\section{산술적 위계}
+지금까지 많은 `풀기 불가능한 문제'들을 알아보았다. 예를 들어, 어떤 프로그램이 멈출지 말지 결정하는 것은
+불가능한 문제이고, 또 어떤 프로그램이 우리가 의도한 동작을 수행하고 끝마칠지 말지 결정하는 것 또한
+불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로
+후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도 
+위계가 존재할까? 이를 어떻게 표현할 수 있을까?
 \chapter{시간 복잡도}
 \section{점근적 표기법}
 지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다.
@@ -2515,7 +2560,9 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \textbf{(다항 시간 변환의 확장)} 문제 A의 사례 $\alpha$를 문제 B의 사례 $\beta$
 \end{defn} 
 \chapter{공간 복잡도}
-
+우리는 지금까지 시간 복잡도에 대해 알아보았다. 시간도 중요한 자원이지만, 우리에게는 시간만 부족한 것이 아니다.
+우리는 아쉽지만 한정된 돈으로 인해 제한된 메모리를 갖고 프로그램을 작성해야 하므로 우리가 만든 알고리즘이 얼마나
+많은 공간을 차지하는지를 알아보자.
 \bibliographystyle{plain}
 \bibliography{ref}
 \nocite{*}

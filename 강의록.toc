@@ -33,11 +33,12 @@
 \contentsline {section}{\numberline {5.3}정지 문제}{49}{}%
 \contentsline {section}{\numberline {5.4}정지 문제의 응용}{49}{}%
 \contentsline {section}{\numberline {5.5}람다 대수}{50}{}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{51}{}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{51}{}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{52}{}%
-\contentsline {section}{\numberline {6.3}P}{55}{}%
-\contentsline {section}{\numberline {6.4}NP}{56}{}%
-\contentsline {section}{\numberline {6.5}NP-완비}{58}{}%
-\contentsline {section}{\numberline {6.6}최적화 문제}{63}{}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{65}{}%
+\contentsline {section}{\numberline {5.6}산술적 위계}{51}{}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{53}{}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{53}{}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{54}{}%
+\contentsline {section}{\numberline {6.3}P}{57}{}%
+\contentsline {section}{\numberline {6.4}NP}{58}{}%
+\contentsline {section}{\numberline {6.5}NP-완비}{60}{}%
+\contentsline {section}{\numberline {6.6}최적화 문제}{65}{}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{67}{}%
