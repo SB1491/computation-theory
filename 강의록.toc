@@ -24,16 +24,16 @@
 \contentsline {section}{\numberline {4.1}튜링 기계}{33}{}%
 \contentsline {section}{\numberline {4.2}튜링 기계의 확장}{35}{}%
 \contentsline {section}{\numberline {4.3}비결정론적 튜링 기계}{36}{}%
-\contentsline {section}{\numberline {4.4}랜덤 접근 기계}{36}{}%
-\contentsline {section}{\numberline {4.5}무제한 문법}{37}{}%
-\contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{37}{}%
+\contentsline {section}{\numberline {4.4}랜덤 접근 기계}{37}{}%
+\contentsline {section}{\numberline {4.5}무제한 문법}{38}{}%
+\contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{39}{}%
 \contentsline {chapter}{\numberline {5}계산 가능성}{47}{}%
 \contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{47}{}%
 \contentsline {section}{\numberline {5.2}보편 만능 기계}{48}{}%
 \contentsline {section}{\numberline {5.3}정지 문제}{49}{}%
 \contentsline {section}{\numberline {5.4}정지 문제의 응용}{49}{}%
 \contentsline {section}{\numberline {5.5}람다 대수}{50}{}%
-\contentsline {section}{\numberline {5.6}산술적 위계}{51}{}%
+\contentsline {section}{\numberline {5.6}산술적 위계}{52}{}%
 \contentsline {chapter}{\numberline {6}시간 복잡도}{53}{}%
 \contentsline {section}{\numberline {6.1}점근적 표기법}{53}{}%
 \contentsline {section}{\numberline {6.2}복잡도 분석}{54}{}%
