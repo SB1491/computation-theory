@@ -33,6 +33,7 @@
 \newtheorem{defn}{정의}[chapter]
 \newtheorem{thm}{정리}[chapter]
 \newtheorem{ex}{예제}[chapter]
+\newtheorem{thesis}{논제}[chapter]
 \newtheorem*{pf}{증명}
 \newenvironment{pf*}{\pushQED{\qed}\pf}{\popQED\endpf}
 \title{
@@ -70,19 +71,8 @@
     \item 언어학 내용도 함께 첨가하고 싶어서
     \item 가장 근본적인 이유로, 뭔가 내 강의록? 책?을 써보고 싶어서
 \end{enumerate}
-언제 완성될지는 모르겠으나 일단은 시작해보고자 한다.\\
-참고 자료는 
-\begin{itemize}
-    \item 서울대학교 컴퓨터공학부 박근수 교수님의 오토마타 이론 강의록
-    \item John E.
-Hopcroft의 Introduction to Automata Theory, Languages and Computation
-\item Michael Sipser의 Introduction to the Theory of Computation
-\item Sanjeev Arora의 Computational Complexity: A Modern Approach
-\item Harry R. Lewis의 Elements of the Theory of Computation
-\item Charles E. Leiserson의 Introduction to Algorithms
-\item 문병로 교수님의 쉽게 배우는 알고리즘
-\end{itemize}
-이 있다. 
+언제 완성될지는 모르겠으나 일단은 시작해보고자 한다. 이 교재는 기본적으로 박근수
+교수님의 강의록을 기반으로 한다.
 \section*{연습문제에 관하여}
 이 책의 문제들은 본문 중간의 `예제'와 각 장 끝의 `연습문제'로 구성된다. \\
 예제는 본문의 내용을 이해하는 데 있어서 도움이 되는 문제들로 구성했다.
@@ -1233,8 +1223,8 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
     문맥무관 언어 $L$에 대해, $L$을 받아들이는 DPA $P$가 존재하는 것과 $L$이 애매하지 않은 문법 
     $G$를 가지는 것은 동치이다. 
 \end{thm}
-\chapter{튜링 기계와 재귀 언어}
-\section{튜링 기계}
+\chapter{튜링 기계와 재귀 언어} 
+\section{튜링 기계} \label{turing machine}
 지금까지 우리는 정규식, 유한 오토마타를 이용해 정규언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를
 이용해 그보다 더 넓은 집합인 문맥무관 언어를 표현했다. 
 그럼 가장 넓은 언어집합을 표현할 수 있는 오토마타는 무엇일까?
@@ -1491,9 +1481,59 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 \begin{pf*}
     2-테입 비결정론적 튜링 기계 $M$을 만들자. ($k$-테입 비결정론적 튜링 기계와 
     1-테입 비결정론적 튜링 기계의 계산 능력이 동등한 건 결정론적 튜링 기계에서의 증명과
-    유사하게 할 수 있다.)
+    유사하게 할 수 있다.) 먼저 $M$의 첫 번째 테입에서는 입력 $w$를 입력하고,
+    두 번째 테입에는 $G$의 문장형태를 만들어간다. 먼저 두 번째 테입에
+    $S$를 적고 시작한다.
+    \begin{enumerate}
+        \item 비결정적으로 두번째 테입의 임의의 위치를 선택한다.
+        \item 비결정적으로 $G$의 임의의 생성규칙 $x \rightarrow y$를 선택한다.
+        \item 이때 선택한 위치가 $x$이면 $x$를 $y$로 바꾼다. 글자 길이를
+        맞추기 위해 옆 글자를 이동시키는 작업이 필요하다.
+        \item 두 번째 테입에 있는 문장이 $w$와 비교해서 같으면 정지한다.
+        \item 이를 계속해서 반복한다.
+    \end{enumerate}
+    $G$가 $w$를 생성하면 $M$의 한 갈래는 언젠가 정지한다. 그렇지 않으면
+    $M$은 정지하지 않으므로 $L(M) = L(G)$이다.
 \end{pf*}
-\section{$\mu$-재귀 함수}
+\begin{thm}
+    튜링 기계 $M = (Q, \Sigma, \Gamma, \delta, q_0, H)$가 정의하는 언어
+    $L(M)$을 생성하는 무제한 문법 $G$가 존재한다.
+\end{thm}
+\begin{pf*}
+    우리는 $G$가 $M$이 계산하는 과정을 흉내내야 한다. 이때 일반성을 잃지 않고
+    $M$에서 $H = \{h\}$이고, $M$이 정지할 때 $(h, \#)$에서 정지한다고
+    가정할 수 있다. 
+    이제 $G$의 생성규칙은 다음과 같이 만들 수 있다. 핵심은 $M$에서의 헤드의 위치와
+    상태를 표현하기 위해서 문자열 내에 상태 $q$를 표시하고 이를 현제 헤드가 가르키고
+    있는 문자의 오른쪽에 둔다는 것이다. 또한 테입의 끝은 $[]$로 나타낸다.
+    \begin{itemize}
+        \item 모든 $\delta(q, a) = (p, b, S)$에 대해 $G$는 $bp \rightarrow
+        aq$를 갖는다.
+        \item 모든 $\delta(q, a) = (p, b, R)$에 대해 $G$는 모든 $c \in \Sigma 
+        \cup \{\#\}$에 대해 $bcp \rightarrow aqc$를 갖는다. 또한, $b\# p] \rightarrow
+        aq]$를 갖는다.
+        \item 모든 $\delta(q, q) = (p, b, L)$에 대해 $b \neq \#$이면 
+        $G$는 $pb \rightarrow aq$를 갖는다. $b = \#$이면 모든 $c \in \Sigma$에 대해
+        $p\# c \rightarrow aqc$를 갖는다. 또한 $p] \rightarrow aq]$를 갖는다. 
+    \end{itemize}
+    마지막으로 $G$는 처음과 끝을 위하여
+    \begin{align*}
+        S &\rightarrow [\# h] \\ 
+        [\#q_0 &\rightarrow \epsilon \\ 
+        ] &\rightarrow \epsilon
+    \end{align*}
+    를 갖는다. 그러면 $M$이 
+    \begin{align*}
+        (q_0, \underline{\#}w) \vdash^* (h, \underleftarrow{\#})
+    \end{align*}
+    전이하는 과정을, $G$는 
+    \begin{align*}
+        S \Rightarrow [\# h] \overset{*}{\Rightarrow} [\#q_0 w] 
+        \overset{*}{\Rightarrow} w
+    \end{align*}
+    로 유도하게 된다. 
+\end{pf*}
+\section{$\mu$-재귀 함수} \label{mu-recursive}
 튜링 기계가 받아들일 수 있는 언어는 재귀열거 언어, 그 중에서도 튜링 기계가 항상 정지하면 계산 가능한 문제, 즉 재귀 언어라 한다. 
 그런데 왜 하필 `재귀'일까? 이는 재귀적인 방식으로 정의되는 함수를 통해 계산 가능한 함수를 모두 표현할 수 있기
 때문이다.  
@@ -1810,6 +1850,104 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     $m$의 값을 구할 수 있다. 이때 $f$는 계산 가능한 함수라고 했으므로 정지상황이 항상 존재하므로 당연히 최소화 가능하다. \\ 
     따라서 튜링 기계에 의해 계산 가능한 함수 $f$는 $\mu$-재귀 함수이다. 
 \end{pf*}
+\section{람다 대수} \label{lambda calculus}
+튜링 기계는 이름에서 알 수 있듯이 영국의 수학자 앨런 튜링이 만든 개념이다. 그럼 튜링은 이런 복잡한 기계를
+왜 만들었을까? 지금의 컴퓨터처럼 무언가 많은 일을 할 수 있는 자동화된 기계를 만들기 위해서 이런 기계를 
+제안했을 것이라고 오해할 수 있지만, 사실은 그렇지 않다. 앨런 튜링이 하고 싶었던 것은 괴델의 불완전성 
+정리(Gödel’s incompleteness theorems)를 자신만의 방식으로 증명하고 싶었던 것이다.
+\begin{thm}
+    \textbf{(제 1 괴델의 불완전성 정리)} 모든 공리계는 무모순인 동시에 완전할 수 없다.
+\end{thm}
+\begin{thm}
+    \textbf{(제 2 괴델의 불완전성 정리)} 어떤 공리계가 무모순일 경우, 그 공리계로부터 그 공리계 자신의
+    무모순성을 도출할 수 없다. 
+\end{thm}
+매우 어렵게 들리지만, 간단하게 이야기하면 참인지 거짓인지 판별할 수 없는 명제는 항상 존재한다는 것이다. 그
+예시로는 \textbf{연속성 가설}(continuum hypothesis) 등이 있다. 튜링은 수학의 추론 규칙들을 튜링 기계라는
+기계적인 방식으로 환원하였고, 이를 통해 정지 문제와 같은 증명할 수 없는 문제들을 제시해냈다. \\
+그런데 앨런 튜링보다 먼저 알론조 처치(Alonzo Church)가 비슷한 방식으로 이러한 증명을 제안해냈는데, 이를 
+\textbf{람다 대수}(lambda calculus)라고 한다. 
+\begin{defn}
+    \textbf{람다식}(lambda expression)은 다음과 같이 귀납적으로 정의된다.
+    \begin{center}
+        \begin{tabular}{ccll}
+            $E$ & $\rightarrow$ & $x$ & 변수(variable) \\ 
+            & $\vert$ & $\lambda x . E$ & 추상화(abstraction) \\ 
+            & $\vert$ & $E \, E$ & 적용(application)
+        \end{tabular}    
+    \end{center}
+    \begin{enumerate}
+        \item $x$는 어떤 변수를 의미한다.
+        \item $\lambda x. E$는 $x$를 입력으로 갖고 $E$를 반환하는 함수를 의미한다. 예를 들어
+        $\lambda x . x$의 경우 $f(x) = x$를 표현한 것이라 생각하면 된다.
+        \item $E_1 E_2$는 $E_1$에 $E_2$를 넣는다는 뜻이다. 예를 들어, $\lambda x. x \, x$의 경우
+        이를 적용하면 $x$가 된다.
+    \end{enumerate} 
+\end{defn}
+이러한 계산 모델은 아주 간단해 보이지만 실은 우리가 앞서 힘들게 정의했던 튜링 기계와 계산 능력이
+동등하다. 어떻게 계산이 이루어지는지 알아보기 위해 먼저 여러가지 것들을 정의하자.
+\begin{defn}
+    람다식 $E$의 \textbf{자유변수}(free variable) $FV(E)$는 $E$에서 $\lambda$에 의해 묶여있지 않은
+    변수들의 집합이다. 즉 다음과 같이 정의된다.
+    \begin{align*}
+        FV(x) &= \{ x \} \\ 
+        FV(\lambda x. E) &= FV(E) \backslash \{x\} \\ 
+        FV(E_1 \, E_2) &= FV(E_1) \cup FV(E_2) 
+    \end{align*}
+\end{defn}
+\begin{defn}
+    \textbf{치환}(substitution)은 변수를 다른 것으로 바꿔주는 연산이다. 치환 $S$는 변수 $x_i$를
+    $Y_i$로 바꿔주는 $x_i \mapsto Y_i$의 집합이다.
+    \begin{align*}
+        S = \{ x_1 \mapsto Y_1, \cdots, x_n \mapsto Y_n\}
+    \end{align*}
+    또는 다음과 같이 쓰기도 한다.
+    \begin{align*}
+        S = \{ Y_1 / x_1, \cdots, Y_n / x_n \}
+    \end{align*}
+\end{defn}
+\begin{defn}
+    치환 $S$를 람다식 $E$에 적용하는 것을 $S \, E$로 쓰고 다음과 같이 정의된다.
+    \begin{align*}
+        S \, x &= 
+            \begin{cases}
+                E & E/x \in S \\
+                x & \text{그 외} 
+            \end{cases}  \\ 
+        S \, (\lambda x. E) &= 
+        \lambda y. (S \, \{ y/x\} \, E) \; (\text{완전히 새로운 } y) \\ 
+        S \, (E1 \, E2) &= (S \, E1) (S \, E2) 
+    \end{align*} 
+    참고로, 치환 $S, T$를 나란히 $S \, T$라고 쓰면, $T$를 적용하고 $S$를 적용한다는 뜻이다.
+\end{defn}
+\begin{defn}
+    람다 대수에서의 \textbf{연산}(reduction)은 다음 2가지로 이루어진다.
+    \begin{itemize}
+        \item $\alpha$-연산($\alpha$-reduction)은 
+        $x' \notin FV(\lambda x. E)$에 대해 
+        $\lambda x. E \rightarrow \lambda x'. (\{x'/x\} \, E)$를 해주는 연산이다.
+        \item $\beta$-연산($\beta$-reduction)은
+        $(\lambda x. E1) \, E2 \rightarrow \{ E_2 / x\}E_1$을 해주는 연산이다.
+    \end{itemize}
+\end{defn}
+여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 대수에서 
+중요한 연산은 바로 $\beta$-연산이다. 이제 이러한 간단한 연산을 이용해
+아주 다양한 계산을 할 수 있음을 보이자.
+\begin{defn}
+    \textbf{처치 부호화}(Church encoding)는 다음과 같이 정의된다.
+    \begin{align*}
+        0 &= \lambda f. \lambda x. x \\ 
+        1 &= \lambda f. \lambda x. f \, x  \\ 
+        n &= \lambda f. \lambda x. f^n \, x \\
+        \text{true} &= \lambda x. \lambda y. x \\ 
+        \text{false} &= \lambda x. \lambda y. y \\ 
+        \text{if } e_1 \text{ then } e_2 \text { else } e_3 &=
+        e_1 \, e_2 \, e_3 \\ 
+        \text{not} &= \lambda b. \lambda x. \lambda y. b \, y \, x \\ 
+        \text{and} &= \lambda b. \lambda b'. \lambda x. \lambda y.
+        b \, (c \, x \, y) \, y
+    \end{align*}
+\end{defn}
 \chapter{계산 가능성}
 우리는 지금까지 튜링 기계의 뛰어난 계산능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
 이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링 기계는 정말 모든 일을
@@ -1911,112 +2049,53 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 사용된 코드의 경우, 아마 python IDE에서 사용하는 type checker의 경우 빨간 줄을 표시할 것이다. 
 즉, 최소한 type checker가 된다고 했으면 무조건 type에 있어서는 오류를 내뿜지 않는 프로그램이다. 
 (그렇다면 syntax error는 어떨까? 궁금하면 3장으로 돌아가자.)
-\section{람다 대수}
-튜링 기계는 이름에서 알 수 있듯이 영국의 수학자 앨런 튜링이 만든 개념이다. 그럼 튜링은 이런 복잡한 기계를
-왜 만들었을까? 지금의 컴퓨터처럼 무언가 많은 일을 할 수 있는 자동화된 기계를 만들기 위해서 이런 기계를 
-제안했을 것이라고 오해할 수 있지만, 사실은 그렇지 않다. 앨런 튜링이 하고 싶었던 것은 괴델의 불완전성 
-정리(Gödel’s incompleteness theorems)를 자신만의 방식으로 증명하고 싶었던 것이다.
-\begin{thm}
-    \textbf{(제 1 괴델의 불완전성 정리)} 모든 공리계는 무모순인 동시에 완전할 수 없다.
-\end{thm}
-\begin{thm}
-    \textbf{(제 2 괴델의 불완전성 정리)} 어떤 공리계가 무모순일 경우, 그 공리계로부터 그 공리계 자신의
-    무모순성을 도출할 수 없다. 
-\end{thm}
-매우 어렵게 들리지만, 간단하게 이야기하면 참인지 거짓인지 판별할 수 없는 명제는 항상 존재한다는 것이다. 그
-예시로는 \textbf{연속성 가설}(continuum hypothesis) 등이 있다. 튜링은 수학의 추론 규칙들을 튜링 기계라는
-기계적인 방식으로 환원하였고, 이를 통해 정지 문제와 같은 증명할 수 없는 문제들을 제시해냈다. \\
-그런데 앨런 튜링보다 먼저 알론조 처치(Alonzo Church)가 비슷한 방식으로 이러한 증명을 제안해냈는데, 이를 
-\textbf{람다 대수}(lambda calculus)라고 한다. 
-\begin{defn}
-    \textbf{람다식}(lambda expression)은 다음과 같이 귀납적으로 정의된다.
-    \begin{center}
-        \begin{tabular}{ccll}
-            $E$ & $\rightarrow$ & $x$ & 변수(variable) \\ 
-            & $\vert$ & $\lambda x . E$ & 추상화(abstraction) \\ 
-            & $\vert$ & $E \, E$ & 적용(application)
-        \end{tabular}    
-    \end{center}
-    \begin{enumerate}
-        \item $x$는 어떤 변수를 의미한다.
-        \item $\lambda x. E$는 $x$를 입력으로 갖고 $E$를 반환하는 함수를 의미한다. 예를 들어
-        $\lambda x . x$의 경우 $f(x) = x$를 표현한 것이라 생각하면 된다.
-        \item $E_1 E_2$는 $E_1$에 $E_2$를 넣는다는 뜻이다. 예를 들어, $\lambda x. x \, x$의 경우
-        이를 적용하면 $x$가 된다.
-    \end{enumerate} 
-\end{defn}
-이러한 계산 모델은 아주 간단해 보이지만 실은 우리가 앞서 힘들게 정의했던 튜링 기계와 계산 능력이
-동등하다. 어떻게 계산이 이루어지는지 알아보기 위해 먼저 여러가지 것들을 정의하자.
-\begin{defn}
-    람다식 $E$의 \textbf{자유변수}(free variable) $FV(E)$는 $E$에서 $\lambda$에 의해 묶여있지 않은
-    변수들의 집합이다. 즉 다음과 같이 정의된다.
-    \begin{align*}
-        FV(x) &= \{ x \} \\ 
-        FV(\lambda x. E) &= FV(E) \backslash \{x\} \\ 
-        FV(E_1 \, E_2) &= FV(E_1) \cup FV(E_2) 
-    \end{align*}
-\end{defn}
-\begin{defn}
-    \textbf{치환}(substitution)은 변수를 다른 것으로 바꿔주는 연산이다. 치환 $S$는 변수 $x_i$를
-    $Y_i$로 바꿔주는 $x_i \mapsto Y_i$의 집합이다.
-    \begin{align*}
-        S = \{ x_1 \mapsto Y_1, \cdots, x_n \mapsto Y_n\}
-    \end{align*}
-    또는 다음과 같이 쓰기도 한다.
-    \begin{align*}
-        S = \{ Y_1 / x_1, \cdots, Y_n / x_n \}
-    \end{align*}
-\end{defn}
-\begin{defn}
-    치환 $S$를 람다식 $E$에 적용하는 것을 $S \, E$로 쓰고 다음과 같이 정의된다.
-    \begin{align*}
-        S \, x &= 
-            \begin{cases}
-                E & E/x \in S \\
-                x & \text{그 외} 
-            \end{cases}  \\ 
-        S \, (\lambda x. E) &= 
-        \lambda y. (S \, \{ y/x\} \, E) \; (\text{완전히 새로운 } y) \\ 
-        S \, (E1 \, E2) &= (S \, E1) (S \, E2) 
-    \end{align*} 
-    참고로, 치환 $S, T$를 나란히 $S \, T$라고 쓰면, $T$를 적용하고 $S$를 적용한다는 뜻이다.
-\end{defn}
-\begin{defn}
-    람다 대수에서의 \textbf{연산}(reduction)은 다음 2가지로 이루어진다.
-    \begin{itemize}
-        \item $\alpha$-연산($\alpha$-reduction)은 
-        $x' \notin FV(\lambda x. E)$에 대해 
-        $\lambda x. E \rightarrow \lambda x'. (\{x'/x\} \, E)$를 해주는 연산이다.
-        \item $\beta$-연산($\beta$-reduction)은
-        $(\lambda x. E1) \, E2 \rightarrow \{ E_2 / x\}E_1$을 해주는 연산이다.
-    \end{itemize}
-\end{defn}
-여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 대수에서 
-중요한 연산은 바로 $\beta$-연산이다. 
-\begin{defn}
-    \textbf{처치 부호화}(Church encoding)는 다음과 같이 정의된다.
-    \begin{align*}
-        0 &= \lambda f. \lambda x. x \\ 
-        1 &= \lambda f. \lambda x. f \, x  \\ 
-        n &= \lambda f. \lambda x. f^n \, x \\
-        \text{true} &= \lambda x. \lambda y. x \\ 
-        \text{false} &= \lambda x. \lambda y. y \\ 
-        \text{if } e_1 \text{ then } e_2 \text { else } e_3 &=
-        e_1 \, e_2 \, e_3 \\ 
-        \text{not} &= \lambda b. \lambda x. \lambda y. b \, y \, x \\ 
-        \text{and} &= \lambda b. \lambda b'. \lambda x. \lambda y.
-        b \, (c \, x \, y) \, y
-    \end{align*}
-\end{defn}
+\section{촘스키 위계}
+잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많음 모델들 중
+언어 모델은 다른 모델들과는 굉장히 이질적이다. 이 모델들은 모두 
+언어학자 \textbf{노암 촘스키}(Noam Chomsky)에 의해 제시되었다. 촘스키는 언어를 보다 형식적으로
+기술하기 위해서 언어 생성 모델을 제시하였고, 이러한 모델은 수학자와 컴퓨터과학자가 제시해 온 여러가지
+계산 모델들과는 독립적으로 제시되어 왔었다. 촘스키는 이러한 모델을 이용해 인간의 언어 생성 방식을
+기술하려고 하였고, 실제로도 이는 언어학에서 현대 통사론의 근간을 이루고 있다. 이후에 이러한 언어 
+생성 방식이 계산 모델이 계산하는 능력과 동일하다는 것이 밝혀졌고, 언어의 계산 능력적 위계가 제시되었다.
+이는 다음과 같다.
 \section{산술적 위계}
+그럼 이제 풀기 가능한 문제(언어)들의 위계를 다루어보았으니, 풀기 불가능한 문제에 대한 위계를 
+세울 차례다.
 지금까지 많은 `풀기 불가능한 문제'들을 알아보았다. 예를 들어, 어떤 프로그램이 멈출지 말지 결정하는 것은
 불가능한 문제이고, 또 어떤 프로그램이 우리가 의도한 동작을 수행하고 끝마칠지 말지 결정하는 것 또한
 불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로
 후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도 
 위계가 존재할까? 이를 어떻게 표현할 수 있을까?
+\section{처치-튜링 논제}
+지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에
+대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에
+발표된 괴델의 불완정성 정리에서 출발한다. 이 정리를 통해 더 이상 우리는 수학의 모든 문제를 풀 수 
+없다는 것이 증명되었다. 따라서 우리가 풀 수 없는 문제가 무엇인지를 알고자 하는 것은 매우 당연한
+수순이었다. 이를 위해 1931년에 괴델과 에르브랑이 제시했고 우리가 \ref{mu-recursive} 절에서 다루었던 재귀 함수, 
+1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 대수, 1936년에 튜링이 제시했고
+우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
+재귀 함수는 수학에서 다루었던 함수의 측면에서 우리가 계산하지 못하는 함수가 무엇인지를 최소화의 근본적인
+한계를 통해 제시하였다. 람다 대수는 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 
+모든 계산을 제시하였다. 튜링 기계는 계산하는 과정에 집중하여 우리가 계산하지 못하는 것이 무엇인지를
+제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
+이러한 모델들과 계산 가능성이 시사하는 바는 처치-튜링 논제에 의해 기술될 수 있다.
+\begin{thesis} 
+    \textbf{(처치-튜링 논제, Church-Turing Thesis)} 다음 명제는 동치다.
+    \begin{itemize}
+        \item 자연수 상에서의 함수가 \textbf{효과적 방법}(effective method)으로 산술될 수 있다.
+        \item 튜링 기계에 의해 계산가능한 함수다.
+    \end{itemize}
+    (참고로, 이 논제는 처치와 튜링 둘 다 딱히 말한 적이 없다...)
+\end{thesis}
+먼저 위 논제는 왜 `논제'일까? 첫 번째로, 이는 증명되지 않았다. 두 번째로, 사실 증명이 불가능할 수 있다.
+왜냐하면 `효과적 방법'이 무엇인지 정확히 정의되지 않았다. 이 논제가 함의하는 바는 바로 우리 인간이
+사고하는 방식은 결국 튜링 기계가 사고하는 방식과 같다는 것을 의미한다. 튜링은 앞에서 서술했듯이,
+괴델의 불완전성 정리를 자신만의 방식으로 증명하기 위해 튜링 기계를 제시했다. 이는 결국 인간이 기술할 수
+있는 수학은 결국 튜링기계가 계산하는 방식과 동일하다는 것을 내포하고 있다.  
+혹자는 이를 `정의'로 취급하여, 아예 `알고리즘'이란 튜링기계에 의해 계산가능한 함수로써 정의하기도 한다.
 \chapter{시간 복잡도}
 \section{점근적 표기법}
-지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다.
+지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다. 이제는 조금 더 현실적인 문제로 돌아올 차례다.
 그럼 이제 풀 수 있는 문제들은 모두 풀 수 있을까? 다르게 말하면
 `현실적으로' 푸는 것이 가능할까? 이에 대해 알아보기 위해 우리는 문제가 얼마나 어려운지 다룰 것이다.
 \begin{defn}
