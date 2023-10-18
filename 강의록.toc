@@ -32,10 +32,10 @@
 \contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{51}{}%
 \contentsline {section}{\numberline {5.2}보편 만능 기계}{52}{}%
 \contentsline {section}{\numberline {5.3}정지 문제}{53}{}%
-\contentsline {section}{\numberline {5.4}정지 문제의 응용}{53}{}%
-\contentsline {section}{\numberline {5.5}촘스키 위계}{54}{}%
-\contentsline {section}{\numberline {5.6}산술적 위계}{54}{}%
-\contentsline {section}{\numberline {5.7}처치-튜링 논제}{54}{}%
+\contentsline {section}{\numberline {5.4}정지 문제의 응용}{54}{}%
+\contentsline {section}{\numberline {5.5}촘스키 위계}{55}{}%
+\contentsline {section}{\numberline {5.6}산술적 위계}{55}{}%
+\contentsline {section}{\numberline {5.7}처치-튜링 논제}{56}{}%
 \contentsline {chapter}{\numberline {6}시간 복잡도}{57}{}%
 \contentsline {section}{\numberline {6.1}점근적 표기법}{57}{}%
 \contentsline {section}{\numberline {6.2}복잡도 분석}{58}{}%
