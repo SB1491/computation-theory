@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex 강의록"] 1698074118 "강의록.aux" "강의록.bbl" "강의록" 1698076231
+["bibtex 강의록"] 1698074118 "강의록.aux" "강의록.bbl" "강의록" 1698206402
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "ref.bib" 1696239994 1276 aea3fd61ca60362d600e785b56acc5df ""
-  "강의록.aux" 1698076231 10193 f3e4d78e8bda1db2b648a7c38dd5dedd "pdflatex"
+  "강의록.aux" 1698206402 10193 f3e4d78e8bda1db2b648a7c38dd5dedd "pdflatex"
   (generated)
   "강의록.bbl"
   "강의록.blg"
-["pdflatex"] 1698076229 "/home/rty/computation-theory/강의록.tex" "강의록.pdf" "강의록" 1698076231
+["pdflatex"] 1698206399 "/home/rty/computation-theory/강의록.tex" "강의록.pdf" "강의록" 1698206402
   "/etc/texmf/web2c/texmf.cnf" 1692859813 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rty/computation-theory/강의록.tex" 1698076229 160296 e4937db56fb950e3208a6cee9326539d ""
+  "/home/rty/computation-theory/강의록.tex" 1698206399 160297 fcf378bacd7cd6f3b7c9e8d3765ce8d1 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -142,6 +142,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1248133631 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1248133631 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
@@ -381,10 +382,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1692859835 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1692859873 2798659 4a83b4a2a62c122283a339d1ca7d91ab ""
-  "강의록.aux" 1698076231 10193 f3e4d78e8bda1db2b648a7c38dd5dedd "pdflatex"
+  "강의록.aux" 1698206402 10193 f3e4d78e8bda1db2b648a7c38dd5dedd "pdflatex"
   "강의록.bbl" 1698074118 946 f5946070bc503613b3a5ad192cee131c "bibtex 강의록"
-  "강의록.tex" 1698076229 160296 e4937db56fb950e3208a6cee9326539d ""
-  "강의록.toc" 1698076231 3155 72ee89c322923f7f460fbef5eaddb1b4 "pdflatex"
+  "강의록.tex" 1698206399 160297 fcf378bacd7cd6f3b7c9e8d3765ce8d1 ""
+  "강의록.toc" 1698206402 3155 72ee89c322923f7f460fbef5eaddb1b4 "pdflatex"
   (generated)
   "강의록.aux"
   "강의록.log"
