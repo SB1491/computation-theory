@@ -1,47 +1,50 @@
-\contentsline {chapter}{\numberline {1}Introduction}{7}{}%
-\contentsline {section}{\numberline {1.1}Motivation}{7}{}%
-\contentsline {section}{\numberline {1.2}언어}{7}{}%
-\contentsline {chapter}{\numberline {2}정규 언어와 유한 오토마타}{9}{}%
-\contentsline {section}{\numberline {2.1}정규 언어}{9}{}%
-\contentsline {section}{\numberline {2.2}유한 오토마타}{10}{}%
-\contentsline {section}{\numberline {2.3}비결정론적 유한 오토마타}{11}{}%
-\contentsline {section}{\numberline {2.4}DFA와 NFA는 동등하다!}{13}{}%
-\contentsline {section}{\numberline {2.5}정규 언어 = DFA = NFA}{14}{}%
-\contentsline {paragraph}{증명.}{15}{}%
-\contentsline {section}{\numberline {2.6}정규언어의 특징}{16}{}%
-\contentsline {section}{\numberline {2.7}정규언어가 아닌 것들}{17}{}%
-\contentsline {section}{\numberline {2.8}연습 문제}{18}{}%
-\contentsline {chapter}{\numberline {3}문법과 오토마타}{19}{}%
-\contentsline {section}{\numberline {3.1}문법}{19}{}%
-\contentsline {section}{\numberline {3.2}정규문법}{20}{}%
-\contentsline {section}{\numberline {3.3}파스 트리}{22}{}%
-\contentsline {section}{\numberline {3.4}표준형}{24}{}%
-\contentsline {section}{\numberline {3.5}내리누름 오토마타}{27}{}%
-\contentsline {section}{\numberline {3.6}PA = CFG}{28}{}%
-\contentsline {section}{\numberline {3.7}문맥무관 언어의 성질}{29}{}%
-\contentsline {section}{\numberline {3.8}결정 내리누름 오토마타}{31}{}%
-\contentsline {chapter}{\numberline {4}튜링 기계와 재귀 언어}{33}{}%
-\contentsline {section}{\numberline {4.1}튜링 기계}{33}{}%
-\contentsline {section}{\numberline {4.2}튜링 기계의 확장}{35}{}%
-\contentsline {section}{\numberline {4.3}비결정론적 튜링 기계}{36}{}%
-\contentsline {section}{\numberline {4.4}랜덤 접근 기계}{37}{}%
-\contentsline {section}{\numberline {4.5}무제한 문법}{38}{}%
-\contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{40}{}%
-\contentsline {section}{\numberline {4.7}람다 대수}{48}{}%
-\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{50}{}%
-\contentsline {chapter}{\numberline {5}계산 가능성}{51}{}%
-\contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{51}{}%
-\contentsline {section}{\numberline {5.2}보편 만능 기계}{52}{}%
-\contentsline {section}{\numberline {5.3}정지 문제}{53}{}%
-\contentsline {section}{\numberline {5.4}정지 문제의 응용}{54}{}%
-\contentsline {section}{\numberline {5.5}촘스키 위계}{57}{}%
-\contentsline {section}{\numberline {5.6}산술적 위계}{57}{}%
-\contentsline {section}{\numberline {5.7}처치-튜링 논제}{57}{}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{59}{}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{59}{}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{60}{}%
-\contentsline {section}{\numberline {6.3}P}{63}{}%
-\contentsline {section}{\numberline {6.4}NP}{64}{}%
-\contentsline {section}{\numberline {6.5}NP-완비}{66}{}%
-\contentsline {section}{\numberline {6.6}최적화 문제}{71}{}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{73}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{9}{}%
+\contentsline {section}{\numberline {1.1}Motivation}{9}{}%
+\contentsline {section}{\numberline {1.2}언어}{10}{}%
+\contentsline {chapter}{\numberline {2}정규 언어와 유한 오토마타}{13}{}%
+\contentsline {section}{\numberline {2.1}정규 언어}{13}{}%
+\contentsline {section}{\numberline {2.2}유한 오토마타}{14}{}%
+\contentsline {section}{\numberline {2.3}비결정론적 유한 오토마타}{16}{}%
+\contentsline {section}{\numberline {2.4}DFA와 NFA는 동등하다!}{18}{}%
+\contentsline {section}{\numberline {2.5}정규 언어 = DFA = NFA}{20}{}%
+\contentsline {paragraph}{증명.}{20}{}%
+\contentsline {section}{\numberline {2.6}정규언어의 특징}{22}{}%
+\contentsline {section}{\numberline {2.7}정규언어가 아닌 것들}{23}{}%
+\contentsline {section}{\numberline {2.8}연습 문제}{24}{}%
+\contentsline {chapter}{\numberline {3}문법과 오토마타}{25}{}%
+\contentsline {section}{\numberline {3.1}문법}{25}{}%
+\contentsline {section}{\numberline {3.2}정규문법}{27}{}%
+\contentsline {section}{\numberline {3.3}파스 트리}{29}{}%
+\contentsline {section}{\numberline {3.4}표준형}{32}{}%
+\contentsline {section}{\numberline {3.5}내리누름 오토마타}{35}{}%
+\contentsline {section}{\numberline {3.6}PA = CFG}{37}{}%
+\contentsline {section}{\numberline {3.7}문맥무관 언어의 성질}{39}{}%
+\contentsline {section}{\numberline {3.8}결정 내리누름 오토마타}{41}{}%
+\contentsline {section}{\numberline {3.9}연습문제}{42}{}%
+\contentsline {chapter}{\numberline {4}튜링 기계와 재귀 언어}{43}{}%
+\contentsline {section}{\numberline {4.1}튜링 기계}{43}{}%
+\contentsline {section}{\numberline {4.2}튜링 기계의 확장}{46}{}%
+\contentsline {section}{\numberline {4.3}비결정론적 튜링 기계}{47}{}%
+\contentsline {section}{\numberline {4.4}랜덤 접근 기계}{48}{}%
+\contentsline {section}{\numberline {4.5}무제한 문법}{49}{}%
+\contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{52}{}%
+\contentsline {section}{\numberline {4.7}람다 대수}{62}{}%
+\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{65}{}%
+\contentsline {section}{\numberline {4.9}연습문제}{65}{}%
+\contentsline {chapter}{\numberline {5}계산 가능성}{67}{}%
+\contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{67}{}%
+\contentsline {section}{\numberline {5.2}보편 만능 기계}{69}{}%
+\contentsline {section}{\numberline {5.3}정지 문제}{69}{}%
+\contentsline {section}{\numberline {5.4}정지 문제의 응용}{71}{}%
+\contentsline {section}{\numberline {5.5}촘스키 위계}{75}{}%
+\contentsline {section}{\numberline {5.6}산술적 위계}{75}{}%
+\contentsline {section}{\numberline {5.7}처치-튜링 논제}{76}{}%
+\contentsline {section}{\numberline {5.8}연습문제}{77}{}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{79}{}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{79}{}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{80}{}%
+\contentsline {section}{\numberline {6.3}P}{84}{}%
+\contentsline {section}{\numberline {6.4}NP}{85}{}%
+\contentsline {section}{\numberline {6.5}NP-완비}{89}{}%
+\contentsline {section}{\numberline {6.6}최적화 문제}{95}{}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{97}{}%

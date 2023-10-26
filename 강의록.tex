@@ -1,4 +1,4 @@
-\documentclass[a4paper]{book}
+\documentclass[b5paper]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -34,6 +34,7 @@
 \newtheorem{thm}{정리}[chapter]
 \newtheorem{ex}{예제}[chapter]
 \newtheorem{thesis}{논제}[chapter]
+\newtheorem{ec}{연습문제}[chapter]
 \newtheorem*{pf}{증명}
 \newenvironment{pf*}{\pushQED{\qed}\pf}{\popQED\endpf}
 \title{
@@ -73,26 +74,6 @@
 \end{enumerate}
 언제 완성될지는 모르겠으나 일단은 시작해보고자 한다. 이 교재는 기본적으로 박근수
 교수님의 강의록을 기반으로 한다.
-\section*{연습문제에 관하여}
-이 책의 문제들은 본문 중간의 `예제'와 각 장 끝의 `연습문제'로 구성된다. \\
-예제는 본문의 내용을 이해하는 데 있어서 도움이 되는 문제들로 구성했다.
-답이 적혀있는 경우는 답을 먼저 보고 내용을 이해하도록 도와주는 문제이다.
-답이 없는 경우는 문제가 (1) 문제를 풀면서 고민하는 과정이 도움되거나 (2) 답이 너무 길어서
-답을 작성하기 귀찮은 경우이다. \\
-이 책의 연습문제의 난이도 표기법은
-Donald E. Knuth의 The Art of Computer Programming에 기반한다. 
-이는 다음과 같다. 
-\begin{itemize}
-    \item 00 - 본문의 내용을 이해했다면 즉시 답을 낼 수 있는 아주 쉬운 문제.
-    \item 10 - 본문의 내용을 좀 생각해야 하나 그렇다고 어렵지는 않은 간단한 문제. 
-    \item 20 - 본문 내용의 기본적인 이해를 시험하는 문제. 시험 문제에서 난이도 있게 출제될 수 있다.
-    \item 30 - 꽤나 어려운 문제. 만족스럽게 풀려면 한 시간 이상 투자해야 할 수 있다.
-    \item 40 - 매우 어려워서 학기말 과제나 텀 프로젝트로 적절하다. 
-    \item 50 - 필자를 포함한 많은 사람들이 답을 잘 모르는 문제. 
-    혹시 풀게 된다면 먼저 답을 필자에게 알려주길 바란다. 
-\end{itemize}
-그 사이의 17과 같은 등급은 `로그' 축적으로 보간한 것에 해당한다. 물론 이러한 난이도는 오직 필자의 주관적인
-해석에 의해서만 평가된 것이므로 절대적인 난이도로 착각하지 않았으면 한다. 
 \tableofcontents
 
 \chapter{Introduction}
@@ -605,9 +586,18 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 불가능하므로 정규언어가 아님을 알 수 있다. 
 
 \section{연습 문제}
-\begin{Exercise}[difficulty = 2]
-    Hello
-\end{Exercise}
+\begin{ec}
+    Let $L_n = \{x \;\vert\; x$ is binary number and that is a multiple 
+    of n$\}$. Show that for each $n\ge 1$, $L_n$ is regular. 
+\end{ec}
+\begin{ec}
+    Consider the Language $L= \{a^i b^j c^k \;\vert\; i, j, k \ge 0$ 
+    and if $i = 1$ then $j=k\}$.
+    \begin{enumerate}
+        \item Show that $L$ satisfies pumping lemma.
+        \item Is $L$ regular? Verify your answer.
+    \end{enumerate}
+\end{ec}
 \chapter{문법과 오토마타} 
 \section{문법}
 \begin{defn}
@@ -1223,6 +1213,32 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
     문맥무관 언어 $L$에 대해, $L$을 받아들이는 DPA $P$가 존재하는 것과 $L$이 애매하지 않은 문법 
     $G$를 가지는 것은 동치이다. 
 \end{thm}
+\section{연습문제}
+\begin{ec}
+    Let $C$ be a context free language and $R$ be a regular language. 
+    Show that $C \cap R$ is a context free. 
+\end{ec}
+\begin{ec}
+    Consider the Language $L = \{a^nb^nc^md^m \;\vert\; n, m \ge 1\} \\ \cup \{a^nb^mc^md^n \;\vert\; n,m \ge 1\}$.
+    \begin{enumerate}
+        \item Show that $L$ is context free.
+        \item Show that $L$ is inherently ambiguous. 
+    \end{enumerate}
+\end{ec}
+\begin{ec}
+    Let the \textbf{rotational closure} of language A be $RC(A) = \{yx\;\vert\; xy \in A\}$.
+    \begin{enumerate}
+        \item Show that for any language $A$, we have $RC(A) = RC(RC(A))$.
+        \item Show that if language $A$ is regular then $RC(A)$ is regular.
+    \end{enumerate}
+\end{ec}
+\begin{ec}
+    Give a context free grammar that generates language $L$ 
+    ($N_a(w)$ means the number of occurrence of $a$ in $w$) 
+    \begin{align*}
+        L = \{ w \;\vert\; w \in \{0,1\}^*, N_0(w) \neq N_1(w) \}
+    \end{align*}
+\end{ec}
 \chapter{튜링 기계와 재귀 언어} 
 \section{튜링 기계} \label{turing machine}
 지금까지 우리는 정규식, 유한 오토마타를 이용해 정규언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를
@@ -1931,8 +1947,32 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     \end{itemize}
 \end{defn}
 여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 대수에서 
-중요한 연산은 바로 $\beta$-연산이다. 이제 이러한 간단한 연산을 이용해
-아주 다양한 계산을 할 수 있음을 보이자.
+중요한 연산은 바로 $\beta$-연산이다. 
+\begin{defn}
+    \textbf{레덱스}(redex)란 람다식에서 $\beta$-연산이 가능한 부분, 즉 
+    $( \lambda x. E_1 ) \, E_2$인 부분을 의미한다.
+\end{defn}
+\begin{defn}
+    레덱스가 없는 람다식을 \textbf{정상식}(normal form)이라고 한다.
+\end{defn}
+\begin{ex}
+    \label{normal form ex}
+    다음 중 정상식을 고르시오.
+    \begin{enumerate}
+        \item $\lambda x. x$
+        \item $(\lambda x. x) \, x$
+        \item $(\lambda x.x \, x) \, (\lambda x. x \, x)$
+    \end{enumerate}
+    1은 더이상 $\beta$-연산이 불가능하므로 정상식이다. 2는 한 번 $\beta$-연산을 할 수 
+    있으므로 정상식이 아니다. 3은 무한히 $\beta$-연산을 할 수 있으므로
+    정상식이 아니다.
+\end{ex}
+예제 \ref{normal form ex}의 3에서 알 수 있듯이, 정상식으로 끝날 수 없는 람다식도
+존재하는 것 같다. 그러나 람다식이 만약 정상식으로 끝난다면 그 정상식은 유일하다.
+\begin{thm}
+    \textbf{(처치-로서 정리)} 
+\end{thm}
+이제 이러한 간단한 연산을 이용해 아주 다양한 계산을 할 수 있음을 보이자.
 \begin{defn}
     \textbf{처치 부호화}(Church encoding)는 다음과 같이 정의된다.
     \begin{align*}
@@ -1959,6 +1999,50 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
         \item 테입 알파벳 $\Gamma = \{0, 1\}$이다.
     \end{enumerate}
 \end{defn}
+\section{연습문제}
+\begin{ec}
+    Construct a 1-tape Turing Machine which accepts the given language $L$.
+    \begin{align*}
+        L = \{w \;\vert\; w \in \{0,1\}^*, N_0(w) > N_1(w) \}
+    \end{align*}
+    ($N_a(w)$ means the number of $a$ in $w$.)
+\end{ec}
+\begin{ec}
+    Construct a 1-tape Turing Machine which converts a binary number to 
+    a unary number.(ex. 1011 $\rightarrow$ 11111111111)
+\end{ec}
+\begin{ec}
+    Let's think about a \textbf{restricted Turing Machine}. 
+    In the definition of Turing Machine in the textbook, 
+    the movement of head could have three choices(left, right, stay). 
+    Is it equivalent to the Turing Machine in the textbook if the head 
+    cannot stay and always have to move left or right?
+\end{ec}
+\begin{ec}
+    A pushdown automata only have one stack. A \textbf{$k$-stack machine} is 
+    a deterministic PA with $k$ stacks. In one movement, the $k$-stack machine 
+    can (1) change to a new state and (2) replace the top symbol of each stack
+     with $\epsilon$ or several stack symbols. The transition rule of $k$-stack
+      machine looks like $\delta(q, a, X_1, \cdots, X_n) = (p, Y_1, \cdots, Y_n)$.
+    \\
+    Show that if a language $L$ is accepted by a Turing machine, then $L$ is
+     accepted by a two-stack machine.
+\end{ec}
+\begin{ec}
+    The \textbf{counter machine} has the same structure as the multistack machine, 
+    but each stack is a `counter'. A counter can hold any nonnegative integer, but 
+    we can only distinguish the value of counter between zero and nonzero. In one
+     move, counter machine can (1) change state and (2) add or substract 1 from any
+      of its counters, independently. We do not think subtracting 1 from a counter 
+      that is currently 0. 
+      \begin{enumerate}
+        \item Show that every recursive enumerable language is accepted by 
+        a three-counter machine.
+        \item Show that every recursive enumerable language is accepted by 
+        a two-counter machine.
+      \end{enumerate}
+\end{ec}
+
 \chapter{계산 가능성}
 우리는 지금까지 튜링 기계의 뛰어난 계산능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
 이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링 기계는 정말 모든 일을
@@ -2198,11 +2282,26 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
     \; L(M) \in C\}$는 계산 불가능하다. 
 \end{thm}
 \begin{pf*}
-    먼저 일반성을 잃지 않고 $\emptyset \in C$라고 하자. 만약 그렇지 않다면 $C^C$를 
+    먼저 일반성을 잃지 않고 $\emptyset \notin C$라고 하자. 만약 그렇지 않다면 $C^C$를 
     고려하면 된다.
+    $C$는 공집합이 아니므로 $L\in C$인 언어 $L$을 고려하자. $L$은 재귀 열거 언어이므로
+    $L(M_L) = L$인 튜링 기계 $M_L$이 존재한다. $L_C$가 만약 재귀 언어라면 항상 정지하는
+    $M_C$가 존재한다. 이제 $L_\epsilon$을 $L_C$로 변환하자. $L_\epsilon$의 입력 
+    $\langle M \rangle$을 $\langle M' \rangle$으로 바꿔주는 계산 가능한 함수 $f$를 생각하자.
+    $M'$는 다음과 같은 일을 한다.
+    \begin{enumerate}
+        \item 먼저 주어진 입력 $w$를 따로 보관한다.
+        \item $\epsilon$에 대해 $M$을 돌리고 $M$이 정지하면 $w$에 대해 $M_L$을 돌린다.
+    \end{enumerate}
+    그러면 만약 $M$이 $\epsilon$에 대해 정지하면 $M'$은 $M_L$과 동일한 결과를 가지게 된다.
+    즉, $L(M') = L$이다. 만약 $M$이 $\epsilon$에 대해 정지하지 않으면 $M'$은 항상 정지하지 않는다.
+    즉, $L(M') = \emptyset$이다. $L \in C$이고 $\emptyset \notin C$이므로 $M_C$가 $L(M') = L$인지
+    아닌지 알려준다. 이를 통해 $M$이 $\epsilon$에 대해 정지하는지 안 하는지 알 수 있으므로 모순이다.
 \end{pf*}
+라이스 정리가 함의하는 바는 우리가 사실 과제로 제출해온 코드가 정말로 스펙에 맞는 코드인지
+알 길이 없다는 뜻이다. 그래서 우리는 수많은 테스트케이스를 넣어 `이만하면 맞겠지'를 검증하는 것 뿐이다.
 \section{촘스키 위계}
-잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많음 모델들 중
+잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많은 모델들 중
 언어 모델은 다른 모델들과는 굉장히 이질적이다. 이 모델들은 모두 
 언어학자 \textbf{노암 촘스키}(Noam Chomsky)에 의해 제시되었다. 촘스키는 언어를 보다 형식적으로
 기술하기 위해서 언어 생성 모델을 제시하였고, 이러한 모델은 수학자와 컴퓨터과학자가 제시해 온 여러가지
@@ -2245,6 +2344,30 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 괴델의 불완전성 정리를 자신만의 방식으로 증명하기 위해 튜링 기계를 제시했다. 이는 결국 인간이 기술할 수
 있는 수학은 결국 튜링기계가 계산하는 방식과 동일하다는 것을 내포하고 있다.  
 혹자는 이를 `정의'로 취급하여, 아예 `알고리즘'이란 튜링기계에 의해 계산가능한 함수로써 정의하기도 한다.
+\section{연습문제}
+\begin{ec}
+    Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
+        An instance of the PCP is a collection $P$ of dominos.
+    \begin{align*}
+        P = \left\{\left[ \frac{t_1}{b_1} \right], \cdots ,\left[\frac{t_k}{b_k}\right] \right\}
+    \end{align*}
+    A match is a sequence $i_1, \cdots , i_n$, where $t_{i_1} \cdots t_{i_n} = b_{i_1} \cdots b_{i_n} $. 
+    The problem is to determine whether $P$ has a match. 
+    \begin{align*}
+        PCP = \{ \langle P \rangle \;\vert\; P \text{ is an instance of the PCP with a match}\}
+    \end{align*}
+    \begin{enumerate}
+        \item     
+        To prove that PCP is undecidable, we need to define a new problem, 
+        \textbf{Modified Post Correspondence Problem}(MPCP). 
+        \begin{align*}
+            MPCP = \{\langle P \rangle \; \vert \; P &\text{ is an instance of PCP with} 
+            \\ & \text{ a match that starts with the first domino} \}
+        \end{align*}
+        Show that MPCP is undecidable.
+        \item Show that PCP is undecidable.
+    \end{enumerate}
+\end{ec}
 \chapter{시간 복잡도}
 \section{점근적 표기법}
 지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다. 이제는 조금 더 현실적인 문제로 돌아올 차례다.
