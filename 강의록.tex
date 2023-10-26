@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{kotex}
 \usepackage{algorithm}
 \usepackage{titlesec}   
@@ -126,7 +127,79 @@
     스트링 $w = 000111$이 $L = \{0^n 1^n | n \ge 0\}$ 에 속하는지
 구하시오.
 \end{ex}
-
+\section{기본적인 수학}
+여기선 중간에 필요한 수학적 내용들을 기술한다. 
+이미 내용을 알고 있다면 넘어가도 좋다. 또는 모르는 내용이나 용어가 나올 때마다 여기를 
+봐도 된다.
+\begin{defn}
+    집합 $A, B, R$에 대해 $R \subseteq A \times B$이면 $R$을 \textbf{관계}(relation)라고 한다.
+    이때, $R \subseteq A \times A$이면 $R$을 집합 $A$ 위의 관계라고 한다. 
+    $(a, b) \in R$이면 $a \, R \, b$라고 쓴다.
+\end{defn}
+\begin{ex}
+    집합 $A = \{1, 2, 3\}$에 대해 관계 $<$를 정의하라. (우리가 아는 
+    그 부등호다.)
+    \begin{align*}
+        \{(1, 2), (2, 3), (1, 3)\}
+    \end{align*}
+\end{ex}
+\begin{defn}
+    다음과 같이 집합 $A$위의 관계 $R$의 성질을 정의하자.
+    \begin{enumerate}
+        \item $\forall a \in A, (a, a) \in R$이면 $R$을 \textbf{반사적}(reflexive)이라고 한다.
+        \item $\forall a, b \in A, (a, b) \in R \rightarrow (b, a) \in R$이면
+        $R$을 \textbf{대칭적}(symmetric)이라고 한다.
+        \item $\forall a, b, c\in A, (a, b) \in R \wedge (b, c) \in R \rightarrow 
+        (a, c) \in R$이명 $R$을 \textbf{추이적}(transitive)이라고 한다.
+        \item $R$이 반사적이고 대칭적이고 추이적이면 $R$을 \textbf{동치 관계}(equivalent relation)라고
+        한다.
+    \end{enumerate}
+\end{defn}
+\begin{defn}
+    관계 $R$의 \textbf{폐포}(closure) $C$란 $R \subseteq C$이면서 성질 $P$를 만족하는 최소의
+    관계이다. 예를 들어, 반사적 폐포, 대칭적 폐포, 추이적 폐포 등이 있다. 
+\end{defn}
+\begin{ex}
+    집합 $A = \{1, 2, 3\}$과 $A$ 위에서 정의되는 관계 $R$은 다음과 같다.
+    \begin{align*}
+        R = \{(1,2), (2, 2), (2, 3)\}
+    \end{align*}
+    $R$의 반사적 폐포, 대칭적 폐포, 추이적 폐포, 반사적이고 추이적인 폐포를 각각 구하시오.
+    \begin{enumerate}
+        \item 반사적 폐포는 $\{(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)\}$이다.
+        \item 대칭적 폐포는 $\{(1, 2), (2, 1), (2, 2), (2, 3), (3, 2)\}$이다.
+        \item 추이적 폐포는 $\{(1, 2),(1, 3), (2, 2), (2, 3) \}$이다.
+        \item 반사적이고 추이적인 폐포는 $\le$이다. 
+    \end{enumerate}
+\end{ex}
+\begin{defn}
+    $f: X \rightarrow Y$인 일대일 대응이 존재하면
+    두 집합 $X, Y$의 \textbf{기수}(cardinality)(또는 크기)가 같다고 한다.
+     이는 다음과 같이 적는다.
+    \begin{align*}
+        \vert X \vert = \vert Y \vert
+    \end{align*}
+\end{defn}
+\begin{defn}
+    $f: X \rightarrow Y$인 일대일 함수가
+    존재하면 집합 $Y$의 기수가 $X$보다 크거나 같다고 한다. 이는 다음과 같이 적는다.
+    \begin{align*}
+        \vert X \vert \le \vert Y \vert
+    \end{align*} 
+    만약 $\vert X \vert \le \vert Y \vert$인데 $\vert X \vert \neq \vert Y \vert$이면
+    $\vert X \vert < \vert Y \vert$라고 적는다.
+\end{defn}
+\begin{thm}
+    \textbf{(칸토어 정리)} 모든 집합 $X$에 대해, $\vert X \vert < \vert 2^X \vert$이다.
+\end{thm}
+\begin{pf*}
+    먼저 $f: X \rightarrow 2^X$인 함수라고 하자. 집합 $Y = \{x \;\vert\; x \in X \wedge
+    x \notin f(x)\}$은 $f$의 치역이 아니다. 만약 $f(z) = Y$인 $z \in X$가 존재하면,
+    $z \notin Y$이면서 $z \in Y$이 되므로 모순이다. 즉, $\vert 2^X \vert
+    \neq X$이다. \\ 
+    이때, 함수 $g(x) = \{x\}$는 $g: X \rightarrow 2^X$인 일대일 함수이므로
+    $\vert X \vert \le \vert 2^X \vert$이다. 따라서 $\vert X \vert < \vert 2^X \vert$이다.
+\end{pf*}
 \chapter{정규 언어와 유한 오토마타} 
 \section{정규 언어}
 먼저 정규식(regular expression)을 정의하자.
@@ -1968,10 +2041,31 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     정상식이 아니다.
 \end{ex}
 예제 \ref{normal form ex}의 3에서 알 수 있듯이, 정상식으로 끝날 수 없는 람다식도
-존재하는 것 같다. 그러나 람다식이 만약 정상식으로 끝난다면 그 정상식은 유일하다.
+존재하는 것 같다. 그러나 람다식이 만약 정상식으로 끝난다면 그 정상식은 유일하다. 이를
+보이기 위해 여러가지 것들을 정의하자.
 \begin{thm}
-    \textbf{(처치-로서 정리)} 
+    \textbf{(처치-로서 정리)} 모든 람다식 $M, N_1, N_2$에 대해 $M$에 
+    임의의 $\beta$-연산들을 한 결과가 각각 $N_1, N_2$이라고 하자. 이때,
+    $N_1, N_2$에 각각 $\beta$-연산들을 해서 도출되는 공통의 람다식 $X$가 존재한다.
+    이를 좀 더 형식적으로 기술하면 다음과 같다.
+    \begin{align*}
+        \forall M, N_1, N_2 \in \Lambda, (M \rightarrow_\beta^* N_1) \wedge 
+        (M \rightarrow_\beta^* N_2) \rightarrow \exists X \in \Lambda,
+        (N_1 \rightarrow_\beta^* X) \wedge (N_2 \rightarrow_\beta^* X)
+    \end{align*}
+    여기서 $\rightarrow_\beta^*$는 $\beta$-연산의 
+    반사적이고 추이적인 폐포, $\Lambda$는 람다식을 모은 집합이다.
 \end{thm}
+\begin{pf*}
+    먼저 이항 관계 $\rightarrow$가 다음을 만족하면 \textbf{다이아몬드 성질}(diamond
+    property)을 만족한다고 하자.
+    \begin{align*}
+        \forall M, N_1, N_2, (M \rightarrow N_1) \wedge (M \rightarrow N_2) 
+        \rightarrow \exists X, (N_1 \rightarrow X) \wedge (N_2 \rightarrow X)
+    \end{align*}
+    처치-로서 정리는 $\beta$-연산들이 다이아몬드 성질을 만족한다는 것이다. 
+    증명을 위해 새로운 연산을 도입하자. 연산 $\rightarrow_\|$는 다음과 같이 정의된다.
+\end{pf*}
 이제 이러한 간단한 연산을 이용해 아주 다양한 계산을 할 수 있음을 보이자.
 \begin{defn}
     \textbf{처치 부호화}(Church encoding)는 다음과 같이 정의된다.

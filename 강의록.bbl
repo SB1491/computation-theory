@@ -5,10 +5,20 @@ Sanjeev Arora and Boaz Barak.
 \newblock {\em Computational complexity: a modern approach}.
 \newblock Cambridge University Press, 2009.
 
+\bibitem{barendregt1984lambda}
+Hendrik~Pieter Barendregt.
+\newblock The lambda calculus, its syntax and semantics. revised edition edn.
+\newblock {\em Studies in Logic and the Foundations of Mathematics}, 103, 1984.
+
 \bibitem{hopcroft2001introduction}
 John~E Hopcroft, Rajeev Motwani, and Jeffrey~D Ullman.
 \newblock Introduction to automata theory, languages, and computation.
 \newblock {\em Acm Sigact News}, 32(1):60--65, 2001.
+
+\bibitem{jech2003set}
+Thomas Jech.
+\newblock {\em Set theory: The third millennium edition, revised and expanded}.
+\newblock Springer, 2003.
 
 \bibitem{lewis1998elements}
 Harry~R Lewis and Christos~H Papadimitriou.
