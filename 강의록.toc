@@ -30,21 +30,21 @@
 \contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{52}{}%
 \contentsline {section}{\numberline {4.7}람다 대수}{62}{}%
 \contentsline {section}{\numberline {4.8}바쁜 비버 함수}{65}{}%
-\contentsline {section}{\numberline {4.9}연습문제}{65}{}%
-\contentsline {chapter}{\numberline {5}계산 가능성}{67}{}%
-\contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{67}{}%
-\contentsline {section}{\numberline {5.2}보편 만능 기계}{69}{}%
-\contentsline {section}{\numberline {5.3}정지 문제}{69}{}%
-\contentsline {section}{\numberline {5.4}정지 문제의 응용}{71}{}%
-\contentsline {section}{\numberline {5.5}촘스키 위계}{75}{}%
-\contentsline {section}{\numberline {5.6}산술적 위계}{75}{}%
-\contentsline {section}{\numberline {5.7}처치-튜링 논제}{76}{}%
-\contentsline {section}{\numberline {5.8}연습문제}{77}{}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{79}{}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{79}{}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{80}{}%
-\contentsline {section}{\numberline {6.3}P}{84}{}%
-\contentsline {section}{\numberline {6.4}NP}{85}{}%
-\contentsline {section}{\numberline {6.5}NP-완비}{89}{}%
-\contentsline {section}{\numberline {6.6}최적화 문제}{95}{}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{97}{}%
+\contentsline {section}{\numberline {4.9}연습문제}{66}{}%
+\contentsline {chapter}{\numberline {5}계산 가능성}{69}{}%
+\contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{69}{}%
+\contentsline {section}{\numberline {5.2}보편 만능 기계}{71}{}%
+\contentsline {section}{\numberline {5.3}정지 문제}{71}{}%
+\contentsline {section}{\numberline {5.4}정지 문제의 응용}{73}{}%
+\contentsline {section}{\numberline {5.5}촘스키 위계}{77}{}%
+\contentsline {section}{\numberline {5.6}산술적 위계}{77}{}%
+\contentsline {section}{\numberline {5.7}처치-튜링 논제}{78}{}%
+\contentsline {section}{\numberline {5.8}연습문제}{79}{}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{81}{}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{81}{}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{82}{}%
+\contentsline {section}{\numberline {6.3}P}{86}{}%
+\contentsline {section}{\numberline {6.4}NP}{87}{}%
+\contentsline {section}{\numberline {6.5}NP-완비}{91}{}%
+\contentsline {section}{\numberline {6.6}최적화 문제}{97}{}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{99}{}%
