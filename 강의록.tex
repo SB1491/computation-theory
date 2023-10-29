@@ -36,6 +36,7 @@
 \newtheorem{ex}{예제}[chapter]
 \newtheorem{thesis}{논제}[chapter]
 \newtheorem{ec}{연습문제}[chapter]
+\newtheorem{lem}{보조정리}[chapter]
 \newtheorem*{pf}{증명}
 \newenvironment{pf*}{\pushQED{\qed}\pf}{\popQED\endpf}
 \title{
@@ -688,7 +689,9 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 \begin{defn}
     문법 중 문맥 무관 문법(context-free grammar) $G$는 $A \in V, x \in (V \cup \Sigma)^*$ 에 대해
 다음과 같은 생성규칙만을 가진다.
-$$A \rightarrow x $$
+\begin{align*}
+    A \rightarrow x
+\end{align*}
 이때 $A \; \rightarrow \; x, A\; \rightarrow \; y$를 줄여서 $A \; \rightarrow \; x \; \vert \; y $라고 쓴다.
 \end{defn} 
 일반적으로 $u, v \in (V \cup \Sigma)^*, A \in V$에 대해 $uAv$에 $A \rightarrow w$를
@@ -697,11 +700,15 @@ $$A \rightarrow x $$
 
 문맥 무관 문법이 생성하는 언어를 \textbf{문맥무관 언어}(context-free language)라고 한다. 
 문법 $G$가 생성하는 언어 $L(G)$는 다음과 같이 정의된다.
-$$L(G) = \{ w \; \vert \; S \overset{*}{\Rightarrow} w \}$$
+\begin{align*}
+    L(G) = \{ w \; \vert \; S \overset{*}{\Rightarrow} w \}
+\end{align*}
 문맥무관 언어의 예시로는 프로그래밍 언어(Fortran, C 등)가 있다. 
 \begin{ex} \label{0n1n_CFG}
 $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥 무관 문법을 구하라.
-$$S \rightarrow 0S1 \; \vert \; \epsilon $$
+\begin{align*}
+    S \rightarrow 0S1 \; \vert \; \epsilon 
+\end{align*}
 \end{ex}
 예를 들어 0011을 만드는 유도 과정은 다음과 같다.
 \begin{align*}
@@ -1729,7 +1736,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
         div(0,n) &= 0 \\
         div(m+1, n) &= 
         \begin{cases}
-            div(m+1, n) + 1 & \text{if } equal(rem(m,n), pred(n)); \\ 
+            div(m, n) + 1 & \text{if } equal(rem(m,n), pred(n)); \\ 
             div(m,n) & \text{otherwise}
         \end{cases} 
     \end{align*}
@@ -2043,7 +2050,7 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
 예제 \ref{normal form ex}의 3에서 알 수 있듯이, 정상식으로 끝날 수 없는 람다식도
 존재하는 것 같다. 그러나 람다식이 만약 정상식으로 끝난다면 그 정상식은 유일하다. 이를
 보이기 위해 여러가지 것들을 정의하자.
-\begin{thm}
+\begin{thm} \label{church-rosser}
     \textbf{(처치-로서 정리)} 모든 람다식 $M, N_1, N_2$에 대해 $M$에 
     임의의 $\beta$-연산들을 한 결과가 각각 $N_1, N_2$이라고 하자. 이때,
     $N_1, N_2$에 각각 $\beta$-연산들을 해서 도출되는 공통의 람다식 $X$가 존재한다.
@@ -2056,15 +2063,53 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     여기서 $\rightarrow_\beta^*$는 $\beta$-연산의 
     반사적이고 추이적인 폐포, $\Lambda$는 람다식을 모은 집합이다.
 \end{thm}
-\begin{pf*}
-    먼저 이항 관계 $\rightarrow$가 다음을 만족하면 \textbf{다이아몬드 성질}(diamond
+이 정리를 증명하기 위해서는 먼저 여러가지 정의와 보조정리가 필요하다.
+\begin{defn}
+    이항 관계 $\rightarrow$가 다음을 만족하면 \textbf{다이아몬드 성질}(diamond
     property)을 만족한다고 하자.
     \begin{align*}
         \forall M, N_1, N_2, (M \rightarrow N_1) \wedge (M \rightarrow N_2) 
         \rightarrow \exists X, (N_1 \rightarrow X) \wedge (N_2 \rightarrow X)
     \end{align*}
-    처치-로서 정리는 $\beta$-연산들이 다이아몬드 성질을 만족한다는 것이다. 
-    증명을 위해 새로운 연산을 도입하자. 연산 $\rightarrow_\|$는 다음과 같이 정의된다.
+\end{defn}
+처치-로서 정리는 $\beta$-연산의 반사적이고 추이적인 폐포가 다이아몬드 성질을 만족한다는 것이다.
+$\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게도 이는 그렇지 않다. 대신에 
+증명을 위해 새로운 관계를 도입하자.
+\begin{defn}
+    관계 $\twoheadrightarrow$는 다음과 같이 정의된다. $M,N \in \Lambda$이다.
+    \begin{itemize}
+        \item $M \twoheadrightarrow M $
+        \item $M \twoheadrightarrow M' \Rightarrow 
+        \lambda x. M \twoheadrightarrow \lambda x. M'$
+        \item $M \twoheadrightarrow M' \wedge N \twoheadrightarrow N' \Rightarrow
+        M \, N \twoheadrightarrow M' \, N' $
+        \item $M \twoheadrightarrow M' \wedge N \twoheadrightarrow N' \Rightarrow
+        (\lambda x. M)\, N \twoheadrightarrow \{N'/x\}M'$
+    \end{itemize}
+\end{defn}
+\begin{lem}
+    \textbf{(치환 보조정리)} $M, N, P \in Lambda$라고 하자. 만약 $x \neq y$이고 $x \notin
+    FV(P)$이면 다음이 성립한다.
+    \begin{align*}
+        \{P / y\} \{ N / x\} M = \{ \{P / y\} N / x \} \{P / y\}  M
+    \end{align*}
+\end{lem}
+\begin{pf*}
+    $M$을 3가지 경우로 나눠서 생각하자.
+    \begin{enumerate}
+        \item $M$이 변수인 경우: 
+        먼저 $M = x$라고 하자. 그럼 좌항은 $\{P / y\} \{ N / x\} x = \{ P / y\} x$이다. 우항은
+        $\{ \{P / y\} N / x \} \{P / y\} x = \{ \{P / y\} N / x \} x = \{P / y\} N$이다. 
+        이번엔 $M = y$라고 하자. 그럼 좌항은 $\{P / y\} \{ N / x\} y = \{ P / y\} y = P$이다.
+        우항은 $x \notin FV(P)$ 이므로 
+        $\{ \{P / y\} N / x \} \{P / y\}  y = \{ \{P / y\} N / x \} P = P $이다. 
+        
+    \end{enumerate}
+\end{pf*}
+사실 직관적으로는 $N$ 치환을 먼저 하냐, $P$를 하고 $N$ 치환을 $P$ 치환에 맞게 적절히 바꿔주고
+나중에 하냐의 차이이므로 당연히 같다는 것을 알 수 있다.
+\begin{pf*} 
+    이제 정리 \ref{church-rosser}의 증명을 하자.
 \end{pf*}
 이제 이러한 간단한 연산을 이용해 아주 다양한 계산을 할 수 있음을 보이자.
 \begin{defn}
