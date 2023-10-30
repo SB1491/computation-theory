@@ -2072,6 +2072,13 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
         \rightarrow \exists X, (N_1 \rightarrow X) \wedge (N_2 \rightarrow X)
     \end{align*}
 \end{defn}
+\begin{lem} \label{diamond property lemma}
+    어떤 관계 $\rightarrow$가 다이아몬드 성질을 만족하면 $\rightarrow$의 전이적이고 추이적인
+    폐포 $\rightarrow^*$ 또한 다이아몬든 성질을 만족한다.
+\end{lem}
+\begin{pf*}
+    존나 당연한데...?
+\end{pf*}
 처치-로서 정리는 $\beta$-연산의 반사적이고 추이적인 폐포가 다이아몬드 성질을 만족한다는 것이다.
 $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게도 이는 그렇지 않다. 대신에 
 증명을 위해 새로운 관계를 도입하자.
@@ -2149,12 +2156,62 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         \end{align*}
         임을 알 수 있다.
         \item $M = \lambda x. P$인 경우: 
-        \item $M = \lambda y. P \; (y \neq x)$인 경우:
+        \begin{align*}
+            \{N / x\} (\lambda x. P) = \{N' / x \} (\lambda x.P) = \lambda x. P
+        \end{align*}
+        \item $M = \lambda y. P \; (y \neq x)$인 경우: 적절하게 $\alpha$-연산이 이루어졌다고
+        가정하자. $\lambda y. (\{N / x\} P)$에 대해, 귀납적으로 $\{N / x\} P \twoheadrightarrow \{N' / x \} P$임을
+        알 수 있다. $\twoheadrightarrow$의 정의에 의해
+        \begin{align*}
+            \{N / x\} (\lambda y. P)& = \lambda y. (\{N /x\} P) \\ 
+            &\twoheadrightarrow \lambda y. (\{ N' / x \} P) \\
+            &= \{N' / x\} (\lambda y. P)
+        \end{align*}
+        임을 알 수 있다.
     \end{enumerate}
 \end{pf*}
-\begin{pf*} 
-    이제 정리 \ref{church-rosser}의 증명을 하자.
+\begin{lem}
+    $M \twoheadrightarrow M', N \twoheadrightarrow N'$이면
+    $\{N / x \} M \twoheadrightarrow \{ N' / x \} M'$이다.
+\end{lem}
+\begin{pf*}
+    증명
 \end{pf*}
+\begin{lem}
+   $\lambda x. M \twoheadrightarrow N$이고 $M \twoheadrightarrow M'$이면
+   $N = \lambda x.M'$이다.
+\end{lem}
+\begin{pf*}
+    증명
+\end{pf*}
+\begin{lem}
+    $M \, N \twoheadrightarrow L$이면 다음 중 하나를 만족한다.
+    \begin{enumerate}
+        \item $M \twoheadrightarrow M', N \twoheadrightarrow N'$에 대해 $L = M' \, N'$이다.
+        \item $M = \lambda x. P, L = \{N' / x\} P', P \twoheadrightarrow P', 
+        N \twoheadrightarrow N'$이다.
+    \end{enumerate}
+\end{lem}
+\begin{pf*}
+\end{pf*}
+\begin{lem} \label{twohead diamond}
+    $\twoheadrightarrow$는 다이아몬드 성질을 만족한다.
+\end{lem}
+\begin{pf*}
+\end{pf*}
+이제 정리 \ref{church-rosser}의 증명을 할 수 있다. 
+\begin{pf*} 
+    \textbf{(처치-로서 정리의 증명)} 먼저 보조정리 \ref{twohead diamond}에 의해 $\twoheadrightarrow$이
+    다이아몬드 성질을 만족한다는 것은 알 수 있다. 이때, $\rightarrow_\beta \subseteq \twoheadrightarrow
+    \subseteq \rightarrow_\beta^*$이므로 $\rightarrow_\beta^*$가 $\twoheadrightarrow$의 전이적이고
+    추이적인 폐포임을 알 수 있다. $\twoheadrightarrow$가 다이아몬드 성질을 만족하므로 보조정리 
+    \ref{diamond property lemma}에 의해 $\rightarrow_\beta^*$도 다이아몬드 성질을 만족한다.
+\end{pf*}
+그럼 이제 계산이 끝난다면 그 값이 유일함을 알게 되었다. 그렇다면 어떤 방식으로 해야 정상식에
+다다를 수 있을까?
+\begin{defn}
+    \textbf{정상 순서 연산}(normal-order reduction)이란 
+\end{defn}
 이제 이러한 간단한 연산을 이용해 아주 다양한 계산을 할 수 있음을 보이자.
 \begin{defn}
     \textbf{처치 부호화}(Church encoding)는 다음과 같이 정의된다.
