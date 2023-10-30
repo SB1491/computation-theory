@@ -2107,9 +2107,9 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         \item $M = \lambda z. M'$인 경우: 먼저 적절하게 $\alpha$-연산이 이루어져서 $z \neq x,
         z \neq y, z \notin FV(P)$라고 하자.  
         \begin{align*}
-            \{P / y\} \{ N / x\} (\lambda z. M') &= \{P / y\} \{ N / x\} \lambda z. M' \\ 
-            &=  \{ \{P / y\} N / x \} \{P / y \} \lambda z. M' \; (\text{by induction})\\ 
-            &= w
+            \{P / y\} \{ N / x\} (\lambda z. M') &= \lambda z. \{P / y\} \{ N / x\}  M' \\ 
+            &=  \lambda z. \{ \{P / y\} N / x \} \{P / y \}  M' \; (\text{by induction})\\ 
+            &=   \{ \{P / y\} N / x \} \{P / y \}  \lambda z. M' 
         \end{align*}
         \item $M = M_1 \, M_2$인 경우:
     \end{enumerate}
