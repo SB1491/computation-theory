@@ -30,22 +30,22 @@
 \contentsline {section}{\numberline {4.5}무제한 문법}{51}{}%
 \contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{54}{}%
 \contentsline {section}{\numberline {4.7}람다 대수}{64}{}%
-\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{69}{}%
-\contentsline {section}{\numberline {4.9}연습문제}{69}{}%
-\contentsline {chapter}{\numberline {5}계산 가능성}{71}{}%
-\contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{71}{}%
-\contentsline {section}{\numberline {5.2}보편 만능 기계}{73}{}%
-\contentsline {section}{\numberline {5.3}정지 문제}{73}{}%
-\contentsline {section}{\numberline {5.4}정지 문제의 응용}{75}{}%
-\contentsline {section}{\numberline {5.5}촘스키 위계}{79}{}%
-\contentsline {section}{\numberline {5.6}산술적 위계}{79}{}%
-\contentsline {section}{\numberline {5.7}처치-튜링 논제}{80}{}%
-\contentsline {section}{\numberline {5.8}연습문제}{81}{}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{83}{}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{83}{}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{84}{}%
-\contentsline {section}{\numberline {6.3}P}{88}{}%
-\contentsline {section}{\numberline {6.4}NP}{89}{}%
-\contentsline {section}{\numberline {6.5}NP-완비}{93}{}%
-\contentsline {section}{\numberline {6.6}최적화 문제}{99}{}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{101}{}%
+\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{70}{}%
+\contentsline {section}{\numberline {4.9}연습문제}{70}{}%
+\contentsline {chapter}{\numberline {5}계산 가능성}{73}{}%
+\contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{73}{}%
+\contentsline {section}{\numberline {5.2}보편 만능 기계}{75}{}%
+\contentsline {section}{\numberline {5.3}정지 문제}{75}{}%
+\contentsline {section}{\numberline {5.4}정지 문제의 응용}{77}{}%
+\contentsline {section}{\numberline {5.5}촘스키 위계}{81}{}%
+\contentsline {section}{\numberline {5.6}산술적 위계}{81}{}%
+\contentsline {section}{\numberline {5.7}처치-튜링 논제}{82}{}%
+\contentsline {section}{\numberline {5.8}연습문제}{83}{}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{85}{}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{85}{}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{86}{}%
+\contentsline {section}{\numberline {6.3}P}{90}{}%
+\contentsline {section}{\numberline {6.4}NP}{91}{}%
+\contentsline {section}{\numberline {6.5}NP-완비}{95}{}%
+\contentsline {section}{\numberline {6.6}최적화 문제}{101}{}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{103}{}%
