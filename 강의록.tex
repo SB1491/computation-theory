@@ -125,7 +125,7 @@
 우리가 이 책에서 다룰 \textbf{문제}(problem)는 어떤 스트링 $w$가 언어 $L$에 속하는지
 아닌지를 결정하는 문제이다.
 \begin{ex}
-    스트링 $w = 000111$이 $L = \{0^n 1^n | n \ge 0\}$ 에 속하는지
+    스트링 $w = 000111$이 $L = \{0^n 1^n \;\vert\; n \ge 0\}$ 에 속하는지
 구하시오.
 \end{ex}
 \section{기본적인 수학}
@@ -220,11 +220,11 @@
 부른다.
 \end{thm}
 \begin{ex}
+    1이 1개인 스트링의 집합을 표시하는 정규식은 $0^* 1 0^*$이다.
+\end{ex}
+\begin{ex}
   길이가 짝수인 스트링의 집합을 표시하는 정규식은 $((0+1)(0+1))^*$이다.  
 \end{ex} 
-\begin{ex}
-1이 1개인 스트링의 집합을 표시하는 정규식은 $0^* 1 0^*$이다.
-\end{ex}
 \begin{ex}
 $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오지 않는 
 스트링의 집합을 표시하는 정규식을 구하라.
@@ -2210,8 +2210,21 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
 그럼 이제 계산이 끝난다면 그 값이 유일함을 알게 되었다. 그렇다면 어떤 방식으로 해야 정상식에
 다다를 수 있을까?
 \begin{defn}
-    \textbf{정상 순서 연산}(normal-order reduction)이란 
+    \textbf{정상 순서 연산}(normal-order reduction)이란 가장 왼쪽(leftmost)이면서 가장 
+    바깥쪽(outermost)의 레덱스부터 베타 연산을 수행하는 연산이다.
 \end{defn}
+\begin{ex}
+    다음 람다식을 정상 순서 연산 방식을 통해 정상식으로 만들어라.
+    \begin{enumerate}
+        \item $\lambda u. (\lambda u. ((u \, y) \, \lambda v. x) \, (\lambda x. x \, \lambda u. u))$
+        \item $(\lambda z. x) ((\lambda x . x \, x) \, (\lambda x. x \, x))$
+    \end{enumerate}
+    2의 경우, $(\lambda x . x \, x) \, (\lambda x. x \, x)$부터 연산을 진행할 경우 영원히 반복된다.
+\end{ex}
+\begin{thm}
+    \textbf{(표준화 정리)} 모든 계산이 끝나는 람다식에 대해, 
+    정상 순서 연산을 하면 정상식으로 결정된다.
+\end{thm}
 이제 이러한 간단한 연산을 이용해 아주 다양한 계산을 할 수 있음을 보이자.
 \begin{defn}
     \textbf{처치 부호화}(Church encoding)는 다음과 같이 정의된다.
