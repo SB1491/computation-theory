@@ -1842,7 +1842,7 @@ $g(n)$이 존재한다.
     이는 불가능하므로 $A$는 원시 재귀 함수가 아니다. 
 \end{pf*}
 따라서 우리는 모든 계산 가능한 함수를 표현하기 위해서 다음과 같은 방법을 정의한다.
-\begin{defn}
+\begin{defn} \label{minimalization}
     인자가 $k+1$개인 함수 $g$에 대해 $g$의 \textbf{최소화}(minimalization)는
     인자가 $k$개인 함수 $f$로 다음과 같이 정의된다.
     $$f(n_1, \cdots, n_k) = \{g(n_1, \cdots, n_k, m) = 1\text{이 되게 하는 최소 } m\}$$
@@ -2222,7 +2222,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     2의 경우, $(\lambda x . x \, x) \, (\lambda x. x \, x)$부터 연산을 진행할 경우 영원히 반복된다.
 \end{ex}
 \begin{thm}
-    \textbf{(표준화 정리)} 모든 계산이 끝나는 람다식에 대해, 
+    \textbf{(표준화 정리, standardization theorem)} 모든 계산이 끝나는 람다식에 대해, 
     정상 순서 연산을 하면 정상식으로 결정된다.
 \end{thm}
 이제 이러한 간단한 연산을 이용해 아주 다양한 계산을 할 수 있음을 보이자.
@@ -2238,9 +2238,82 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         e_1 \, e_2 \, e_3 \\ 
         \text{not} &= \lambda b. \lambda x. \lambda y. b \, y \, x \\ 
         \text{and} &= \lambda b. \lambda b'. \lambda x. \lambda y.
-        b \, (c \, x \, y) \, y
+        b \, (c \, x \, y) \, y\\
+        \text{iszero} &= \lambda n. \lambda x. \lambda y. n \, (\lambda z. y) \, x \\
+        \text{plus} &= \lambda m. \lambda n. \lambda f. \lambda x. m \, f \, (n\, f\, x) \\
+        \text{mult} &= \lambda m. \lambda n. \lambda f. n \, (m \, f)  \\ 
+        \text{pred} &= \lambda n. \lambda f. \lambda x. \lambda n. (\lambda g. \lambda h.
+        h \, (g \, f)) \, (\lambda u. x) \, (\lambda u. u)
     \end{align*}
 \end{defn}
+이것만으론 아쉽게도 아직 계산 가능한 모든 함수를 표현할 수는 없다. 어떻게 하면 재귀함수를 잘 정의할
+수 있을까? 
+\begin{defn}
+    \textbf{Y-결합자}(Y-combinator)는 다음과 같이 정의된다.
+    \begin{align*}
+        Y = \lambda f.(\lambda x. f \, (x\, x)) \, (\lambda x. f \, (x \, x))
+    \end{align*}
+\end{defn}
+\begin{thm}
+    람다식 $g$에 대해 $Y$-결합자는 다음을 만족한다.
+    \begin{align*}
+        Y \, g = g \, Y \, g
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    \begin{align*}
+        Y \, g &= \lambda f.(\lambda x. f \, (x\, x)) \, (\lambda x. f \, (x \, x)) \, g \\
+        &= (\lambda x. g \, (x \, x)) (\lambda x .g \, (x \, x)) \\ 
+        &= g \,  (\lambda x. g \, (x \, x)) (\lambda x .g \, (x \, x))  \\ 
+        &= g \, Y \, g
+    \end{align*}
+\end{pf*}
+\begin{ex}
+    다음과 함수 $fac$를 정의하자.
+    \begin{lstlisting}
+    def fac n =
+        if iszero n 
+        then 1 
+        else mult n (f (pred n))
+    \end{lstlisting}
+    함수 $fac$는 람다 식으로는 간단히 다음과 같이 정의된다.
+    \begin{align*}
+        fac = \lambda f. \lambda n. \text{if } \text{iszero } n \text{ then }
+        1 \text{ else } \text{mult } n \, (f \, (\text{pred } n))
+    \end{align*}
+    $fac$ 2를 연산하는 과정을 $Y$-결합자를 이용해 표현해라. ($Y \, (fac \, 2)$를 계산하라는 뜻이다.)
+    \begin{align*}
+        &Y \, fac \, 2 \\ 
+        &= fac \, (Y \, fac) \, 2 \\ 
+        &= (\lambda f. \lambda n. \text{if } \text{iszero } n \text{ then }
+        1 \text{ else } \text{mult } n \, (f \, (\text{pred } n))) (Y \, fac) \, 2 \\
+        &= (\lambda n. \text{if } \text{iszero } n \text{ then }
+        1 \text{ else } \text{mult } n \, ((Y \, fac) \, (\text{pred } n))) \, 2 \\
+        &=   \text{if } \text{iszero } 2 \text{ then }
+        1 \text{ else } \text{mult } 2 \, ((Y \, fac) \, (\text{pred } 2))\\
+        &=  \text{if } \text{iszero } 2 \text{ then }
+        1 \text{ else } \text{mult } 2 \, ((Y \, fac) \, (1)) \\ 
+        &= \text{mult } 2 \, ((Y \, fac) \, (1)) \\
+        &= \text{mult } 2 \, (fac \, (Y \, fac) \, (1)) \\ 
+        &\; \vdots \\ 
+        &= \text{mult } 2 \, (\text{mult } 1 \, ((Y \, fac) \, 0)) \\
+        &= \text{mult } 2 \, (\text{mult } 1 \, (fac \, (Y \, fac) \, 0)) \\ 
+        &\; \vdots \\ 
+        &= \text{mult } 2 \, (\text{mult } 1 \, 1) \\
+        &= 2 
+    \end{align*}
+\end{ex}
+\begin{ex}
+    정의 \ref{minimalization}에서 정의한 최소화 함수 $min$을 람다식을 이용해 정의하라.
+\end{ex}
+람다식을 이용해 최소화를 구현할 수 있으므로 $\mu$-재귀 함수와 계산 능력이 동등하다. 
+\begin{thm}
+    람다 대수와 튜링 기계의 계산 능력은 동등하다.
+\end{thm}
+\begin{pf*}
+    먼저 람다 대수는 $\mu$-재귀 함수를 통해 튜링 기계를 흉내낼 수 있다. 튜링 기계가 
+    람다 대수를 흉내내는 과정은 자세히 다루진 않으나, 충분히 할 수 있을 거라고 믿자...
+\end{pf*}
 \section{바쁜 비버 함수}
 튜링 기계를 이용해 정의한 한 재미있는 함수에 대해 알아보자.
 \begin{defn}
