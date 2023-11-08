@@ -30,8 +30,8 @@
 \contentsline {section}{\numberline {4.5}무제한 문법}{51}{}%
 \contentsline {section}{\numberline {4.6}$\mu $-재귀 함수}{54}{}%
 \contentsline {section}{\numberline {4.7}람다 대수}{64}{}%
-\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{74}{}%
-\contentsline {section}{\numberline {4.9}연습문제}{74}{}%
+\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{75}{}%
+\contentsline {section}{\numberline {4.9}연습문제}{75}{}%
 \contentsline {chapter}{\numberline {5}계산 가능성}{77}{}%
 \contentsline {section}{\numberline {5.1}튜링 기계의 부호화}{77}{}%
 \contentsline {section}{\numberline {5.2}보편 만능 기계}{79}{}%
