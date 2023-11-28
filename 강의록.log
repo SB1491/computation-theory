@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.24)  2 NOV 2023 23:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.24)  28 NOV 2023 15:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -797,7 +797,7 @@ Chapter 4.
 Underfull \vbox (badness 7540) has occurred while \output is active []
 
  [53] [54] [55]
-Overfull \hbox (0.26926pt too wide) in paragraph at lines 1709--1710
+Overfull \hbox (0.26926pt too wide) in paragraph at lines 1711--1712
 []\LUC/nanummj/bx/n/10/c6 ^^H\LUC/nanummj/bx/n/10/c8 ^^\ \OT1/cmr/bx/n/10 4.16. []$\OML/cmm/m/it/10 m \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 n$\LUC/nanummj/m/n/10/c7 t\LUC/nanummj/m/n/10/ba t \OT1/cmr/m/n/10 1\LUC/nanummj/m/n/10/c7 t\LUC/nanummj/m/n/10/ac ‡ \LUC/nanummj/m/n/10/c7 t\LUC/nanummj/m/n/10/c6 x\LUC/nanummj/m/n/10/c5 –\LUC/nanummj/m/n/10/b2 î \OT1/cmr/m/n/10 0\LUC/nanummj/m/n/10/c7 x \LUC/nanummj/m/n/10/c6 –\LUC/nanummj/m/n/10/c2 ‹ \LUC/nanummj/m/n/10/c7 ¨\LUC/nanummj/m/n/10/ad ¿ \LUC/nanummj/m/n/10/c2  \LUC/nanummj/m/n/10/c5 ¥ $\OML/cmm/m/it/10 greater[]or[]equal\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m; n\OT1/cmr/m/n/10 )$
  []
 
@@ -808,7 +808,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [58]
-Overfull \hbox (5.87793pt too wide) in paragraph at lines 1818--1823
+Overfull \hbox (5.87793pt too wide) in paragraph at lines 1820--1825
 \LUC/nanummj/m/n/10/c7 t\LUC/nanummj/m/n/10/b5 L $\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; []  ; x[]; n\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 < Ack\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; n \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )$\LUC/nanummj/m/n/10/b7 | \LUC/nanummj/m/n/10/d5 X\LUC/nanummj/m/n/10/c7 ê\OT1/cmr/m/n/10 . \LUC/nanummj/m/n/10/ad ¯\LUC/nanummj/m/n/10/b7 ¸ $\OML/cmm/m/it/10 z \OT1/cmr/m/n/10 = []\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x; n; f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; []  ; x[]; n\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 g$
  []
 
@@ -816,7 +816,7 @@ Overfull \hbox (5.87793pt too wide) in paragraph at lines 1818--1823
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [59] [60] [61] [62]
-Overfull \hbox (6.63809pt too wide) in paragraph at lines 1928--1936
+Overfull \hbox (6.63809pt too wide) in paragraph at lines 1930--1938
 $\OML/cmm/m/it/10 num$\LUC/nanummj/m/n/10/c7 @ \OT1/cmr/m/n/10 0\LUC/nanummj/m/n/10/ac ¸ \OT1/cmr/m/n/10 1\LUC/nanummj/m/n/10/b8 \ \LUC/nanummj/m/n/10/d4 \\LUC/nanummj/m/n/10/ae 0\LUC/nanummj/m/n/10/b4 ^^\ $\OML/cmm/m/it/10 b$\LUC/nanummj/m/n/10/c9 ƒ\LUC/nanummj/m/n/10/bc ï \LUC/nanummj/m/n/10/d4 \\LUC/nanummj/m/n/10/ae 0\LUC/nanummj/m/n/10/bc ï\LUC/nanummj/m/n/10/c7 D \LUC/nanummj/m/n/10/c8 ^^U\LUC/nanummj/m/n/10/c2 ^^X\LUC/nanummj/m/n/10/b8 \ \LUC/nanummj/m/n/10/bc ^^T\LUC/nanummj/m/n/10/af ‘\LUC/nanummj/m/n/10/c8 ¸\LUC/nanummj/m/n/10/b2 î \LUC/nanummj/m/n/10/d5 h\LUC/nanummj/m/n/10/c2 ^^X\LUC/nanummj/m/n/10/c7 t\LUC/nanummj/m/n/10/b2 ‰\OT1/cmr/m/n/10 . $\OML/cmm/m/it/10 output$\LUC/nanummj/m/n/10/c7 @ $\OT1/cmr/m/n/10 #\OML/cmm/m/it/10 hf\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 w\OT1/cmr/m/n/10 )$
  []
 
@@ -824,79 +824,81 @@ $\OML/cmm/m/it/10 num$\LUC/nanummj/m/n/10/c7 @ \OT1/cmr/m/n/10 0\LUC/nanummj/m/n
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [63] [64] [65] [66]
-Overfull \hbox (9.06161pt too wide) detected at line 2062
+Overfull \hbox (9.06161pt too wide) detected at line 2064
 []
  []
 
 [67] [68]
 Underfull \vbox (badness 2469) has occurred while \output is active []
 
- [69] [70]
-Underfull \vbox (badness 6775) has occurred while \output is active []
+ [69]
+Overfull \hbox (11.37798pt too wide) in paragraph at lines 2183--2188
+\OML/cmm/m/it/10 M[]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N[]=x\OMS/cmsy/m/n/10 g$\LUC/nanummj/m/n/10/c7 t\LUC/nanummj/m/n/10/b2 ‰\OT1/cmr/m/n/10 . \LUC/nanummj/m/n/10/c9 â\OT1/cmr/m/n/10 , $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N=x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 M \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N=x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ^^Uy:M[] \U/msa/m/n/10 ^^P \OML/cmm/m/it/10 ^^U\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N[]=x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 y:M[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N[]=x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 M[]$
+ []
 
- [71]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [72]
+[70] [71] [72]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [73]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [74]
 Underfull \vbox (badness 2469) has occurred while \output is active []
 
- [74] [75] [76]
-Chapter 5.
-[77
+ [75] [76] [77] [78
 
-] [78] [79] [80] [81] [82] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+]
+Chapter 5.
+[79] [80] [81] [82] [83] [84] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Overfull \hbox (0.32188pt too wide) in paragraph at lines 2579--2580
+Overfull \hbox (0.32188pt too wide) in paragraph at lines 2624--2625
 []\LUC/nanummj/bx/n/10/c6 ^^H\LUC/nanummj/bx/n/10/c8 ^^\ \OT1/cmr/bx/n/10 5.4. []\LUC/nanummj/m/n/10/d5 ^^D\LUC/nanummj/m/n/10/b8 \\LUC/nanummj/m/n/10/ad ¯\LUC/nanummj/m/n/10/b7 ò\LUC/nanummj/m/n/10/bc ^^M\LUC/nanummj/m/n/10/c7 D \LUC/nanummj/m/n/10/d5 X\LUC/nanummj/m/n/10/b2 ‰ \LUC/nanummj/m/n/10/bc Ù\LUC/nanummj/m/n/10/ba t \LUC/nanummj/m/n/10/ac ^^@\LUC/nanummj/m/n/10/b0 T \LUC/nanummj/m/n/10/b2 ‰\LUC/nanummj/m/n/10/c7 L\LUC/nanummj/m/n/10/ac ¸ ^^Y\LUC/nanummj/m/n/10/c7 @ \LUC/nanummj/m/n/10/c6 $\LUC/nanummj/m/n/10/b9 X| »\LUC/nanummj/m/n/10/c8 ¸\LUC/nanummj/m/n/10/d5 \\LUC/nanummj/m/n/10/b2 ‰\OT1/cmr/m/n/10 . \LUC/nanummj/m/n/10/b2 ‰\LUC/nanummj/m/n/10/c7 L \OT1/cmr/m/n/10 Python
  []
 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2583.
-[83] [84]
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2628.
+[85] [86]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [85] [86] [87] [88
+ [87] [88] [89] [90
 
 ]
 Chapter 6.
-[89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99]
-Overfull \hbox (5.25972pt too wide) in paragraph at lines 3091--3092
+[91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101]
+Overfull \hbox (5.25972pt too wide) in paragraph at lines 3136--3137
 []\LUC/nanummj/bx/n/10/c8 ^^U\LUC/nanummj/bx/n/10/c7 X \OT1/cmr/bx/n/10 6.13. []\LUC/nanummj/m/n/10/c5 ∏¥ $\OML/cmm/m/it/10 A$\LUC/nanummj/m/n/10/ac ^^@ \LUC/nanummj/m/n/10/b2 ‰\LUC/nanummj/m/n/10/c7 L \LUC/nanummj/m/n/10/b4 P \LUC/nanummj/m/n/10/ac ^^@\LUC/nanummj/m/n/10/c9 ¿ \LUC/nanummj/m/n/10/c8 p\LUC/nanummj/m/n/10/ac t\LUC/nanummj/m/n/10/c7 D \LUC/nanummj/m/n/10/b9 Ã\LUC/nanummj/m/n/10/c8 q\LUC/nanummj/m/n/10/c2 ‹\LUC/nanummj/m/n/10/d0 §\LUC/nanummj/m/n/10/ba t $\OML/cmm/m/it/10 A$\LUC/nanummj/m/n/10/b9 | \OT1/cmr/bx/n/10 NP-\LUC/nanummj/bx/n/10/c6 D\LUC/nanummj/bx/n/10/be D\OT1/cmr/m/n/10 (NP-Complete)
  []
 
-[100] [101] [102]
+[102] [103] [104]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [103]
+ [105]
 Underfull \vbox (badness 1661) has occurred while \output is active []
 
- [104] [105] [106
+ [106] [107] [108
 
 ]
 Chapter 7.
-(./Í∞ïÏùòÎ°ù.bbl [107] [108
+(./Í∞ïÏùòÎ°ù.bbl [109] [110
 
 ]
 LaTeX Font Info:    Font shape `LUC/nanummj/m/it' in size <10> not available
 (Font)              Font shape `LUC/nanummj/m/sl' tried instead on input line 35.
-) [109] (./Í∞ïÏùòÎ°ù.aux) ) 
+) [111] (./Í∞ïÏùòÎ°ù.aux) ) 
 Here is how much of TeX's memory you used:
- 32673 strings out of 478287
- 731777 string characters out of 5849289
- 1156831 words of memory out of 5000000
- 50338 multiletter control sequences out of 15000+600000
- 541225 words of font info for 277 fonts, out of 8000000 for 9000
+ 32677 strings out of 478287
+ 731833 string characters out of 5849289
+ 1156853 words of memory out of 5000000
+ 50342 multiletter control sequences out of 15000+600000
+ 541809 words of font info for 279 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  136i,20n,130p,1635b,1734s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbac.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbad.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbae.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb1.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb3.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb4.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbb9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbba.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbbb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbbc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbbd.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbbe.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc1.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbc9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbcc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbcd.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbce.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbcf.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd1.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd3.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd4.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjbd7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmac.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmac.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmad.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmae.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmaf.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb1.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb3.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb4.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmb9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmba.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmbb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmbc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmbc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmbd.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmbe.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmbf.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc1.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc3.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc4.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmc9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmca.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmcb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmcc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmcd.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmce.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmcf.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd1.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd3.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd4.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanummjmd7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Í∞ïÏùòÎ°ù.pdf (109 pages, 4721692 bytes).
+Output written on Í∞ïÏùòÎ°ù.pdf (111 pages, 4724562 bytes).
 PDF statistics:
- 914 PDF objects out of 1000 (max. 8388607)
- 577 compressed objects within 6 object streams
+ 920 PDF objects out of 1000 (max. 8388607)
+ 581 compressed objects within 6 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
