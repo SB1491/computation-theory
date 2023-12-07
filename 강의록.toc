@@ -1,7 +1,7 @@
 \contentsline {chapter}{\numberline {1}Introduction}{9}{}%
 \contentsline {section}{\numberline {1.1}Motivation}{9}{}%
 \contentsline {section}{\numberline {1.2}언어}{10}{}%
-\contentsline {section}{\numberline {1.3}기본적인 수학}{11}{}%
+\contentsline {section}{\numberline {1.3}기타 잡다한 수학}{11}{}%
 \contentsline {chapter}{\numberline {2}정규 언어와 유한 오토마타}{15}{}%
 \contentsline {section}{\numberline {2.1}정규 언어}{15}{}%
 \contentsline {section}{\numberline {2.2}유한 오토마타}{16}{}%
@@ -39,8 +39,8 @@
 \contentsline {section}{\numberline {5.4}정지 문제의 응용}{83}{}%
 \contentsline {section}{\numberline {5.5}촘스키 위계}{87}{}%
 \contentsline {section}{\numberline {5.6}산술적 위계}{87}{}%
-\contentsline {section}{\numberline {5.7}처치-튜링 논제}{88}{}%
-\contentsline {section}{\numberline {5.8}연습문제}{89}{}%
+\contentsline {section}{\numberline {5.7}처치-튜링 논제}{89}{}%
+\contentsline {section}{\numberline {5.8}연습문제}{90}{}%
 \contentsline {chapter}{\numberline {6}시간 복잡도}{91}{}%
 \contentsline {section}{\numberline {6.1}점근적 표기법}{91}{}%
 \contentsline {section}{\numberline {6.2}복잡도 분석}{92}{}%

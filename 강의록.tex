@@ -128,7 +128,7 @@
     스트링 $w = 000111$이 $L = \{0^n 1^n \;\vert\; n \ge 0\}$ 에 속하는지
 구하시오.
 \end{ex}
-\section{기본적인 수학}
+\section{기타 잡다한 수학}
 여기선 중간에 필요한 수학적 내용들을 기술한다. 
 이미 내용을 알고 있다면 넘어가도 좋다. 또는 모르는 내용이나 용어가 나올 때마다 여기를 
 봐도 된다.
@@ -2698,6 +2698,44 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로
 후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도 
 위계가 존재할까? 이를 어떻게 표현할 수 있을까?
+\begin{defn}
+    \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
+    정의되는 양화사로 다음과 같이 정의된다. 
+    \begin{align*}
+        \forall n < t \; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
+        \exists n < t \; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
+    \end{align*}
+    여기서 $\phi$는 논리식(formula)이다. 
+\end{defn}
+참고로 여기서 다루는 대상은 모두 자연수이다.
+\begin{defn}
+    자연수 $n$에 대해 모임 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$는 다음과 같이 귀납적으로 정의된다.
+    \begin{itemize}
+        \item 유계 양화사로만 구성된 논리식 $\psi$에 대해 $\phi \Leftrightarrow \psi$이면 $\phi \in 
+        \Sigma_0^0, \Pi_0^0, \Delta_0^0$이다. 
+        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \cdots \exists m_k \; \psi$이고
+        $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
+        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \cdots \forall m_k \; \psi$이고
+        $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
+        \item 만약 $\phi \in \Sigma_0^n, \Pi_0^n$이면 $\phi \in \Delta_0^n$이다.
+    \end{itemize}
+    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로
+    결정된다.
+\end{defn}
+\begin{ex}
+    다음 논리식이 어떤 분류에 소속되는지 구하라.
+    \begin{enumerate}
+        \item $\forall x < 10 \; (x < 100)$ 
+        \item $\forall y \exists x \; (y < x)$
+        \item $\exists y \forall x \; (y < x)$
+        \item $n$은 홀수이다.
+        \begin{align*}
+            &n\text{은 홀수이다.} \\ 
+            &\Leftrightarrow \forall k (n \neq 2k) \\ 
+            &\Leftrightarrow \exists k (n = 2k + 1)
+        \end{align*}
+    \end{enumerate}
+\end{ex}
 \section{처치-튜링 논제}
 지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에
 대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에

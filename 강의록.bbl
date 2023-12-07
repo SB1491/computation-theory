@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{arora2009computational}
 Sanjeev Arora and Boaz Barak.
@@ -9,6 +9,11 @@ Sanjeev Arora and Boaz Barak.
 Hendrik~Pieter Barendregt.
 \newblock The lambda calculus, its syntax and semantics. revised edition edn.
 \newblock {\em Studies in Logic and the Foundations of Mathematics}, 103, 1984.
+
+\bibitem{hajek1979arithmetical}
+Petr H{\'a}jek.
+\newblock Arithmetical hierarchy and complexity of computation.
+\newblock {\em Theoretical Computer Science}, 8(2):227--237, 1979.
 
 \bibitem{hopcroft2001introduction}
 John~E Hopcroft, Rajeev Motwani, and Jeffrey~D Ullman.
