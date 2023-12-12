@@ -35,6 +35,12 @@ Michael Sipser.
 \newblock Introduction to the theory of computation.
 \newblock {\em ACM Sigact News}, 27(1):27--29, 1996.
 
+\bibitem{soare1987study}
+Robert~I Soare.
+\newblock A study of computable functions and computably generated sets.
+\newblock {\em Perspectives in Mathematical Logic, Springer-Verlag, Berlin},
+  1987.
+
 \bibitem{moon}
 문병로.
 \newblock {\em 쉽게 배우는 알고리즘}.
