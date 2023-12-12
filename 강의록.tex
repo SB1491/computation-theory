@@ -75,7 +75,10 @@
     \item 가장 근본적인 이유로, 뭔가 내 강의록? 책?을 써보고 싶어서
 \end{enumerate}
 언제 완성될지는 모르겠으나 일단은 시작해보고자 한다. 이 교재는 기본적으로 박근수
-교수님의 강의록을 기반으로 한다.
+교수님의 강의록을 기반으로 한다. \\ 
+이 교재는 쓰는 사람의 한국어 교재는 한국어 용어만, 영어 교재는 영어 용어만 사용해야 한다는
+이상한 철학에 의해 모든 용어는 한국어 용어를 기반으로 한다. 모든 번역은
+이미 사용되고 있는 방식이나 한국수학회 수학용어를 기반으로 번역하였다.
 \tableofcontents
 
 \chapter{Introduction}
@@ -120,7 +123,8 @@
     $L^0 = \{ \epsilon\}, L^{k} = L^{k-1} L (k \ge 1)$이다.  
     \item $L^*$는 $L$을 0번 이상 접합하여 만들어지는 모든 스트링의 집합이다.
     $$L^* = L^0 \cup L^1 \cup L^2 \cup \cdots $$
-    $L = \{0, 1\}$ 이면 $L^*$ 는 0과 1로 이루어진 모든 스트링의 집합이다.
+    $L = \{0, 1\}$ 이면 $L^*$ 는 0과 1로 이루어진 모든 스트링의 집합이다. $L^+$는 
+    $L \cdot L^*$이다.
 \end{itemize}
 우리가 이 책에서 다룰 \textbf{문제}(problem)는 어떤 스트링 $w$가 언어 $L$에 속하는지
 아닌지를 결정하는 문제이다.
@@ -1571,6 +1575,9 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
         Bb &\rightarrow bb 
     \end{align*}
 \end{ex}
+\begin{ex}
+    $L = \{a^n b^n c^n d^n \;\vert\; n \ge 0\}$을 생성하는 무제한 문법 $G$를 구하라.
+\end{ex}
 예제 \ref{UG_ex}를 보면 알 수 있듯이 무제한 문법은 문맥무관이 아닌 언어도 생성할 수 있다.
 그럼 재귀 열거 언어를 모두 만들 수 있을까? 이는 가능하다.
 \begin{thm}
@@ -1950,6 +1957,10 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     $m$의 값을 구할 수 있다. 이때 $f$는 계산 가능한 함수라고 했으므로 정지상황이 항상 존재하므로 당연히 최소화 가능하다. \\ 
     따라서 튜링 기계에 의해 계산 가능한 함수 $f$는 $\mu$-재귀 함수이다. 
 \end{pf*}
+이를 통해 우리는 재귀 열거 언어 집합을 새롭게 정의할 수 있다.
+\begin{thm}
+    언어 $L$이 재귀 열거 언어인 것과 $L$이 $\mu$-재귀 함수의 정의역인 것은 동치이다. 
+\end{thm}
 \section{람다 대수} \label{lambda calculus}
 튜링 기계는 이름에서 알 수 있듯이 영국의 수학자 앨런 튜링이 만든 개념이다. 그럼 튜링은 이런 복잡한 기계를
 왜 만들었을까? 지금의 컴퓨터처럼 무언가 많은 일을 할 수 있는 자동화된 기계를 만들기 위해서 이런 기계를 
@@ -2705,54 +2716,39 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 계산 모델들과는 독립적으로 제시되어 왔었다. 촘스키는 이러한 모델을 이용해 인간의 언어 생성 방식을
 기술하려고 하였고, 실제로도 이는 언어학에서 현대 통사론의 근간을 이루고 있다. 이후에 이러한 언어 
 생성 방식이 계산 모델이 계산하는 능력과 동일하다는 것이 밝혀졌고, 언어의 계산 능력적 위계가 제시되었다.
-이는 다음과 같다.
-\section{산술적 위계}
-그럼 이제 풀기 가능한 문제(언어)들의 위계를 다루어보았으니, 풀기 불가능한 문제에 대한 위계를 
-세울 차례다.
-지금까지 많은 `풀기 불가능한 문제'들을 알아보았다. 예를 들어, 어떤 프로그램이 멈출지 말지 결정하는 것은
-불가능한 문제이고, 또 어떤 프로그램이 우리가 의도한 동작을 수행하고 끝마칠지 말지 결정하는 것 또한
-불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로
-후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도 
-위계가 존재할까? 이를 어떻게 표현할 수 있을까?
+이는 표 \ref{chomsky hierarchy}에서 확인할 수 있다.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{언어} & \textbf{오토마타} & \textbf{예시} \\ \hline
+    정규 언어       & 유한 오토마타       &   $\{ a^n \;\vert\; n\ge 0\}$    \\ \hline
+    문맥 무관 언어    & 내리누름 오토마타     & $\{ a^n b^n \;\vert\; n\ge 0\}$    \\ \hline
+    문맥 유관 언어    & 선형 유한 자동 기계   & $\{ a^n b^n c^n \;\vert\; n\ge 0\}$    \\ \hline
+    재귀 열거 언어    & 튜링 기계         &   \\ \hline
+    \end{tabular}
+    \caption{}
+    \label{chomsky hierarchy}
+\end{table}
+여기서 우리가 아직 다루지 않았었던 문맥 유관 언어와 선형 유한 자동 기계는 다음과 같이 정의된다. 
 \begin{defn}
-    \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
-    정의되는 양화사로 다음과 같이 정의된다. 
+    \textbf{문맥 유관 문법}(context sensitive grammar) $G = (V, \Sigma, S, P)$은 생성 규칙
+    $x \rightarrow y$가 다음과 같은 형식만을 만족한다.
     \begin{align*}
-        \forall n < t \; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
-        \exists n < t \; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
+        \alpha A \beta \rightarrow \alpha \gamma \beta
     \end{align*}
-    여기서 $\phi$는 논리식(formula)이다. 
-\end{defn}
-참고로 여기서 다루는 대상은 모두 자연수이다.
-\begin{defn}
-    자연수 $n$에 대해 모임 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$는 다음과 같이 귀납적으로 정의된다.
-    \begin{itemize}
-        \item 유계 양화사로만 구성된 논리식 $\psi$에 대해 $\phi \Leftrightarrow \psi$이면 $\phi \in 
-        \Sigma_0^0, \Pi_0^0, \Delta_0^0$이다. 
-        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \cdots \exists m_k \; \psi$이고
-        $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
-        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \cdots \forall m_k \; \psi$이고
-        $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
-        \item 만약 $\phi \in \Sigma_0^n, \Pi_0^n$이면 $\phi \in \Delta_0^n$이다.
-    \end{itemize}
-    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로
-    결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고
+    여기서 $A \in V, \alpha, \beta \in (V \cup \Sigma \setminus \{S\}), 
+    \gamma \in (V \cup \Sigma \setminus \{S\})^+$이다.
+    이때 문맥 무관 문법으로 정의된 언어 $L(G)$를 \textbf{문맥 유관 언어}(context sensitive grammar)라고
     한다.
 \end{defn}
 \begin{ex}
-    다음 논리식이 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$중 어떤 모임에 소속되는지 구하라.
-    \begin{enumerate}
-        \item $\forall x < 10 \; (x < 100)$ 
-        \item $\forall y \exists x \; (y < x)$
-        \item $\exists y \forall x \; (y < x)$
-        \item $n$은 홀수이다.
-        \begin{align*}
-            &n\text{은 홀수이다.} \\ 
-            &\Leftrightarrow \forall k (n \neq 2k) \\ 
-            &\Leftrightarrow \exists k (n = 2k + 1)
-        \end{align*}
-    \end{enumerate}
+    $L = \{ a^n b^n c^n \;\vert\; n \ge 1\}$를 만드는 문맥 유관 문법을 구하라. 예제 \ref{UG_ex} 참조.
 \end{ex}
+\begin{defn}
+    \textbf{선형 유한 자동 기계}(linear bounded automata, LBA)란 테입의 길이가 입력 스트링의 길이 만큼 
+    제한된 비결정론적 튜링 기계이다. 즉, 길이가 $n$인 입력 스트링에 대해 테이프 길이가 $n$인 것이다.
+\end{defn}
 \section{처치-튜링 논제}
 지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에
 대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에
@@ -2804,6 +2800,68 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
         \item Show that PCP is undecidable.
     \end{enumerate}
 \end{ec}
+\chapter{튜링 위계와 산술적 위계}
+지금까지는 풀기 가능한 문제(언어)들의 위계를 다루어보았으니, 이제는 풀기 불가능한 문제에 대한 위계를 
+세울 차례다.
+지금까지 많은 `풀기 불가능한 문제'들을 알아보았다. 예를 들어, 어떤 프로그램이 멈출지 말지 결정하는 것은
+불가능한 문제이고, 또 어떤 프로그램이 우리가 의도한 동작을 수행하고 끝마칠지 말지 결정하는 것 또한
+불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로
+후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도 
+위계가 존재할까? 이를 어떻게 표현할 수 있을까?
+\section{산술적 위계}
+\begin{defn}
+    \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
+    정의되는 양화사로 다음과 같이 정의된다. 
+    \begin{align*}
+        \forall n < t \; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
+        \exists n < t \; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
+    \end{align*}
+    여기서 $\phi$는 논리식(formula)이다. 
+\end{defn}
+참고로 여기서 다루는 대상은 모두 자연수이다.
+\begin{defn}
+    자연수 $n$에 대해 모임 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$는 다음과 같이 귀납적으로 정의된다.
+    \begin{itemize}
+        \item 유계 양화사로만 구성된 논리식 $\psi$에 대해 $\phi \Leftrightarrow \psi$이면 $\phi \in 
+        \Sigma_0^0, \Pi_0^0, \Delta_0^0$이다. 
+        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \cdots \exists m_k \; \psi$이고
+        $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
+        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \cdots \forall m_k \; \psi$이고
+        $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
+        \item 만약 $\phi \in \Sigma_0^n, \Pi_0^n$이면 $\phi \in \Delta_0^n$이다.
+    \end{itemize}
+    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로
+    결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고
+    한다.
+\end{defn}
+\begin{ex}
+    다음 논리식이 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$중 어떤 모임에 소속되는지 구하라.
+    \begin{enumerate}
+        \item $\forall x < 10 \; (x < 100)$ 
+        \item $\forall y \exists x \; (y < x)$
+        \item $\exists y \forall x \; (y < x)$
+        \item $n$은 홀수이다.
+        \begin{align*}
+            &n\text{은 홀수이다.} \\ 
+            &\Leftrightarrow \forall k (n \neq 2k) \\ 
+            &\Leftrightarrow \exists k (n = 2k + 1)
+        \end{align*}
+    \end{enumerate}
+\end{ex}
+먼저 재귀 열거 언어가 어떤 모임에 소속되는지를 구하자. 
+\begin{thm}
+    \textbf{(양화사 축약 정리, Quantifier Contraction Theorem)}
+    
+\end{thm}
+\begin{thm}
+    \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과
+    $A \in \Sigma_1^0$인 것은 동치이다. 
+\end{thm}
+\begin{pf*}
+    ($\Leftarrow$) $A$가 재귀 열거 언어이므로 $A$는 어떤 $\mu$-재귀 함수 $\phi$의
+    정의역이다. $M$ \\
+    ($\Rightarrow$) $A = $
+\end{pf*}
 \chapter{시간 복잡도}
 \section{점근적 표기법}
 지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다. 이제는 조금 더 현실적인 문제로 돌아올 차례다.

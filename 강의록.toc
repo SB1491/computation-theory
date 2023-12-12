@@ -38,14 +38,15 @@
 \contentsline {section}{\numberline {5.3}정지 문제}{81}{}%
 \contentsline {section}{\numberline {5.4}정지 문제의 응용}{83}{}%
 \contentsline {section}{\numberline {5.5}촘스키 위계}{87}{}%
-\contentsline {section}{\numberline {5.6}산술적 위계}{87}{}%
-\contentsline {section}{\numberline {5.7}처치-튜링 논제}{89}{}%
-\contentsline {section}{\numberline {5.8}연습문제}{90}{}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{91}{}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{91}{}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{92}{}%
-\contentsline {section}{\numberline {6.3}P}{96}{}%
-\contentsline {section}{\numberline {6.4}NP}{97}{}%
-\contentsline {section}{\numberline {6.5}NP-완비}{101}{}%
-\contentsline {section}{\numberline {6.6}최적화 문제}{107}{}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{109}{}%
+\contentsline {section}{\numberline {5.6}처치-튜링 논제}{88}{}%
+\contentsline {section}{\numberline {5.7}연습문제}{89}{}%
+\contentsline {chapter}{\numberline {6}튜링 위계와 산술적 위계}{91}{}%
+\contentsline {section}{\numberline {6.1}산술적 위계}{91}{}%
+\contentsline {chapter}{\numberline {7}시간 복잡도}{93}{}%
+\contentsline {section}{\numberline {7.1}점근적 표기법}{93}{}%
+\contentsline {section}{\numberline {7.2}복잡도 분석}{94}{}%
+\contentsline {section}{\numberline {7.3}P}{98}{}%
+\contentsline {section}{\numberline {7.4}NP}{99}{}%
+\contentsline {section}{\numberline {7.5}NP-완비}{103}{}%
+\contentsline {section}{\numberline {7.6}최적화 문제}{109}{}%
+\contentsline {chapter}{\numberline {8}공간 복잡도}{111}{}%

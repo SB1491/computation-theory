@@ -25,6 +25,11 @@ Thomas Jech.
 \newblock {\em Set theory: The third millennium edition, revised and expanded}.
 \newblock Springer, 2003.
 
+\bibitem{leiserson1994introduction}
+Charles~Eric Leiserson, Ronald~L Rivest, Thomas~H Cormen, and Clifford Stein.
+\newblock {\em Introduction to algorithms}, volume~3.
+\newblock MIT press Cambridge, MA, USA, 1994.
+
 \bibitem{lewis1998elements}
 Harry~R Lewis and Christos~H Papadimitriou.
 \newblock Elements of the theory of computation.
