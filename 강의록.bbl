@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{aaronson2020busy}
+Scott Aaronson.
+\newblock The busy beaver frontier.
+\newblock {\em ACM SIGACT News}, 51(3):32--54, 2020.
+
 \bibitem{arora2009computational}
 Sanjeev Arora and Boaz Barak.
 \newblock {\em Computational complexity: a modern approach}.

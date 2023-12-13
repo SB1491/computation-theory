@@ -39,6 +39,7 @@
 \newtheorem{thesis}{논제}[chapter]
 \newtheorem{ec}{연습문제}[chapter]
 \newtheorem{lem}{보조정리}[chapter]
+\newtheorem{axm}{공리}[chapter]
 \newtheorem*{pf}{증명}
 \newenvironment{pf*}{\pushQED{\qed}\pf}{\popQED\endpf}
 \title{
@@ -134,6 +135,7 @@
     스트링 $w = 000111$이 $L = \{0^n 1^n \;\vert\; n \ge 0\}$ 에 속하는지
 구하시오.
 \end{ex}
+\part{계산 가능성}
 \chapter{정규 언어와 유한 오토마타} 
 \section{정규 언어}
 먼저 정규식(regular expression)을 정의하자.
@@ -165,7 +167,6 @@ $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오�
 \begin{ex}
 111이 딱 한 번 나타나는 스트링의 집합을 표시하는 정규식을 구하라.
 \end{ex}
-
 
 \section{유한 오토마타}
 컴퓨터는 CPU, 메모리 등 다양한 요소로 구성된다. 
@@ -1199,7 +1200,7 @@ $uv^i x y^i z \in L$임을 알 수 있다.
 PA에서는 아쉽게도 그렇지 않다. \\
 \textbf{결정 내리누름 오토마타}(deterministic pushdown automata, DPA)의 전이함수
 $\delta$는 $Q \times (\Sigma\cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\})$에서 
-$Q \times \Gamma^*$로의 부분함수(partial function)로 정의한다. 비결정성을 막기 위해 DPA의
+$Q \times \Gamma^*$로의 부분 함수(partial function)로 정의한다. 비결정성을 막기 위해 DPA의
 전이함수는 다음과 같은 제약조건을 갖는다. 
 \begin{itemize}
     \item $\delta(q,\epsilon,A)$가 정의되면, 모든 $a \in \Sigma$에 대해 $\delta(q,a,A)$가
@@ -1434,7 +1435,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 물리적으로 구현하기도 어렵다.
 그럼 우리 현실 세계에서 구현하기 쉽고 다루기도 쉬운 튜링 기계 모델에는 어떠한 것이 있을까?
 가장 대표적인 예시인 랜덤 접근 기계에 대해 알아보자.
-\begin{defn} \textbf{(naive한 정의)}
+\begin{defn} \textbf{(느슨한 정의)}
     \textbf{랜덤 접근 기계}(Random Access Machine, RAM)는 여러 개의 \textbf{레지스터}(register), 한 
     방향으로 무한한 길이의 테이프, \textbf{프로그램 카운터}(program counter, PC)로 이루어진다. 레지스터를 
     각각 $R_0, R_1, \cdots$, 
@@ -1571,7 +1572,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 튜링 기계가 받아들일 수 있는 언어는 재귀 열거 언어, 그 중에서도 튜링 기계가 항상 정지하면 계산 가능한 문제, 즉 재귀 언어라 한다. 
 그런데 왜 하필 `재귀'일까? 이는 재귀적인 방식으로 정의되는 함수를 통해 계산 가능한 함수를 모두 표현할 수 있기
 때문이다.  
-\begin{defn}
+\begin{defn} \label{primitive recursive definition}
     $\mathbb{N}^k$에서 $\mathbb{N}$으로 가는 \textbf{기본 함수}(basic function)는 다음 세 함수를 의미한다.
     \begin{enumerate}
         \item 모든 $x_1, \cdots, x_n \in \mathbb{N}$에 대해 
@@ -2673,7 +2674,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
 이러한 모델들과 계산 가능성이 시사하는 바는 처치-튜링 논제에 의해 기술될 수 있다.
 \begin{thesis} 
-    \textbf{(처치-튜링 논제, Church-Turing Thesis)} 다음 명제는 동치다.
+    \textbf{(처치-튜링 논제, Church-Turing Thesis)} 다음 명제는 서로 동치다.
     \begin{itemize}
         \item 자연수 상에서의 함수가 \textbf{효과적 방법}(effective method)으로 산술될 수 있다.
         \item 튜링 기계에 의해 계산가능한 함수다.
@@ -2789,6 +2790,57 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 \begin{pf*}
     소인수분해의 유일성에 의해 자명하다.
 \end{pf*}
+\section{튜링 위계}
+\begin{defn}
+    집합 $A$에 대한 \textbf{특성 함수}(characteristic function) $\chi_A$는 다음과 같이 정의된다.
+    \begin{align*}
+        \chi_A(x) = 
+        \begin{cases}
+            0 & (x \notin A) \\ 
+            1 & (x \in A)
+        \end{cases}
+    \end{align*}
+\end{defn}
+\begin{defn}
+    $A \subseteq \mathbb{N}$라고 하자. 부분 함수 $\psi$가 
+    $\chi_A$와 함께
+    정의 \ref{primitive recursive definition}와 
+    정의 \ref{minimalization}에서 사용되는 함수 구성 방식을 사용해서 구성되면 $A$에 대해 
+    \textbf{부분 재귀적}(partial recursive)이다라고 한다. 여기서는 $\psi$가 $A$-부분 재귀라고 표기한다. 
+\end{defn}
+위와 같은 정의는 튜링 머신을 통해 새롭게 정의될 수 있다.
+\begin{defn}
+    \textbf{(느슨한 정의)} 집합 $A$에 대해 $A$-\textbf{신탁 튜링 기계}($A$-oracle turing machine) $M$은
+    \textbf{신탁}(oracle)이 붙어있는 튜링 기계이다.
+    여기서 신탁이란 자연수 $x$에 $\chi_A(x)$를 반환해주는
+    가상의 기계이다. 여기서 $L(M)$은 
+    \begin{align*}
+        L(M) = \{x \;\vert\; M\text{이 입력 } x\text{에 대해 정지한다.} \}
+    \end{align*}
+    으로 정의된다.
+\end{defn}
+\begin{defn}
+    부분 함수 $\psi$에 대해
+    \begin{enumerate}
+        \item 집합 $A$에 대해 다음과 같은 성질을 만족하는 
+        $A$-신탁 튜링 기계 $M$이 존재하면 부분 함수 $\psi$가 
+        $A$에 대해 \textbf{튜링 완전}(Turing complete)하다고 한다.
+        \begin{align*}
+            \forall x \forall y,  \psi(x) = y \Leftrightarrow 
+            x \in L(M) \wedge M\text{의 출력값은 } y
+        \end{align*} 
+        이는 $\psi \le_T A$와 같이 표기한다. 대응되는 튜링 기계로 $\psi$를 표현하고 싶을 경우
+        $\psi = \Phi_M^A$와 같이 표기하기도 한다. 
+        \item $M$이 $x$에 대해 정지하지 않으면 $\psi(x)$는 \textbf{발산}(diverge)한다고 하고
+        $\psi(x) \uparrow$로 표기한다.
+    \end{enumerate}
+\end{defn}
+\begin{thm}
+    부분 함수 $\psi$가 집합 $A$에 대해 튜링 완전한 것과 $A$에 대해 부분 재귀적인 것은 동치이다.
+\end{thm}
+\begin{pf*}
+    Kleene의 Introduction to Metamathmatics에 나와있다고 하는데 안 읽어봐서 모른다...
+\end{pf*}
 \section{산술적 위계}
 \begin{defn}
     \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
@@ -2843,6 +2895,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
     정의역이다. $M$ \\
     ($\Rightarrow$) $A = $
 \end{pf*}
+\part{계산 복잡도}
 \chapter{시간 복잡도}
 \section{점근적 표기법}
 지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다. 이제는 조금 더 현실적인 문제로 돌아올 차례다.
@@ -2890,7 +2943,7 @@ Big-$O$의 경우, 어떤 함수보다 작거나 같다는 걸 표현하기 위�
 \end{ex}
 \section{복잡도 분석}
 \begin{defn}
-    함수 $t: \mathbb{N} \rightarrow \mathbb{R}^{t}$에 대해 \textbf{시간 복잡도 클래스}(time
+    함수 $t: \mathbb{N} \rightarrow \mathbb{R}^{t}$에 대해 \textbf{시간 복잡도 모임}(time
     complexity class) TIME$(t(n))$은 시간 복잡도가 $O(t(n))$인 튜링 기계로 결정할 수 있는 언어들의 
     모임이다. 
 \end{defn}
@@ -3012,7 +3065,7 @@ $n^3$과 $2^n$을 생각해보자. $n=1000$일 때, $n^3$의 경우 10억 정도
 있는 알고리즘은 적당히 큰 입력에 대해서도 현실적인 시간 내에 해결하지 못한다는 문제가 있다.
 따라서 우리는 다항시간 내에 풀 수 있는 문제들이 어떤 것인지 알아볼 필요가 있다.
 \begin{defn}
-    \textbf{P}는 1-테입 튜링 기계로 다항시간 내에 풀 수 있는 언어들의 class이다. 이는 다음과
+    \textbf{P}는 1-테입 튜링 기계로 다항시간 내에 풀 수 있는 언어들의 모임이다. 이는 다음과
     같이 나타낼 수 있다.
     $$\text{P} = \bigcup_k \text{TIME}(n^k)$$ 
 \end{defn} 
@@ -3089,7 +3142,7 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
     LONGPATH $\in $ NP임을 보여라. 
 \end{ex}
 \begin{defn}
-    비결정론적 시간복잡도 클래스 \textbf{NTIME}은 다음과 같이 정의된다. 
+    비결정론적 시간복잡도 모임 \textbf{NTIME}은 다음과 같이 정의된다. 
     \begin{align*}
         \text{NTIME}(t(n)) = \{L \;\vert\; &L\text{은 비결정론적 튜링 기계로 } \\ &O(t(n)) \text{ 내에 
         결정되는 언어이다.} \}
@@ -3556,6 +3609,17 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     이때, 함수 $g(x) = \{x\}$는 $g: X \rightarrow 2^X$인 일대일 함수이므로
     $\vert X \vert \le \vert 2^X \vert$이다. 따라서 $\vert X \vert < \vert 2^X \vert$이다.
 \end{pf*}
+\section{ZFC 공리계}
+\begin{axm}
+    \label{axiom of choice}
+    \textbf{(선택 공리, axiom of choice)} 임의의 집합 $S$에 대해 $\emptyset \notin S$이면
+    $S$의 원소인 각각의 집합에서 그 집합의 원소를 하나씩 뽑는 선택 함수(choice function)가
+    존재한다. 이는 다음과 같이 적을 수 있다.
+    \begin{align*}
+        \forall S [(\emptyset \notin S) \Rightarrow (\exists f 
+        \in (\cup S)^S, \forall A \in S  \; (f (A) \in A))]
+    \end{align*} 
+\end{axm}
 \section{괴델의 불완정성 정리}
 \begin{thm}
     \textbf{(제 1 괴델의 불완전성 정리)} 모든 공리계는 무모순인 동시에 완전할 수 없다.
