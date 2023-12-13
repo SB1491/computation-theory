@@ -134,79 +134,6 @@
     스트링 $w = 000111$이 $L = \{0^n 1^n \;\vert\; n \ge 0\}$ 에 속하는지
 구하시오.
 \end{ex}
-\section{기타 잡다한 수학}
-여기선 중간에 필요한 수학적 내용들을 기술한다. 
-이미 내용을 알고 있다면 넘어가도 좋다. 또는 모르는 내용이나 용어가 나올 때마다 여기를 
-봐도 된다.
-\begin{defn}
-    집합 $A, B, R$에 대해 $R \subseteq A \times B$이면 $R$을 \textbf{관계}(relation)라고 한다.
-    이때, $R \subseteq A \times A$이면 $R$을 집합 $A$ 위의 관계라고 한다. 
-    $(a, b) \in R$이면 $a \, R \, b$라고 쓴다.
-\end{defn}
-\begin{ex}
-    집합 $A = \{1, 2, 3\}$에 대해 관계 $<$를 정의하라. (우리가 아는 
-    그 부등호다.)
-    \begin{align*}
-        \{(1, 2), (2, 3), (1, 3)\}
-    \end{align*}
-\end{ex}
-\begin{defn}
-    다음과 같이 집합 $A$위의 관계 $R$의 성질을 정의하자.
-    \begin{enumerate}
-        \item $\forall a \in A, (a, a) \in R$이면 $R$을 \textbf{반사적}(reflexive)이라고 한다.
-        \item $\forall a, b \in A, (a, b) \in R \rightarrow (b, a) \in R$이면
-        $R$을 \textbf{대칭적}(symmetric)이라고 한다.
-        \item $\forall a, b, c\in A, (a, b) \in R \wedge (b, c) \in R \rightarrow 
-        (a, c) \in R$이명 $R$을 \textbf{추이적}(transitive)이라고 한다.
-        \item $R$이 반사적이고 대칭적이고 추이적이면 $R$을 \textbf{동치 관계}(equivalent relation)라고
-        한다.
-    \end{enumerate}
-\end{defn}
-\begin{defn}
-    관계 $R$의 \textbf{폐포}(closure) $C$란 $R \subseteq C$이면서 성질 $P$를 만족하는 최소의
-    관계이다. 예를 들어, 반사적 폐포, 대칭적 폐포, 추이적 폐포 등이 있다. 
-\end{defn}
-\begin{ex}
-    집합 $A = \{1, 2, 3\}$과 $A$ 위에서 정의되는 관계 $R$은 다음과 같다.
-    \begin{align*}
-        R = \{(1,2), (2, 2), (2, 3)\}
-    \end{align*}
-    $R$의 반사적 폐포, 대칭적 폐포, 추이적 폐포, 반사적이고 추이적인 폐포를 각각 구하시오.
-    \begin{enumerate}
-        \item 반사적 폐포는 $\{(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)\}$이다.
-        \item 대칭적 폐포는 $\{(1, 2), (2, 1), (2, 2), (2, 3), (3, 2)\}$이다.
-        \item 추이적 폐포는 $\{(1, 2),(1, 3), (2, 2), (2, 3) \}$이다.
-        \item 반사적이고 추이적인 폐포는 $\le$이다. 
-    \end{enumerate}
-\end{ex}
-\begin{defn}
-    $f: X \rightarrow Y$인 일대일 대응이 존재하면
-    두 집합 $X, Y$의 \textbf{기수}(cardinality)(또는 크기)가 같다고 한다.
-     이는 다음과 같이 적는다.
-    \begin{align*}
-        \vert X \vert = \vert Y \vert
-    \end{align*}
-\end{defn}
-\begin{defn}
-    $f: X \rightarrow Y$인 일대일 함수가
-    존재하면 집합 $Y$의 기수가 $X$보다 크거나 같다고 한다. 이는 다음과 같이 적는다.
-    \begin{align*}
-        \vert X \vert \le \vert Y \vert
-    \end{align*} 
-    만약 $\vert X \vert \le \vert Y \vert$인데 $\vert X \vert \neq \vert Y \vert$이면
-    $\vert X \vert < \vert Y \vert$라고 적는다.
-\end{defn}
-\begin{thm}
-    \textbf{(칸토어 정리)} 모든 집합 $X$에 대해, $\vert X \vert < \vert 2^X \vert$이다.
-\end{thm}
-\begin{pf*}
-    먼저 $f: X \rightarrow 2^X$인 함수라고 하자. 집합 $Y = \{x \;\vert\; x \in X \wedge
-    x \notin f(x)\}$은 $f$의 치역이 아니다. 만약 $f(z) = Y$인 $z \in X$가 존재하면,
-    $z \notin Y$이면서 $z \in Y$이 되므로 모순이다. 즉, $\vert 2^X \vert
-    \neq X$이다. \\ 
-    이때, 함수 $g(x) = \{x\}$는 $g: X \rightarrow 2^X$인 일대일 함수이므로
-    $\vert X \vert \le \vert 2^X \vert$이다. 따라서 $\vert X \vert < \vert 2^X \vert$이다.
-\end{pf*}
 \chapter{정규 언어와 유한 오토마타} 
 \section{정규 언어}
 먼저 정규식(regular expression)을 정의하자.
@@ -1861,8 +1788,7 @@ $g(n)$이 존재한다.
     $g$가 \textbf{최소화 가능하다}(minimalizable)고 하고, 만약 
     $g$가 최소화 가능하지 않으면 $f(n_1, \cdots, n_k)=0$으로 정의한다. 
     이러한 $g$의 최소화 과정은 $\mu \; m[g(n_1, \cdots, n_k, m) = 1]$와 같이 표기한다. \\
-    \textbf{$\mu$-재귀 함수}($\mu$-recursive function), 또는 
-    \textbf{부분 재귀 함수}(partial recursive function)는 기본 
+    \textbf{$\mu$-재귀 함수}($\mu$-recursive function)는 기본 
     함수들의 유한 번의 재귀 및 합성 또는 최소화 가능한
     함수의 최소화를 통해 얻어낼 수 있는 함수이다. 
 \end{defn}
@@ -1963,21 +1889,15 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
 \begin{thm}
     언어 $L$이 재귀 열거 언어인 것과 $L$이 $\mu$-재귀 함수의 정의역인 것은 동치이다. 
 \end{thm}
+이때 $\mu$-재귀 함수의 정의역으로 정의가 되는 이유는 $\mu$-재귀 함수는 모든 자연수 값에 대해
+정의되어 있는 \textbf{완전 함수}(total function)가 아니라 자연수 중에 값이 결정되지 않는(즉, 
+계산이 불가능한) 값들이 존재하는 \textbf{부분 함수}(partial function)이기 때문이다. 따라서 
+$\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)로 부르기도 한다.
 \section{람다 대수} \label{lambda calculus}
 튜링 기계는 이름에서 알 수 있듯이 영국의 수학자 앨런 튜링이 만든 개념이다. 그럼 튜링은 이런 복잡한 기계를
 왜 만들었을까? 지금의 컴퓨터처럼 무언가 많은 일을 할 수 있는 자동화된 기계를 만들기 위해서 이런 기계를 
 제안했을 것이라고 오해할 수 있지만, 사실은 그렇지 않다. 앨런 튜링이 하고 싶었던 것은 괴델의 불완전성 
-정리(Gödel’s incompleteness theorems)를 자신만의 방식으로 증명하고 싶었던 것이다.
-\begin{thm}
-    \textbf{(제 1 괴델의 불완전성 정리)} 모든 공리계는 무모순인 동시에 완전할 수 없다.
-\end{thm}
-\begin{thm}
-    \textbf{(제 2 괴델의 불완전성 정리)} 어떤 공리계가 무모순일 경우, 그 공리계로부터 그 공리계 자신의
-    무모순성을 도출할 수 없다. 
-\end{thm}
-매우 어렵게 들리지만, 간단하게 이야기하면 참인지 거짓인지 판별할 수 없는 명제는 항상 존재한다는 것이다. 그
-예시로는 \textbf{연속성 가설}(continuum hypothesis) 등이 있다. 튜링은 수학의 추론 규칙들을 튜링 기계라는
-기계적인 방식으로 환원하였고, 이를 통해 정지 문제와 같은 증명할 수 없는 문제들을 제시해냈다. \\
+정리를 자신만의 방식으로 증명하고 싶었던 것이다.
 그런데 앨런 튜링보다 먼저 알론조 처치(Alonzo Church)가 비슷한 방식으로 이러한 증명을 제안해냈는데, 이를 
 \textbf{람다 대수}(lambda calculus)라고 한다. 
 \begin{defn}
@@ -2397,18 +2317,6 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     먼저 람다 대수는 $\mu$-재귀 함수를 통해 튜링 기계를 흉내낼 수 있다. 튜링 기계가 
     람다 대수를 흉내내는 과정은 자세히 다루진 않으나, 충분히 할 수 있을 거라고 믿자...
 \end{pf*}
-\section{바쁜 비버 함수}
-튜링 기계를 이용해 정의한 한 재미있는 함수에 대해 알아보자.
-\begin{defn}
-    \textbf{바쁜 비버 함수}(busy beaver function)는 다음과 같은 튜링 기계에 의해 정의된다.
-    \begin{enumerate}
-        \item 이 튜링 기계는 정지 상태를 포함하여 $n$ 개의 상태를 가진다.
-        \item 이때 튜링 기계의 테입은 양방향으로 무한하다. (우리가 앞에서 정의한 
-        튜링 기계와는 약간 다르다.)
-        \item 테입 알파벳 $\Gamma = \{0, 1\}$이다. 여기서 0은 공백문자이다.
-        \item 
-    \end{enumerate}
-\end{defn}
 \section{연습문제}
 \begin{ec}
     Construct a 1-tape Turing Machine which accepts the given language $L$.
@@ -2778,6 +2686,18 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 괴델의 불완전성 정리를 자신만의 방식으로 증명하기 위해 튜링 기계를 제시했다. 이는 결국 인간이 기술할 수
 있는 수학은 결국 튜링 기계가 계산하는 방식과 동일하다는 것을 내포하고 있다.  
 혹자는 이를 `정의'로 취급하여, 아예 `알고리즘'이란 튜링 기계에 의해 계산가능한 함수로써 정의하기도 한다.
+\section{바쁜 비버 함수}
+튜링 기계를 이용해 정의한 한 재미있는 함수에 대해 알아보자.
+\begin{defn}
+    \textbf{바쁜 비버 함수}(busy beaver function)는 다음과 같은 튜링 기계에 의해 정의된다.
+    \begin{enumerate}
+        \item 이 튜링 기계는 정지 상태를 포함하여 $n$ 개의 상태를 가진다.
+        \item 이때 튜링 기계의 테입은 양방향으로 무한하다. (우리가 앞에서 정의한 
+        튜링 기계와는 약간 다르다.)
+        \item 테입 알파벳 $\Gamma = \{0, 1\}$이다. 여기서 0은 공백문자이다.
+        \item 
+    \end{enumerate}
+\end{defn}
 \section{연습문제}
 \begin{ec}
     Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
@@ -3560,6 +3480,93 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     최대로 사용하는 테입의 길이를 의미한다.
 \end{defn}
 이 점근적 표기로 
+\appendix
+\chapter{잡다한 수학적 배경지식}
+여기선 중간에 필요한 수학적 내용들을 나열한다. 
+이미 내용을 알고 있다면 넘어가도 좋다. 또는 모르는 내용이나 용어가 나올 때마다 여기를 
+봐도 된다.
+\section{관계}
+\begin{defn}
+    집합 $A, B, R$에 대해 $R \subseteq A \times B$이면 $R$을 \textbf{관계}(relation)라고 한다.
+    이때, $R \subseteq A \times A$이면 $R$을 집합 $A$ 위의 관계라고 한다. 
+    $(a, b) \in R$이면 $a \, R \, b$라고 쓴다.
+\end{defn}
+\begin{ex}
+    집합 $A = \{1, 2, 3\}$에 대해 관계 $<$를 정의하라. (우리가 아는 
+    그 부등호다.)
+    \begin{align*}
+        \{(1, 2), (2, 3), (1, 3)\}
+    \end{align*}
+\end{ex}
+\begin{defn}
+    다음과 같이 집합 $A$위의 관계 $R$의 성질을 정의하자.
+    \begin{enumerate}
+        \item $\forall a \in A, (a, a) \in R$이면 $R$을 \textbf{반사적}(reflexive)이라고 한다.
+        \item $\forall a, b \in A, (a, b) \in R \rightarrow (b, a) \in R$이면
+        $R$을 \textbf{대칭적}(symmetric)이라고 한다.
+        \item $\forall a, b, c\in A, (a, b) \in R \wedge (b, c) \in R \rightarrow 
+        (a, c) \in R$이명 $R$을 \textbf{추이적}(transitive)이라고 한다.
+        \item $R$이 반사적이고 대칭적이고 추이적이면 $R$을 \textbf{동치 관계}(equivalent relation)라고
+        한다.
+    \end{enumerate}
+\end{defn}
+\begin{defn}
+    관계 $R$의 \textbf{폐포}(closure) $C$란 $R \subseteq C$이면서 성질 $P$를 만족하는 최소의
+    관계이다. 예를 들어, 반사적 폐포, 대칭적 폐포, 추이적 폐포 등이 있다. 
+\end{defn}
+\begin{ex}
+    집합 $A = \{1, 2, 3\}$과 $A$ 위에서 정의되는 관계 $R$은 다음과 같다.
+    \begin{align*}
+        R = \{(1,2), (2, 2), (2, 3)\}
+    \end{align*}
+    $R$의 반사적 폐포, 대칭적 폐포, 추이적 폐포, 반사적이고 추이적인 폐포를 각각 구하시오.
+    \begin{enumerate}
+        \item 반사적 폐포는 $\{(1, 1), (1, 2), (2, 2), (2, 3), (3, 3)\}$이다.
+        \item 대칭적 폐포는 $\{(1, 2), (2, 1), (2, 2), (2, 3), (3, 2)\}$이다.
+        \item 추이적 폐포는 $\{(1, 2),(1, 3), (2, 2), (2, 3) \}$이다.
+        \item 반사적이고 추이적인 폐포는 $\le$이다. 
+    \end{enumerate}
+\end{ex}
+\section{기수}
+\begin{defn}
+    $f: X \rightarrow Y$인 일대일 대응이 존재하면
+    두 집합 $X, Y$의 \textbf{기수}(cardinality)(또는 크기)가 같다고 한다.
+     이는 다음과 같이 적는다.
+    \begin{align*}
+        \vert X \vert = \vert Y \vert
+    \end{align*}
+\end{defn}
+\begin{defn}
+    $f: X \rightarrow Y$인 일대일 함수가
+    존재하면 집합 $Y$의 기수가 $X$보다 크거나 같다고 한다. 이는 다음과 같이 적는다.
+    \begin{align*}
+        \vert X \vert \le \vert Y \vert
+    \end{align*} 
+    만약 $\vert X \vert \le \vert Y \vert$인데 $\vert X \vert \neq \vert Y \vert$이면
+    $\vert X \vert < \vert Y \vert$라고 적는다.
+\end{defn}
+\begin{thm}
+    \textbf{(칸토어 정리)} 모든 집합 $X$에 대해, $\vert X \vert < \vert 2^X \vert$이다.
+\end{thm}
+\begin{pf*}
+    먼저 $f: X \rightarrow 2^X$인 함수라고 하자. 집합 $Y = \{x \;\vert\; x \in X \wedge
+    x \notin f(x)\}$은 $f$의 치역이 아니다. 만약 $f(z) = Y$인 $z \in X$가 존재하면,
+    $z \notin Y$이면서 $z \in Y$이 되므로 모순이다. 즉, $\vert 2^X \vert
+    \neq X$이다. \\ 
+    이때, 함수 $g(x) = \{x\}$는 $g: X \rightarrow 2^X$인 일대일 함수이므로
+    $\vert X \vert \le \vert 2^X \vert$이다. 따라서 $\vert X \vert < \vert 2^X \vert$이다.
+\end{pf*}
+\section{괴델의 불완정성 정리}
+\begin{thm}
+    \textbf{(제 1 괴델의 불완전성 정리)} 모든 공리계는 무모순인 동시에 완전할 수 없다.
+\end{thm}
+\begin{thm}
+    \textbf{(제 2 괴델의 불완전성 정리)} 어떤 공리계가 무모순일 경우, 그 공리계로부터 그 공리계 자신의
+    무모순성을 도출할 수 없다. 
+\end{thm}
+매우 어렵게 들리지만, 간단하게 이야기하면 참인지 거짓인지 판별할 수 없는 명제는 항상 존재한다는 것이다. 그
+예시로는 \textbf{연속체 가설}(continuum hypothesis) 등이 있다. 튜링은 수학의 추론 규칙들을 튜링 기계라는
+기계적인 방식으로 환원하였고, 이를 통해 정지 문제와 같은 증명할 수 없는 문제들을 제시해냈다.
 \bibliographystyle{plain}
 \bibliography{ref}
 \nocite{*}
