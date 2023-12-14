@@ -64,6 +64,7 @@
 \fancyhead[LE,RO]{\thepage}
 \renewcommand{\footrulewidth}{0.4pt}
 
+\setcounter{chapter}{-1}
 \begin{document}
 
 \maketitle
@@ -135,7 +136,7 @@
     스트링 $w = 000111$이 $L = \{0^n 1^n \;\vert\; n \ge 0\}$ 에 속하는지
 구하시오.
 \end{ex}
-\part{계산 가능성}
+\part{오토마타와 언어}
 \chapter{정규 언어와 유한 오토마타} 
 \section{정규 언어}
 먼저 정규식(regular expression)을 정의하자.
@@ -331,7 +332,7 @@ NFA를 보다보면 대체 왜 현실에서 만들기도 힘든
     비결정성이 존재한다. 따라서 우리가 문제의 세계를 이해하기 위해서는 비결정성이라는
     개념이 무조건적으로 필요하다.
 \end{itemize}
-\section{DFA와 NFA는 동등하다!}
+\section{DFA = NFA}
 이제 DFA와 NFA가 표현할 수 있는 언어 집합이 같다는 것을 보이자.
 일단 DFA는 NFA의 부분집합이므로 당연하다. 그럼 반대의 경우를 보이자.
 \begin{thm}임의의 NFA에 대해 이와 동등한 DFA가 존재한다.
@@ -1598,6 +1599,8 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
     \textbf{원시 재귀 함수}(primitive recursive function)는 (1) 기본함수이거나 (2) 기본함수의 
     유한 번의 합성 및 재귀를 통해 얻을 수 있는 함수이다.
 \end{defn}
+원시 재귀 함수는 반복 횟수가 정해져있는 for문만 사용해서 프로그래밍한 
+알고리즘이라고 생각하면 간단하다.
 \begin{ex}
     함수 $plus(m, n) = m+n$은 원시 재귀 함수임을 보여라. 
     \begin{align*}
@@ -2361,7 +2364,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         a two-counter machine.
       \end{enumerate}
 \end{ec}
-
+\part{계산 가능성}
 \chapter{계산 가능성}
 우리는 지금까지 튜링 기계의 뛰어난 계산능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
 이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링 기계는 정말 모든 일을
@@ -2790,6 +2793,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 \begin{pf*}
     소인수분해의 유일성에 의해 자명하다.
 \end{pf*}
+\section{부분 재귀 함수}
 \section{튜링 위계}
 \begin{defn}
     집합 $A$에 대한 \textbf{특성 함수}(characteristic function) $\chi_A$는 다음과 같이 정의된다.
