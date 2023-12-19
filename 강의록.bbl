@@ -30,6 +30,12 @@ Thomas Jech.
 \newblock {\em Set theory: The third millennium edition, revised and expanded}.
 \newblock Springer, 2003.
 
+\bibitem{kobayashi1985structure}
+Kojiro Kobayashi.
+\newblock On the structure of one-tape nondeterministic turing machine time
+  hierarchy.
+\newblock {\em Theoretical computer science}, 40:175--193, 1985.
+
 \bibitem{leiserson1994introduction}
 Charles~Eric Leiserson, Ronald~L Rivest, Thomas~H Cormen, and Clifford Stein.
 \newblock {\em Introduction to algorithms}, volume~3.

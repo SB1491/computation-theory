@@ -9,8 +9,8 @@
 \contentsline {section}{\numberline {1.4}DFA = NFA}{20}{section.1.4}%
 \contentsline {section}{\numberline {1.5}정규 언어 = DFA = NFA}{22}{section.1.5}%
 \contentsline {paragraph}{증명.}{22}{paragraph*.7}%
-\contentsline {section}{\numberline {1.6}정규언어의 특징}{24}{section.1.6}%
-\contentsline {section}{\numberline {1.7}정규언어가 아닌 것들}{25}{section.1.7}%
+\contentsline {section}{\numberline {1.6}정규 언어의 특징}{24}{section.1.6}%
+\contentsline {section}{\numberline {1.7}정규 언어가 아닌 것들}{25}{section.1.7}%
 \contentsline {section}{\numberline {1.8}연습 문제}{26}{section.1.8}%
 \contentsline {chapter}{\numberline {2}문법과 오토마타}{27}{chapter.2}%
 \contentsline {section}{\numberline {2.1}문법}{27}{section.2.1}%
@@ -49,14 +49,22 @@
 \contentsline {part}{III\hspace {1em}계산 복잡도}{99}{part.3}%
 \contentsline {chapter}{\numberline {6}시간 복잡도}{101}{chapter.6}%
 \contentsline {section}{\numberline {6.1}점근적 표기법}{101}{section.6.1}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{102}{section.6.2}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{103}{section.6.2}%
 \contentsline {section}{\numberline {6.3}P}{106}{section.6.3}%
-\contentsline {section}{\numberline {6.4}NP}{107}{section.6.4}%
+\contentsline {section}{\numberline {6.4}NP}{108}{section.6.4}%
 \contentsline {section}{\numberline {6.5}NP-완비}{111}{section.6.5}%
 \contentsline {section}{\numberline {6.6}최적화 문제}{117}{section.6.6}%
 \contentsline {chapter}{\numberline {7}공간 복잡도}{119}{chapter.7}%
-\contentsline {chapter}{\numberline {A}잡다한 수학적 배경지식}{121}{appendix.A}%
-\contentsline {section}{\numberline {A.1}관계}{121}{section.A.1}%
-\contentsline {section}{\numberline {A.2}기수}{122}{section.A.2}%
-\contentsline {section}{\numberline {A.3}ZFC 공리계}{123}{section.A.3}%
-\contentsline {section}{\numberline {A.4}괴델의 불완정성 정리}{123}{section.A.4}%
+\contentsline {section}{\numberline {7.1}PSPACE}{121}{section.7.1}%
+\contentsline {section}{\numberline {7.2}PSPCAE-완료}{121}{section.7.2}%
+\contentsline {section}{\numberline {7.3}L과 NL}{121}{section.7.3}%
+\contentsline {section}{\numberline {7.4}NL-완료}{121}{section.7.4}%
+\contentsline {section}{\numberline {7.5}NL = coNL}{121}{section.7.5}%
+\contentsline {chapter}{\numberline {8}복잡도 위계}{123}{chapter.8}%
+\contentsline {section}{\numberline {8.1}공간적 위계}{123}{section.8.1}%
+\contentsline {section}{\numberline {8.2}시간적 위계}{123}{section.8.2}%
+\contentsline {chapter}{\numberline {A}잡다한 수학적 배경지식}{125}{appendix.A}%
+\contentsline {section}{\numberline {A.1}관계}{125}{section.A.1}%
+\contentsline {section}{\numberline {A.2}기수}{126}{section.A.2}%
+\contentsline {section}{\numberline {A.3}ZFC 공리계}{127}{section.A.3}%
+\contentsline {section}{\numberline {A.4}괴델의 불완정성 정리}{127}{section.A.4}%

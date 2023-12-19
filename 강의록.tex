@@ -152,7 +152,7 @@
 \end{thm}
 어떤 `조건'들을 만족시키는 언어집합을 표현하기 위해서 우리는 정규식을 사용한다.
 \begin{thm}
-정규식으로 표현되는 언어를 \textbf{정규언어}(regular language)라
+정규식으로 표현되는 언어를 \textbf{정규 언어}(regular language)라
 부른다.
 \end{thm}
 \begin{ex}
@@ -513,36 +513,36 @@ $k$ 번호 이하의 상태만을 지나오면서 $i$번에서 $j$번으로
 $$R^{k}_{i,j} = R^{k-1}_{i,j} \cup R^{k-1}_{i,k}\left(R^{k-1}_{kk}\right)^{*} R^{k-1}_{k,j}$$
 전부 접합, $+$, $*$로 이루어져 있으므로 이제 대충 귀납법 쓰면 구할 수 있다는 느낌이 온다. 넘어가자.
 \end{pf*}
-\section{정규언어의 특징}
+\section{정규 언어의 특징}
 \begin{thm}
-    정규언어는 (1) 합집합, (2) 접합, (3) Kleene 곱($*$), (4) 여집합, (5)교집합에
+    정규 언어는 (1) 합집합, (2) 접합, (3) Kleene 곱($*$), (4) 여집합, (5)교집합에
 대해 닫혀있다.
 \end{thm}
 \begin{pf*}
     (1) $\sim$ (3)은 당연하다.
 
-(4) 정규언어 $L$을 받아들이는 DFA는 존재하므로, DFA의 최종상태 $F$를
+(4) 정규 언어 $L$을 받아들이는 DFA는 존재하므로, DFA의 최종상태 $F$를
 $Q-F$로 대체하면 된다.
 
 (5) $L_1 \cap L_2  = \overline{\overline{L_1} \cup \overline{L_2}}$
 \end{pf*} 
 \begin{ex}
-    \textbf{(소속문제)} 정규언어 $L$에 스트링 $w$이 속하는지 결정하라. 
+    \textbf{(소속문제)} 정규 언어 $L$에 스트링 $w$이 속하는지 결정하라. 
 
 $L$을 표시하는 DFA를 만들고 이를 읽어서 결정하면 된다. 아직은 매우 간단하지만 
 다른 언어 집합을 배우면 소속 문제는 꽤나 어렵거나 심지어는 풀 수 없는(!) 
 문제라는 것을 알게 될 것이다. 
 \end{ex} 
 \begin{ex}
-    $L_1 \cup L_2$가 정규언어이고 $L_1$이 유한 언어집합이라고 하자. $L_2$가
-    정규언어인지 아닌지 증명하라. 
+    $L_1 \cup L_2$가 정규 언어이고 $L_1$이 유한 언어집합이라고 하자. $L_2$가
+    정규 언어인지 아닌지 증명하라. 
 \end{ex}
-\section{정규언어가 아닌 것들}
-이제 정규언어로 모든 언어 집합을 표현할 수 있을 것만 같지만 실상은 그렇지 않다.
+\section{정규 언어가 아닌 것들}
+이제 정규 언어로 모든 언어 집합을 표현할 수 있을 것만 같지만 실상은 그렇지 않다.
 다음은 어떤 언어가 정규 언어가 아님을 보이기 위해서 자주 사용하는 정리이다.
 \begin{thm}
     \textbf{(펌프 정리)}
-    $L$을 무한 정규언어라고 하자. 이때 다음을 만족하는 어떤 양의 정수 $t$가 존재한다.
+    $L$을 무한 정규 언어라고 하자. 이때 다음을 만족하는 어떤 양의 정수 $t$가 존재한다.
 길이가 $t$ 이상인 임의의 스트링 $w \in L$에 대해 $w = xyz$로 표현되고 다음을 만족한다.
 \begin{enumerate}
     \item $\vert xy \vert \le t$
@@ -552,7 +552,7 @@ $L$을 표시하는 DFA를 만들고 이를 읽어서 결정하면 된다. 아�
 \end{thm}
 마치 $y$를 펌프처럼 늘릴 수 있다고 해서 펌프정리(pumping lemma)라고 한다. 
 \begin{pf*}
-    정규언어 $L$을 받아들이는 DFA $M$에 대해 $M$의 상태의 개수를 $t$라 하자.
+    정규 언어 $L$을 받아들이는 DFA $M$에 대해 $M$의 상태의 개수를 $t$라 하자.
 $w = a_1 \cdots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \cdots a_i) = q_i$
 라고 하자. 이때 $M$은 $t$ 개의 상태만을 가지므로, $q_j = q_k \; (0 \le j < k \le t) $가
 존재한다. 즉, $y = a_{j+1} \cdots a_k$라고 하면 $xy^iz \in L$이므로 펌프 정리를 증명할 수 있다.  
@@ -573,26 +573,26 @@ $w = a_1 \cdots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \
 \end{pf*}
 펌프 정리의 역은 성립하지 않는다. 
 \begin{ex} \label{0n1n}
-$L = \{0^n 1^n \vert n \ge 0\}$은 정규언어가 아님을 증명하라.
+$L = \{0^n 1^n \vert n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
-먼저 $L$을 정규언어라고 하자. 그럼 임의의 $t$에 대해, $w = 0^t 1^t$라고 하자. 그럼
+먼저 $L$을 정규 언어라고 하자. 그럼 임의의 $t$에 대해, $w = 0^t 1^t$라고 하자. 그럼
 $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^t \notin L$
-이므로 펌프 정리에 의해 $L$은 정규언어가 아니다. 
+이므로 펌프 정리에 의해 $L$은 정규 언어가 아니다. 
 \begin{ex}
-    $L = \{a^{n^2} \vert n \ge 0\}$은 정규언어가 아님을 증명하라.
+    $L = \{a^{n^2} \vert n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
 \begin{ex}
-     $L = \{0^n 1^m \vert n \neq m\}$은 정규언어가 아님을 증명하라.
+     $L = \{0^n 1^m \vert n \neq m\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
 \begin{ex} 
     $L = \{ab^nc^n \vert n \ge 0\} \cup 
 \{ a^k w \vert k \neq 1, w\text{는 } a\text{로 시작하지 않는 스트링} \}$이 펌프 정리가 성립하지만
-정규언어가 아님을 증명하라.
+정규 언어가 아님을 증명하라.
 \end{ex}
-정규언어인지 아닌지 알아내는 직관적인 방법은 `이 언어를 DFA로 표현하는 것이 가능한가?'를
+정규 언어인지 아닌지 알아내는 직관적인 방법은 `이 언어를 DFA로 표현하는 것이 가능한가?'를
 생각해보면 된다. 예를 들어, 예제 \ref{0n1n}의 경우 0의 개수를 저장해 둔 뒤 1의 개수와 비교해야 하는데,
 0의 개수로 가능한 가짓수는 무한하다. 따라서 유한 개의 상태만을 가진 DFA로는 구현해내는 것이
-불가능하므로 정규언어가 아님을 알 수 있다. 
+불가능하므로 정규 언어가 아님을 알 수 있다. 
 
 \section{연습 문제}
 \begin{ec}
@@ -622,7 +622,7 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 (V \cup \Sigma )^*, y \in (V \cup \Sigma)^*$에 대해 $x \rightarrow y$의 형태를 가진다.
 이 단원에서는 약간 문법을 제한한 형태만을 다룰 것이다. 
 \begin{defn}
-    문법 중 문맥 무관 문법(context-free grammar) $G$는 $A \in V, x \in (V \cup \Sigma)^*$ 에 대해
+    문법 중 문맥무관 문법(context-free grammar) $G$는 $A \in V, x \in (V \cup \Sigma)^*$ 에 대해
 다음과 같은 생성규칙만을 가진다.
 \begin{align*}
     A \rightarrow x
@@ -633,14 +633,14 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 적용하면 $uwv$를 얻는데, 이 과정을 \textbf{유도}(derivation)라 부르고 $uAv \Rightarrow uwv$로 표시한다. 
 여러 유도를 생략해서 사용할 경우 $A \overset{*}{\Rightarrow} w$로 쓴다. 
 
-문맥 무관 문법이 생성하는 언어를 \textbf{문맥무관 언어}(context-free language)라고 한다. 
+문맥무관 문법이 생성하는 언어를 \textbf{문맥무관 언어}(context-free language)라고 한다. 
 문법 $G$가 생성하는 언어 $L(G)$는 다음과 같이 정의된다.
 \begin{align*}
     L(G) = \{ w \; \vert \; S \overset{*}{\Rightarrow} w \}
 \end{align*}
 문맥무관 언어의 예시로는 프로그래밍 언어(Fortran, C 등)가 있다. 
 \begin{ex} \label{0n1n_CFG}
-$L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥 무관 문법을 구하라.
+$L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구하라.
 \begin{align*}
     S \rightarrow 0S1 \; \vert \; \epsilon 
 \end{align*}
@@ -652,20 +652,20 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥 무관 문법을 구�
     &\Rightarrow 0011
 \end{align*}
 \begin{ex} \label{bracket_CFG}
-     `()(())'와 같이 적절히 닫혀있는 괄호를 만드는 문맥 무관 문법을 구하라.
+     `()(())'와 같이 적절히 닫혀있는 괄호를 만드는 문맥무관 문법을 구하라.
     $$ S \rightarrow (S) \; \vert \; SS \; \vert \; \epsilon $$
 \end{ex} 
 
-\begin{ex} $L = \{ 0^n 1^m \; \vert \; n \le m \le 2n\}$를 만드는 문맥 무관 문법을 구하라.
+\begin{ex} $L = \{ 0^n 1^m \; \vert \; n \le m \le 2n\}$를 만드는 문맥무관 문법을 구하라.
 \end{ex}
 \begin{ex} 
-    $L = \{ 0^n 1^m \; \vert \; n \neq m\}$를 만드는 문맥 무관 문법을 구하라.
+    $L = \{ 0^n 1^m \; \vert \; n \neq m\}$를 만드는 문맥무관 문법을 구하라.
 \end{ex}
 $n>m$일 때와 $n < m$일 때를 구분하여 생각하면 된다.
-\begin{ex} $L = \{ a^m b^n c^u d^v \vert m+n = u+v\}$를 만드는 문맥 무관 문법을 구하라.
+\begin{ex} $L = \{ a^m b^n c^u d^v \vert m+n = u+v\}$를 만드는 문맥무관 문법을 구하라.
 \end{ex}
 \begin{ex} \label{3+5*7}
-    3+5*7와 같이 숫자, $+, *$로 구성된 수식을 만드는 문맥 무관 문법을 구하라. (숫자는 id로 표시)
+    3+5*7와 같이 숫자, $+, *$로 구성된 수식을 만드는 문맥무관 문법을 구하라. (숫자는 id로 표시)
 \end{ex}
 이처럼 문맥무관 문법은 정규식이 표현하지 못하는 언어집합을 표현할 수 있다.
 이제 문맥무관 문법이 정규식보다 표현할 수 있는 언어집합이 더 넓다는 것을 알아보자.
@@ -678,9 +678,9 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     A &\rightarrow w
 \end{align*}
 \end{defn}
-이름이 정규문법인 이유는 위와 같은 문법이 생성하는 언어는 정규언어 종류이기 때문이다.
+이름이 정규문법인 이유는 위와 같은 문법이 생성하는 언어는 정규 언어 종류이기 때문이다.
 \begin{thm}
-정규문법이 생성하는 언어는 정규언어이다.
+정규문법이 생성하는 언어는 정규 언어이다.
 \end{thm}
 \begin{pf*}
 증명이 `감동'적이지 않으므로 자세한 내용은 생략한다.
@@ -697,12 +697,12 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 만들 수 있을 거 같은 느낌적 느낌이 온다. 넘어가자.
 \end{pf*}
 \begin{thm}
-    정규언어 $L$에 대해 $L = L(G)$인 정규문법 $G$가 존재한다. 
+    정규 언어 $L$에 대해 $L = L(G)$인 정규문법 $G$가 존재한다. 
 \end{thm}
 \begin{pf*}
     이것도 딱히 `감동'적이지 않으므로 자세한 증명은 생략한다. 
     
-    정규언어 $L$을 표현하는 DFA $D$의 전이함수에 있는 전이
+    정규 언어 $L$을 표현하는 DFA $D$의 전이함수에 있는 전이
     $((p, a), q)$를 흉내내서 문법 $G$에 생성규칙 $p \rightarrow aq$를 추가해주면 된다.
     그리고 마지막으로 $q \in F$에 대해서만 $q \rightarrow \epsilon$을 추가해주면 된다.
 \end{pf*}
@@ -737,9 +737,9 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \caption{} 
     \label{regular grammar}
 \end{figure}
-문맥무관 문법은 정규문법을 통해 정규언어를 표현할 수 있지만 
-정규언어의 경우 $\{0^n1^n\}$와 같은 언어집합을 표현하지 못한다. 
-따라서 정규언어는 문맥무관 언어의 진부분집합임을 알 수 있다. 
+문맥무관 문법은 정규문법을 통해 정규 언어를 표현할 수 있지만 
+정규 언어의 경우 $\{0^n1^n\}$와 같은 언어집합을 표현하지 못한다. 
+따라서 정규 언어는 문맥무관 언어의 진부분집합임을 알 수 있다. 
 \section{파스 트리}
 어떤 문장(스트링)의 구조를 잘 파악하기 위해 파스트리를 정의하자.
 \begin{defn}
@@ -756,7 +756,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 \end{defn}
 
 \begin{ex}
-    예제 \ref{0n1n_CFG}와 같은 문맥 무관 문법에 대해 
+    예제 \ref{0n1n_CFG}와 같은 문맥무관 문법에 대해 
     다음과 같은 유도과정을 나타내는 파스트리를 그려라.
     $$S \Rightarrow 0S1 \Rightarrow 00S11 \Rightarrow 0011$$
 \end{ex}
@@ -777,7 +777,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \caption{}
 \end{figure}
 \begin{ex} \label{bracket_parse}
-    예제 \ref{bracket_CFG}와 같은 문맥 무관 문법에 대해 
+    예제 \ref{bracket_CFG}와 같은 문맥무관 문법에 대해 
     다음과 같은 유도과정을 나타내는 파스트리를 그려라.
     $$S \Rightarrow SS \Rightarrow S(S) \Rightarrow S()
     \Rightarrow (S)() \Rightarrow ()()$$
@@ -803,7 +803,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     그림 \ref{()()}와 같다는 것을 보여라.
 \end{ex}
 \begin{defn}
-    문맥 무관 문법 $G$에 대해 어떤 $w \in L(G)$에 대해 
+    문맥무관 문법 $G$에 대해 어떤 $w \in L(G)$에 대해 
     2 개 이상의 파스트리를 가지면 우리는 문법 $G$가 \textbf{애매하다}(ambiguous)라 한다.
 \end{defn}
 \begin{ex}
@@ -829,7 +829,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 예제 \ref{if-else}의 경우 애매하지 않게 문법을 수정하는 것도 가능하나, 일반적으로
 문법은 그대로 둔 채 `else는 가장 가까운 if에 붙는다'는 의미(semantics)를 부여하여 애매함을
 없앨 수 있다. \\ 
-자연 언어는 문맥 무관 언어는 아니지만 문맥 무관 언어처럼 해석한 뒤, 의미를 부여해서
+자연 언어는 문맥무관 언어는 아니지만 문맥무관 언어처럼 해석한 뒤, 의미를 부여해서
 애매성을 해소한다. 예를 들어, `John said that Mary talks a lot to Tom.'과 같은 영어 문장을 생각해보자.
 이 문장은 1) `John이 Mary가 많이 이야기한다는 것을 Tom에게 말했다'라는 뜻일 수도 있고,
 2) `John이 Mary가 Tom에게 많이 이야기한다는 것을 말했다.'라는 뜻일 수도 있다. 이에 대한 트리를 
@@ -1256,7 +1256,7 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
 \end{ec}
 \chapter{튜링 기계와 재귀 언어} 
 \section{튜링 기계} \label{turing machine}
-지금까지 우리는 정규식, 유한 오토마타를 이용해 정규언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를
+지금까지 우리는 정규식, 유한 오토마타를 이용해 정규 언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를
 이용해 그보다 더 넓은 집합인 문맥무관 언어를 표현했다. 
 그럼 가장 넓은 언어집합을 표현할 수 있는 오토마타는 무엇일까?
 `궁극적인 오토마타'인 튜링 기계에 대해 알아보자. 
@@ -2557,7 +2557,7 @@ $L_2$도 계산 불가능하다는 것을 보이고 싶을 때 변환을 사용�
 \begin{ex}
     다음과 같이 정의된 언어 $L_r$은 계산 불가능함을 보여라.
     \begin{align*}
-        L_r = \{ \langle M \rangle \;\vert\; L(M) \text{은 정규언어} \}
+        L_r = \{ \langle M \rangle \;\vert\; L(M) \text{은 정규 언어} \}
     \end{align*}
 \end{ex}
 이번에는 조금 더 실용적인 예제를 보자. 
@@ -2637,7 +2637,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
     \hline
     \textbf{언어} & \textbf{오토마타} & \textbf{예시} \\ \hline
     정규 언어       & 유한 오토마타       &   $\{ a^n \;\vert\; n\ge 0\}$    \\ \hline
-    문맥 무관 언어    & 내리누름 오토마타     & $\{ a^n b^n \;\vert\; n\ge 0\}$    \\ \hline
+    문맥무관 언어    & 내리누름 오토마타     & $\{ a^n b^n \;\vert\; n\ge 0\}$    \\ \hline
     문맥 유관 언어    & 선형 유한 자동 기계   & $\{ a^n b^n c^n \;\vert\; n\ge 0\}$    \\ \hline
     재귀 열거 언어    & 튜링 기계         &   \\ \hline
     \end{tabular}
@@ -2653,7 +2653,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
     \end{align*}
     여기서 $A \in V, \alpha, \beta \in (V \cup \Sigma \setminus \{S\}), 
     \gamma \in (V \cup \Sigma \setminus \{S\})^+$이다.
-    이때 문맥 무관 문법으로 정의된 언어 $L(G)$를 \textbf{문맥 유관 언어}(context sensitive grammar)라고
+    이때 문맥무관 문법으로 정의된 언어 $L(G)$를 \textbf{문맥 유관 언어}(context sensitive grammar)라고
     한다.
 \end{defn}
 \begin{ex}
@@ -2855,7 +2855,6 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
     \end{align*}
     여기서 $\phi$는 논리식(formula)이다. 
 \end{defn}
-참고로 여기서 다루는 대상은 모두 자연수이다.
 \begin{defn}
     자연수 $n$에 대해 모임 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$는 다음과 같이 귀납적으로 정의된다.
     \begin{itemize}
@@ -2929,7 +2928,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 \frac{f(n)}{n^3} = 3$으로 수렴가능하므로
 $f(n) = O(n^3)$임을 알 수 있다. 
 \begin{defn}
-    함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면,
+    함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면
     $f(n) = o(g(n))$이라 한다. 
     $$\lim_{n\rightarrow \infty} \frac{f(n)}{g(n)} = 0$$
     이를 스몰-$o$ 표기법(Small-o notation)이라 한다. 
@@ -2939,6 +2938,7 @@ Big-$O$의 경우, 어떤 함수보다 작거나 같다는 걸 표현하기 위�
 \begin{ex}
     다음 점근적 표기법이 올바르다는 것을 증명하라. (사실 증명할 필요없고 그냥 맞다는 것을 느끼면 된다.)
     \begin{enumerate}
+        \item $\frac{1}{100}n^2 + 1000000n + 20000000000 = O(n^2)$
         \item $\sqrt{n} = o(n)$
         \item $n\log{n} = o(n^2)$
         \item $3n\log{n} + 2n\log{\log{n}} = O(n\log{n})$
@@ -2984,7 +2984,7 @@ Big-$O$의 경우, 어떤 함수보다 작거나 같다는 걸 표현하기 위�
 그럼 이보다 더 빠른 수행시간을 가지는 알고리즘은 존재할까? 아쉽게도 불가능하다. 이는 정리
 \ref{regular_nlogn}에서 알 수 있다.
 \begin{thm} \label{regular_nlogn}
-    어떤 언어가 정규언어임은 그 언어가 TIME$(o(n\log{n}))$의 원소인 것과 동치이다. 
+    TIME$(o(n\log{n}))$의 원소는 정규 언어이다.
 \end{thm}
 \begin{pf*}
     증명 아무리 찾아도 제대로 된 증명이 없어서 일단 생략. 믿으셈...
@@ -3300,6 +3300,7 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
 모든 NP 문제를 어떤 언어 $A$로 다항시간 내에 환원 가능함을 보여야 하기 때문이다. 그러나 아주 놀랍게도 
 쿡과 레빈이 이 문제를 해결해 냈다.
 \begin{thm}
+    \label{SAT np-complete}
     \textbf{(쿡-레빈 정리)} 언어 \textbf{SAT}는 다음과 같이 정의된다.
     \begin{align*}
         \text{SAT} = \{\langle \phi \rangle \;\vert\; \text{부울식 } \phi \text{가 만족 가능하다.}\}
@@ -3536,7 +3537,80 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     모든 상황에 대해 정지하는 비결정론적 TM $M$에 대해, $M$의 공간 복잡도는 $M$의 모든 상황 중
     최대로 사용하는 테입의 길이를 의미한다.
 \end{defn}
-이 점근적 표기로 
+공간 복잡도 또한 시간 복잡도처럼 점근적 표기로 표현하는 것이 유용하다.
+\begin{defn}
+    함수 $f : \mathbb{N} \rightarrow \mathbb{R}^+$에 대해 
+    \textbf{공간 복잡도 모임}(space complexity class)는 다음과 같이
+    정의된다.
+    \begin{itemize}
+        \item $\text{SPACE}(f(n))$은 공간 복잡도가 $O(f(n))$인 
+        결정론적 튜링 기계로 결정할 수 있는 언어들의 모임이다.
+        \item $\text{NSPACE}(f(n))$은 공간 복잡도가 $O(f(n))$인
+        비결정론적 튜링 기계로 결정할 수 있는 언어들의 모임이다.
+    \end{itemize}
+\end{defn} 
+\begin{ex}
+    정리 \ref{SAT np-complete}에서 정의한 언어 \textbf{SAT}가 
+    $\text{SPACE}(O(n))$임을 보여라. \\ 
+    우리는 \textbf{SAT} 정도는 당연히 다항 시간 내에 풀지 못할 것이라고 믿고
+    있기 때문에 공간 복잡도도 어려울 것이라고 예상하지만, 공간은 시간과 달리 
+    재활용해서 사용할 수 있다. 다음과 같은 튜링 기계 $M$을 구상하자. 
+    \begin{enumerate}
+        \item 입력 $\langle \phi \rangle$에 대해 $\phi$의 변수 
+        $x_1, \cdots, x_k$의 진리 부여치를 테입에 적는다. 
+        \item 1에서 적은 진리 부여치에 따라 $\phi$의 값을 계산하고
+        만약 $1$이 나오면 받아들이고, 0이 나오면 다른 진리 부여치 값을
+        적은 뒤 이를 반복한다.
+        \item 만약 전부 0이 나오면 받아들이지 않는다.
+    \end{enumerate}
+    $M$은 당연히 $O(k)$의 공간을 사용하고 $k<n$이므로 $M$은 $O(n)$에 
+    속한다는 것을 알 수 있다.
+\end{ex}
+\begin{ex}
+    다음과 같은 언어 $ALL_\text{NFA}$를 생각하자.
+    \begin{align*}
+        ALL_{\text{NFA}} = \{ \langle A \rangle \;\vert\; 
+        A \text{는 NFA이고} L(A) = \Sigma^*\}
+    \end{align*}
+
+\end{ex}
+\begin{thm}
+    \textbf{(사비치 정리, Savitch's theorem)}
+    $f(n) \ge n$인 함수 $f: \mathbb{N} \rightarrow \mathbb{R}$에
+    대하여 다음이 성립한다.
+    \begin{align*}
+        \text{NSPACE}(f(n)) \subseteq \text{SPACE}((f(n))^2)
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    
+\end{pf*}
+\section{PSPACE}
+\section{PSPCAE-완료}
+\section{L과 NL}
+\section{NL-완료}
+\section{NL = coNL}
+\chapter{복잡도 위계}
+우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은
+아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리 
+서로 비교하는 매우 어려운 일로 보인다. 하지만 분명히 
+직관적으로 $O(n^3)$에 소속되는 언어가
+$O(n^2)$에 소속되는 언어보다 많을 걸로 예상되는데, 이 장에서는
+그 직관이 맞다는 것을 증명한다.
+\section{공간적 위계}
+\begin{thm}
+    \textbf{(공간적 위계 이론, spcae hierarchy theorem)}
+\end{thm}
+\begin{pf*}
+    
+\end{pf*}
+\section{시간적 위계}
+\begin{thm}
+    \textbf{(시간적 위계 이론, time hierarchy theorem)}
+\end{thm}
+\begin{pf*}
+    
+\end{pf*}
 \appendix
 \chapter{잡다한 수학적 배경지식}
 여기선 중간에 필요한 수학적 내용들을 나열한다. 
