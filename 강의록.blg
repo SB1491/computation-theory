@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: 강의록.aux
 The style file: plain.bst
 Database file #1: ref.bib
-You've used 15 entries,
+Warning--empty journal in kleene1952introduction
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            583 strings with 5803 characters,
-and the built_in function-call counts, 3862 in all, are:
-= -- 373
-> -- 144
+            587 strings with 5880 characters,
+and the built_in function-call counts, 4065 in all, are:
+= -- 392
+> -- 151
 < -- 1
-+ -- 62
-- -- 44
-* -- 225
-:= -- 673
-add.period$ -- 43
-call.type$ -- 15
-change.case$ -- 62
++ -- 65
+- -- 46
+* -- 233
+:= -- 711
+add.period$ -- 46
+call.type$ -- 16
+change.case$ -- 66
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 160
-empty$ -- 342
-format.name$ -- 44
-if$ -- 794
+cite$ -- 17
+duplicate$ -- 170
+empty$ -- 359
+format.name$ -- 46
+if$ -- 834
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 18
-newline$ -- 76
-num.names$ -- 30
-pop$ -- 82
+int.to.str$ -- 16
+missing$ -- 19
+newline$ -- 81
+num.names$ -- 32
+pop$ -- 88
 preamble$ -- 1
-purify$ -- 52
+purify$ -- 55
 quote$ -- 0
-skip$ -- 105
+skip$ -- 112
 stack$ -- 0
-substring$ -- 204
+substring$ -- 209
 swap$ -- 16
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 50
-warning$ -- 0
-while$ -- 42
-width$ -- 17
-write$ -- 156
+type$ -- 54
+warning$ -- 1
+while$ -- 44
+width$ -- 18
+write$ -- 165
+(There was 1 warning)

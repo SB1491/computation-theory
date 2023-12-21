@@ -30,6 +30,11 @@ Thomas Jech.
 \newblock {\em Set theory: The third millennium edition, revised and expanded}.
 \newblock Springer, 2003.
 
+\bibitem{kleene1952introduction}
+Stephen~Cole Kleene.
+\newblock Introduction to metamathematics.
+\newblock 1952.
+
 \bibitem{kobayashi1985structure}
 Kojiro Kobayashi.
 \newblock On the structure of one-tape nondeterministic turing machine time
