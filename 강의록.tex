@@ -180,7 +180,7 @@ $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오�
     \item 알파벳 $\Sigma$
     \item 전이함수 $\delta : Q \times \Sigma \rightarrow Q$
     \item 초기상태 $q_0 \in Q$
-    \item 최종상태들의 집합 $F \subseteq Q$
+    \item 최종 상태들의 집합 $F \subseteq Q$
 \end{enumerate}
 \end{defn}
 조금 더 구체적으로 들어가보자. 유한 오토마타는 CPU에 해당하는 유한 제어기,
@@ -272,7 +272,7 @@ automata, NFA) $M$은 다음과 같은 5가지 요소로 구성된다.
     \item 알파벳 $\Sigma$
     \item 전이관계 $\Delta \subseteq Q \times (\Sigma \cup \{\epsilon\}) \times Q$
     \item 초기상태 $q_0 \in Q$
-    \item 최종상태들의 집합 $F \subseteq Q$
+    \item 최종 상태들의 집합 $F \subseteq Q$
 \end{enumerate}
 \end{defn}
 여기서 $\Delta$를 이해하기 쉽게 $\Delta: 2^Q 
@@ -314,7 +314,7 @@ $M$이 $w$을 받아들인다고 한다. 즉, $L(M)$은 $M$이 받아들이는 �
 \end{figure}
 그림 \ref{(010+01)^*}을 보면 알겠지만, DFA와는 다르게 어떤 입력은 전이하는 edge가
 없으며, 입력을 받지 않고서도 전이가 가능하다.\\
-NFA의 최종상태는 하나로 만들 수 있다. $\forall q \in F$에 대해 $(q, \epsilon, q_F )$를
+NFA의 최종 상태는 하나로 만들 수 있다. $\forall q \in F$에 대해 $(q, \epsilon, q_F )$를
 넣어주면 된다.
 \begin{ex}
     끝에서 세 번째 글자가 1인 스트링을 받아들이는 NFA를 구하라. 
@@ -335,7 +335,8 @@ NFA를 보다보면 대체 왜 현실에서 만들기도 힘든
 \section{DFA = NFA}
 이제 DFA와 NFA가 표현할 수 있는 언어 집합이 같다는 것을 보이자.
 일단 DFA는 NFA의 부분집합이므로 당연하다. 그럼 반대의 경우를 보이자.
-\begin{thm}임의의 NFA에 대해 이와 동등한 DFA가 존재한다.
+\begin{thm} \label{dfa nfa equiv}
+    임의의 NFA에 대해 이와 동등한 DFA가 존재한다.
 \end{thm}
 \begin{pf*}
     컴퓨터과학에서 `존재'함을 보이려면 어떤 NFA에서 동등한 DFA를 만드는 
@@ -514,14 +515,14 @@ $$R^{k}_{i,j} = R^{k-1}_{i,j} \cup R^{k-1}_{i,k}\left(R^{k-1}_{kk}\right)^{*} R^
 전부 접합, $+$, $*$로 이루어져 있으므로 이제 대충 귀납법 쓰면 구할 수 있다는 느낌이 온다. 넘어가자.
 \end{pf*}
 \section{정규 언어의 특징}
-\begin{thm}
+\begin{thm} \label{RE feature}
     정규 언어는 (1) 합집합, (2) 접합, (3) Kleene 곱($*$), (4) 여집합, (5)교집합에
 대해 닫혀있다.
 \end{thm}
 \begin{pf*}
     (1) $\sim$ (3)은 당연하다.
 
-(4) 정규 언어 $L$을 받아들이는 DFA는 존재하므로, DFA의 최종상태 $F$를
+(4) 정규 언어 $L$을 받아들이는 DFA는 존재하므로, DFA의 최종 상태 $F$를
 $Q-F$로 대체하면 된다.
 
 (5) $L_1 \cap L_2  = \overline{\overline{L_1} \cup \overline{L_2}}$
@@ -979,7 +980,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
         \item $\Delta$는 $(Q \times (\Sigma \cup \{\epsilon\}) \times 
         (\Gamma \cup \{\epsilon\}) \times (Q \times \Sigma^*)$의 부분집합인 전이 관계
         \item $q_0 \in Q$는 초기 상태
-        \item $F \subseteq Q$는 최종상태들의 집합
+        \item $F \subseteq Q$는 최종 상태들의 집합
     \end{enumerate}
 \end{defn}
 \begin{figure}[!ht]
@@ -997,7 +998,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \caption{그림그리기귀찮아.....}
 \end{figure}
 PA는 $\Delta$가 전이 `관계'이므로 기본적으로 비결정론적이다. 비결정론적이므로 NFA와 마찬가지로
-최종상태는 하나라고 가정할 수 있다. \\ 
+최종 상태는 하나라고 가정할 수 있다. \\ 
 $((q, a, X), (p, Y))$에 대해, $q$는 현재 상태, $a$는 입력 알파벳, $X$는 현재 스택의 
 top에 있는 글자이다. $X$가 $\epsilon$일 때는 스택의 top을 읽지 않는다는 뜻이다. 
 그리고 $p$는 그 다음 상태, $Y$는 $X$를 대체하는 글자이다. $((q,a,\epsilon),(p,A))$의 경우,
@@ -1006,7 +1007,7 @@ PA는 시작할 때, 스택의 바닥을 의미하는 \#만을 가지고 있다.
 PA의 상황(configuration)은 현재 상태, 아직 읽지 않은 입력 스트링, 현재 스택의 내용에 의해 결정된다.
 어떤 한 번의 전이에 의해 PA의 상황이 변화하는 과정을 $\vdash$로 표현할 수 있다. 중간 과정을 생략하고 싶으면
 $\vdash^*$와 같이 쓸 수도 있다. \\ 
-어떤 입력 스트링 $w$를 PA가 읽었을 때의 상태가 최종상태이면 우리는 PA가 $w$를 받아들인다라고 한다.
+어떤 입력 스트링 $w$를 PA가 읽었을 때의 상태가 최종 상태이면 우리는 PA가 $w$를 받아들인다라고 한다.
 PA $M$이 받아들이는 스트링의 집합을 $L(G)$라고 표시하며 이는 다음과 같다.
 $$L(M) = \{w \in \Sigma^* \;\vert\; (q_0, w, \text{\#}) \vdash^* 
 (p, \epsilon, u), p\in F, u \in \Gamma^*\}$$
@@ -2625,6 +2626,96 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 \end{pf*}
 라이스 정리가 함의하는 바는 우리가 사실 과제로 제출해온 코드가 정말로 스펙에 맞는 코드인지
 알 길이 없다는 뜻이다. 그래서 우리는 수많은 테스트케이스를 넣어 `이만하면 맞겠지'를 검증하는 것 뿐이다.
+\section{결정 가능한 것들}
+그럼 우리가 지금까지 다뤄왔던 정규 언어와 문맥무관 언어는 결정가능할까? 
+다행히도 이는 모두 결정 가능하다.
+\begin{thm}
+    다음과 같이 정의된 언어 $L_{\text{DFA}}$는 결정 가능하다.
+    \begin{align*}
+        L_{\text{DFA}} = \{ \langle D, w \rangle \;\vert\; 
+        \text{DFA } D \text{는 }w\text{를 받아들인다.}\}
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    다음과 같은 튜링 기계 $M$을 구성하자.
+    \begin{enumerate}
+        \item $D$를 입력 $w$으로 넣고 이를 흉내낸다. 
+        \item 최종 상태에 진입하면 받아들이고, 진입하지 않으면 받아들이지 않는다.
+    \end{enumerate}
+    구체적인 구현은 적어두지 않았으나, 충분히 흉내낼 수 있다는 사실을 알 것이라 믿는다.
+\end{pf*}
+NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가능하다.
+\begin{thm}
+    \label{empty DFA}
+    다음과 같이 정의된 언어 $E_{\text{DFA}}$는 결정 가능하다.
+    \begin{align*}
+        E_{\text{DFA}} = \{ \langle D \rangle \;\vert\; 
+        D\text{는 DFA이고 } L(D) = \emptyset\}
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    DFA $D$는 최종 상태에 진입하는 것이 가능하면 $L(D) \neq \emptyset$임을
+    알 수 있다. 즉, 튜링 기계 $M$은 너비 우선 탐색이나 깊이 우선 탐색과 같은 
+    그래프 전체 탐색 알고리즘을 이용하면 최종 상태에 진입 가능한지 알 수 있다. 
+\end{pf*}
+\begin{thm}
+    \label{DFA equiv decidable}
+    다음과 같이 정의된 언어 $EQ_{\text{DFA}}$는 결정 가능하다.
+    \begin{align*}
+        EQ_{\text{DFA}} = \{ \langle A, B \rangle \;\vert\; 
+        A, B\text{는 DFA이고 } L(A) = L(B)\}
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    DFA $A, B$로 부터 새로운 DFA $C$를 정의하자. $L(C)$는
+    다음과 같이 정의된다.
+    \begin{align*}
+        L(C) = \left( L(A) \cap L(B)^C \right) \cup
+        \left( L(A)^C \cap L(B)\right)
+    \end{align*}
+    정리 \ref{RE feature}에 의해 $L(C)$는 정규 언어이다. 이때
+    $L(C) = \emptyset$인 것과 $L(A) = L(B)$는 동치인 것을 알 수 있다.
+    정리 \ref{empty DFA}에 의해 $L(C)$는 결정 가능하므로, $EQ_{\text{DFA}}$는 
+    결정 가능하다.
+\end{pf*}
+즉, 정규 언어에 관련된 것들은 전부 결정 가능하다. 그럼 이제 문맥무관 언어에 대해서도
+알아보자.
+\begin{thm}
+    다음과 같이 정의된 언어 $L_{\text{CFG}}$는 결정 가능하다.
+    \begin{align*}
+        L_{\text{CFG}} = \{\langle G, w \rangle \;\vert\; 
+        G\text{는 문맥무관 문법이고 스트링 } w\text{를 생성한다.}\}
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    다음과 같은 튜링 기계 $M$을 구성하자.
+    \begin{enumerate}
+        \item $G$를 동등한 촘스키 표준형 문법 $C$로 변환한다.
+        \item CYK 알고리즘을 이용해 $w$가 생성되는지 확인한다.
+        \item 생성되면 받아들이고, 생성되지 않으면 받아들이지 않는다.
+    \end{enumerate}
+\end{pf*}
+\begin{thm}
+    다음과 같이 정의된 언어 $E_\text{CFG}$는 결정 가능하다.
+    \begin{align*}
+        E_{\text{CFG}} = \{\langle G, w \rangle \;\vert\; 
+        G\text{는 문맥무관 문법이고 } L(G) = \emptyset\}
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    다음과 같이 튜링 기계 $M$을 구성하자.
+    \begin{enumerate}
+        \item $G$에 대해 알파벳 $\Sigma$에 마킹해둔다. 
+        \item $A \rightarrow x_1 \cdots x_k$와 같은 생성 규칙에 대해 
+        $x_1, \cdots x_k$가 전부 표시되면 변수 $A$도 마킹해둔다.
+        \item 2를 반복해서 전부 탐색했을 때 시작 변수가 마킹되면 받아들이지 않고, 
+        마킹되지 않으면 받아들인다. 
+    \end{enumerate}
+\end{pf*}
+이제 문맥무관 문법 $G_1, G_2$에 대해 $L(G_1) = L(G_2)$임을 판정하는 것 또한
+정규 언어처럼 결정 가능할 것 같지만, 실제로는 그렇지 않다. 정리 \ref{DFA equiv decidable}에서
+사용한 논리를 그대로 사용할 수 없는게 정규 언어는 여집합 연산에 대해 닫혀있지만, 문맥무관 언어는
+그렇지 않기 때문이다. 
 \section{촘스키 위계}
 잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많은 모델들 중
 언어 모델은 다른 모델들과는 굉장히 이질적이다. 이 모델들은 모두 
@@ -2641,7 +2732,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
     \textbf{언어} & \textbf{오토마타} & \textbf{예시} \\ \hline
     정규 언어       & 유한 오토마타       &   $\{ a^n \;\vert\; n\ge 0\}$    \\ \hline
     문맥무관 언어    & 내리누름 오토마타     & $\{ a^n b^n \;\vert\; n\ge 0\}$    \\ \hline
-    문맥 유관 언어    & 선형 유한 자동 기계   & $\{ a^n b^n c^n \;\vert\; n\ge 0\}$    \\ \hline
+    문맥유관 언어    & 선형 유한 자동 기계   & $\{ a^n b^n c^n \;\vert\; n\ge 0\}$    \\ \hline
     재귀 열거 언어    & 튜링 기계         &   \\ \hline
     \end{tabular}
     \caption{}

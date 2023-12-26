@@ -1405,6 +1405,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbb.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbb.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbcd.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbb1.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjbcc.tfm
@@ -1451,8 +1453,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbe.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbe.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmb0.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmb0.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbb.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmbb.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd0.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmd0.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/nanumtype1/nanummjmcc.tfm
