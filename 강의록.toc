@@ -37,36 +37,36 @@
 \contentsline {section}{\numberline {4.2}보편 만능 기계}{83}{section.4.2}%
 \contentsline {section}{\numberline {4.3}정지 문제}{83}{section.4.3}%
 \contentsline {section}{\numberline {4.4}정지 문제의 응용}{85}{section.4.4}%
-\contentsline {section}{\numberline {4.5}결정 가능한 것들}{89}{section.4.5}%
+\contentsline {section}{\numberline {4.5}계산 가능한 것들}{89}{section.4.5}%
 \contentsline {section}{\numberline {4.6}촘스키 위계}{91}{section.4.6}%
-\contentsline {section}{\numberline {4.7}처치-튜링 논제}{92}{section.4.7}%
-\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{93}{section.4.8}%
+\contentsline {section}{\numberline {4.7}처치-튜링 논제}{93}{section.4.7}%
+\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{94}{section.4.8}%
 \contentsline {section}{\numberline {4.9}연습문제}{94}{section.4.9}%
-\contentsline {chapter}{\numberline {5}튜링 위계와 산술적 위계}{95}{chapter.5}%
-\contentsline {section}{\numberline {5.1}괴델 수}{95}{section.5.1}%
-\contentsline {section}{\numberline {5.2}부분 재귀 함수}{97}{section.5.2}%
-\contentsline {section}{\numberline {5.3}튜링 위계}{97}{section.5.3}%
-\contentsline {section}{\numberline {5.4}산술적 위계}{98}{section.5.4}%
-\contentsline {part}{III\hspace {1em}계산 복잡도}{101}{part.3}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{103}{chapter.6}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{103}{section.6.1}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{105}{section.6.2}%
-\contentsline {section}{\numberline {6.3}P}{108}{section.6.3}%
-\contentsline {section}{\numberline {6.4}NP}{110}{section.6.4}%
-\contentsline {section}{\numberline {6.5}co-NP}{113}{section.6.5}%
-\contentsline {section}{\numberline {6.6}NP-완비}{113}{section.6.6}%
-\contentsline {section}{\numberline {6.7}최적화 문제}{119}{section.6.7}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{121}{chapter.7}%
-\contentsline {section}{\numberline {7.1}PSPACE}{123}{section.7.1}%
-\contentsline {section}{\numberline {7.2}PSPCAE-완료}{123}{section.7.2}%
-\contentsline {section}{\numberline {7.3}L과 NL}{123}{section.7.3}%
-\contentsline {section}{\numberline {7.4}NL-완료}{123}{section.7.4}%
-\contentsline {section}{\numberline {7.5}NL = coNL}{123}{section.7.5}%
-\contentsline {chapter}{\numberline {8}복잡도 위계}{125}{chapter.8}%
-\contentsline {section}{\numberline {8.1}공간적 위계}{125}{section.8.1}%
-\contentsline {section}{\numberline {8.2}시간적 위계}{125}{section.8.2}%
-\contentsline {chapter}{\numberline {A}잡다한 수학적 배경지식}{127}{appendix.A}%
-\contentsline {section}{\numberline {A.1}관계}{127}{section.A.1}%
-\contentsline {section}{\numberline {A.2}기수}{128}{section.A.2}%
-\contentsline {section}{\numberline {A.3}ZFC 공리계}{129}{section.A.3}%
-\contentsline {section}{\numberline {A.4}괴델의 불완정성 정리}{129}{section.A.4}%
+\contentsline {chapter}{\numberline {5}튜링 위계와 산술적 위계}{97}{chapter.5}%
+\contentsline {section}{\numberline {5.1}괴델 수}{97}{section.5.1}%
+\contentsline {section}{\numberline {5.2}부분 재귀 함수}{99}{section.5.2}%
+\contentsline {section}{\numberline {5.3}튜링 위계}{99}{section.5.3}%
+\contentsline {section}{\numberline {5.4}산술적 위계}{100}{section.5.4}%
+\contentsline {part}{III\hspace {1em}계산 복잡도}{103}{part.3}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{105}{chapter.6}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{105}{section.6.1}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{107}{section.6.2}%
+\contentsline {section}{\numberline {6.3}P}{110}{section.6.3}%
+\contentsline {section}{\numberline {6.4}NP}{112}{section.6.4}%
+\contentsline {section}{\numberline {6.5}co-NP}{115}{section.6.5}%
+\contentsline {section}{\numberline {6.6}NP-완비}{115}{section.6.6}%
+\contentsline {section}{\numberline {6.7}최적화 문제}{121}{section.6.7}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{123}{chapter.7}%
+\contentsline {section}{\numberline {7.1}PSPACE}{125}{section.7.1}%
+\contentsline {section}{\numberline {7.2}PSPCAE-완료}{125}{section.7.2}%
+\contentsline {section}{\numberline {7.3}L과 NL}{125}{section.7.3}%
+\contentsline {section}{\numberline {7.4}NL-완료}{125}{section.7.4}%
+\contentsline {section}{\numberline {7.5}NL = coNL}{125}{section.7.5}%
+\contentsline {chapter}{\numberline {8}복잡도 위계}{127}{chapter.8}%
+\contentsline {section}{\numberline {8.1}공간적 위계}{127}{section.8.1}%
+\contentsline {section}{\numberline {8.2}시간적 위계}{127}{section.8.2}%
+\contentsline {chapter}{\numberline {A}잡다한 수학적 배경지식}{129}{appendix.A}%
+\contentsline {section}{\numberline {A.1}관계}{129}{section.A.1}%
+\contentsline {section}{\numberline {A.2}기수}{130}{section.A.2}%
+\contentsline {section}{\numberline {A.3}ZFC 공리계}{131}{section.A.3}%
+\contentsline {section}{\numberline {A.4}괴델의 불완정성 정리}{131}{section.A.4}%

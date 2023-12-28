@@ -2626,11 +2626,11 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 \end{pf*}
 라이스 정리가 함의하는 바는 우리가 사실 과제로 제출해온 코드가 정말로 스펙에 맞는 코드인지
 알 길이 없다는 뜻이다. 그래서 우리는 수많은 테스트케이스를 넣어 `이만하면 맞겠지'를 검증하는 것 뿐이다.
-\section{결정 가능한 것들}
+\section{계산 가능한 것들}
 그럼 우리가 지금까지 다뤄왔던 정규 언어와 문맥무관 언어는 결정가능할까? 
-다행히도 이는 모두 결정 가능하다.
+다행히도 이는 모두 계산 가능하다.
 \begin{thm}
-    다음과 같이 정의된 언어 $L_{\text{DFA}}$는 결정 가능하다.
+    다음과 같이 정의된 언어 $L_{\text{DFA}}$는 계산 가능하다.
     \begin{align*}
         L_{\text{DFA}} = \{ \langle D, w \rangle \;\vert\; 
         \text{DFA } D \text{는 }w\text{를 받아들인다.}\}
@@ -2647,7 +2647,7 @@ $M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하�
 NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가능하다.
 \begin{thm}
     \label{empty DFA}
-    다음과 같이 정의된 언어 $E_{\text{DFA}}$는 결정 가능하다.
+    다음과 같이 정의된 언어 $E_{\text{DFA}}$는 계산 가능하다.
     \begin{align*}
         E_{\text{DFA}} = \{ \langle D \rangle \;\vert\; 
         D\text{는 DFA이고 } L(D) = \emptyset\}
@@ -2660,7 +2660,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
 \end{pf*}
 \begin{thm}
     \label{DFA equiv decidable}
-    다음과 같이 정의된 언어 $EQ_{\text{DFA}}$는 결정 가능하다.
+    다음과 같이 정의된 언어 $EQ_{\text{DFA}}$는 계산 가능하다.
     \begin{align*}
         EQ_{\text{DFA}} = \{ \langle A, B \rangle \;\vert\; 
         A, B\text{는 DFA이고 } L(A) = L(B)\}
@@ -2675,13 +2675,13 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     \end{align*}
     정리 \ref{RE feature}에 의해 $L(C)$는 정규 언어이다. 이때
     $L(C) = \emptyset$인 것과 $L(A) = L(B)$는 동치인 것을 알 수 있다.
-    정리 \ref{empty DFA}에 의해 $L(C)$는 결정 가능하므로, $EQ_{\text{DFA}}$는 
-    결정 가능하다.
+    정리 \ref{empty DFA}에 의해 $L(C)$는 계산 가능하므로, $EQ_{\text{DFA}}$는 
+    계산 가능하다.
 \end{pf*}
-즉, 정규 언어에 관련된 것들은 전부 결정 가능하다. 그럼 이제 문맥무관 언어에 대해서도
+즉, 정규 언어에 관련된 것들은 전부 계산 가능하다. 그럼 이제 문맥무관 언어에 대해서도
 알아보자.
 \begin{thm}
-    다음과 같이 정의된 언어 $L_{\text{CFG}}$는 결정 가능하다.
+    다음과 같이 정의된 언어 $L_{\text{CFG}}$는 계산 가능하다.
     \begin{align*}
         L_{\text{CFG}} = \{\langle G, w \rangle \;\vert\; 
         G\text{는 문맥무관 문법이고 스트링 } w\text{를 생성한다.}\}
@@ -2696,7 +2696,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     \end{enumerate}
 \end{pf*}
 \begin{thm}
-    다음과 같이 정의된 언어 $E_\text{CFG}$는 결정 가능하다.
+    다음과 같이 정의된 언어 $E_\text{CFG}$는 계산 가능하다.
     \begin{align*}
         E_{\text{CFG}} = \{\langle G, w \rangle \;\vert\; 
         G\text{는 문맥무관 문법이고 } L(G) = \emptyset\}
@@ -2713,9 +2713,31 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     \end{enumerate}
 \end{pf*}
 이제 문맥무관 문법 $G_1, G_2$에 대해 $L(G_1) = L(G_2)$임을 판정하는 것 또한
-정규 언어처럼 결정 가능할 것 같지만, 실제로는 그렇지 않다. 정리 \ref{DFA equiv decidable}에서
+정규 언어처럼 계산 가능할 것 같지만, 실제로는 그렇지 않다. 정리 \ref{DFA equiv decidable}에서
 사용한 논리를 그대로 사용할 수 없는게 정규 언어는 여집합 연산에 대해 닫혀있지만, 문맥무관 언어는
-그렇지 않기 때문이다. 
+그렇지 않기 때문이다. 이를 증명하기 위해 먼저 다른 유사한 정리를 알아보자.
+\begin{thm}
+    \label{all CFG undecidable}
+    다음과 같이 정의된 언어 $A_\text{CFG}$는 계산 불가능하다.
+    \begin{align*}
+        A_\text{CFG} = \{\langle G \rangle \;\vert\; G\text{는 문맥무관 문법이고 } L(G) = \Sigma^*\}
+    \end{align*}
+\end{thm}
+\begin{pf*}
+    먼저 $L(M_A) = A_\text{CFG}$인 튜링 기계 $M_A$가 존재한다고 가정하자. 
+\end{pf*}
+\begin{thm}
+    다음과 같이 정의된 언어 $EQ_\text{CFG}$는 계산 불가능하다.
+\end{thm}
+\begin{pf*}
+    \textbf{(간략화된 증명)}
+    먼저 $L(M_{EQ}) = EQ_\text{CFG}$인 튜링 기계 $M_{EQ}$가 존재한다고 가정하자. 
+    $G'$을 $L(G') = \Sigma^*$인 문맥무관 문법이라고 할 때,
+    $M_{EQ}$에 입력을 $\langle G, G' \rangle$으로 주면 $L(G) = \Sigma^*$인지 계산 가능하다.
+    즉, $EQ_\text{CFG}$가 계산 가능하면, $A_\text{CFG}$도 계산 가능하다. 그러나, 정리 \ref{all CFG undecidable}에 의해
+     이는 모순이므로 
+    $EQ_\text{CFG}$는 계산 불가능하다.
+\end{pf*}
 \section{촘스키 위계}
 잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많은 모델들 중
 언어 모델은 다른 모델들과는 굉장히 이질적이다. 이 모델들은 모두 
@@ -3250,7 +3272,7 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
     \end{align*}
 \end{defn}
 \begin{thm}
-    어떤 언어가 NP라는 것은 그 언어가 어떤 비결정론적 튜링 기계로 다항시간 내에 결정 가능하다는 것과 동치이다.
+    어떤 언어가 NP라는 것은 그 언어가 어떤 비결정론적 튜링 기계로 다항시간 내에 계산 가능하다는 것과 동치이다.
     즉, NP $= \bigcup_k$NTIME$(n^k)$이다.
 \end{thm}
 \begin{pf*}
