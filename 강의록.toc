@@ -53,9 +53,9 @@
 \contentsline {section}{\numberline {6.2}복잡도 분석}{107}{section.6.2}%
 \contentsline {section}{\numberline {6.3}P}{110}{section.6.3}%
 \contentsline {section}{\numberline {6.4}NP}{112}{section.6.4}%
-\contentsline {section}{\numberline {6.5}co-NP}{115}{section.6.5}%
-\contentsline {section}{\numberline {6.6}NP-완비}{115}{section.6.6}%
-\contentsline {section}{\numberline {6.7}최적화 문제}{121}{section.6.7}%
+\contentsline {section}{\numberline {6.5}NP-완비}{115}{section.6.5}%
+\contentsline {section}{\numberline {6.6}coNP}{121}{section.6.6}%
+\contentsline {section}{\numberline {6.7}최적화 문제}{122}{section.6.7}%
 \contentsline {chapter}{\numberline {7}공간 복잡도}{123}{chapter.7}%
 \contentsline {section}{\numberline {7.1}PSPACE}{125}{section.7.1}%
 \contentsline {section}{\numberline {7.2}PSPCAE-완료}{125}{section.7.2}%

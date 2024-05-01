@@ -3362,10 +3362,6 @@ CLIQUE $\in$ NP임을 보여라.
 이제 수학계 7대 난제인 P-NP 문제를 드디어 이해할 수 있게 됐다. 
 일단 P $\subseteq$ NP인 것은 당연히 자명하다. 그럼 P $\supseteq$ NP도 성립하는가? 아니면
 P $\neq$ NP인가? 수많은 컴퓨터과학자들의 노력이 있었으나 아쉽게도 이는 밝혀지지 않았다. 
-\section{co-NP}
-\begin{defn}
-    언어 $A$에 대해 $A^C \in \text{NP}$이면 $A$는 \textbf{co-NP}라고 한다.  
-\end{defn}
 \section{NP-완비}
 우리가 상사에게 아주 어려운 문제를 풀라고 지시받았다. 아무리 풀려고 노력해봐도 답을 구할 수가 없을 때
 상사에게 뭐라고 말해야 할까?
@@ -3654,6 +3650,31 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     (\overline{z_{n-3}} \vee a_{n-1} \vee a_{n})$$
     이는 당연히 다항시간 변환이다.
 \end{ex}
+\section{coNP}
+\begin{defn}
+    언어 $A$에 대해 $\overline{A} \in \text{NP}$이면 $A$는 \textbf{coNP}라고 한다.   
+\end{defn}
+\begin{ex}
+    $\overline{\text{SAT}}$는 coNP 문제임을 보여라.
+\end{ex}
+\begin{defn}
+    모든 언어 $L \in \text{coNP}$에 대해 언어 $A$가 $L \le_p A$이면 $A$를 
+    \textbf{coNP-하드}(coNP-Hard)라 한다.
+\end{defn}
+\begin{defn}
+    언어 $A$가 다음 두 가지 조건을 만족시키면 $A$를 \textbf{coNP-완비}(coNP-Complete)라고 한다.
+    \begin{enumerate}
+        \item $A \in \text{coNP}$
+        \item $A \in \text{coNP-하드}$
+    \end{enumerate}
+\end{defn}
+\begin{ex}
+    문제 \textbf{TAUTOLOGY}를 다음과 같의 정의하자. 
+    \begin{align*}
+        \text{TAUTOLOGY} = \{ \phi \;\vert\; \phi \text{는 항상 참인 명제이다.}\}
+    \end{align*}
+    TAUTOLOGY는 coNP-완비임을 보여라.
+\end{ex}
 \section{최적화 문제}
 현재까지 다룬 모든 문제는 Yes/No만이 답인 문제였다. 그러나 우리가 다루는 문제가 항상 이런 것은 아니다. 
 현실세계에서 문제의 종류는 매우 다양하지만 
@@ -3752,7 +3773,7 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
 \chapter{복잡도 위계}
 우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은
 아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리 
-서로 비교하는 매우 어려운 일로 보인다. 하지만 분명히 
+서로 비교하는 것은 매우 어려운 일로 보인다. 하지만 분명히 
 직관적으로 $O(n^3)$에 소속되는 언어가
 $O(n^2)$에 소속되는 언어보다 많을 걸로 예상되는데, 이 장에서는
 그 직관이 맞다는 것을 증명한다.
