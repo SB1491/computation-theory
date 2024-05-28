@@ -1,4 +1,4 @@
-\documentclass[b5paper]{book}
+\documentclass[b5paper, 10pt]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -30,16 +30,17 @@
   basicstyle=\ttfamily,
   mathescape
 }
-\setstretch{1.3}
-
+\setstretch{1.2}
+\setlength\parindent{0pt} 
 \theoremstyle{definition}
 \newtheorem{defn}{정의}[chapter]
-\newtheorem{thm}{정리}[chapter]
-\newtheorem{ex}{예제}[chapter]
-\newtheorem{thesis}{논제}[chapter]
-\newtheorem{ec}{연습문제}[chapter]
-\newtheorem{lem}{보조정리}[chapter]
-\newtheorem{axm}{공리}[chapter]
+\newtheorem{thm}[defn]{정리}
+\newtheorem{ex}[defn]{예제}
+\newtheorem{thesis}[defn]{논제}
+\newtheorem{ec}[defn]{연습문제}
+\newtheorem{lem}[defn]{도윰정리}
+\newtheorem{axm}[defn]{공리}
+\newtheorem{conj}[defn]{추측}
 \newtheorem*{pf}{증명}
 \newenvironment{pf*}{\pushQED{\qed}\pf}{\popQED\endpf}
 \title{
@@ -1081,12 +1082,34 @@ $$(\{p,q,r\}, \Sigma, V \cup \Sigma \cup \{\#\}, \Delta, p, \{r\})$$
 임의의 PA $M$에 대하여, $L(M)$을 표현하는 문맥무관 문법 $G$가 존재한다. 
 \end{thm}
 \begin{pf*}
-$M$과 동등한 문맥무관 무법 $G$는 다음과 같이 만들 수 있다. 아 몰라 귀찮아 별로 
-안 감동적이라 나중에 씀.
+먼저 일반성을 잃지 않고, $M = (Q, \Sigma, \Gamma, \Delta, q_0, F)$에 대해
+다음과 같은 성질을 만족한다고 가정하자. 여기서 $a, b\in \Sigma \cup \{\epsilon\}$, $A\in\Gamma$이다.
+\begin{itemize}
+    \item $M$은 최종상태가 $q_f$ 한 개만 있고, 끝날 때에 스택에 \#만 남기고 $q_f$로 간다.
+    \item $M$의 전이는 $((p, a, \epsilon), (q, A))$(push 연산) 또는 
+    $((p, a, A), (q, \epsilon))$(pop 연산)만 갖는다. (왜 그런가?)
+\end{itemize}
+$M$과 동등한 문맥무관 무법 $G$는 다음과 같이 만들 수 있다.
 \begin{enumerate}
     \item 모든 $p, q \in Q$에 대해 $\langle pq \rangle \in V$
     \item $S = \langle q_0 q_f\rangle$
-    \item $(())$
+    \item 모든 $((p,a,\epsilon),(r,A)), ((s,b,A),(q,\epsilon)) \in \Delta$에 대해
+    $\langle pq \rangle \rightarrow a \langle rs \rangle b$를 만든다. 
+    \item 모든 $p, q, r \in Q$에 대해 $\langle pq \rangle \rightarrow \langle pr \rangle \langle rq \rangle$를
+    만든다.
+    \item 모든 $q \in Q$에 대해 $\langle qq \rangle \rightarrow \epsilon$을 만든다.
+\end{enumerate}
+이제 다음을 귀납법으로 보이자.
+\begin{align*}
+    (p, x, \epsilon) \vdash^*_M (q, \epsilon, \epsilon) \Leftrightarrow
+    \langle pq \rangle \overset{*}{\Rightarrow} x
+\end{align*}
+($\Rightarrow$) 전이 횟수가 0인 경우에는 $p=q, x = \epsilon$이고,
+5번 규칙에 의해 $\langle qq \rangle \rightarrow \epsilon$이므로
+성립한다. 전이 횟수가 $i$ 미만일 때 위 명제가 성립한다 가정하자. \\
+전이 횟수가 $i \ge 1$일 때 스택에서 다음 둘 중 하나가 발생한다.
+\begin{enumerate}
+    \item 
 \end{enumerate}
 \end{pf*}
 \begin{ex}
@@ -2009,7 +2032,7 @@ $\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)
     여기서 $\rightarrow_\beta^*$는 $\beta$-연산의 
     반사적이고 추이적인 폐포, $\Lambda$는 람다식을 모은 집합이다.
 \end{thm}
-이 정리를 증명하기 위해서는 먼저 여러가지 정의와 보조정리가 필요하다.
+이 정리를 증명하기 위해서는 먼저 여러가지 정의와 도윰정리가 필요하다.
 \begin{defn}
     이항 관계 $\rightarrow$가 다음을 만족하면 \textbf{다이아몬드 성질}(diamond
     property)을 만족한다고 하자.
@@ -2041,7 +2064,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     \end{itemize}
 \end{defn}
 \begin{lem}
-    \textbf{(치환 보조정리)} $M, N, P \in \Lambda$라고 하자. 만약 $x \neq y$이고 $x \notin
+    \textbf{(치환 도윰정리)} $M, N, P \in \Lambda$라고 하자. 만약 $x \neq y$이고 $x \notin
     FV(P)$이면 다음이 성립한다.
     \begin{align*}
         \{P / y\} \{ N / x\} M = \{ \{P / y\} N / x \} \{P / y\}  M
@@ -2123,7 +2146,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
 \begin{pf*}
     $M \twoheadrightarrow M'$의 정의에 따라 케이스를 나누어 생각할 수 있다.
     \begin{enumerate}
-        \item $M = M'$: 보조정리 \ref{lem3}에 의해 당연하다.
+        \item $M = M'$: 도윰정리 \ref{lem3}에 의해 당연하다.
         \item $M = \lambda y. M_1, M' = \lambda y. M_1', M_1 \twoheadrightarrow M_1'$:
         적절히 $\alpha$-연산이 이루어졌다고 가정하자. $ \{N / x\}(\lambda y. M_1) = 
         \lambda y. (\{N / x\} M_1)$이므로 귀납법에 의해 $\{ N / x \} M_1 \twoheadrightarrow M_1' \{N' / x\}$이다.
@@ -2147,7 +2170,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         \begin{align*}
             \{N / x\}M &= (\lambda y. \{N / x \} P )\, \{N / x\} Q \\ 
             &\twoheadrightarrow \{ \{N' / x\} Q' / y \} \{N' / x\} P' \\ 
-            &= \{N' / x\}\{ Q' / y \} P' \; (\text{치환 보조정리})\\ 
+            &= \{N' / x\}\{ Q' / y \} P' \; (\text{치환 도윰정리})\\ 
             &= \{N' / x\} M'
         \end{align*}
     \end{enumerate}
@@ -2195,7 +2218,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         \item $M = M_1$:
         $M_3 = M_2$라고 두면 당연히 성립한다.
         \item $M = P\, Q, M_1 = P' \, Q', P\twoheadrightarrow P', Q \twoheadrightarrow Q'$:
-        보조정리 \ref{application lemma}를 생각하면 다음과 같이 두 케이스로 나눌 수 있다.
+        도윰정리 \ref{application lemma}를 생각하면 다음과 같이 두 케이스로 나눌 수 있다.
         \begin{enumerate}
             \item $P \twoheadrightarrow P'', Q \twoheadrightarrow Q'', 
              M_2 = P'' \, Q''$: 먼저 $P \twoheadrightarrow P', P \twoheadrightarrow P''$이고,
@@ -2213,10 +2236,10 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
 \end{pf*}
 이제 정리 \ref{church-rosser}의 증명을 할 수 있다. 
 \begin{pf*} 
-    \textbf{(처치-로서 정리의 증명)} 먼저 보조정리 \ref{twohead diamond}에 의해 $\twoheadrightarrow$이
+    \textbf{(처치-로서 정리의 증명)} 먼저 도윰정리 \ref{twohead diamond}에 의해 $\twoheadrightarrow$이
     다이아몬드 성질을 만족한다는 것은 알 수 있다. 이때, $\rightarrow_\beta \subseteq \twoheadrightarrow
     \subseteq \rightarrow_\beta^*$이므로 $\rightarrow_\beta^*$가 $\twoheadrightarrow$의 전이적이고
-    추이적인 폐포임을 알 수 있다. $\twoheadrightarrow$가 다이아몬드 성질을 만족하므로 보조정리 
+    추이적인 폐포임을 알 수 있다. $\twoheadrightarrow$가 다이아몬드 성질을 만족하므로 도윰정리 
     \ref{diamond property lemma}에 의해 $\rightarrow_\beta^*$도 다이아몬드 성질을 만족한다.
 \end{pf*}
 그럼 이제 계산이 끝난다면 그 값이 유일함을 알게 되었다. 그렇다면 어떤 방식으로 해야 정상식에
@@ -2818,9 +2841,40 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
         \item 이때 튜링 기계의 테입은 양방향으로 무한하다. (우리가 앞에서 정의한 
         튜링 기계와는 약간 다르다.)
         \item 테입 알파벳 $\Gamma = \{0, 1\}$이다. 여기서 0은 공백문자이다.
-        \item 
+        \item 전이 함수 $\delta: (Q-H) \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\}$
     \end{enumerate}
+    위와 같은 상태의
+    개수가 $n$개인 튜링 기계 중 정지하는 것만 생각했을 때, 정지하고 난 뒤 테입에 적혀있는
+    1의 개수가 가장 많은 튜링 기계를 $n$ 번째 \textbf{바쁜 비버}(busy beaver)라고 한다. 이때
+    함수 $BB: \mathbb{N} \rightarrow \mathbb{N}$에 대해 $BB(n)$은 $n$ 번째 바쁜 비버가 
+    정지하고 난 뒤 테입에 적혀 있는 1의 개수로 정의된다. $BB(n)$를 \textbf{바쁜 비버 함수}라고 한다.
 \end{defn}
+\begin{ex}
+    가능한 $n$-상태 튜링 기계의 개수는 $(4n+4)^{2n}$이다.
+\end{ex}
+당연하지만, $BB(n)$은 계산 불가능하다. `정지하는' 튜링 기계만 생각해야 하는데, 어떤
+튜링 기계가 정지하는지 안 하는지는 정지문제에 의해 자명하게 계산 불가능하기 때문이다. \\ 
+$BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들을 제외한 $BB(n)$의 값은
+밝혀지지 않았다. 지금까지 밝혀진 $BB(n)$의 값들은 그림 (\ref{BB table})에서 확인할 수 있다.
+\begin{figure}[!ht]
+    \centering 
+    \begin{tabular}{|l|l|}
+        \hline
+        $n$ & $BB(n)$        \\ \hline
+        1   & 1              \\ \hline
+        2   & 6              \\ \hline
+        3   & 21             \\ \hline
+        4   & 107            \\ \hline
+        5   & $\ge 47176870$ \\ \hline
+        6   &  $> 7.4 \times 10^{36534}$           \\ \hline
+        7   &   $> 10^{10^{10^{10^{10^7}}}}$             \\ \hline
+        \end{tabular}
+    \caption{}
+    \label{BB table}
+\end{figure}
+\begin{conj}
+    
+\end{conj}
 \section{연습문제}
 \begin{ec}
     Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
@@ -3460,18 +3514,18 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     따라서 $N$이 $w$를 받아들이는지에 대한 문제는 $N$에 대해 받아들여지는 도표가 존재하는지에 대한 문제와 같다.
     이제 $A$를 SAT로 변환하는 다항시간 변환 $f$를 찾아보자. 입력 $w$에 대해 변환 $f$는 CNF $\phi$를 만들어 낸다.
     $C = Q \cup \Gamma \cup \{\#\}$라 하자. $1 \le i, j \le n^k$와 $s \in C$에 대해 변수 $x_{i,j,s}$를 생각하자.
-    표의 한 칸을 뜻하는 \textbf{셀}(cell)에 대해 $i$행 $j$열에 있는 셀을 $cell[i,j]$라 하자. $x_{i,j,s}=1$인 것은
+    표의 한 칸을 뜻하는 \textbf{칸}(cell)에 대해 $i$행 $j$열에 있는 칸을 $cell[i,j]$라 하자. $x_{i,j,s}=1$인 것은
     $cell[i,j]$이 $s$를 갖는다는 뜻이다. \\ 
     이제 $\phi$를 정의해보자. $\phi$는 다음과 같이 4가지 부분의 AND 연산으로 이루어진다. 
     $$\phi = \phi_{cell} \wedge \phi_{start} \wedge \phi_{move} \wedge \phi_{accept}$$
-    먼저 $\phi_{cell}$에 대해 알아보자. $\phi_{cell}$의 역할은 각 셀이 제대로 된 하나의 원소만을 담고 있는지 확인한다.
+    먼저 $\phi_{cell}$에 대해 알아보자. $\phi_{cell}$의 역할은 각 칸이 제대로 된 하나의 원소만을 담고 있는지 확인한다.
     이는 다음과 같이 만들 수 있다.
     $$\phi_{cell} = \bigwedge_{1 \le i,j \le n^k} \left[\left(\bigvee_{s\in C} x_{i,j,s}\right)
     \wedge \left(\bigvee_{s,t \in C, s \neq t} \left(\overline{x_{i,j,s}} \wedge 
     \overline{x_{i,j,t}}\right) \right)\right]$$
-    $\bigvee_{s\in C} x_{i,j,s}$는 셀이 $C$의 원소를 담고 있는지 확인하고, $\bigvee_{s,t \in C, s \neq t} 
+    $\bigvee_{s\in C} x_{i,j,s}$는 칸이 $C$의 원소를 담고 있는지 확인하고, $\bigvee_{s,t \in C, s \neq t} 
     \left(\overline{x_{i,j,s}} \wedge 
-    \overline{x_{i,j,t}}\right)$는 셀이 $C$의 원소를 하나만 담고 있는지 확인한다. \\ 
+    \overline{x_{i,j,t}}\right)$는 칸이 $C$의 원소를 하나만 담고 있는지 확인한다. \\ 
     $\phi_{start}$는 첫번째 행이 제대로 시작 상황인지 확인한다. 이는 다음과 같다.
     \begin{align*}
         \phi_{start} = &x_{1,1,\#} \wedge x_{1,2,q_0} \wedge \\ 
@@ -3607,14 +3661,14 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
          \caption{}
          \label{illegal_window}
     \end{table}
-    어떤 두 붙어있는 행을 생각하자. 위 행의 셀 중 상태(헤드)와 붙어있지 않은 셀은 값이 변하지 않아야 한다.
-    그리고 상태(헤드)와 붙어있는 셀은 전이 관계에 따라 적절하게 값이 변해야 한다.
+    어떤 두 붙어있는 행을 생각하자. 위 행의 칸 중 상태(헤드)와 붙어있지 않은 칸은 값이 변하지 않아야 한다.
+    그리고 상태(헤드)와 붙어있는 칸은 전이 관계에 따라 적절하게 값이 변해야 한다.
     이 둘은 전부 창문을 통해 적법한지 확인할 수 있다.
     따라서 귀납적으로 만약 첫 행이 시작 상황이고 모든 창문이 적법하다면 
     적절한 도표를 이룬다는 사실을 알 수 있다.\\
     이제 $\phi_{move}$를 만들어보자. $\phi_{move}$는 창문이 적법한지 검사해서 
     도표가 적절히 전이 관계에 따라 구성되는지 확인한다. 
-    각 창문은 총 6개의 셀로 이루어지는데 이는 고정된 숫자이므로 복잡도에는 영향을 주지 않는다. 
+    각 창문은 총 6개의 칸로 이루어지는데 이는 고정된 숫자이므로 복잡도에는 영향을 주지 않는다. 
     $$\phi_{move} = \bigwedge_{1 \le i < n^k, 1<j<n^k} ((i,j)\text{-창문은 적법하다.})$$
     $(i,j)$-창문은 $cell[i,j]$가 창문에서 가운데 위에 있는 창문이다. 적법한 창문인지 검사하는 과정을
     조금 더 자세히 쓰면 다음과 같다.
@@ -3623,9 +3677,9 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
         x_{i+1, j, a_4} \wedge x_{i+1, j, a_5} \wedge x_{i+1, j+1, a_6}
     \right)$$
     이제 이러한 변환이 다항 시간 내에 이루어짐을 보이자. 그러기 위해서 $\phi$의 크기를 구해야 한다. 
-    표는 $n^{2k}$개의 셀들로 이루어지고, 각 셀에서 가능한 문자의 개수는 
+    표는 $n^{2k}$개의 칸들로 이루어지고, 각 칸에서 가능한 문자의 개수는 
     튜링 기계 $N$에 의해 결정되므로(즉 상수이므로 무시할 수 있음) 변수의 개수는 $O(n^{2k})$이다. \\ 
-    이제 각 4가지 부분에 대해 크기를 구해보자. $\phi_{cell}$는 각 셀에 대해 검사하므로 크기가 셀의 개수에
+    이제 각 4가지 부분에 대해 크기를 구해보자. $\phi_{cell}$는 각 칸에 대해 검사하므로 크기가 칸의 개수에
     비례한다. 즉 크기는 $O(n^{2k})$이다. $\phi_{start}$는 첫 행만 검사하므로 크기는 $O(n^k)$이다.
     $\phi_{move}$와 $\phi_{accept}$는 이와 비슷한 이유로 크기가 $O(n^{2k})$임을 알 수 있다.
     따라서 $\phi$의 전체 크기는 $O(n^{2k})$이므로 이는 다항시간 변환임을 알 수 있다.\\
