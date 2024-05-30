@@ -30,7 +30,7 @@
   basicstyle=\ttfamily,
   mathescape
 }
-\setstretch{1.2}
+\setstretch{1.3}
 \setlength\parindent{0pt} 
 \theoremstyle{definition}
 \newtheorem{defn}{정의}[chapter]
@@ -114,12 +114,16 @@
 그럼 이제 언어의 연산을 정의하자.
 \begin{itemize}
     \item 언어 $L_1, L_2$의 접합 $L_1 \cdot L_2$는 다음과 같다.
-    $$\{uv: u \in L, v \in L\}$$
+    \begin{align*}
+       L_1 \cdot L_2 = \{uv: u \in L_1, v \in L_2\} 
+    \end{align*}
     예를 들어, $L_1 = \{0, 00\}, L_2 = \{1, 11\}$일 때,
     $L_1 L_2 = \{01, 011, 001, 0011\}$ 이다. 또한
     $L^0 = \{ \epsilon\}, L^{k} = L^{k-1} L (k \ge 1)$이다.  
     \item $L^*$는 $L$을 0번 이상 접합하여 만들어지는 모든 스트링의 집합이다.
-    $$L^* = L^0 \cup L^1 \cup L^2 \cup \cdots $$
+    \begin{align*}
+        L^* = L^0 \cup L^1 \cup L^2 \cup \cdots 
+    \end{align*}
     $L = \{0, 1\}$ 이면 $L^*$ 는 0과 1로 이루어진 모든 스트링의 집합이다. $L^+$는 
     $L \cdot L^*$이다.
 \end{itemize}
@@ -133,7 +137,7 @@
 \chapter{정규 언어와 유한 오토마타} 
 \section{정규 언어}
 먼저 정규식(regular expression)을 정의하자.
-\begin{thm}
+\begin{defn}
     알파벳 $\Sigma$ 상의 정규식과 그것이 표시하는 집합은 다음과 같다.
 \begin{itemize}
     \item $\emptyset$ 은 정규식이고 공집합을 표현한다.
@@ -142,12 +146,12 @@
     \item $r, s$가 정규식이고 각각 $R, S$ 집합을 표시한다면 
     $rs, r+s, r^*$는 $RS, R\cup S, R^* $ 를 표시하는 정규식이다. 
 \end{itemize}
-\end{thm}
+\end{defn}
 어떤 `조건'들을 만족시키는 언어집합을 표현하기 위해서 우리는 정규식을 사용한다.
-\begin{thm}
+\begin{defn}
 정규식으로 표현되는 언어를 \textbf{정규 언어}(regular language)라
 부른다.
-\end{thm}
+\end{defn}
 \begin{ex}
     1이 1개인 스트링의 집합을 표시하는 정규식은 $0^* 1 0^*$이다.
 \end{ex}
@@ -161,7 +165,6 @@ $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오�
 \begin{ex}
 111이 딱 한 번 나타나는 스트링의 집합을 표시하는 정규식을 구하라.
 \end{ex}
-
 \section{유한 오토마타}
 컴퓨터는 CPU, 메모리 등 다양한 요소로 구성된다. 
 이러한 컴퓨터의 이론적 모델 중에서 먼저 가장 간단한 `유한 오토마타'에 대해 알아보자.
@@ -3095,7 +3098,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     이를 빅-$O$ 표기법(Big-O notation)이라 하며, 
     이때 $g(n)$을 $f(n)$의 \textbf{점근적 상한} (asymptotic upper bound)이라 한다.
 \end{defn}
-수학적으로 어렵게 적어놨지만, 시간 복잡도 $f(n)$에 대해 가장 압도적인(dominate) 항만 상수항을 무시하면서
+수학적으로 어렵게 적어놨지만, 시간 복잡도 $f(n)$에 대해 가장 압도적인(dominate) 항만 계수를 빼고
  생각하겠다는 뜻이다.
 예를 들어 $f(n) = 3n^3 + 2n^2 +72n + 3000$에 대해 $n$이 커지면 $\lim_{n \rightarrow \infty} 
 \frac{f(n)}{n^3} = 3$으로 수렴가능하므로
@@ -3470,12 +3473,12 @@ Computers and Intractability: A Guide to the Thoery of NP-Completeness에 있는
     \end{enumerate}
 \end{defn}
 \begin{thm}
-    $A \in$ NP-완료이고 $A \in$ P면, P = NP이다.
+    $A \in$ NP-완전이고 $A \in$ P면, P = NP이다.
 \end{thm}
-즉, 어떤 NP-완료인 언어 $A$를 해결하는 다항시간 알고리즘을 발견한다면 
+즉, 어떤 NP-완전인 언어 $A$를 해결하는 다항시간 알고리즘을 발견한다면 
 무려 P=NP임을 증명할 수 있게 된다. (참고로 어떤 NP 문제의 다항시간 알고리즘이 존재하지 않는다면 
-NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\ 
-그런데 어떤 언어가 NP-완료임을 보이는 것은 쉽지 않은 일이다. 왜냐하면 세상에 존재하는 
+NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\ 
+그런데 어떤 언어가 NP-완전임을 보이는 것은 쉽지 않은 일이다. 왜냐하면 세상에 존재하는 
 모든 NP 문제를 어떤 언어 $A$로 다항시간 내에 환원 가능함을 보여야 하기 때문이다. 그러나 아주 놀랍게도 
 쿡과 레빈이 이 문제를 해결해 냈다.
 \begin{thm}
@@ -3484,7 +3487,7 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \begin{align*}
         \text{SAT} = \{\langle \phi \rangle \;\vert\; \text{부울식 } \phi \text{가 만족 가능하다.}\}
     \end{align*} 
-    이때 SAT는 NP-완료이다.
+    이때 SAT는 NP-완전이다.
 \end{thm}
 \begin{pf*}
     먼저 SAT가 NP임은 자명하다. 모든 변수들의 T/F를 선택하여 만족하는지 확인하면 되기 때문이다. \\ 
@@ -3683,14 +3686,14 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     비례한다. 즉 크기는 $O(n^{2k})$이다. $\phi_{start}$는 첫 행만 검사하므로 크기는 $O(n^k)$이다.
     $\phi_{move}$와 $\phi_{accept}$는 이와 비슷한 이유로 크기가 $O(n^{2k})$임을 알 수 있다.
     따라서 $\phi$의 전체 크기는 $O(n^{2k})$이므로 이는 다항시간 변환임을 알 수 있다.\\
-    즉, 모든 NP 문제는 다항 시간 내에 SAT 문제로 환원가능하므로 SAT는 NP-완료이다.
+    즉, 모든 NP 문제는 다항 시간 내에 SAT 문제로 환원가능하므로 SAT는 NP-완전이다.
 \end{pf*}
 \begin{ex}
     앞의 증명에서 우리는 $2 \times 3$ 크기의 창문을 사용했다. 왜 $2 \times 2$ 크기의 창문을 사용하면 안 되는지 설명하라. 
 \end{ex}
 \begin{ex}
-    3-SAT는 NP-완료임을 보여라. \\ 
-    우리가 이미 알고 있는 NP-완료 문제인 SAT 문제를 적절히 변환하면 된다. 예를 들어, $(a_1 \vee a_2 \vee \cdots \vee a_n)$와
+    3-SAT는 NP-완전임을 보여라. \\ 
+    우리가 이미 알고 있는 NP-완전 문제인 SAT 문제를 적절히 변환하면 된다. 예를 들어, $(a_1 \vee a_2 \vee \cdots \vee a_n)$와
     같은 절은 다음과 같이 새로운 변수 $z_1, \cdots, z_{n-3}$를 도입해 변형하면 된다.
     $$(a_1 \vee a_2 \vee z_1) \wedge (\overline{z_1} \vee a_3 \vee z_2) \wedge \cdots \wedge 
     (\overline{z_{n-3}} \vee a_{n-1} \vee a_{n})$$
@@ -3812,9 +3815,9 @@ NP-완료가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     상황 $c_\text{accept}$에 들어간다고 하자. 
 \end{pf*}
 \section{PSPACE}
-\section{PSPCAE-완료}
+\section{PSPCAE-완전}
 \section{L과 NL}
-\section{NL-완료}
+\section{NL-완전}
 \section{NL = coNL}
 \chapter{복잡도 위계}
 우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은
