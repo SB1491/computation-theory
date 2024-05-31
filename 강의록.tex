@@ -37,8 +37,8 @@
 \newtheorem{thm}[defn]{정리}
 \newtheorem{ex}[defn]{예제}
 \newtheorem{thesis}[defn]{논제}
-\newtheorem{ec}[defn]{연습문제}
-\newtheorem{lem}[defn]{도윰정리}
+\newtheorem{ec}{연습문제}[chapter]
+\newtheorem{lem}[defn]{도움정리}
 \newtheorem{axm}[defn]{공리}
 \newtheorem{conj}[defn]{추측}
 \newtheorem*{pf}{증명}
@@ -103,7 +103,7 @@
     \item 스트링 $w$의 길이는 글자들의 개수이고 주로 $\| w \|$로 나타낸다.
     \item 길이가 0인 스트링을 $\epsilon$이라 쓴다. 
     \item 공스트링을 포함해서 알파벳 $\Sigma$ 상의 모든 스트링의 집합을
-    $\Sigma^*$로 표시한다. 예를 들어, $\{0, 1\}^{*} = \{\epsilon, 0, 1, 00, 01 , \cdots \}$이다.
+    $\Sigma^*$로 표시한다. 예를 들어, $\{0, 1\}^{*} = \{\epsilon, 0, 1, 00, 01 , \ldots \}$이다.
     \item 두 스트링의 접합(concatenation) $x \cdot y$는 $x$뒤에 $y$를 붙인 것이다.
     주로 $xy$라 쓴다. 예를 들어 $x = 011, y = 110$이면 $xy = 011110$이다. 
     \item 스트링의 역(reverse) $w^R$은 $w$를 역순으로 나열한 스트링이다. 
@@ -122,7 +122,7 @@
     $L^0 = \{ \epsilon\}, L^{k} = L^{k-1} L (k \ge 1)$이다.  
     \item $L^*$는 $L$을 0번 이상 접합하여 만들어지는 모든 스트링의 집합이다.
     \begin{align*}
-        L^* = L^0 \cup L^1 \cup L^2 \cup \cdots 
+        L^* = L^0 \cup L^1 \cup L^2 \cup \ldots 
     \end{align*}
     $L = \{0, 1\}$ 이면 $L^*$ 는 0과 1로 이루어진 모든 스트링의 집합이다. $L^+$는 
     $L \cdot L^*$이다.
@@ -550,9 +550,9 @@ $L$을 표시하는 DFA를 만들고 이를 읽어서 결정하면 된다. 아�
 마치 $y$를 펌프처럼 늘릴 수 있다고 해서 펌프정리(pumping lemma)라고 한다. 
 \begin{pf*}
     정규 언어 $L$을 받아들이는 DFA $M$에 대해 $M$의 상태의 개수를 $t$라 하자.
-$w = a_1 \cdots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \cdots a_i) = q_i$
+$w = a_1 \ldots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \ldots a_i) = q_i$
 라고 하자. 이때 $M$은 $t$ 개의 상태만을 가지므로, $q_j = q_k \; (0 \le j < k \le t) $가
-존재한다. 즉, $y = a_{j+1} \cdots a_k$라고 하면 $xy^iz \in L$이므로 펌프 정리를 증명할 수 있다.  
+존재한다. 즉, $y = a_{j+1} \ldots a_k$라고 하면 $xy^iz \in L$이므로 펌프 정리를 증명할 수 있다.  
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=0.5cm,on grid,auto]
@@ -560,9 +560,9 @@ $w = a_1 \cdots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \
     \node[state] (rs) {};
     \node[state, accepting, right of=rs, xshift=-1cm] at (4, 0) (e) {};
     \path[->]
-    (s) edge [above] node{$q_1 \cdots q_{j}$} (rs)
-    (rs) edge [loop above] node{$q_{j+1} \cdots q_k$} (rs)
-    (rs) edge [above] node{$q_{k+1} \cdots q_n$} (e);
+    (s) edge [above] node{$q_1 \ldots q_{j}$} (rs)
+    (rs) edge [loop above] node{$q_{j+1} \ldots q_k$} (rs)
+    (rs) edge [above] node{$q_{k+1} \ldots q_n$} (e);
     \end{tikzpicture}
     \caption{} 
     \label{pump}
@@ -689,8 +689,8 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     & \Rightarrow w_1w_2w_3 D \\ 
     & \vdots
 \end{align*}
-입력 $w_1\rightarrow w_2 \rightarrow w_3 \cdots$을 받으면 
-상태가 $A \rightarrow B \rightarrow C \rightarrow \cdots$로 변하는 NFA를
+입력 $w_1\rightarrow w_2 \rightarrow w_3 \ldots$을 받으면 
+상태가 $A \rightarrow B \rightarrow C \rightarrow \ldots$로 변하는 NFA를
 만들 수 있을 거 같은 느낌적 느낌이 온다. 넘어가자.
 \end{pf*}
 \begin{thm}
@@ -745,8 +745,8 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \begin{enumerate}
         \item 루트 노드는 $S$이다.
         \item 내부 노드는 $V$의 원소이고, $A$의 자식 노드가 
-        $X_1, \cdots, X_k $ 이면
-        $A \rightarrow X_1 \cdots X_k$와 같은 생성규칙은 $P$에 있다. 
+        $X_1, \ldots, X_k $ 이면
+        $A \rightarrow X_1 \ldots X_k$와 같은 생성규칙은 $P$에 있다. 
         \item 단말 노드는 $\Sigma \cup \{\epsilon\}$의 원소이고, 단말 노드가 $\epsilon$이면
         이 노드는 부모 노드의 유일한 자식 노드여야 한다. 
     \end{enumerate}
@@ -894,7 +894,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \begin{enumerate}
         \item $A \rightarrow \epsilon$ 형태의 규칙 없애기 \\ 
         먼저 $A \overset{*}{\Rightarrow} \epsilon$이면 $A$가 nullable하다고 하자.
-        $B \rightarrow C_1 \cdots C_k$에 대해 nullable $C_i$와 $\epsilon$을
+        $B \rightarrow C_1 \ldots C_k$에 대해 nullable $C_i$와 $\epsilon$을
         번갈아 넣어 만들어지는 모든 생성규칙을 새로운 생성규칙 $P_1$에 넣어준다. 단, 
         $B \rightarrow \epsilon$와
         같은 규칙이 만들어지는 경우 넣지 않는다. 
@@ -906,12 +906,12 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
         \item $A \rightarrow BC, A \rightarrow a$ 형태로 바꿔주기
         \begin{enumerate}
             \item $A \rightarrow a$인 생성규칙은 이미 촘스키 표준형이므로 $P'$에 넣는다.
-            \item $r \ge 2$인 각 생성규칙 $A \rightarrow x_1 \cdots x_k$에서 $x_i$가 
+            \item $r \ge 2$인 각 생성규칙 $A \rightarrow x_1 \ldots x_k$에서 $x_i$가 
             알파벳 $a$면
             새로운 변수 $C_a$를 $V'$에 만들고, $C_a \rightarrow a$를 $P'$에 
             추가하고, $x_i$를 $C_a$로 대체한다.
             \item 그럼 이제 우변에 변수들만 있으므로 이제 두 개로 줄이기만 하면 된다.
-            $A \rightarrow B_1 \cdots B_k$에 대해 새로운 변수 $D_1 \cdots D_{k-2}$를 $V'$에 도입하고 
+            $A \rightarrow B_1 \ldots B_k$에 대해 새로운 변수 $D_1 \ldots D_{k-2}$를 $V'$에 도입하고 
             \begin{align*}
                 A & \rightarrow B_1 D_1 \\ 
                 A & \rightarrow B_2 D_2 \\ 
@@ -1381,10 +1381,10 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 \textbf{$k$-테입 튜링 기계}는 일반적인 튜링 기계에서 테입이 $k$개로 늘어난 형태다. 즉, 튜링 기계의 
 여섯 가지 요소가 다음과 같이 정의된다.
 \begin{enumerate}
-    \item $\cdots$ 생략 $\cdots$
-    \item $\delta$는 $(Q-H) \times \overbrace{\Gamma \times \cdots \times \Gamma}^k \rightarrow 
-    Q \times \overbrace{\Gamma \times \cdots \times \Gamma}^k \times \{L, R, S\}^k $ 
-    \item $\cdots$ 생략 $\cdots$
+    \item $\ldots$ 생략 $\ldots$
+    \item $\delta$는 $(Q-H) \times \overbrace{\Gamma \times \ldots \times \Gamma}^k \rightarrow 
+    Q \times \overbrace{\Gamma \times \ldots \times \Gamma}^k \times \{L, R, S\}^k $ 
+    \item $\ldots$ 생략 $\ldots$
 \end{enumerate}
 \end{defn}
 \begin{thm}
@@ -1409,10 +1409,10 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 \textbf{비결정론적 튜링 기계}(Nondeterministic Turing Machine, NTM)는 일반적인 튜링 기계에서 
 전이가 비결정론적인 튜링 기계를 말한다. 
 \begin{enumerate}
-    \item $\cdots$ 생략 $\cdots$
+    \item $\ldots$ 생략 $\ldots$
     \item $\Delta$는 $(Q-H) \times \Gamma \times Q \times \Gamma \times \{L, R, S\}$의 부분집합으로써 
     함수가 아닌 전이 \textbf{관계}로 정의된다.
-    \item $\cdots$ 생략 $\cdots$
+    \item $\ldots$ 생략 $\ldots$
 \end{enumerate}
 \end{defn}
 \begin{defn}
@@ -1427,13 +1427,13 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 \end{thm}
 \begin{pf*}
     비결정론적 튜링 기계 $M$과 동등한 결정론적 튜링 기계를 제시하면 된다. 
-    $M$은 비결정론적이므로 한 상황 $C$에서 여러가지 \textbf{상황} $C_1, \cdots, C_n$으로 
+    $M$은 비결정론적이므로 한 상황 $C$에서 여러가지 \textbf{상황} $C_1, \ldots, C_n$으로 
     전이할 수 있다. 이때, $n$은 비결정론적 튜링 기계의 정의에 의해 $\vert Q \vert
     \times \vert \Gamma \vert \times 3$이하의 값인 유한한 값을 갖는다. 이를 간단히 $r$이라 하자. \\ 
     $M$의 계산 과정을 상황을 정점으로, 전이를 간선으로 표현하여 트리 $T$로 나타낼 수 있다.
     이 트리에서 어떤 정점의 자식 노드의 개수는 $r$ 이하로 유한하다. 즉, 이 트리의 모든 정점을
-    정수 $1, \cdots, r$으로 나타낼 수 있다. 루트는 초기 상태인 $1$이고 그 자식들은
-    $11, \cdots, 1r$이다. 또한 $11$의 자식들을 $111, \cdots, 11r$이다. \\
+    정수 $1, \ldots, r$으로 나타낼 수 있다. 루트는 초기 상태인 $1$이고 그 자식들은
+    $11, \ldots, 1r$이다. 또한 $11$의 자식들을 $111, \ldots, 11r$이다. \\
     이제 3-테입 결정론적 튜링 기계 $M'$이 이를 흉내내고자 한다. $M'$은 트리 $T$의 정점을
     하나하나 탐색하면서 정지하는 상태가 있는지 탐색한다. 깊이 우선 탐색(depth first search, DFS)을
     하게 되면 트리가 유한하다는 보장이 없으므로 원래 $M$에서 정지상태가 존재함에도 
@@ -1441,9 +1441,9 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
     사용한다. \\ 
     원래라면 큐(queue)를 이용하겠지만, 튜링 기계에서 그런 복잡한 자료구조를 구현하는 것은
     어려우므로 오래걸리지만 조금 더 간단한 방식을 사용한다. 먼저 첫 번째 테입에는 입력
-    $w$를 보관한다. 두 번째 테입에는 $\{1, \cdots, r\}^*$인 스트링을 너비 우선 탐색의
+    $w$를 보관한다. 두 번째 테입에는 $\{1, \ldots, r\}^*$인 스트링을 너비 우선 탐색의
     순서로 하나씩 만들어간다. 이제 세번째 테입에서는 두 번째 테입에서 주어진 상황 스트링 
-    $C = c_1 \cdots c_n $가 주어지면 그걸 이용해 $w$ 입력이 어떻게 변할지 흉내낸다. 
+    $C = c_1 \ldots c_n $가 주어지면 그걸 이용해 $w$ 입력이 어떻게 변할지 흉내낸다. 
     즉, 입력 $w$에 대해 먼저 $c_1$을 참고해서 $M$의 $c_1$번째 전이를 흉내내는 작업을 
     세 번째 타입에서 수행한다. 그 후, 다시 $a_2$를 적용하고 이를 계속 반복한다. 만약
     해당 $C$가 정지 상황이면 $M'$도 정지하게 되고 그렇지 않으면 그러한 상황이 나올 때까지
@@ -1459,8 +1459,8 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
     \textbf{(느슨한 정의)}
     \textbf{랜덤 접근 기계}(Random Access Machine, RAM)는 여러 개의 \textbf{레지스터}(register), 한 
     방향으로 무한한 길이의 테이프, \textbf{프로그램 카운터}(program counter, PC)로 이루어진다. 레지스터를 
-    각각 $R_0, R_1, \cdots$, 
-    테이프의 각 조각을 $T[1], T[2], \cdots $, 프로그램 카운터를 $\kappa$라고 하자. 
+    각각 $R_0, R_1, \ldots$, 
+    테이프의 각 조각을 $T[1], T[2], \ldots $, 프로그램 카운터를 $\kappa$라고 하자. 
     각 레지스터와 테이프 한 조각은 임의의 자연수를 저장할 수 있다. \\ 
     랜덤 접근 기계는 여러개의 \textbf{인스트럭션}(instruction)으로 이루어진 고정된 \textbf{프로그램}(program)을
     기반으로 작동한다. (CPU에 있는 ISA와 근본적으로 다른게 없다는 걸 느끼면 된다.)
@@ -1588,7 +1588,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
     \end{align*}
     를 갖는다. 그러면 $M$이 
     \begin{align*}
-        (q_0, \underline{\#}w) \vdash^* (h, \underleftarrow{\#})
+        (q_0, \underline{\#}w) \vdash^* (h, \underline{\#})
     \end{align*}
     전이하는 과정을, $G$는 
     \begin{align*}
@@ -1604,24 +1604,24 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 \begin{defn} \label{primitive recursive definition}
     $\mathbb{N}^k$에서 $\mathbb{N}$으로 가는 \textbf{기본 함수}(basic function)는 다음 세 함수를 의미한다.
     \begin{enumerate}
-        \item 모든 $x_1, \cdots, x_n \in \mathbb{N}$에 대해 
-        $zero(x_1, \cdots, x_n) = 0$이면 \textbf{영함수}(zero function)라 한다.
+        \item 모든 $x_1, \ldots, x_n \in \mathbb{N}$에 대해 
+        $zero(x_1, \ldots, x_n) = 0$이면 \textbf{영함수}(zero function)라 한다.
         \item 모든 $x \in \mathbb{N}$에 대해 $succ(x) = x+1$이면 \textbf{바로 뒤의 원소함수}(successor
         function)라 한다. 
-        \item $x_1, \cdots, x_n \in \mathbb{N}, k \ge j > 0$에 대해 $id_k(x_1, \cdots, x_n) = x_k$이면 이를 
+        \item $x_1, \ldots, x_n \in \mathbb{N}, k \ge j > 0$에 대해 $id_k(x_1, \ldots, x_n) = x_k$이면 이를 
         $\mathbf{k}$\textbf{-단위 함수}(k-ary identity function)라 한다. 
     \end{enumerate}
     그리고 이제 더 복잡한 함수를 만들기 위해 다음과 같은 함수 결합 방식을 정의하자.
     \begin{enumerate}
-        \item $k, l \ge 0$, $g: \mathbb{N}^k \rightarrow \mathbb{N}$는 인자가 $k$개인 함수, $h_1, \cdots, h_k$는
-        인자가 $l$개인 함수라 하자. $g$와 $h_1, \cdots, h_k$의 \textbf{합성}(composition)은 
+        \item $k, l \ge 0$, $g: \mathbb{N}^k \rightarrow \mathbb{N}$는 인자가 $k$개인 함수, $h_1, \ldots, h_k$는
+        인자가 $l$개인 함수라 하자. $g$와 $h_1, \ldots, h_k$의 \textbf{합성}(composition)은 
         다음과 같은 인자가 $l$개인 함수이다.
-        $$f(x_1, \cdots , x_l) = g(h_1(x_1, \cdots , x_l), \cdots, h_k(x_1, \cdots, x_l))$$
+        $$f(x_1, \ldots , x_l) = g(h_1(x_1, \ldots , x_l), \ldots, h_k(x_1, \ldots, x_l))$$
         \item $k \ge 0$, $g$는 인자가 $k$개인 함수, $h$는 인자가 $k+2$개인 함수라 하자. $g, h$에 의해 
         \textbf{재귀적으로 정의된 함수}(function defined recursively)는 다음과 같은 인자가 $k+1$개인 함수이다.
         \begin{align*}
-            f(x_1, \cdots, x_k, 0) &= g(x_1, \cdots, x_k) \\ 
-            f(x_1, \cdots, x_k, m+1) &= h(x_1, \cdots, x_k, m, f(x_1, \cdots, x_k, m))
+            f(x_1, \ldots, x_k, 0) &= g(x_1, \ldots, x_k) \\ 
+            f(x_1, \ldots, x_k, m+1) &= h(x_1, \ldots, x_k, m, f(x_1, \ldots, x_k, m))
         \end{align*} 
     \end{enumerate}
     \textbf{원시 재귀 함수}(primitive recursive function)는 (1) 기본함수이거나 (2) 기본함수의 
@@ -1681,16 +1681,16 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 \begin{defn}
     인자가 $k$개인 함수 $f, g, h$와 원시 재귀 술어 $p$에 대해 
     \textbf{조건으로 정의된 함수}(function defined bt cases)는 다음과 같다.
-    $$f(n_1, \cdots, n_k) = 
+    $$f(n_1, \ldots, n_k) = 
     \begin{cases}
-        g(n_1, \cdots , n_k), & \text{if } p(n_1, \cdots, n_k); \\
-        h(n_1, \cdots, n_k),  & \text{otherwise}
+        g(n_1, \ldots , n_k), & \text{if } p(n_1, \ldots, n_k); \\
+        h(n_1, \ldots, n_k),  & \text{otherwise}
     \end{cases}$$
 \end{defn}
 \begin{ex}
     조건으로 정의된 함수가 원시 재귀 함수임을 보여라.
-    $$f(n_1, \cdots, n_k) = p(n_1, \cdots, n_k) \cdot g(n_1, \cdots, n_k) +
-    (1\sim p(n_1, \cdots, n_k)) \cdot h(n_1, \cdots, n_k)$$
+    $$f(n_1, \ldots, n_k) = p(n_1, \ldots, n_k) \cdot g(n_1, \ldots, n_k) +
+    (1\sim p(n_1, \ldots, n_k)) \cdot h(n_1, \ldots, n_k)$$
 \end{ex}
 \begin{ex}
     $m \div n$의 나머지와 몫을 각각 구하는 함수 $rem(m,n)$과 $div(m,n)$이 원시 재귀 함수임을 보여라.  
@@ -1724,7 +1724,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 스
 나열가능하다.(즉, 자연수 집합과
 크기가 같다.) 따라서 적절히 부호화 했을 때 사전순으로 나열하는 것이 가능하다. 편의를 위해 인자가 한 개인
 함수들만 생각하자. 이를 나열했을 때 다음과 같다.
-$$f_0, f_1, f_2, f_3, \cdots $$
+$$f_0, f_1, f_2, f_3, \ldots $$
 모든 $n \ge 0$에 대해 함수 $g(n) = f_n (n) +  1$이라 정의하자. 이는 당연히 계산 가능하다.
 만약 $g(n)$이 원시 재귀 함수라면 $g(n) = f_m(n)$인 $m$이 존재한다.  
 그럼 $g(m) = f_m(m) = f_m(m) + 1$이므로 이는 모순이다. 따라서 계산 가능하지만 원시 재귀 함수가 아닌
@@ -1743,35 +1743,35 @@ $g(n)$이 존재한다.
 \begin{defn}
     다음을 만족하는 $b\in \mathbb{N}$가 존재할 때, 함수 $h:\mathbb{N}^2 \rightarrow \mathbb{N}$이 
     함수 $g:\mathbb{N}^k\rightarrow \mathbb{N}$를
-    \textbf{주요화한다}(majorize)고 한다. $a_1, \cdots, a_k \in \mathbb{N}$에 대해
+    \textbf{주요화한다}(majorize)고 한다. $a_1, \ldots, a_k \in \mathbb{N}$에 대해
     \begin{align*}
-        g(a_1, \cdots, a_n) < h(a, b)
+        g(a_1, \ldots, a_n) < h(a, b)
     \end{align*}
-    이때 $a = \max{\{a_1, \cdots, a_k\}} > 1$이다. 
+    이때 $a = \max{\{a_1, \ldots, a_k\}} > 1$이다. 
 \end{defn} 
 \begin{thm} \label{forack}
     $A$가 $Ack$에 의해 주요화되는 함수들의 집합이라 하자. 원시 재귀 함수들의 집합은 $A$의 부분집합이다.
 \end{thm}
 \begin{pf*}
     위 정리를 보이기 위해서는 기본 함수가 $A$에 포함되고, 합성과 재귀 연산에 대해 닫혀있음을 보이면 된다. 
-    여기서 $x = \max \{x_1, \cdots, x_n\}, y = \max\{y_1, \cdots, y_n\}$이다. \\ 
+    여기서 $x = \max \{x_1, \ldots, x_n\}, y = \max\{y_1, \ldots, y_n\}$이다. \\ 
     먼저 기본 함수가 $A$에 포함됨을 보이자.  
     \begin{align*}
         zero(n) = 0 &< n+1 = Ack(0,n) \\ 
         succ(n) = n+1 &<n+2 = Ack(1,n) \\ 
-        id_k(x_1, \cdots, x_n) = x_k \le x &< x+1 = Ack(0,x) 
+        id_k(x_1, \ldots, x_n) = x_k \le x &< x+1 = Ack(0,x) 
     \end{align*} 
-    다음으로 합성 연산에 대해 닫혀있음을 보이자. 함수 $g_1, \cdots, g_m$와 $h$는 각각 인자가 $k$개, $m$개이고, 
+    다음으로 합성 연산에 대해 닫혀있음을 보이자. 함수 $g_1, \ldots, g_m$와 $h$는 각각 인자가 $k$개, $m$개이고, 
     $A$의 원소라 하자. 이는 
     \begin{align*}
-        g_i(x_1, \cdots, x_k) &< Ack(r_i, x) \\ 
-        h(y_1, \cdots, y_m) &< Ack(s,y)
+        g_i(x_1, \ldots, x_k) &< Ack(r_i, x) \\ 
+        h(y_1, \ldots, y_m) &< Ack(s,y)
     \end{align*}
     를 의미한다. \\ 
-    이때 $f = h(g_1, \cdots, g_m)$, $ g_{\max} (x_1,\cdots, x_k) =\underset{i}{\max} \{g_i(x_1, \cdots, x_k)\}$라 하자. 
+    이때 $f = h(g_1, \ldots, g_m)$, $ g_{\max} (x_1,\ldots, x_k) =\underset{i}{\max} \{g_i(x_1, \ldots, x_k)\}$라 하자. 
     그럼 
     \begin{align*}
-        f(x_1, \cdots, x_k) &< Ack(s, g_{\max}(x_1, \cdots, x_k)) \\ 
+        f(x_1, \ldots, x_k) &< Ack(s, g_{\max}(x_1, \ldots, x_k)) \\ 
         &< Ack(s, Ack(r_{\max},x)) < Ack(s+r_{\max}+2,x)
     \end{align*}
     이다. 
@@ -1779,29 +1779,29 @@ $g(n)$이 존재한다.
     마지막으로 재귀 연산에 대해 닫혀있음을 보이자. 함수 $g$와 $h$는 각각 인자가 $k$개, $k+2$개이고 모두 $A$의 원소라 
     하자. 즉, 
     \begin{align*}
-        g(x_1, \cdots, x_k) &< Ack(r, x) \\ 
-        h(y_1,\cdots, y_{k+2}) &< Ack(s,y)
+        g(x_1, \ldots, x_k) &< Ack(r, x) \\ 
+        h(y_1,\ldots, y_{k+2}) &< Ack(s,y)
     \end{align*}
     이다. 이때
     $f$는 $g,h$에 의해 재귀적으로 정의되어 있다고 하자.\\ 
     먼저 $x$와 $n$과는 관계없이 다음을 만족하는 $q$가 있음을 증명하자. 
-    $$f(x_1, \cdots, x_k, n) < Ack(q, n+x)$$
+    $$f(x_1, \ldots, x_k, n) < Ack(q, n+x)$$
     $q= 1 + \max \{r,s\}$라 하자. 
     먼저 
-    $$f(x_1, \cdots, x_k, 0) = g(x_1, \cdots, x_k) < Ack(r,x) <Ack(q,x)$$
+    $$f(x_1, \ldots, x_k, 0) = g(x_1, \ldots, x_k) < Ack(r,x) <Ack(q,x)$$
     이다.\\
-    이때 $f(x_1, \cdots,x_k, n) < Ack(q, n+x)$라 하자.  
-    그럼 $z = \max\{x,n,f(x_1, \cdots, x_k, n)\}$에 대해 다음이
+    이때 $f(x_1, \ldots,x_k, n) < Ack(q, n+x)$라 하자.  
+    그럼 $z = \max\{x,n,f(x_1, \ldots, x_k, n)\}$에 대해 다음이
     성립한다.
-    $$f(x_1, \cdots, x_k, n+1) = h(x_1, \cdots, x_k, n, f(x_1,\cdots, x_k ,n)) < Ack(s, z)$$
+    $$f(x_1, \ldots, x_k, n+1) = h(x_1, \ldots, x_k, n, f(x_1,\ldots, x_k ,n)) < Ack(s, z)$$
     이때 수학적 귀납법에 의해 다음이 성립한다.
     \begin{align*}
-        f(x_1, \cdots, x_k, n+1) < Ack(s, z) &< Ack(s, Ack(q, n+x)) \\ 
+        f(x_1, \ldots, x_k, n+1) < Ack(s, z) &< Ack(s, Ack(q, n+x)) \\ 
        &\le Ack(q-1, Ack(q, n+x)) = A(q, n+1+x)
     \end{align*}
     $w = \max\{x,y\}$라 하자. 
     \begin{align*}
-        f(x_1, \cdots, x_k, y) &< Ack(q, x+y) \le Ack(q, 2w) \\ 
+        f(x_1, \ldots, x_k, y) &< Ack(q, x+y) \le Ack(q, 2w) \\ 
         &< Ack(q, 2w+3) = Ack(q, A(2,w)) = Ack(q+4, w) 
     \end{align*}
     즉, $f \in A$임을 알 수 있다. \\ 
@@ -1818,11 +1818,15 @@ $g(n)$이 존재한다.
 \begin{defn} \label{minimalization}
     인자가 $k+1$개인 함수 $g$에 대해 $g$의 \textbf{최소화}(minimalization)는
     인자가 $k$개인 함수 $f$로 다음과 같이 정의된다.
-    $$f(n_1, \cdots, n_k) = \{g(n_1, \cdots, n_k, m) = 1\text{이 되게 하는 최소 } m\}$$
-    이때 $g(n_1, \cdots, n_k, m) = 1$이 되게 하는 $m \ge 0$이 존재하면
+    \begin{align*}
+        f(n_1, \ldots, n_k) = \{g(n_1, \ldots, n_k, m) = 1\text{이 되게 하는 최소 } m\}
+    \end{align*}
+    이때 $g(n_1, \ldots, n_k, m) = 1$이 되게 하는 $m \ge 0$이 존재하면
     $g$가 \textbf{최소화 가능하다}(minimalizable)고 하고, 만약 
-    $g$가 최소화 가능하지 않으면 $f(n_1, \cdots, n_k)=0$으로 정의한다. 
-    이러한 $g$의 최소화 과정은 $\mu \; m[g(n_1, \cdots, n_k, m) = 1]$와 같이 표기한다. \\
+    $g$가 최소화 가능하지 않으면 $f(n_1, \ldots, n_k)=0$으로 정의한다. 
+    이러한 $g$의 최소화 과정은 $\mu \; m[g(n_1, \ldots, n_k, m) = 1]$와 같이 표기한다. 
+\end{defn}
+\begin{defn}
     \textbf{$\mu$-재귀 함수}($\mu$-recursive function)는 기본 
     함수들의 유한 번의 재귀 및 합성 또는 최소화 가능한
     함수의 최소화를 통해 얻어낼 수 있는 함수이다. 
@@ -1830,7 +1834,7 @@ $g(n)$이 존재한다.
 어떤 함수가 최소화의 결과값은 어떻게 알 수 있을까? 이는 다음과 같은 방법을 통해 알 수 있다.
 \begin{algorithmic}
         \State $m \gets 0$
-        \While{$g(n_1, \cdots, n_k, m) \neq 1$}
+        \While{$g(n_1, \ldots, n_k, m) \neq 1$}
             \State $m \gets m+1$
         \EndWhile
 \end{algorithmic}
@@ -1838,7 +1842,7 @@ $g(n)$이 존재한다.
 즉, 계산 가능한 문제라고 할 수 없다. 따라서 우리는 어떤 함수가 최소화 가능한지 판별하는 것은 `쉽지 않다.'\\
 그럼 앞에서 원시 재귀 함수가 아닌 함수들 중 계산 가능한 함수가 있다는 것을 보일 때 사용한 논리를 $\mu$-재귀
 함수에 대해서도 동일하게 적용할 수 있을까? 이는 불가능하다. 앞의 논리를 생각해보자. 튜링 기계가 
-$g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n+1$개 나열한 뒤 $f_n(n) + 1$을 
+$g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n+1$개 나열한 뒤 $f_n(n) + 1$을 
 계산하면 된다. 하지만 이 `나열'하는 과정에서 우리는 $\mu$-재귀 함수만 나열해야 하는데 이때 $\mu$-재귀 함수의
 조건 중에는 `최소화 가능한' 함수들의 최소화로 이루어진다라는 조건이 있다. 이때 우리가 아는 한
 튜링 기계는 어떤 함수가 최소화 가능한지 계산할 수 없다. 
@@ -1846,11 +1850,13 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
 \begin{ex}
     로가리슴 함수 $log(m,n) = \left\lceil \log_{m+2}(n+1)\right\rceil$가 $\mu$-재귀 함수임을
     보여라.($\log$가 범위를 벗어나지 않도록 정의했다.)
-    $$log(m,n) = \mu \; p[greater\text{-}or\text{-}equal((m+2)^p, n+1)]$$
+    \begin{align*}
+        log(m,n) = \mu \; p[greater\text{-}or\text{-}equal((m+2)^p, n+1)]
+    \end{align*}
 \end{ex}
 \begin{thm}
-    함수 $f: \mathbb{N}^k \rightarrow \mathbb{N}$가 $\mu$-재귀 함수라는 것은 $f$가 튜링 기계에 의해 
-    계산 가능하다는 것과 동치이다.  
+    함수 $f: \mathbb{N}^k \rightarrow \mathbb{N}$가 $\mu$-재귀 함수라는 것은
+    $f$가 튜링 기계에 의해 계산 가능하다는 것과 동치이다.  
 \end{thm}
 \begin{pf*}
     먼저 $(\Rightarrow)$를 증명하자. 
@@ -1858,31 +1864,31 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     $f$가 $\mu$-재귀 함수라 하자. 먼저 기본 함수들이 계산 가능한 것은 자명하다. 
 
     다음으로 $f:\mathbb{N}^k \rightarrow \mathbb{N}$가 
-    $g: \mathbb{N}^l \rightarrow \mathbb{N}$와 $h_1, \cdots, h_l:\mathbb{N}^k \rightarrow 
+    $g: \mathbb{N}^l \rightarrow \mathbb{N}$와 $h_1, \ldots, h_l:\mathbb{N}^k \rightarrow 
     \mathbb{N}$의 합성으로 정의되었다고 하자. 이는 튜링 기계로 다음과 같이 계산할 수 있다.
     \begin{algorithmic}
-        \State $m_1 \gets h_1(n_1, \cdots, n_k)$
+        \State $m_1 \gets h_1(n_1, \ldots, n_k)$
         \State $\vdots$
-        \State $m_l \gets h_l(n_1, \cdots, n_k)$
-        \State \textbf{output} $g(m_1, \cdots, m_l)$
+        \State $m_l \gets h_l(n_1, \ldots, n_k)$
+        \State \textbf{output} $g(m_1, \ldots, m_l)$
     \end{algorithmic}
-    비슷하게 함수 $g, h$에 의해 재귀적으로 정의된 함수 $f(n_1, \cdots, n_k, m)$는 다음과 같이 계산할 수 있다.
+    비슷하게 함수 $g, h$에 의해 재귀적으로 정의된 함수 $f(n_1, \ldots, n_k, m)$는 다음과 같이 계산할 수 있다.
     \begin{algorithmic}
-        \State $v \gets g(n_1, \cdots, n_k)$
+        \State $v \gets g(n_1, \ldots, n_k)$
         \If{$m=0$}
         \State \textbf{output} $v$
         \Else
-        \For{$i \gets 1, \cdots, m$}
-        \State $v \gets h(n_1, \cdots, n_k, i-1, v)$
+        \For{$i \gets 1, \ldots, m$}
+        \State $v \gets h(n_1, \ldots, n_k, i-1, v)$
         \EndFor
         \State \textbf{output} $v$
         \EndIf
     \end{algorithmic}
-    마지막으로 $f$가 $\mu \; m[g(n_1, \cdots, n_k, m)]$과 같이 정의되면 앞에서 봤듯이 
+    마지막으로 $f$가 $\mu \; m[g(n_1, \ldots, n_k, m)]$과 같이 정의되면 앞에서 봤듯이 
     다음과 같이 계산할 수 있다.
     \begin{algorithmic}
         \State $m \gets 0$
-        \While{$g(n_1, \cdots, n_k, m) \neq 1$}
+        \While{$g(n_1, \ldots, n_k, m) \neq 1$}
             \State $m \gets m+1$
         \EndWhile
     \end{algorithmic}
@@ -1894,25 +1900,35 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     유사하게 확장하여 증명할 수 있다.) 이제 함수 $f$가 $\mu$-재귀 함수임을 보이면 된다. \\
     일반성을 잃지 않고 $Q, \Sigma, \Gamma$가 서로소라고 하자. $b = \vert Q \vert + \vert \Sigma \vert 
     + \vert \Gamma \vert$라고 하고 함수 $E:Q \cup \Sigma \cup \Gamma \rightarrow \{0, 1 
-    \cdots, b-1\}$를 일대일 함수라고 하자. 우리는 $M$의 상황을 $b$를 통해 표현할 것이다. 상황 $(q,
-    a_1a_2 \cdots \underline{a_k} \cdots a_n)$은 $a_1a_2\cdots a_k q a_{k+1} \cdots a_n$과 같은 형태로 
+    \ldots, b-1\}$를 일대일 함수라고 하자. 우리는 $M$의 상황을 $b$를 통해 표현할 것이다. 상황 $(q,
+    a_1a_2 \ldots \underline{a_k} \ldots a_n)$은 $a_1a_2\ldots a_k q a_{k+1} \ldots a_n$과 같은 형태로 
     $b$를 이용해 다음과 같이 정수로 표현한다. 이를 $b$진법 표기법이라 하자. 
-    $$E(a_1)b^n + E(a_2)b^{n-1} + \cdots E(a_k)b^{n-k+1} + E(q)b^{n-k} + \cdots + E(a_n)$$
+    \begin{align*}
+        E(a_1)b^n + E(a_2)b^{n-1} + \ldots E(a_k)b^{n-k+1} + E(q)b^{n-k} + \cdots + E(a_n)
+    \end{align*}
     우리는 최종적으로 $f$를 다음과 같이 표현할 것이다.
-    $$f(n) = num(output(last(comp(n))))$$
+    \begin{align*}
+        f(n) = num(output(last(comp(n))))
+    \end{align*}
     $num$은 0과 1로 표기된 $b$진법 표기법을 정수로 바꿔주는 함수이다. 
     $output$은 $\# h f(w)$ 형태로 표기된 $b$-정수 표기법에서 $\#, h$를 제거해주는 함수이다.
     이 두 함수가 $\mu$-재귀 함수임은 자명하다. 따라서 이 책에선 정확히 어떻게 정의되는지 기술하지 않는다.\\ 
     $comp$함수는 시작 상황인 $\# s w$에서 시작해 $\# h f(w)$로 끝나는 상황을 튜링 기계의 
     전이 함수에 맞춰 $b$진법 표기법으로 순서대로 나열한다. $last$ 함수는 나열된 상황 중에서 마지막 정지 상황만을
     추출한다. \\ 
-    먼저 $last$ 함수부터 정의하자. 이를 위해 먼저 함수 $lastpos$을 정의하자. 
-    $$lastpos(n)= \mu \; m [equal(digit(m,n,b),E[\#]) \text{ or } equal(m,n)]$$
+    먼저 $last$ 함수부터 정의하자. 이를 위해 먼저 함수 $lastpos$을 정의하자.
+    \begin{align*}
+        lastpos(n)= \mu \; m [equal(digit(m,n,b),E[\#]) \text{ or } equal(m,n)]
+    \end{align*} 
     $lastpos$ 함수는 가장 오른쪽에 있는 $\#$ 문자를 찾는다. 이때 함수가 최소화 가능하도록 하기 위해
     $equal(m,n)$을 추가하였다. 이를 통해 함수 $last$는 다음과 같이 정의할 수 있다.
-    $$last = rem(n,b^{lastpos(n)})$$ 
+    \begin{align*}
+        last = rem(n,b^{lastpos(n)})
+    \end{align*}
     다음으로 가장 핵심이 되는 $comp$ 함수를 정의하자. 이는 다음과 같의 정의될 수 있다.
-    $$comp(n) = \mu \; m [iscomp(m,n) \text{ and } halted(last(m))]$$
+    \begin{align*}
+        comp(n) = \mu \; m [iscomp(m,n) \text{ and } halted(last(m))]
+    \end{align*}
     여기서 $iscomp$는 입력 $n$에 대해 $m$이 튜링 기계 $M$에 대해서 제대로 된 상황의 나열인지 검사한다. 
     $iscomp$의 정확한 정의는 다루지 않으나, $iscomp$가 원시 재귀 함수인 것은 쉽게 알 수 있다.(모든 전이 함수의
     case에 대해서 $m$이 제대로 상황이 나열됐는지 검사하면 된다.) 함수 $halted$의 경우 $m$에 
@@ -1921,20 +1937,28 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \cdots$를 $n
     따라서 튜링 기계에 의해 계산 가능한 함수 $f$는 $\mu$-재귀 함수이다. 
 \end{pf*}
 이를 통해 우리는 재귀 열거 언어 집합을 새롭게 정의할 수 있다.
+\begin{defn}
+    \textbf{부분 재귀 함수}(partial recursive function)란 기본 함수들의 유한 번의 재귀,
+    합성, 최소화를 통해 얻어낼 수 있는 부분 함수이다. ($\mu$-재귀 함수와 달리
+    최소화 가능한 함수만 최소화하는 게 아니다.)
+\end{defn}
 \begin{thm}
-    언어 $L$이 재귀 열거 언어인 것과 $L$이 $\mu$-재귀 함수의 정의역인 것은 동치이다. 
+    언어 $L$이 재귀 열거 언어인 것과 $L$이 부분 재귀 함수의 정의역인 것은 동치이다. 
 \end{thm}
+\begin{pf*}
+    당연하다.
+\end{pf*}
 이때 $\mu$-재귀 함수의 정의역으로 정의가 되는 이유는 $\mu$-재귀 함수는 모든 자연수 값에 대해
 정의되어 있는 \textbf{완전 함수}(total function)가 아니라 자연수 중에 값이 결정되지 않는(즉, 
 계산이 불가능한) 값들이 존재하는 \textbf{부분 함수}(partial function)이기 때문이다. 따라서 
 $\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)로 부르기도 한다.
-\section{람다 대수} \label{lambda calculus}
+\section{람다 계산법}\label{lambda calculus}
 튜링 기계는 이름에서 알 수 있듯이 영국의 수학자 앨런 튜링이 만든 개념이다. 그럼 튜링은 이런 복잡한 기계를
 왜 만들었을까? 지금의 컴퓨터처럼 무언가 많은 일을 할 수 있는 자동화된 기계를 만들기 위해서 이런 기계를 
 제안했을 것이라고 오해할 수 있지만, 사실은 그렇지 않다. 앨런 튜링이 하고 싶었던 것은 괴델의 불완전성 
 정리를 자신만의 방식으로 증명하고 싶었던 것이다.
 그런데 앨런 튜링보다 먼저 알론조 처치(Alonzo Church)가 비슷한 방식으로 이러한 증명을 제안해냈는데, 이를 
-\textbf{람다 대수}(lambda calculus)라고 한다. 
+\textbf{람다 계산법}(lambda calculus)라고 한다. 
 \begin{defn}
     \textbf{람다식}(lambda expression)은 다음과 같이 귀납적으로 정의된다.
     \begin{center}
@@ -1967,11 +1991,11 @@ $\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)
     \textbf{치환}(substitution)은 변수를 다른 것으로 바꿔주는 연산이다. 치환 $S$는 변수 $x_i$를
     $Y_i$로 바꿔주는 $x_i \mapsto Y_i$의 집합이다.
     \begin{align*}
-        S = \{ x_1 \mapsto Y_1, \cdots, x_n \mapsto Y_n\}
+        S = \{ x_1 \mapsto Y_1, \ldots, x_n \mapsto Y_n\}
     \end{align*}
     또는 다음과 같이 쓰기도 한다.
     \begin{align*}
-        S = \{ Y_1 / x_1, \cdots, Y_n / x_n \}
+        S = \{ Y_1 / x_1, \ldots, Y_n / x_n \}
     \end{align*}
 \end{defn}
 \begin{defn}
@@ -1989,7 +2013,7 @@ $\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)
     참고로, 치환 $S, T$를 나란히 $S \, T$라고 쓰면, $T$를 적용하고 $S$를 적용한다는 뜻이다.
 \end{defn}
 \begin{defn}
-    람다 대수에서의 \textbf{연산}(reduction)은 다음 2가지로 이루어진다.
+    람다 계산법에서의 \textbf{연산}(reduction)은 다음 2가지로 이루어진다.
     \begin{itemize}
         \item $\alpha$-연산($\alpha$-reduction)은 
         $x' \notin FV(\lambda x. E)$에 대해 
@@ -1998,7 +2022,7 @@ $\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)
         $(\lambda x. E1) \, E2 \rightarrow \{ E_2 / x\}E_1$을 해주는 연산이다.
     \end{itemize}
 \end{defn}
-여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 대수에서 
+여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 계산법에서 
 중요한 연산은 바로 $\beta$-연산이다. 
 \begin{defn}
     \textbf{레덱스}(redex)란 람다식에서 $\beta$-연산이 가능한 부분, 즉 
@@ -2049,7 +2073,7 @@ $\mu$-재귀 함수는 \textbf{부분 재귀 함수}(partial recursive function)
     폐포 $\rightarrow^*$ 또한 다이아몬드 성질을 만족한다.
 \end{lem}
 \begin{pf*}
-    존나 당연한데...?
+    존나 당연한데?
 \end{pf*}
 처치-로서 정리는 $\beta$-연산의 반사적이고 추이적인 폐포가 다이아몬드 성질을 만족한다는 것이다.
 $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게도 이는 그렇지 않다. 대신에 
@@ -2346,11 +2370,11 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
 \end{ex}
 람다식을 이용해 최소화를 구현할 수 있으므로 $\mu$-재귀 함수와 계산 능력이 동등하다. 
 \begin{thm}
-    람다 대수와 튜링 기계의 계산 능력은 동등하다.
+    람다 계산법와 튜링 기계의 계산 능력은 동등하다.
 \end{thm}
 \begin{pf*}
-    먼저 람다 대수는 $\mu$-재귀 함수를 통해 튜링 기계를 흉내낼 수 있다. 튜링 기계가 
-    람다 대수를 흉내내는 과정은 자세히 다루진 않으나, 충분히 할 수 있을 거라고 믿자...
+    먼저 람다 계산법는 $\mu$-재귀 함수를 통해 튜링 기계를 흉내낼 수 있다. 튜링 기계가 
+    람다 계산법를 흉내내는 과정은 자세히 다루진 않으나, 충분히 할 수 있을 거라고 믿자...
 \end{pf*}
 \section{연습문제}
 \begin{ec}
@@ -2376,7 +2400,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     a deterministic PA with $k$ stacks. In one movement, the $k$-stack machine 
     can (1) change to a new state and (2) replace the top symbol of each stack
      with $\epsilon$ or several stack symbols. The transition rule of $k$-stack
-      machine looks like $\delta(q, a, X_1, \cdots, X_n) = (p, Y_1, \cdots, Y_n)$.
+      machine looks like $\delta(q, a, X_1, \ldots, X_n) = (p, Y_1, \ldots, Y_n)$.
     \\
     Show that if a language $L$ is accepted by a Turing machine, then $L$ is
      accepted by a two-stack machine.
@@ -2395,6 +2419,14 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         a two-counter machine.
       \end{enumerate}
 \end{ec}
+\begin{ec}
+    최소화를 정의할 때 정의 \ref{minimalization}에서는 상수를 1로 두었다. 
+    꼭 1이어야 할까? 다음과 같이 임의의 음이 아닌 정수 $k$여도 괜찮을까?
+    \begin{align*}
+        f(n_1, \ldots, n_k) = \{g(n_1, \ldots, n_k, m) = k\text{가 되게 하는 최소 } m\}
+    \end{align*}
+    위와 같은 정의여도 $\mu$-재귀 함수는 튜링 기계와 동등한가?
+\end{ec}
 \part{계산 가능성}
 \chapter{계산 가능성}
 우리는 지금까지 튜링 기계의 뛰어난 계산능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
@@ -2412,7 +2444,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     튜링 기계 $M = (Q, \{0,1\}, \{0, 1, \#\}, \delta, q_1, H)$를 다음과 같은 방식으로
     $\{0,1\}$상의 스트링으로 만들자.
     \begin{enumerate}
-        \item $Q = \{q_1, \cdots, q_n\}$에 대해 $q_i$는 각각 $0^i$로 표시한다. 
+        \item $Q = \{q_1, \ldots, q_n\}$에 대해 $q_i$는 각각 $0^i$로 표시한다. 
         \item $\Sigma = \{0,1\}$에서 0과 1은 각각 0과 00으로 표시한다. 
         \item $\Gamma = \{0,1,\#\}$에서 0, 1, \#는 각각 0, 00, 000으로 표시한다.
         \item $L, R, S$는 각각 0, 00, 000으로 표시한다.
@@ -2735,8 +2767,8 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     다음과 같이 튜링 기계 $M$을 구성하자.
     \begin{enumerate}
         \item $G$에 대해 알파벳 $\Sigma$에 마킹해둔다. 
-        \item $A \rightarrow x_1 \cdots x_k$와 같은 생성 규칙에 대해 
-        $x_1, \cdots x_k$가 전부 표시되면 변수 $A$도 마킹해둔다.
+        \item $A \rightarrow x_1 \ldots x_k$와 같은 생성 규칙에 대해 
+        $x_1, \ldots x_k$가 전부 표시되면 변수 $A$도 마킹해둔다.
         \item 2를 반복해서 전부 탐색했을 때 시작 변수가 마킹되면 받아들이지 않고, 
         마킹되지 않으면 받아들인다. 
     \end{enumerate}
@@ -2814,10 +2846,10 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
 발표된 괴델의 불완정성 정리에서 출발한다. 이 정리를 통해 더 이상 우리는 수학의 모든 문제를 풀 수 
 없다는 것이 증명되었다. 따라서 우리가 풀 수 없는 문제가 무엇인지를 알고자 하는 것은 매우 당연한
 수순이었다. 이를 위해 1931년에 괴델과 에르브랑이 제시했고 우리가 \ref{mu-recursive} 절에서 다루었던 재귀 함수, 
-1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 대수, 1936년에 튜링이 제시했고
+1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 계산법, 1936년에 튜링이 제시했고
 우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
 재귀 함수는 수학에서 다루었던 함수의 측면에서 우리가 계산하지 못하는 함수가 무엇인지를 최소화의 근본적인
-한계를 통해 제시하였다. 람다 대수는 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 
+한계를 통해 제시하였다. 람다 계산법는 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 
 모든 계산을 제시하였다. 튜링 기계는 계산하는 과정에 집중하여 우리가 계산하지 못하는 것이 무엇인지를
 제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
 이러한 모델들과 계산 가능성이 시사하는 바는 처치-튜링 논제에 의해 기술될 수 있다.
@@ -2883,9 +2915,9 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
         An instance of the PCP is a collection $P$ of dominos.
     \begin{align*}
-        P = \left\{\left[ \frac{t_1}{b_1} \right], \cdots ,\left[\frac{t_k}{b_k}\right] \right\}
+        P = \left\{\left[ \frac{t_1}{b_1} \right], \ldots ,\left[\frac{t_k}{b_k}\right] \right\}
     \end{align*}
-    A match is a sequence $i_1, \cdots , i_n$, where $t_{i_1} \cdots t_{i_n} = b_{i_1} \cdots b_{i_n} $. 
+    A match is a sequence $i_1, \ldots , i_n$, where $t_{i_1} \ldots t_{i_n} = b_{i_1} \ldots b_{i_n} $. 
     The problem is to determine whether $P$ has a match. 
     \begin{align*}
         PCP = \{ \langle P \rangle \;\vert\; P \text{ is an instance of the PCP with a match}\}
@@ -2938,15 +2970,15 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
                                      & $\vdots$    & $\vdots$    \\ \hline
     \multirow{3}{*}{\textbf{특성 변수}}  & $P_1$       & 289         \\ \cline{2-3} 
                                      & $P_2$       & 361         \\ \cline{2-3} 
-                                     & $\vdots$    & $\cdots$    \\ \hline
+                                     & $\vdots$    & $\ldots$    \\ \hline
     \end{tabular}
     \caption{}
     \label{godel encoding}
     \end{table}
-    그럼 모든 논리식 $\phi$는 수열 $(x_1, x_2, \cdots, x_n)$에 대응될 수 있다. 
-    이때 수열 $(x_1, x_2 , \cdots, x_n)$은 함수 $enc$에 의해 하나의 자연수에 대응된다.
+    그럼 모든 논리식 $\phi$는 수열 $(x_1, x_2, \ldots, x_n)$에 대응될 수 있다. 
+    이때 수열 $(x_1, x_2 , \ldots, x_n)$은 함수 $enc$에 의해 하나의 자연수에 대응된다.
     \begin{align*}
-        enc(x_1, x_2, \cdots, x_n) = 2^{x_1} \cdot 3^{x_2} \cdots p_n^{x_n}
+        enc(x_1, x_2, \ldots, x_n) = 2^{x_1} \cdot 3^{x_2} \ldots p_n^{x_n}
     \end{align*} 
     이때 $p_n$은 $n$번째 소수이다. 어떤 논리식 $\psi$의 괴델 수는 간단하게 $G(\psi)$로 나타낸다.
 \end{defn}
@@ -3036,9 +3068,9 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     \begin{itemize}
         \item 유계 양화사로만 구성된 논리식 $\psi$에 대해 $\phi \Leftrightarrow \psi$이면 $\phi \in 
         \Sigma_0^0, \Pi_0^0, \Delta_0^0$이다. 
-        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \cdots \exists m_k \; \psi$이고
+        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \ldots \exists m_k \; \psi$이고
         $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
-        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \cdots \forall m_k \; \psi$이고
+        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \ldots \forall m_k \; \psi$이고
         $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
         \item 만약 $\phi \in \Sigma_0^n, \Pi_0^n$이면 $\phi \in \Delta_0^n$이다.
     \end{itemize}
@@ -3091,7 +3123,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 이를 \textbf{점근적 분석}(asymptotic analysis)이라 한다. 우리는 아주 큰 입력에 
 대해서만 알고리즘을 고려할 것이므로
 사사로운 것들에 구애받지 않아도 된다. 
-\begin{defn}
+\begin{defn} \label{big-o defn}
     함수 $f, g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음과 같은 성질을 만족하는 
     양수의 정수 $c, n_0$가 존재하면 $f(n) = O(g(n))$이라 한다. $n \ge n_0$에 대해
     $$f(n) \le cg(n)$$
@@ -3103,7 +3135,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 예를 들어 $f(n) = 3n^3 + 2n^2 +72n + 3000$에 대해 $n$이 커지면 $\lim_{n \rightarrow \infty} 
 \frac{f(n)}{n^3} = 3$으로 수렴가능하므로
 $f(n) = O(n^3)$임을 알 수 있다. 
-\begin{defn}
+\begin{defn} \label{small-o defn}
     함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면
     $f(n) = o(g(n))$이라 한다. 
     $$\lim_{n\rightarrow \infty} \frac{f(n)}{g(n)} = 0$$
@@ -3360,8 +3392,8 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
 \begin{ex}
     문제 \textbf{SUBSET-SUM}은 다음과 같이 정의된다. 
     \begin{align*}
-        \text{SUBSET-SUM} = \{\langle S, t \rangle \; \vert \; &S = \{x_1, \cdots , x_k\} \text{ 에 대해 }
-        \\ &\sum y_i = t \text{를 만족하는 }\{y_1, \cdots, y_l \} \subseteq S  \text{가 존재한다.} \}
+        \text{SUBSET-SUM} = \{\langle S, t \rangle \; \vert \; &S = \{x_1, \ldots , x_k\} \text{ 에 대해 }
+        \\ &\sum y_i = t \text{를 만족하는 }\{y_1, \ldots, y_l \} \subseteq S  \text{가 존재한다.} \}
     \end{align*}
     이때 SUBSET-SUM $\in$ NP임을 보여라.
 \end{ex}
@@ -3410,7 +3442,11 @@ CLIQUE $\in$ NP임을 보여라.
 \end{ex}
 이제 수학계 7대 난제인 P-NP 문제를 드디어 이해할 수 있게 됐다. 
 일단 P $\subseteq$ NP인 것은 당연히 자명하다. 그럼 P $\supseteq$ NP도 성립하는가? 아니면
-P $\neq$ NP인가? 수많은 컴퓨터과학자들의 노력이 있었으나 아쉽게도 이는 밝혀지지 않았다. 
+P $\neq$ NP인가? 수많은 컴퓨터 과학자들의 노력이 있었으나 아쉽게도 이는 밝혀지지 않았다.
+참고로 필자는 당연히 $P \neq NP$라고 믿는다.
+\begin{conj}
+    \textbf{(만인의 추측)} $P \neq NP$이다.
+\end{conj} 
 \section{NP-완비}
 우리가 상사에게 아주 어려운 문제를 풀라고 지시받았다. 아무리 풀려고 노력해봐도 답을 구할 수가 없을 때
 상사에게 뭐라고 말해야 할까?
@@ -3497,7 +3533,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
         \centering
         \begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
             \hline
-            \# & $q_0$ & $w_1$ & $\;\;\cdots\;\;$ & $w_n$ & $\_$ & $\;\;\cdots\;\;$ & $\_$ & \# \\
+            \# & $q_0$ & $w_1$ & $\;\;\ldots\;\;$ & $w_n$ & $\_$ & $\;\;\ldots\;\;$ & $\_$ & \# \\
             \hline
             \# &\multicolumn{7}{c|}{\;}& \# \\
             \hline
@@ -3532,8 +3568,8 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     $\phi_{start}$는 첫번째 행이 제대로 시작 상황인지 확인한다. 이는 다음과 같다.
     \begin{align*}
         \phi_{start} = &x_{1,1,\#} \wedge x_{1,2,q_0} \wedge \\ 
-        &x_{1,3,w_1} \wedge \cdots \wedge x_{1,n+2, w_n} \wedge \\ 
-        &x_{1,n+3,\_} \wedge \cdots \wedge x_{1,n^k - 1 , \_} \wedge x_{1, n^k , \#}
+        &x_{1,3,w_1} \wedge \ldots \wedge x_{1,n+2, w_n} \wedge \\ 
+        &x_{1,n+3,\_} \wedge \ldots \wedge x_{1,n^k - 1 , \_} \wedge x_{1, n^k , \#}
     \end{align*} 
     $\phi_{accept}$는 받아들이는 상태가 있는지 확인한다. 이는 다음과 같다.
     $$\phi_{accept} = \bigwedge_{1 \le i,j \le n^k} x_{i,j,q_{accept}}$$
@@ -3675,7 +3711,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     $$\phi_{move} = \bigwedge_{1 \le i < n^k, 1<j<n^k} ((i,j)\text{-창문은 적법하다.})$$
     $(i,j)$-창문은 $cell[i,j]$가 창문에서 가운데 위에 있는 창문이다. 적법한 창문인지 검사하는 과정을
     조금 더 자세히 쓰면 다음과 같다.
-    $$\bigvee_{(a_1, \cdots, a_6)\text{는 적법}} \left(
+    $$\bigvee_{(a_1, \ldots, a_6)\text{는 적법}} \left(
         x_{i,j-1,a_1} \wedge x_{i,j,a_2} \wedge x_{i, j+1, a_3} \wedge
         x_{i+1, j, a_4} \wedge x_{i+1, j, a_5} \wedge x_{i+1, j+1, a_6}
     \right)$$
@@ -3689,15 +3725,14 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     즉, 모든 NP 문제는 다항 시간 내에 SAT 문제로 환원가능하므로 SAT는 NP-완전이다.
 \end{pf*}
 \begin{ex}
-    앞의 증명에서 우리는 $2 \times 3$ 크기의 창문을 사용했다. 왜 $2 \times 2$ 크기의 창문을 사용하면 안 되는지 설명하라. 
-\end{ex}
-\begin{ex}
-    3-SAT는 NP-완전임을 보여라. \\ 
-    우리가 이미 알고 있는 NP-완전 문제인 SAT 문제를 적절히 변환하면 된다. 예를 들어, $(a_1 \vee a_2 \vee \cdots \vee a_n)$와
-    같은 절은 다음과 같이 새로운 변수 $z_1, \cdots, z_{n-3}$를 도입해 변형하면 된다.
-    $$(a_1 \vee a_2 \vee z_1) \wedge (\overline{z_1} \vee a_3 \vee z_2) \wedge \cdots \wedge 
-    (\overline{z_{n-3}} \vee a_{n-1} \vee a_{n})$$
-    이는 당연히 다항시간 변환이다.
+    3-SAT는 NP-완전임을 보여라.
+    \begin{pf*}
+        우리가 이미 알고 있는 NP-완전 문제인 SAT 문제를 적절히 변환하면 된다. 예를 들어, $(a_1 \vee a_2 \vee \ldots \vee a_n)$와
+        같은 절은 다음과 같이 새로운 변수 $z_1, \ldots, z_{n-3}$를 도입해 변형하면 된다.
+        $$(a_1 \vee a_2 \vee z_1) \wedge (\overline{z_1} \vee a_3 \vee z_2) \wedge \ldots \wedge 
+        (\overline{z_{n-3}} \vee a_{n-1} \vee a_{n})$$
+        이는 당연히 다항시간 변환이다.
+    \end{pf*}
 \end{ex}
 \section{coNP}
 \begin{defn}
@@ -3731,6 +3766,21 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
 \begin{defn}
     \textbf{(다항 시간 변환의 확장)} 문제 A의 사례 $\alpha$를 문제 B의 사례 $\beta$
 \end{defn} 
+\section{연습문제}
+\begin{ec}
+    우리는 $O(g(n))$을 정의할 때 정의 \ref{big-o defn}와 같이 극한을 사용하지 않고 정의하였다. 그런데
+    $o(g(n))$을 정의할 때는 정의 \ref{small-o defn}와 같이 극한을 사용해서 정의했다.
+    그럼 $O(g(n))$을 정의할 때 다음과 같이 정의하면 안 되는 걸까?
+    \begin{align*}
+        f(n) = O(g(n)) \Leftrightarrow \lim_{n \rightarrow \infty} \frac{f(n)}{g(n)} = c \; (c \ge 0)
+    \end{align*}
+    위 정의가 원래 정의 \ref*{big-o defn}과 동치인지 구하라.
+\end{ec}
+\begin{ec}
+    정리 \ref{SAT np-complete}인 쿡-레빈 정리의 증명에서 우리는 $2\times 3$ 크기의 창문을 사용했다.
+    더 작은 창문을 사용하면 안 되는 걸까? $2\times 2$ 크기의 창문을 사용하면 증명이 가능할지
+    서술하라.
+\end{ec}
 \chapter{공간 복잡도}
 우리는 지금까지 시간 복잡도에 대해 알아보았다. 시간도 중요한 자원이지만, 우리에게는 시간만 부족한 것이 아니다.
 우리는 아쉽지만 한정된 돈으로 인해 제한된 메모리를 갖고 프로그램을 작성해야 하므로 우리가 만든 알고리즘이 얼마나
@@ -3764,7 +3814,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     재활용해서 사용할 수 있다. 다음과 같은 튜링 기계 $M$을 구상하자. 
     \begin{enumerate}
         \item 입력 $\langle \phi \rangle$에 대해 $\phi$의 변수 
-        $x_1, \cdots, x_k$의 진리 부여치를 테입에 적는다. 
+        $x_1, \ldots, x_k$의 진리 부여치를 테입에 적는다. 
         \item 1에서 적은 진리 부여치에 따라 $\phi$의 값을 계산하고
         만약 $1$이 나오면 받아들이고, 0이 나오면 다른 진리 부여치 값을
         적은 뒤 이를 반복한다.
