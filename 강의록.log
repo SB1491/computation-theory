@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2024.5.15)  31 MAY 2024 21:23
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2024.5.15)  31 MAY 2024 22:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -997,7 +997,7 @@ Chapter 2.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
-Overfull \hbox (3.68407pt too wide) in paragraph at lines 747--750
+Overfull \hbox (3.68407pt too wide) in paragraph at lines 746--749
 []\TU/UnBatang.ttf(0)/m/up/10 내 부 노 드 는 $\OML/cmm/m/it/10 V$ \TU/UnBatang.ttf(0)/m/up/10 의 원 소 이 고, $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 의 자 식 노 드 가 $\OML/cmm/m/it/10 X[]; [] ; X[]$ \TU/UnBatang.ttf(0)/m/up/10 이 면 $\OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 X[] [] X[]$
  []
 
@@ -1005,12 +1005,12 @@ Overfull \hbox (3.68407pt too wide) in paragraph at lines 747--750
 Underfull \vbox (badness 1635) has occurred while \output is active []
 
  [32] [33] [34] [35] [36]
-Overfull \hbox (2.96663pt too wide) in paragraph at lines 970--972
+Overfull \hbox (2.96663pt too wide) in paragraph at lines 969--971
 [][]\TU/UnBatang.ttf(0)/bx/n/10 정 의 \TU/lmr/bx/n/10 2.28\TU/UnBatang.ttf(0)/bx/n/10 . []내 리 누 름 오 토 마 타\TU/lmr/m/n/10 (Pushdown Automata, PA) $\OML/cmm/m/it/10 M$ \TU/UnBatang.ttf(0)/m/up/10 은 $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Q; \OT1/cmr/m/n/10 ^^F\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 ^^@\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 ^^A\OML/cmm/m/it/10 ; q[]; F\OT1/cmr/m/n/10 )$
  []
 
 [37] [38] [39] [40] [41] [42] [43]
-Overfull \hbox (1.00848pt too wide) in paragraph at lines 1263--1264
+Overfull \hbox (1.00848pt too wide) in paragraph at lines 1262--1263
 [][]\TU/UnBatang.ttf(0)/bx/n/10 연 습 문 제 \TU/lmr/bx/n/10 2.3\TU/UnBatang.ttf(0)/bx/n/10 . []\TU/lmr/m/n/10 Let the \TU/lmr/bx/n/10 rotational closure \TU/lmr/m/n/10 of language A be $\OML/cmm/m/it/10 RC\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 ) = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 yx \OMS/cmsy/m/n/10 j \OML/cmm/m/it/10 xy \OMS/cmsy/m/n/10 2
  []
 
@@ -1021,18 +1021,18 @@ Chapter 3.
 [47] [48] [49] [50] [51] [52] [53] [54] [55]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1600.
+(hyperref)                removing `math shift' on input line 1599.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mu' on input line 1600.
+(hyperref)                removing `\mu' on input line 1599.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1600.
+(hyperref)                removing `math shift' on input line 1599.
 
 [56] [57]
-Overfull \hbox (1.72488pt too wide) in paragraph at lines 1679--1680
+Overfull \hbox (1.72488pt too wide) in paragraph at lines 1678--1679
 [][]\TU/UnBatang.ttf(0)/bx/n/10 예 제 \TU/lmr/bx/n/10 3.35\TU/UnBatang.ttf(0)/bx/n/10 . []$\OML/cmm/m/it/10 m \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 n$ \TU/UnBatang.ttf(0)/m/up/10 이 면 \TU/lmr/m/n/10 1 \TU/UnBatang.ttf(0)/m/up/10 이 고 이 외 에 는 \TU/lmr/m/n/10 0 \TU/UnBatang.ttf(0)/m/up/10 인 원 시 재 귀 술 어 $\OML/cmm/m/it/10 greater[]or[]equal\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 m; n\OT1/cmr/m/n/10 )$
  []
 
@@ -1043,22 +1043,22 @@ Underfull \vbox (badness 6300) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [61]
-Overfull \hbox (4.47351pt too wide) in paragraph at lines 1791--1796
+Overfull \hbox (4.47351pt too wide) in paragraph at lines 1790--1795
 \TU/UnBatang.ttf(0)/m/up/10 이 때 $\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; [] ; x[]; n\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 < Ack\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 q; n \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )$ \TU/UnBatang.ttf(0)/m/up/10 라 하 자. 그 럼 $\OML/cmm/m/it/10 z \OT1/cmr/m/n/10 = []\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x; n; f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; [] ; x[]; n\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 g$
  []
 
 [62] [63] [64] [65] [66] [67] [68]
-Overfull \hbox (9.06161pt too wide) detected at line 2058
+Overfull \hbox (9.06161pt too wide) detected at line 2057
 []
  []
 
 [69] [70] [71]
-Overfull \hbox (0.7952pt too wide) in paragraph at lines 2177--2182
+Overfull \hbox (0.7952pt too wide) in paragraph at lines 2176--2181
 \TU/UnBatang.ttf(0)/m/up/10 하 자. $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^Uy:M[]\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 ^^Uy:\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )$ \TU/UnBatang.ttf(0)/m/up/10 이 므 로 귀 납 법 에 의 해 $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 M[] \U/msa/m/n/10 ^^P
  []
 
 
-Overfull \hbox (14.8369pt too wide) in paragraph at lines 2177--2182
+Overfull \hbox (14.8369pt too wide) in paragraph at lines 2176--2181
 \OML/cmm/m/it/10 M[]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g$ \TU/UnBatang.ttf(0)/m/up/10 이 다. 즉, $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 M \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ^^Uy:M[] \U/msa/m/n/10 ^^P \OML/cmm/m/it/10 ^^U\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 y:M[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 /\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 M[]$
  []
 
@@ -1073,7 +1073,7 @@ Underfull \vbox (badness 2460) has occurred while \output is active []
 ] [81] [82]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2437--2443
+Underfull \hbox (badness 10000) in paragraph at lines 2436--2442
 
  []
 
@@ -1083,7 +1083,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2437--2443
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2634.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2633.
  [89] [90] [91] [92] [93] [94] [95] [96] [97] [98
 
 ]
@@ -1095,12 +1095,12 @@ Chapter 6.
 [107
 
 ] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118]
-Overfull \hbox (7.59088pt too wide) in paragraph at lines 3505--3506
-[][]\TU/UnBatang.ttf(0)/bx/n/10 정 의 \TU/lmr/bx/n/10 6.34\TU/UnBatang.ttf(0)/bx/n/10 . []\TU/UnBatang.ttf(0)/m/up/10 언 어 $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 가 다 음 두 가 지 조 건 을 만 족 시 키 면 $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 를 \TU/lmr/bx/n/10 NP- \TU/UnBatang.ttf(0)/bx/n/10 완 비\TU/lmr/m/n/10 (NP-Complete)
+Overfull \hbox (7.59088pt too wide) in paragraph at lines 3496--3497
+[][]\TU/UnBatang.ttf(0)/bx/n/10 정 의 \TU/lmr/bx/n/10 6.33\TU/UnBatang.ttf(0)/bx/n/10 . []\TU/UnBatang.ttf(0)/m/up/10 언 어 $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 가 다 음 두 가 지 조 건 을 만 족 시 키 면 $\OML/cmm/m/it/10 A$ \TU/UnBatang.ttf(0)/m/up/10 를 \TU/lmr/bx/n/10 NP- \TU/UnBatang.ttf(0)/bx/n/10 완 비\TU/lmr/m/n/10 (NP-Complete)
  []
 
 [119]
-Underfull \vbox (badness 1466) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [120] [121]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1118,7 +1118,7 @@ Chapter 8.
 ]
 Appendix A.
 [133]
-Overfull \hbox (17.23512pt too wide) in paragraph at lines 3942--3945
+Overfull \hbox (17.23512pt too wide) in paragraph at lines 3941--3944
 [][]\TU/UnBatang.ttf(0)/bx/n/10 정 의 \TU/lmr/bx/n/10 A.6\TU/UnBatang.ttf(0)/bx/n/10 . []$\OML/cmm/m/it/10 f \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 Y$ \TU/UnBatang.ttf(0)/m/up/10 인 일 대 일 대 응 이 존 재 하 면 두 집 합 $\OML/cmm/m/it/10 X; Y$ \TU/UnBatang.ttf(0)/m/up/10 의 \TU/UnBatang.ttf(0)/bx/n/10 기 수\TU/lmr/m/n/10 (cardinality)(\TU/UnBatang.ttf(0)/m/up/10 또
  []
 
@@ -1130,11 +1130,11 @@ LaTeX Font Warning: Font shape `TU/UnBatang.ttf(0)/m/it' undefined
 (Font)              using `TU/UnBatang.ttf(0)/m/n' instead on input line 73.
 
 ) [138]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3994.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3994.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3993.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3993.
  (./강의록.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3994.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3994.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 3993.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3993.
 Package rerunfilecheck Info: File `강의록.out' has not changed.
 (rerunfilecheck)             Checksum: 820FDFC7165154EC48D7CDFFF98707D5;4508.
 
@@ -1145,10 +1145,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  43486 strings out of 479819
  913394 string characters out of 5895846
- 1355214 words of memory out of 5000000
+ 1355212 words of memory out of 5000000
  59976 multiletter control sequences out of 15000+600000
  540955 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  153i,20n,182p,1629b,2559s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 강의록.xdv (138 pages, 1298424 bytes).
+Output written on 강의록.xdv (138 pages, 1299060 bytes).
