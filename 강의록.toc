@@ -12,62 +12,62 @@
 \contentsline {section}{\numberline {1.6}정규 언어의 특징}{24}{section.1.6}%
 \contentsline {section}{\numberline {1.7}정규 언어가 아닌 것들}{25}{section.1.7}%
 \contentsline {section}{\numberline {1.8}연습 문제}{26}{section.1.8}%
-\contentsline {chapter}{\numberline {2}문법과 오토마타}{27}{chapter.2}%
-\contentsline {section}{\numberline {2.1}문법}{27}{section.2.1}%
-\contentsline {section}{\numberline {2.2}정규문법}{29}{section.2.2}%
-\contentsline {section}{\numberline {2.3}파스 트리}{31}{section.2.3}%
-\contentsline {section}{\numberline {2.4}표준형}{34}{section.2.4}%
-\contentsline {section}{\numberline {2.5}내리누름 오토마타}{37}{section.2.5}%
-\contentsline {section}{\numberline {2.6}PA = CFG}{39}{section.2.6}%
-\contentsline {section}{\numberline {2.7}문맥무관 언어의 성질}{41}{section.2.7}%
-\contentsline {section}{\numberline {2.8}결정 내리누름 오토마타}{43}{section.2.8}%
-\contentsline {section}{\numberline {2.9}연습문제}{44}{section.2.9}%
-\contentsline {chapter}{\numberline {3}튜링 기계와 재귀 언어}{47}{chapter.3}%
-\contentsline {section}{\numberline {3.1}튜링 기계}{47}{section.3.1}%
-\contentsline {section}{\numberline {3.2}튜링 기계의 확장}{50}{section.3.2}%
-\contentsline {section}{\numberline {3.3}비결정론적 튜링 기계}{51}{section.3.3}%
-\contentsline {section}{\numberline {3.4}랜덤 접근 기계}{52}{section.3.4}%
-\contentsline {section}{\numberline {3.5}무제한 문법}{54}{section.3.5}%
-\contentsline {section}{\numberline {3.6}$\mu $-재귀 함수}{56}{section.3.6}%
-\contentsline {section}{\numberline {3.7}람다 계산법}{67}{section.3.7}%
-\contentsline {section}{\numberline {3.8}연습문제}{78}{section.3.8}%
-\contentsline {part}{II\hspace {1em}계산 가능성}{81}{part.2}%
-\contentsline {chapter}{\numberline {4}계산 가능성}{83}{chapter.4}%
-\contentsline {section}{\numberline {4.1}튜링 기계의 부호화}{83}{section.4.1}%
-\contentsline {section}{\numberline {4.2}보편 만능 기계}{85}{section.4.2}%
-\contentsline {section}{\numberline {4.3}정지 문제}{85}{section.4.3}%
-\contentsline {section}{\numberline {4.4}정지 문제의 응용}{87}{section.4.4}%
-\contentsline {section}{\numberline {4.5}계산 가능한 것들}{91}{section.4.5}%
-\contentsline {section}{\numberline {4.6}촘스키 위계}{93}{section.4.6}%
-\contentsline {section}{\numberline {4.7}처치-튜링 논제}{94}{section.4.7}%
-\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{96}{section.4.8}%
-\contentsline {section}{\numberline {4.9}연습문제}{97}{section.4.9}%
-\contentsline {chapter}{\numberline {5}튜링 위계와 산술적 위계}{99}{chapter.5}%
-\contentsline {section}{\numberline {5.1}괴델 수}{99}{section.5.1}%
-\contentsline {section}{\numberline {5.2}부분 재귀 함수}{101}{section.5.2}%
-\contentsline {section}{\numberline {5.3}튜링 위계}{101}{section.5.3}%
-\contentsline {section}{\numberline {5.4}산술적 위계}{102}{section.5.4}%
-\contentsline {part}{III\hspace {1em}계산 복잡도}{105}{part.3}%
-\contentsline {chapter}{\numberline {6}시간 복잡도}{107}{chapter.6}%
-\contentsline {section}{\numberline {6.1}점근적 표기법}{107}{section.6.1}%
-\contentsline {section}{\numberline {6.2}복잡도 분석}{109}{section.6.2}%
-\contentsline {section}{\numberline {6.3}P}{112}{section.6.3}%
-\contentsline {section}{\numberline {6.4}NP}{114}{section.6.4}%
-\contentsline {section}{\numberline {6.5}NP-완비}{117}{section.6.5}%
-\contentsline {section}{\numberline {6.6}coNP}{123}{section.6.6}%
-\contentsline {section}{\numberline {6.7}최적화 문제}{124}{section.6.7}%
-\contentsline {section}{\numberline {6.8}연습문제}{124}{section.6.8}%
-\contentsline {chapter}{\numberline {7}공간 복잡도}{127}{chapter.7}%
-\contentsline {section}{\numberline {7.1}PSPACE}{129}{section.7.1}%
-\contentsline {section}{\numberline {7.2}PSPCAE-완전}{129}{section.7.2}%
-\contentsline {section}{\numberline {7.3}L과 NL}{129}{section.7.3}%
-\contentsline {section}{\numberline {7.4}NL-완전}{129}{section.7.4}%
-\contentsline {section}{\numberline {7.5}NL = coNL}{129}{section.7.5}%
-\contentsline {chapter}{\numberline {8}복잡도 위계}{131}{chapter.8}%
-\contentsline {section}{\numberline {8.1}공간적 위계}{131}{section.8.1}%
-\contentsline {section}{\numberline {8.2}시간적 위계}{131}{section.8.2}%
-\contentsline {chapter}{\numberline {A}잡다한 수학적 배경지식}{133}{appendix.A}%
-\contentsline {section}{\numberline {A.1}관계}{133}{section.A.1}%
-\contentsline {section}{\numberline {A.2}기수}{134}{section.A.2}%
-\contentsline {section}{\numberline {A.3}ZFC 공리계}{135}{section.A.3}%
-\contentsline {section}{\numberline {A.4}괴델의 불완정성 정리}{135}{section.A.4}%
+\contentsline {chapter}{\numberline {2}문법과 오토마타}{29}{chapter.2}%
+\contentsline {section}{\numberline {2.1}문법}{29}{section.2.1}%
+\contentsline {section}{\numberline {2.2}정규문법}{31}{section.2.2}%
+\contentsline {section}{\numberline {2.3}파스 트리}{33}{section.2.3}%
+\contentsline {section}{\numberline {2.4}표준형}{36}{section.2.4}%
+\contentsline {section}{\numberline {2.5}내리누름 오토마타}{39}{section.2.5}%
+\contentsline {section}{\numberline {2.6}PA = CFG}{41}{section.2.6}%
+\contentsline {section}{\numberline {2.7}문맥무관 언어의 성질}{43}{section.2.7}%
+\contentsline {section}{\numberline {2.8}결정 내리누름 오토마타}{45}{section.2.8}%
+\contentsline {section}{\numberline {2.9}연습문제}{46}{section.2.9}%
+\contentsline {chapter}{\numberline {3}튜링 기계와 재귀 언어}{49}{chapter.3}%
+\contentsline {section}{\numberline {3.1}튜링 기계}{49}{section.3.1}%
+\contentsline {section}{\numberline {3.2}튜링 기계의 확장}{52}{section.3.2}%
+\contentsline {section}{\numberline {3.3}비결정론적 튜링 기계}{53}{section.3.3}%
+\contentsline {section}{\numberline {3.4}랜덤 접근 기계}{54}{section.3.4}%
+\contentsline {section}{\numberline {3.5}무제한 문법}{56}{section.3.5}%
+\contentsline {section}{\numberline {3.6}$\mu $-재귀 함수}{58}{section.3.6}%
+\contentsline {section}{\numberline {3.7}람다 계산법}{69}{section.3.7}%
+\contentsline {section}{\numberline {3.8}연습문제}{80}{section.3.8}%
+\contentsline {part}{II\hspace {1em}계산 가능성}{83}{part.2}%
+\contentsline {chapter}{\numberline {4}계산 가능성}{85}{chapter.4}%
+\contentsline {section}{\numberline {4.1}튜링 기계의 부호화}{85}{section.4.1}%
+\contentsline {section}{\numberline {4.2}보편 만능 기계}{87}{section.4.2}%
+\contentsline {section}{\numberline {4.3}정지 문제}{87}{section.4.3}%
+\contentsline {section}{\numberline {4.4}정지 문제의 응용}{89}{section.4.4}%
+\contentsline {section}{\numberline {4.5}계산 가능한 것들}{93}{section.4.5}%
+\contentsline {section}{\numberline {4.6}촘스키 위계}{95}{section.4.6}%
+\contentsline {section}{\numberline {4.7}처치-튜링 논제}{96}{section.4.7}%
+\contentsline {section}{\numberline {4.8}바쁜 비버 함수}{98}{section.4.8}%
+\contentsline {section}{\numberline {4.9}연습문제}{99}{section.4.9}%
+\contentsline {chapter}{\numberline {5}튜링 위계와 산술적 위계}{101}{chapter.5}%
+\contentsline {section}{\numberline {5.1}괴델 수}{101}{section.5.1}%
+\contentsline {section}{\numberline {5.2}부분 재귀 함수}{103}{section.5.2}%
+\contentsline {section}{\numberline {5.3}튜링 위계}{103}{section.5.3}%
+\contentsline {section}{\numberline {5.4}산술적 위계}{104}{section.5.4}%
+\contentsline {part}{III\hspace {1em}계산 복잡도}{107}{part.3}%
+\contentsline {chapter}{\numberline {6}시간 복잡도}{109}{chapter.6}%
+\contentsline {section}{\numberline {6.1}점근적 표기법}{109}{section.6.1}%
+\contentsline {section}{\numberline {6.2}복잡도 분석}{111}{section.6.2}%
+\contentsline {section}{\numberline {6.3}P}{114}{section.6.3}%
+\contentsline {section}{\numberline {6.4}NP}{116}{section.6.4}%
+\contentsline {section}{\numberline {6.5}NP-완비}{119}{section.6.5}%
+\contentsline {section}{\numberline {6.6}coNP}{125}{section.6.6}%
+\contentsline {section}{\numberline {6.7}최적화 문제}{126}{section.6.7}%
+\contentsline {section}{\numberline {6.8}연습문제}{126}{section.6.8}%
+\contentsline {chapter}{\numberline {7}공간 복잡도}{129}{chapter.7}%
+\contentsline {section}{\numberline {7.1}PSPACE}{131}{section.7.1}%
+\contentsline {section}{\numberline {7.2}PSPCAE-완전}{131}{section.7.2}%
+\contentsline {section}{\numberline {7.3}L과 NL}{131}{section.7.3}%
+\contentsline {section}{\numberline {7.4}NL-완전}{131}{section.7.4}%
+\contentsline {section}{\numberline {7.5}NL = coNL}{131}{section.7.5}%
+\contentsline {chapter}{\numberline {8}복잡도 위계}{133}{chapter.8}%
+\contentsline {section}{\numberline {8.1}공간적 위계}{133}{section.8.1}%
+\contentsline {section}{\numberline {8.2}시간적 위계}{133}{section.8.2}%
+\contentsline {chapter}{\numberline {A}잡다한 수학적 배경지식}{135}{appendix.A}%
+\contentsline {section}{\numberline {A.1}관계}{135}{section.A.1}%
+\contentsline {section}{\numberline {A.2}기수}{136}{section.A.2}%
+\contentsline {section}{\numberline {A.3}ZFC 공리계}{137}{section.A.3}%
+\contentsline {section}{\numberline {A.4}괴델의 불완정성 정리}{137}{section.A.4}%

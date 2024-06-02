@@ -191,15 +191,19 @@ $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오�
 \end{itemize}
 문자열 $w \in \Sigma^*$에 대해 $\delta^* (q_0, w ) \in F$면, DFA $M$이 $w$를 받아들인다고 한다.
 $M$의 언어 $L(M)$은 다음과 같이 정의 가능하다.
-$$L(M) = \{w \in \Sigma^* : \delta (q_0, w) \in F \}$$
+\begin{align*}
+    L(M) = \{w \in \Sigma^* : \delta (q_0, w) \in F \}
+\end{align*}
 DFA의 상황(configuration)은 $(q_1, 0011)$과 같이 
 현재 상태와 입력 문자열의 읽지 않은 부분으로 결정된다. 
 한 번의 전이에 의해 DFA $M$의 상황이 변화하는 과정을 $\vdash$로 나타낸다.
 중간 전이를 생략하고 싶으면 $\vdash^*$로 나타낸다.
-$$(q_0, 0011) \vdash (q_1, 011)$$
-$$(q_0, 0011) \vdash^* (q_F, \epsilon)$$
-유한 오토마타를 이해하기 쉽도록 방향 그래프로 나타낸다.
-\begin{figure}[ht]
+\begin{align*}
+    (q_0, 0011) &\vdash (q_1, 011) \\
+    (q_0, 0011) &\vdash^* (q_F, \epsilon)
+\end{align*}
+유한 오토마타를 이해하기 쉽도록 우리는 이를 방향 그래프로 나타낸다.
+\begin{figure}[!ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
     \node[state, initial] (q0) {$q_0$};
@@ -213,13 +217,11 @@ $$(q_0, 0011) \vdash^* (q_F, \epsilon)$$
     \caption{} 
     \label{1 odd}
 \end{figure}
-그림 \ref{1 odd}는 1이 홀수개 있는 DFA를 나타낸다.
-
+그림 \ref{1 odd}는 1이 홀수개 있는 DFA를 나타낸다. 
 원이 두 개 그려진 상태는 최종 상태를 의미한다. 나머지는 잘 이해할 것이라 믿는다. 
-\begin{ex}
-    010을 부분문자열으로 갖는 문자열을 받아들이는 DFA를 구하라.
+\begin{ex}\label{010 DFA}
+    010을 부분문자열으로 갖는 문자열을 받아들이는 DFA를 구하라. 그림 \ref{010 figure} 참조.
 \end{ex}
-
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
@@ -237,13 +239,13 @@ $$(q_0, 0011) \vdash^* (q_F, \epsilon)$$
     (010) edge [loop above] node{0, 1} (010);
     \end{tikzpicture}
     \caption{} 
-    \label{010}
+    \label{010 figure}
 \end{figure}
-\begin{ex}
+\begin{ex}\label{010^C DFA}
     010을 부분문자열으로 갖지 않는 문자열을 받아들이는 DFA를 구하라.
+    \\ 예제 \ref{010 DFA}에서 $F$와 $Q-F$를 서로 바꿔주면 된다. 이와 같이 DFA에서는 어떤 언어 집합의
+    여집합을 표현하는 것이 매우 편리하다. (한 번 예제 \ref{010 DFA}, 예제 \ref{010^C DFA}를 정규식으로 표현해보자!)
 \end{ex}
-예제 2.4에서 $F$와 $Q-F$를 서로 바꿔주면 된다. 이와 같이 DFA에서는 어떤 언어 집합의
-여집합을 표현하는 것이 매우 편리하다. (한 번 예제 2.4, 예제 2.5를 정규식으로 표현해보자!) 
 \begin{ex}
     000 또는 111을 갖지 않는 문자열을 받아들이는 DFA를 구하라.
 \end{ex}
@@ -601,6 +603,13 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
     \begin{enumerate}
         \item Show that $L$ satisfies pumping lemma.
         \item Is $L$ regular? Verify your answer.
+    \end{enumerate}
+\end{ec}
+\begin{ec}
+    Consider the Language $L = \{a^nb^nc^md^m \;\vert\; n, m \ge 1\} \\ \cup \{a^nb^mc^md^n \;\vert\; n,m \ge 1\}$.
+    \begin{enumerate}
+        \item Show that $L$ is context free.
+        \item Show that $L$ is inherently ambiguous. 
     \end{enumerate}
 \end{ec}
 \chapter{문법과 오토마타} 
@@ -1250,13 +1259,6 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
 \begin{ec}
     Let $C$ be a context free language and $R$ be a regular language. 
     Show that $C \cap R$ is a context free. 
-\end{ec}
-\begin{ec}
-    Consider the Language $L = \{a^nb^nc^md^m \;\vert\; n, m \ge 1\} \\ \cup \{a^nb^mc^md^n \;\vert\; n,m \ge 1\}$.
-    \begin{enumerate}
-        \item Show that $L$ is context free.
-        \item Show that $L$ is inherently ambiguous. 
-    \end{enumerate}
 \end{ec}
 \begin{ec}
     Let the \textbf{rotational closure} of language A be $RC(A) = \{yx\;\vert\; xy \in A\}$.
