@@ -3134,8 +3134,8 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 수학적으로 어렵게 적어놨지만, 시간 복잡도 $f(n)$에 대해 가장 압도적인(dominate) 항만 계수를 빼고
  생각하겠다는 뜻이다.
 예를 들어 $f(n) = 3n^3 + 2n^2 +72n + 3000$에 대해 $n$이 커지면 $\lim_{n \rightarrow \infty} 
-\frac{f(n)}{n^3} = 3$으로 수렴가능하므로
-$f(n) = O(n^3)$임을 알 수 있다. 
+\frac{f(n)}{n^3} = 3$으로 수렴가능하므로 $f(n) = O(n^3)$임을 알 수 있다.\footnote{정말 그럴까?
+연습문제 \ref{On lim} 참고.}
 \begin{defn} \label{small-o defn}
     함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면
     $f(n) = o(g(n))$이라 한다. 
@@ -3760,7 +3760,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \textbf{(다항 시간 변환의 확장)} 문제 A의 사례 $\alpha$를 문제 B의 사례 $\beta$
 \end{defn} 
 \section{연습문제}
-\begin{ec}
+\begin{ec}\label{On lim}
     우리는 $O(g(n))$을 정의할 때 정의 \ref{big-o defn}와 같이 극한을 사용하지 않고 정의하였다. 그런데
     $o(g(n))$을 정의할 때는 정의 \ref{small-o defn}와 같이 극한을 사용해서 정의했다.
     그럼 $O(g(n))$을 정의할 때 다음과 같이 정의하면 안 되는 걸까?
