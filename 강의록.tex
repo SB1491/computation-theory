@@ -594,8 +594,16 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 
 \section{연습 문제}
 \begin{ec}
-    Let $L_n = \{x \;\vert\; x$ is binary number and that is a multiple 
-    of n$\}$. Show that for each $n\ge 1$, $L_n$ is regular. 
+    언어 $L_n$에 대해 
+    $L_n = \{x \;\vert\; x$는 이진수이고 $n$의 배수이다.$\}$라고 하자. 
+    모든 $n\ge 1$에 대해 $L_n$은 정규 언어임을 보여라. 
+\end{ec}
+\begin{ec}
+    Let the \textbf{rotational closure} of language A be $RC(A) = \{yx\;\vert\; xy \in A\}$.
+    \begin{enumerate}
+        \item Show that for any language $A$, we have $RC(A) = RC(RC(A))$.
+        \item Show that if language $A$ is regular then $RC(A)$ is regular.
+    \end{enumerate}
 \end{ec}
 \begin{ec}
     Consider the Language $L= \{a^i b^j c^k \;\vert\; i, j, k \ge 0$ 
@@ -603,13 +611,6 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
     \begin{enumerate}
         \item Show that $L$ satisfies pumping lemma.
         \item Is $L$ regular? Verify your answer.
-    \end{enumerate}
-\end{ec}
-\begin{ec}
-    Consider the Language $L = \{a^nb^nc^md^m \;\vert\; n, m \ge 1\} \\ \cup \{a^nb^mc^md^n \;\vert\; n,m \ge 1\}$.
-    \begin{enumerate}
-        \item Show that $L$ is context free.
-        \item Show that $L$ is inherently ambiguous. 
     \end{enumerate}
 \end{ec}
 \chapter{문법과 오토마타} 
@@ -1261,10 +1262,10 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
     Show that $C \cap R$ is a context free. 
 \end{ec}
 \begin{ec}
-    Let the \textbf{rotational closure} of language A be $RC(A) = \{yx\;\vert\; xy \in A\}$.
+    Consider the Language $L = \{a^n b^n c^m d^m \;\vert\; n, m \ge 1\} \\ \cup \{a^nb^mc^md^n \;\vert\; n,m \ge 1\}$.
     \begin{enumerate}
-        \item Show that for any language $A$, we have $RC(A) = RC(RC(A))$.
-        \item Show that if language $A$ is regular then $RC(A)$ is regular.
+        \item Show that $L$ is context free.
+        \item Show that $L$ is inherently ambiguous. 
     \end{enumerate}
 \end{ec}
 \begin{ec}
@@ -2527,7 +2528,7 @@ $\langle w \rangle$를 접합한 것을 $\langle M, w \rangle$로 표시한다.
         L_d = \{ \langle M \rangle \;\vert\; \langle M \rangle \in L(M) \}
     \end{align*}
 \end{defn}
-\begin{thm}
+\begin{thm}\label{Ldc not re}
     $L_d^C$는 재귀 열거 언어가 아니다. 
 \end{thm}
 \begin{pf*}
@@ -2913,6 +2914,13 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 \end{conj}
 \section{연습문제}
 \begin{ec}
+    우리는 정리 \ref{Ldc not re}에서 재귀 열거 언어가 아닌 언어가 존재함을
+    직접 찾아냈다. 그런데 사실 이렇게 굳이 재귀 열거 언어가 아닌 언어를 
+    직접 찾을 필요도 없이 매우 간단하게 존재성만 증명할 수도 있다.
+    계산 불가능한 함수 $f:\mathbb{N} \rightarrow \mathbb{N}$가 존재함을
+    증명하라. (매우 간단하게!) 
+\end{ec}
+\begin{ec}
     Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
         An instance of the PCP is a collection $P$ of dominos.
     \begin{align*}
@@ -3127,7 +3135,9 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 \begin{defn} \label{big-o defn}
     함수 $f, g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음과 같은 성질을 만족하는 
     양수의 정수 $c, n_0$가 존재하면 $f(n) = O(g(n))$이라 한다. $n \ge n_0$에 대해
-    $$f(n) \le cg(n)$$
+    \begin{align*}
+        f(n) \le cg(n)
+    \end{align*}
     이를 빅-$O$ 표기법(Big-O notation)이라 하며, 
     이때 $g(n)$을 $f(n)$의 \textbf{점근적 상한} (asymptotic upper bound)이라 한다.
 \end{defn}
@@ -3136,10 +3146,12 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 예를 들어 $f(n) = 3n^3 + 2n^2 +72n + 3000$에 대해 $n$이 커지면 $\lim_{n \rightarrow \infty} 
 \frac{f(n)}{n^3} = 3$으로 수렴가능하므로 $f(n) = O(n^3)$임을 알 수 있다.\footnote{정말 그럴까?
 연습문제 \ref{On lim} 참고.}
-\begin{defn} \label{small-o defn}
+\begin{defn}\label{small-o defn}
     함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면
     $f(n) = o(g(n))$이라 한다. 
-    $$\lim_{n\rightarrow \infty} \frac{f(n)}{g(n)} = 0$$
+    \begin{align*}
+        \lim_{n\rightarrow \infty} \frac{f(n)}{g(n)} = 0
+    \end{align*}
     이를 스몰-$o$ 표기법(Small-o notation)이라 한다. 
 \end{defn}
 빅-$O$의 경우, 어떤 함수보다 작거나 같다는 걸 표현하기 위해 사용하고, 스몰-$o$의 경우,
@@ -3440,7 +3452,7 @@ P $\neq$ NP인가? 수많은 컴퓨터 과학자들의 노력이 있었으나 �
 \begin{conj}
     \textbf{(만인의 추측)} $P \neq NP$이다.
 \end{conj} 
-\section{NP-완비}
+\section{NP-완전}
 우리가 상사에게 아주 어려운 문제를 풀라고 지시받았다. 아무리 풀려고 노력해봐도 답을 구할 수가 없을 때
 상사에게 뭐라고 말해야 할까?
 \begin{enumerate}
@@ -3449,7 +3461,7 @@ P $\neq$ NP인가? 수많은 컴퓨터 과학자들의 노력이 있었으나 �
     \item 다른 천재들도 이 문제를 풀어봤으나 그들도 구하지 못했다고 말한다.
 \end{enumerate}
 1의 경우 멍청해보이고, 2의 경우 답이 없다는 걸 보이기 전까지는 무례한 대답이다. 3이 가장 설득력 있는
-답안이라고 할 수 있는데, 이러한 관점에서 NP-완비라는 것을 정의하기로 한다.\footnote{M. Garey와 
+답안이라고 할 수 있는데, 이러한 관점에서 NP-완전라는 것을 정의하기로 한다.\footnote{M. Garey와 
 D.Johnson의 책인 
 Computers and Intractability: A Guide to the Thoery of NP-Completeness에 있는 유명한 예제이다.}
 \begin{defn}
@@ -3495,7 +3507,7 @@ Computers and Intractability: A Guide to the Thoery of NP-Completeness에 있는
     모든 언어 $L \in$ NP에 대해 언어 $A$가 $L \le_p A$이면 $A$를 \textbf{NP-하드}(NP-Hard)라 한다. 
 \end{defn}
 \begin{defn}
-    언어 $A$가 다음 두 가지 조건을 만족시키면 $A$를 \textbf{NP-완비}(NP-Complete)라 한다.
+    언어 $A$가 다음 두 가지 조건을 만족시키면 $A$를 \textbf{NP-완전}(NP-Complete)라 한다.
     \begin{enumerate}
         \item $A \in$ NP
         \item $A \in$ NP-하드
@@ -3549,12 +3561,16 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     표의 한 칸을 뜻하는 \textbf{칸}(cell)에 대해 $i$행 $j$열에 있는 칸을 $cell[i,j]$라 하자. $x_{i,j,s}=1$인 것은
     $cell[i,j]$이 $s$를 갖는다는 뜻이다. \\ 
     이제 $\phi$를 정의해보자. $\phi$는 다음과 같이 4가지 부분의 AND 연산으로 이루어진다. 
-    $$\phi = \phi_{cell} \wedge \phi_{start} \wedge \phi_{move} \wedge \phi_{accept}$$
+    \begin{align*}
+        \phi = \phi_{cell} \wedge \phi_{start} \wedge \phi_{move} \wedge \phi_{accept}
+    \end{align*}
     먼저 $\phi_{cell}$에 대해 알아보자. $\phi_{cell}$의 역할은 각 칸이 제대로 된 하나의 원소만을 담고 있는지 확인한다.
     이는 다음과 같이 만들 수 있다.
-    $$\phi_{cell} = \bigwedge_{1 \le i,j \le n^k} \left[\left(\bigvee_{s\in C} x_{i,j,s}\right)
+    \begin{align*}
+        \phi_{cell} = \bigwedge_{1 \le i,j \le n^k} \left[\left(\bigvee_{s\in C} x_{i,j,s}\right)
     \wedge \left(\bigvee_{s,t \in C, s \neq t} \left(\overline{x_{i,j,s}} \wedge 
-    \overline{x_{i,j,t}}\right) \right)\right]$$
+    \overline{x_{i,j,t}}\right) \right)\right]
+    \end{align*}
     $\bigvee_{s\in C} x_{i,j,s}$는 칸이 $C$의 원소를 담고 있는지 확인하고, $\bigvee_{s,t \in C, s \neq t} 
     \left(\overline{x_{i,j,s}} \wedge 
     \overline{x_{i,j,t}}\right)$는 칸이 $C$의 원소를 하나만 담고 있는지 확인한다. \\ 
@@ -3565,7 +3581,9 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
         &x_{1,n+3,\_} \wedge \ldots \wedge x_{1,n^k - 1 , \_} \wedge x_{1, n^k , \#}
     \end{align*} 
     $\phi_{accept}$는 받아들이는 상태가 있는지 확인한다. 이는 다음과 같다.
-    $$\phi_{accept} = \bigwedge_{1 \le i,j \le n^k} x_{i,j,q_{accept}}$$
+    \begin{align*}
+        \phi_{accept} = \bigwedge_{1 \le i,j \le n^k} x_{i,j,q_{accept}}
+    \end{align*}
     마지막으로 $\phi_{move}$는 도표가 $N$의 전이 관계에 따라 적절하게 생성되었는지 확인한다. 이를 확인하기 
     위해서 우리는 \textbf{창문}(window)을 활용한다. 우리는 $2 \times 3$ 창문을 이용해 전이 관계 규칙을
     따르고 있는지, 즉 \textbf{적법}(legal)한지 확인한다.\\
@@ -3653,7 +3671,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     (d)는 내용이 같으므로 당연히 적법하다. (e)는 헤드가 보이지 않는 곳에서 왼쪽으로 이동하면서 $q_2$로 바뀌는 것이
     전이 관계에 의해 가능하므로 적법하다. (f)는 오른쪽에 헤드가 보이지 않는 곳에서 $b$를 $c$로 바꾸는 것이 가능하므로
     적법하다. \\ 
-    다음 표 \ref{illegal_window}는 적법하지 않은 창문들의 예시이다. 왜 안 되는지 느끼면 된다. \\ 
+    다음 표 \ref{illegal_window}는 적법하지 않은 창문들의 예시이다. 왜 안 되는지 느끼면 된다.
     \begin{table}[!ht]
         \begin{subtable}[h]{0.3\textwidth}
             \centering
@@ -3727,6 +3745,9 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
         이는 당연히 다항시간 변환이다.
     \end{pf*}
 \end{ex}
+\begin{ex}
+    CLIQUE는 NP-완전임을 보여라.
+\end{ex}
 \section{coNP}
 \begin{defn}
     언어 $A$에 대해 $\overline{A} \in \text{NP}$이면 $A$는 \textbf{coNP}라고 한다.   
@@ -3739,7 +3760,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \textbf{coNP-하드}(coNP-Hard)라 한다.
 \end{defn}
 \begin{defn}
-    언어 $A$가 다음 두 가지 조건을 만족시키면 $A$를 \textbf{coNP-완비}(coNP-Complete)라고 한다.
+    언어 $A$가 다음 두 가지 조건을 만족시키면 $A$를 \textbf{coNP-완전}(coNP-Complete)라고 한다.
     \begin{enumerate}
         \item $A \in \text{coNP}$
         \item $A \in \text{coNP-하드}$
@@ -3750,7 +3771,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \begin{align*}
         \text{TAUTOLOGY} = \{ \phi \;\vert\; \phi \text{는 항상 참인 명제이다.}\}
     \end{align*}
-    TAUTOLOGY는 coNP-완비임을 보여라.
+    TAUTOLOGY는 coNP-완전임을 보여라.
 \end{ex}
 \section{최적화 문제}
 현재까지 다룬 모든 문제는 Yes/No만이 답인 문제였다. 그러나 우리가 다루는 문제가 항상 이런 것은 아니다. 

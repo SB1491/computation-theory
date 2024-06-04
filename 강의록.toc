@@ -53,7 +53,7 @@
 \contentsline {section}{\numberline {6.2}복잡도 분석}{109}{section.6.2}%
 \contentsline {section}{\numberline {6.3}P}{112}{section.6.3}%
 \contentsline {section}{\numberline {6.4}NP}{114}{section.6.4}%
-\contentsline {section}{\numberline {6.5}NP-완비}{117}{section.6.5}%
+\contentsline {section}{\numberline {6.5}NP-완전}{117}{section.6.5}%
 \contentsline {section}{\numberline {6.6}coNP}{123}{section.6.6}%
 \contentsline {section}{\numberline {6.7}최적화 문제}{123}{section.6.7}%
 \contentsline {section}{\numberline {6.8}연습문제}{124}{section.6.8}%

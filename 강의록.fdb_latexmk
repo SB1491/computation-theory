@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex 강의록"] 1717416096 "강의록.aux" "강의록.bbl" "강의록" 1717416149
+["bibtex 강의록"] 1717469434 "강의록.aux" "강의록.bbl" "강의록" 1717469437
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "ref.bib" 1716855596 3850 ecb00ccab2849ee32cc1048d44429b1a ""
-  "강의록.aux" 1717416149 18096 ba4e5b82e9f7d5069841794b28d2a706 "pdflatex"
+  "강의록.aux" 1717469437 18143 300d6870aea6700c0c5d112afe737860 "pdflatex"
   (generated)
   "강의록.bbl"
   "강의록.blg"
-["pdflatex"] 1717416145 "/home/rty/computation-theory/강의록.tex" "강의록.pdf" "강의록" 1717416149
+["pdflatex"] 1717469434 "/home/rty/computation-theory/강의록.tex" "강의록.pdf" "강의록" 1717469437
   "/etc/texmf/web2c/texmf.cnf" 1692859813 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rty/computation-theory/강의록.tex" 1717416145 216036 7a4e67aabffd91671a6f3ce5a5b4352b ""
+  "/home/rty/computation-theory/강의록.tex" 1717469430 216783 7ef29fc6189eef6bb3cb661fdb0f52bc ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -419,11 +419,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1692859835 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1715572842 2800104 06a3555352d653a7e9b184f562170f96 ""
-  "강의록.aux" 1717416149 18096 ba4e5b82e9f7d5069841794b28d2a706 "pdflatex"
-  "강의록.bbl" 1717416096 2716 9fda3381dc15b183c3518083bab7fa33 "bibtex 강의록"
-  "강의록.out" 1717416149 7743 7e2d3c91fc022fe5248a558a6f49c4e7 "pdflatex"
-  "강의록.tex" 1717416145 216036 7a4e67aabffd91671a6f3ce5a5b4352b ""
-  "강의록.toc" 1717416149 5604 2e6046bfb5b90a7546537ad16848ec3d "pdflatex"
+  "강의록.aux" 1717469437 18143 300d6870aea6700c0c5d112afe737860 "pdflatex"
+  "강의록.bbl" 1717469434 2716 9fda3381dc15b183c3518083bab7fa33 "bibtex 강의록"
+  "강의록.out" 1717469437 7743 2aaf0b94f7d96b67a177b5248049ff9f "pdflatex"
+  "강의록.tex" 1717469430 216783 7ef29fc6189eef6bb3cb661fdb0f52bc ""
+  "강의록.toc" 1717469437 5604 3c6604849c2fa6ea7473f62e3fc2f871 "pdflatex"
   (generated)
   "강의록.aux"
   "강의록.log"
