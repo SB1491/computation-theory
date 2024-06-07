@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2024.5.15)  8 JUN 2024 00:48
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2024.5.15)  8 JUN 2024 00:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1127,7 +1127,7 @@ Chapter 8.
 ]
 Appendix A.
 [135]
-Overfull \hbox (17.23512pt too wide) in paragraph at lines 3970--3973
+Overfull \hbox (17.23512pt too wide) in paragraph at lines 3973--3976
 [][]\TU/UnBatang.ttf(0)/bx/n/10 정 의 \TU/lmr/bx/n/10 A.6\TU/UnBatang.ttf(0)/bx/n/10 . []$\OML/cmm/m/it/10 f \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 Y$ \TU/UnBatang.ttf(0)/m/up/10 인 일 대 일 대 응 이 존 재 하 면 두 집 합 $\OML/cmm/m/it/10 X; Y$ \TU/UnBatang.ttf(0)/m/up/10 의 \TU/UnBatang.ttf(0)/bx/n/10 기 수\TU/lmr/m/n/10 (cardinality)(\TU/UnBatang.ttf(0)/m/up/10 또
  []
 
@@ -1139,11 +1139,11 @@ LaTeX Font Warning: Font shape `TU/UnBatang.ttf(0)/m/it' undefined
 (Font)              using `TU/UnBatang.ttf(0)/m/n' instead on input line 73.
 
 ) [140]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4022.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4022.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4025.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4025.
  (./강의록.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4022.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4022.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4025.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4025.
 Package rerunfilecheck Info: File `강의록.out' has not changed.
 (rerunfilecheck)             Checksum: EC20430DCDEDB71AFC18E76E8F3F177A;4508.
 
@@ -1160,4 +1160,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  153i,20n,182p,1629b,2559s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 강의록.xdv (140 pages, 1306012 bytes).
+Output written on 강의록.xdv (140 pages, 1306532 bytes).
