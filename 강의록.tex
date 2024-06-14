@@ -1005,9 +1005,9 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 PA는 $\Delta$가 전이 `관계'이므로 기본적으로 비결정론적이다. 비결정론적이므로 NFA와 마찬가지로
 최종 상태는 하나라고 가정할 수 있다. \\ 
 $((q, a, X), (p, Y))$에 대해, $q$는 현재 상태, $a$는 입력 알파벳, $X$는 현재 스택의 
-top에 있는 글자이다. $X$가 $\epsilon$일 때는 스택의 top을 읽지 않는다는 뜻이다. 
+top에 있는 글자이다. $X$가 $\epsilon$일 때는 스택의 상단(top)을 읽지 않는다는 뜻이다. 
 그리고 $p$는 그 다음 상태, $Y$는 $X$를 대체하는 글자이다. $((q,a,\epsilon),(p,A))$의 경우,
-$A$를 스택에 넣는 push 연산이고, $((q,a,A),(p,\epsilon))$은 스택에서 $A$를 빼는 pop 연산이다. \\ 
+$A$를 스택에 넣는 삽입(push) 연산이고, $((q,a,A),(p,\epsilon))$은 스택에서 $A$를 빼는 삭제(pop) 연산이다. \\ 
 PA는 시작할 때, 스택의 바닥을 의미하는 \#만을 가지고 있다. \#을 빼는 연산은 고려하지 않는다. \\ 
 PA의 상황(configuration)은 현재 상태, 아직 읽지 않은 입력 문자열, 현재 스택의 내용에 의해 결정된다.
 어떤 한 번의 전이에 의해 PA의 상황이 변화하는 과정을 $\vdash$로 표현할 수 있다. 중간 과정을 생략하고 싶으면
@@ -1098,39 +1098,28 @@ $$(\{p,q,r\}, \Sigma, V \cup \Sigma \cup \{\#\}, \Delta, p, \{r\})$$
 다음과 같은 성질을 만족한다고 가정하자. 여기서 $a, b\in \Sigma \cup \{\epsilon\}$, $A\in\Gamma$이다.
 \begin{itemize}
     \item $M$은 최종상태가 $q_f$ 한 개만 있고, 끝날 때에 스택에 \#만 남기고 $q_f$로 간다.
-    \item $M$의 전이는 $((p, a, \epsilon), (q, A))$(push 연산) 또는 
-    $((p, a, A), (q, \epsilon))$(pop 연산)만 갖는다. (왜 그런가?)
+    \item $M$의 전이는 $((p, a, \epsilon), (q, A))$(삽입 연산) 또는 
+    $((p, a, A), (q, \epsilon))$(삭제 연산)만 갖는다.\footnote{왜 그런가?}
 \end{itemize}
 $M$과 동등한 문맥무관 무법 $G$는 다음과 같이 만들 수 있다.
 \begin{enumerate}
-    \item 모든 $p, q \in Q$에 대해 $\langle pq \rangle \in V$
-    \item $S = \langle q_0 q_f\rangle$
-    \item 모든 $((p,a,\epsilon),(r,A)), ((s,b,A),(q,\epsilon)) \in \Delta$에 대해
-    $\langle pq \rangle \rightarrow a \langle rs \rangle b$를 만든다. 
-    \item 모든 $p, q, r \in Q$에 대해 $\langle pq \rangle \rightarrow \langle pr \rangle \langle rq \rangle$를
-    만든다.
-    \item 모든 $q \in Q$에 대해 $\langle qq \rangle \rightarrow \epsilon$을 만든다.
+    \item 모든 $p, q \in Q$에 대해 $\langle pq \rangle \in V$ \item $S = \langle q_0 q_f\rangle$  \item 모든 $((p,a,\epsilon),(r,A)), ((s,b,A),(q,\epsilon)) \in \Delta$에 대해 $\langle pq \rangle \rightarrow a \langle rs \rangle b$를 만든다. \item 모든 $p, q, r \in Q$에 대해 $\langle pq \rangle \rightarrow \langle pr \rangle \langle rq \rangle$를 만든다. \item 모든 $q \in Q$에 대해 $\langle qq \rangle \rightarrow \epsilon$을 만든다.
 \end{enumerate}
 이제 다음을 귀납법으로 보이자.
 \begin{align*}
-    (p, x, \epsilon) \vdash^*_M (q, \epsilon, \epsilon) \Leftrightarrow
-    \langle pq \rangle \overset{*}{\Rightarrow} x
+    (p, x, \epsilon) \vdash^*_M (q, \epsilon, \epsilon) \Leftrightarrow \langle pq \rangle \overset{*}{\Rightarrow} x
 \end{align*}
-($\Rightarrow$) 전이 횟수가 0인 경우에는 $p=q, x = \epsilon$이고,
-5번 규칙에 의해 $\langle qq \rangle \rightarrow \epsilon$이므로
-성립한다. 전이 횟수가 $i$ 미만일 때 위 명제가 성립한다 가정하자. \\
+($\Rightarrow$) 전이 횟수가 0인 경우에는 $p=q, x = \epsilon$이고,5번 규칙에 의해 $\langle qq \rangle \rightarrow \epsilon$이므로성립한다. 전이 횟수가 $i$ 미만일 때 위 명제가 성립한다 가정하자. \\
 전이 횟수가 $i \ge 1$일 때 스택에서 다음 둘 중 하나가 발생한다.
 \begin{enumerate}
-    \item 
+    \item 처음에 삽입된 글자가 마지막에 삭제되는 경우: 이 경우를 
 \end{enumerate}
 \end{pf*}
 \begin{ex}
     예제 \ref{0n10n_ex}의 PA와 동등한 문맥무관 문법을 구하라. 
 \end{ex}
 \section{문맥무관 언어의 성질}
-이제 문맥무관 문법으로 모든 언어 집합을 표현할 수 있을것만 같지만, 이는 그렇지 않다. 
-유한 오토마타 때와 비슷하게 우리는 펌프 정리를 이용하여 어떤 언어 집합이 문맥무관 언어가 
-아님을 보일 것이다.
+이제 문맥무관 문법으로 모든 언어 집합을 표현할 수 있을것만 같지만, 이는 그렇지 않다.유한 오토마타 때와 비슷하게 우리는 펌프 정리를 이용하여 어떤 언어 집합이 문맥무관 언어가 아님을 보일 것이다.
 \begin{thm}
 \textbf{(펌프 정리)} 문맥무관 언어 $L$에 대해 다음을 만족하는 양의 정수 $t$가 존재한다.
  길이가 $t$ 이상인 임의의 문자열 $w = uvxyz\in L$는
@@ -1142,21 +1131,10 @@ $M$과 동등한 문맥무관 무법 $G$는 다음과 같이 만들 수 있다.
 을 만족한다. 
 \end{thm}
 \begin{pf}
-문맥무관 언어 $L$을 생성하는 촘스키 표준형을 $G$라고 하자. 문자열 $w \in L$의 
-파스트리를 만들 때 $G$가 촘스키 표준형이므로 파스트리의 높이가 $i$이면 
-$\vert w\vert \le 2^{i-1}$이다. (촘스키 표준형의 경우 파스트리에서 
-자식 노드를 두 개 이하로만 가질 수 있기 때문) \\ 
-$\vert V \vert = k$라고 하자. 그럼 $t = 2^{k}$로 잡고, $\vert w  \vert \ge t$이면, 
-파스트리의 높이는 $k+1$ 이상이다. 루트에서 가장 긴 경로를 $P$라고 하자. 
-그 경로 내에 $k+1$개 이상의 변수가 존재하는데, 변수의 가짓수는 $k$이므로 
-중복되는 변수가 하나 이상 존재한다. P를 맨 아래에서부터 올라갔을 때 가장 
-처음으로 반복되는 변수를 $A$라고 하자. 그 중 위에 있는 변수를 $A_1$, 아래에 있는 변수를
-$A_2$라고 하자.  \\ 
-$A_1 \overset{*}{\Rightarrow} uxy$에 대해 $A_1$까지의 높이는 $k+1$ 이하이므로, 
-$\vert vxy\vert \le t$이다. 또한
-$A_1 \rightarrow BC$이므로 $\vert vy\vert \ge 1$이어야 한다. 또한 $A_1 \overset{*}{\Rightarrow}
-vA_2y $이므로 이를 바꿔 말하면 $A \overset{*}{\Rightarrow} vAy$임을 알 수 있다. 따라서 모든 $i$에 대해
-$uv^i x y^i z \in L$임을 알 수 있다. 
+문맥무관 언어 $L$을 생성하는 촘스키 표준형을 $G$라고 하자. 문자열 $w \in L$의 파스트리를 만들 때 $G$가 촘스키 표준형이므로 파스트리의 높이가 $i$이면 $\vert w\vert \le 2^{i-1}$이다. (촘스키 표준형의 경우 파스트리에서 자식 노드를 두 개 이하로만 가질 수 있기 때문) \\ 
+$\vert V \vert = k$라고 하자. 그럼 $t = 2^{k}$로 잡고, $\vert w  \vert \ge t$이면, 파스트리의 높이는 $k+1$ 이상이다. 루트에서 가장 긴 경로를 $P$라고 하자. 
+그 경로 내에 $k+1$개 이상의 변수가 존재하는데, 변수의 가짓수는 $k$이므로 중복되는 변수가 하나 이상 존재한다. P를 맨 아래에서부터 올라갔을 때 가장 처음으로 반복되는 변수를 $A$라고 하자. 그 중 위에 있는 변수를 $A_1$, 아래에 있는 변수를 $A_2$라고 하자.  \\ 
+$A_1 \overset{*}{\Rightarrow} uxy$에 대해 $A_1$까지의 높이는 $k+1$ 이하이므로, $\vert vxy\vert \le t$이다. 또한 $A_1 \rightarrow BC$이므로 $\vert vy\vert \ge 1$이어야 한다. 또한 $A_1 \overset{*}{\Rightarrow} vA_2y $이므로 이를 바꿔 말하면 $A \overset{*}{\Rightarrow} vAy$임을 알 수 있다. 따라서 모든 $i$에 대해 $uv^i x y^i z \in L$임을 알 수 있다. 
 \end{pf}
 \begin{figure}[!ht]
     \centering
@@ -1181,8 +1159,7 @@ $uv^i x y^i z \in L$임을 알 수 있다.
 \end{figure}
 \begin{ex} \label{anbncn}
     $L = \{a^n b^n c^n \;\vert\; n \ge 0 \}$이 문맥무관 언어가 아님을 보여라. \\ 
-    $w = a^tb^tc^t$라고 하자. $\vert vxy \vert \le t$이므로 $vy$는 $a,b,c$모두를 포함할 수 없다.
-    따라서 $uv^2 x y^2 z \notin L$이므로 문맥무관 언어가 아니다. 
+    $w = a^tb^tc^t$라고 하자. $\vert vxy \vert \le t$이므로 $vy$는 $a,b,c$모두를 포함할 수 없다. 따라서 $uv^2 x y^2 z \notin L$이므로 문맥무관 언어가 아니다. 
 \end{ex}
 \begin{ex}
     $L = \{ww \;\vert\; w \in \{0,1\}^*\}$이 문맥무관 언어가 아님을 보여라. 
@@ -1195,8 +1172,7 @@ $uv^i x y^i z \in L$임을 알 수 있다.
 \end{thm}
 \begin{pf*}
     \begin{enumerate}
-        \item $G = (V_1 \cup V_2 \cup \{S\}, \Sigma_1 \cup \Sigma_2, S,
-         P_1 \cup P_2 \cup \{S \rightarrow S_1 \;\vert\; S_2\})$
+        \item $G = (V_1 \cup V_2 \cup \{S\}, \Sigma_1 \cup \Sigma_2, S, P_1 \cup P_2 \cup \{S \rightarrow S_1 \;\vert\; S_2\})$
         \item $S \rightarrow S_1S_2$
         \item $S \rightarrow SS_1 \;\vert\; \epsilon$
     \end{enumerate}
@@ -1206,31 +1182,17 @@ $uv^i x y^i z \in L$임을 알 수 있다.
 \end{thm}
 \begin{pf*}
     \begin{enumerate}
-        \item $\{a^nb^nc^m\} \cap \{a^nb^mc^m\}$은 각각은 문맥무관 언어이지만 
-        교집합은 예제 \ref{anbncn}에 의해 문맥무관 언어가 아니다.
-        \item $L_1 \cap L_2 = \overline{\overline{L_1} \cup \overline{L_2}}$이므로 
-        여집합에 대해 닫혀있으면
-        교집합에 대해서도 닫혀 있어야 한다. 
+        \item $\{a^nb^nc^m\} \cap \{a^nb^mc^m\}$은 각각은 문맥무관 언어이지만 교집합은 예제 \ref{anbncn}에 의해 문맥무관 언어가 아니다. \item $L_1 \cap L_2 = \overline{\overline{L_1} \cup \overline{L_2}}$이므로 여집합에 대해 닫혀있으면 교집합에 대해서도 닫혀 있어야 한다. 
     \end{enumerate}
 \end{pf*}
 \begin{ex}
     \textbf{(소속 문제)} 문자열 $w$가 문맥무관 언어 $L$에 속하는지 결정하라. \\ 
-    앞의 유한 오토마타에서는 오토마타를 사용하면 쉽게 풀 수 있었으나, 여기서는 PA를 사용하지 않는다. 
-    그 이유는 PA가 비결정론적이기 때문에 구현이 매우 어렵고, 이를 결정론적인 오토마타로 흉내내도 
-    시간 복잡도 상으로 이득이 없기 때문이다. \\ 
-    따라서 우리는 문맥무관 문법 $G$를 촘스키 표준형으로 바꾼뒤 
-    CYK 알고리즘을 사용해서 소속문제를 $O(n^3)$에 풀 수 있다. 
-    CYK 알고리즘은  `감동'적이진 않으므로 이 책에서 다루진 않는다. 
-    (궁금하면 구글에 검색해보기 바란다.)
+    앞의 유한 오토마타에서는 오토마타를 사용하면 쉽게 풀 수 있었으나, 여기서는 PA를 사용하지 않는다. 그 이유는 PA가 비결정론적이기 때문에 구현이 매우 어렵고, 이를 결정론적인 오토마타로 흉내내도 시간 복잡도 상으로 이득이 없기 때문이다. \\ 
+    따라서 우리는 문맥무관 문법 $G$를 촘스키 표준형으로 바꾼뒤 CYK 알고리즘을 사용해서 소속문제를 $O(n^3)$에 풀 수 있다. CYK 알고리즘은 `감동'적이진 않으므로 이 책에서 다루진 않는다. (궁금하면 구글에 검색해보기 바란다.)
 \end{ex}
 \section{결정 내리누름 오토마타}
-앞에서 배운 PA는 기본적으로 비결정론적이다. 그럼 결정론적인 PA를 만들면 문맥무관 언어를 모두 표현할
-수 있을까? 유한 오토마타에서는 결정론적이든 비결정론적이든 계산 능력이 동일했으나, 
-PA에서는 아쉽게도 그렇지 않다. \\
-\textbf{결정 내리누름 오토마타}(deterministic pushdown automata, DPA)의 전이함수
-$\delta$는 $Q \times (\Sigma\cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\})$에서 
-$Q \times \Gamma^*$로의 부분 함수(partial function)로 정의한다. 비결정성을 막기 위해 DPA의
-전이함수는 다음과 같은 제약조건을 갖는다. 
+앞에서 배운 PA는 기본적으로 비결정론적이다. 그럼 결정론적인 PA를 만들면 문맥무관 언어를 모두 표현할 수 있을까? 유한 오토마타에서는 결정론적이든 비결정론적이든 계산 능력이 동일했으나, PA에서는 아쉽게도 그렇지 않다. \\
+\textbf{결정 내리누름 오토마타}(deterministic pushdown automata, DPA)의 전이함수 $\delta$는 $Q \times (\Sigma\cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\})$에서 $Q \times \Gamma^*$로의 부분 함수(partial function)로 정의한다. 비결정성을 막기 위해 DPA의 전이함수는 다음과 같은 제약조건을 갖는다. 
 \begin{itemize}
     \item $\delta(q,\epsilon,A)$가 정의되면, 모든 $a \in \Sigma$에 대해 $\delta(q,a,A)$가
     정의되지 않는다.
@@ -1248,43 +1210,33 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
     결정 문맥무관 언어가 아니면서 문맥무관 언어인 언어집합이 존재한다. 
 \end{thm}
 \begin{pf*}
-    $L = \{ a^ib^jc^k \;\vert\; i \neq j \text{ or } j \neq k \}$는 문맥무관 언어이다.
-    $L$이 결정 문맥무관 언어라면, $\overline{L}$도 결정 문맥무관 언어이다. $\overline{L} \cap
-    \{a^*b^*c^*\}$도 문맥무관 언어인데, 이는 $\{a^nb^nc^n\}$이므로 모순이다. 
+    $L = \{ a^i b^j c^k \;\vert\; i \neq j \text{ or } j \neq k \}$는 문맥무관 언어이다. $L$이 결정 문맥무관 언어라면, $\overline{L}$도 결정 문맥무관 언어이다. $\overline{L} \cap \{a^*b^*c^*\}$도 문맥무관 언어인데, 이는 $\{a^nb^nc^n\}$이므로 모순이다.
 \end{pf*}
 \begin{thm}
-    문맥무관 언어 $L$에 대해, $L$을 받아들이는 DPA $P$가 존재하는 것과 $L$이 애매하지 않은 문법 
-    $G$를 가지는 것은 동치이다. 
+    문맥무관 언어 $L$에 대해, $L$을 받아들이는 DPA $P$가 존재하는 것과 $L$이 애매하지 않은 문법 $G$를 가지는 것은 동치이다. 
 \end{thm}
 \section{연습문제}
 \begin{ec}
-    Let $C$ be a context free language and $R$ be a regular language. 
-    Show that $C \cap R$ is a context free. 
+    Let $C$ be a context free language and $R$ be a regular language. Show that $C \cap R$ is a context free. 
 \end{ec}
 \begin{ec}
-    Consider the Language $L = \{a^n b^n c^m d^m \;\vert\; n, m \ge 1\} \\ \cup \{a^nb^mc^md^n \;\vert\; n,m \ge 1\}$.
+    Consider the Language $L = \{a^n b^n c^m d^m \;\vert\; n, m \ge 1\} \\ \cup \{a^n b^m c^m d^n \;\vert\; n,m \ge 1\}$.
     \begin{enumerate}
         \item Show that $L$ is context free.
         \item Show that $L$ is inherently ambiguous. 
     \end{enumerate}
 \end{ec}
 \begin{ec}
-    Give a context free grammar that generates language $L$ 
-    ($N_a(w)$ means the number of occurrence of $a$ in $w$) 
+    Give a context free grammar that generates language $L$ ($N_a(w)$ means the number of occurrence of $a$ in $w$) 
     \begin{align*}
         L = \{ w \;\vert\; w \in \{0,1\}^*, N_0(w) \neq N_1(w) \}
     \end{align*}
 \end{ec}
 \chapter{튜링 기계와 재귀 언어} 
 \section{튜링 기계} \label{turing machine}
-지금까지 우리는 정규식, 유한 오토마타를 이용해 정규 언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를
-이용해 그보다 더 넓은 집합인 문맥무관 언어를 표현했다. 
-그럼 가장 넓은 언어집합을 표현할 수 있는 오토마타는 무엇일까?
-`궁극적인 오토마타'인 튜링 기계에 대해 알아보자. 
+지금까지 우리는 정규식, 유한 오토마타를 이용해 정규 언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를 이용해 그보다 더 넓은 집합인 문맥무관 언어를 표현했다. 그럼 가장 넓은 언어집합을 표현할 수 있는 오토마타는 무엇일까? `궁극적인 오토마타'인 튜링 기계에 대해 알아보자. 
 \begin{defn}
-    \textbf{튜링 기계}(Turing Machine, TM) $M$은 여섯 가지 요소 $(Q, \Sigma, \Gamma, 
-    \delta, q_0, H)$로
-    구성된다. 
+    \textbf{튜링 기계}(Turing Machine, TM) $M$은 여섯 가지 요소 $(Q, \Sigma, \Gamma, \delta, q_0, H)$로 구성된다. 
     \begin{enumerate}
         \item $Q$는 상태들의 유한 집합
         \item $\Sigma$는 입력 알파벳
@@ -1295,29 +1247,21 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
         \item $H \subseteq Q$는 정지상태들의 집합
     \end{enumerate}
 \end{defn}
-튜링 기계는 한쪽으로 무한한 길이의 테입과 하나의 제어기, 그리고 테입을 가르키는 헤드로 구성된다.
-$\delta$는 함수이므로 튜링 기계는 결정론적으로 움직인다. $L$은 헤드가 왼쪽으로 한 칸, $R$는
-오른쪽으로 한 칸, $S$는 헤드가 가만히 있는다는 뜻이다. 그리고
-헤드는 테입의 맨 왼쪽 끝에서 왼쪽으로 움직이지 않는다고 가정한다.\\ 
-DFA나 PA와는 달리 튜링 기계는 헤드가 이리저리 움직이면서 `입력을 다 읽는다'라는 개념이 없으므로, 언제 
-이 기계가 동작을 멈출 것인지를 명시해주어야 한다. 따라서 정지 상태 $h \in H$에 진입하면 튜링 기계는 정지한다.  \\ 
-튜링 기계의 \textbf{상황}(configuration)은 현재 제어기의 상태 $q$, 테입의 내용 $w$와 헤드가 가르키고 있는 위치로 구성된다.
-헤드 왼쪽에 있는 문자열이 $u$, 오른쪽에 있는 문자열이 $v$, 가르키고 있는 문자열을 $a$라 할때 현재 상황은
-$(q, u\underline{a}v)$로 나타낸다.  
+튜링 기계는 한쪽으로 무한한 길이의 테입과 하나의 제어기, 그리고 테입을 가르키는 헤드로 구성된다. $\delta$는 함수이므로 튜링 기계는 결정론적으로 움직인다. $L$은 헤드가 왼쪽으로 한 칸, $R$는 오른쪽으로 한 칸, $S$는 헤드가 가만히 있는다는 뜻이다. 그리고 헤드는 테입의 맨 왼쪽 끝에서 왼쪽으로 움직이지 않는다고 가정한다.\\ 
+DFA나 PA와는 달리 튜링 기계는 헤드가 이리저리 움직이면서 `입력을 다 읽는다'라는 개념이 없으므로, 언제 이 기계가 동작을 멈출 것인지를 명시해주어야 한다. 따라서 정지 상태 $h \in H$에 진입하면 튜링 기계는 정지한다.  \\ 
+튜링 기계의 \textbf{상황}(configuration)은 현재 제어기의 상태 $q$, 테입의 내용 $w$와 헤드가 가르키고 있는 위치로 구성된다. 헤드 왼쪽에 있는 문자열이 $u$, 오른쪽에 있는 문자열이 $v$, 가르키고 있는 문자열을 $a$라 할때 현재 상황은 $(q, u\underline{a}v)$로 나타낸다.  
 \begin{defn}
     TM $M = (Q, \Sigma, \Gamma, \delta, q_0, H)$이 정의하는 언어 $L(M)$은 다음과 같다.
-    $$ L(M) = \{ w \in \Sigma^*  \;\vert\;  (q_0, \underline{\#}w) \vdash^* (h, w') \} $$
+    \begin{align*}
+        L(M) = \{ w \in \Sigma^*  \;\vert\;  (q_0, \underline{\#}w) \vdash^* (h, w') \} 
+    \end{align*}
     이때 $h\in H$이고, $w'$는 임의의 문자열이다.  
 \end{defn}
 \begin{defn}
-    어떤 언어 $L$에 대하여, $L = L(M)$인 TM $M$이 존재할 때 언어 $L$을 
-    \textbf{재귀 열거 언어}(recursive enumerable language) 또는 
-    \textbf{튜링 기계가 인식 가능한 언어}(Turing-recognizable language)라고 한다. (이 책에서는 주로
-    재귀 열거 언어라는 표현을 사용할 것이다.)
+    어떤 언어 $L$에 대하여, $L = L(M)$인 TM $M$이 존재할 때 언어 $L$을 \textbf{재귀 열거 언어}(recursive enumerable language) 또는 \textbf{튜링 기계가 인식 가능한 언어}(Turing-recognizable language)라고 한다. (이 책에서는 주로 재귀 열거 언어라는 표현을 사용할 것이다.)
 \end{defn}
 \begin{ex}
-    \label{tm ex1}
-    $L = \{0^n \;\vert\; n \ge 1\}$을 정의하는 TM $M$을 구하라.
+    \label{tm ex1} $L = \{0^n \;\vert\; n \ge 1\}$을 정의하는 TM $M$을 구하라.
 \end{ex}
 \begin{ex}
     $L = \{0^n1^n \;\vert\; n \ge 1\}$을 정의하는 TM $M$을 구하라.
@@ -1332,16 +1276,9 @@ $(q, u\underline{a}v)$로 나타낸다.
     \label{tm ex4}
     $L = \{ww \;\vert\; w \in \{0,1\}^*\}$을 정의하는 TM $M$을 구하라.
 \end{ex}
-이처럼 튜링 기계의 계산 능력은 DFA, PA보다 아주 뛰어나다. 그런데 재귀 열거 언어에는 약간 문제가 있다.
-어떤 문자열이 TM이 정의하는 언어에 속하면 정지하겠지만 속하지 않는 경우에는
-정지하지 않고 무한히 돌아가기 때문에 우리가 무한한 시간 동안 기다리지 않는 이상 
-어떤 문자열이 언어 집합에 속하지 않는지 알 수 없다는 문제가 있다. 따라서 우리가 알기 쉬운 재귀 언어에 
-대해 알아보자.
+이처럼 튜링 기계의 계산 능력은 DFA, PA보다 아주 뛰어나다. 그런데 재귀 열거 언어에는 약간 문제가 있다. 어떤 문자열이 TM이 정의하는 언어에 속하면 정지하겠지만 속하지 않는 경우에는 정지하지 않고 무한히 돌아가기 때문에 우리가 무한한 시간 동안 기다리지 않는 이상 어떤 문자열이 언어 집합에 속하지 않는지 알 수 없다는 문제가 있다. 따라서 우리가 알기 쉬운 재귀 언어에 대해 알아보자.
 \begin{defn}
-    언어 $L$에 대해 TM $M$에 대해 정지상태가 $\{y,n\}$이라 하자.
-    $w \in L$이면 $(q_0, \underline{\#}w) \vdash^* (y, w')$이고 
-    $w \notin L$이면 $(q_0, \underline{\#}w) \vdash^* (n, w')$를 만족하면 $M$이 $L$을 결정한다고 하고, 
-    $L$을 결정하는 $M$이 존재하면 $L$을 \textbf{재귀 언어}라고 부른다.
+    언어 $L$에 대해 TM $M$에 대해 정지상태가 $\{y,n\}$이라 하자. $w \in L$이면 $(q_0, \underline{\#}w) \vdash^* (y, w')$이고 $w \notin L$이면 $(q_0, \underline{\#}w) \vdash^* (n, w')$를 만족하면 $M$이 $L$을 결정한다고 하고, $L$을 결정하는 $M$이 존재하면 $L$을 \textbf{재귀 언어}라고 부른다.
 \end{defn}
 \begin{thm}
     재귀 언어 종류는 재귀 열거 언어 종류의 부분집합이다.
@@ -1352,43 +1289,35 @@ $(q, u\underline{a}v)$로 나타낸다.
 \begin{ex}
     예제 \ref{tm ex1}$\sim$\ref{tm ex4}에서 정의한 튜링 기계가 정의하는 언어가 재귀 언어임을 보여라. (매우 간단하다.)
 \end{ex}
-TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문자열이 남는다.
-이를 이용해 TM을 입력에서 출력을 계산하는 도구로도 생각할 수 있다.
+TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문자열이 남는다. 이를 이용해 TM을 입력에서 출력을 계산하는 도구로도 생각할 수 있다.
 \begin{defn}
     $f: \Sigma^* \rightarrow \Sigma^*$인 함수에 대해 TM $M$이
-    $$(q_0, \underline{\#}w) \vdash^* (h, \underline{\#}f(w))$$
-    을 만족하면 $M$이 $f$를 \textbf{계산한다}(compute)고 한다. \\ 이때 $f$를
-    \textbf{계산 가능한 함수}(computable function)라고 한다. 
+    \begin{align*}
+        (q_0, \underline{\#}w) \vdash^* (h, \underline{\#}f(w))
+    \end{align*}
+    을 만족하면 $M$이 $f$를 \textbf{계산한다}(compute)고 한다. \\ 
+    이때 $f$를 \textbf{계산 가능한 함수}(computable function)라고 한다. 
 \end{defn}
 \begin{ex}
-    입력 $w \in \{0,1\}$에 대해 이를 이진수로 해석해서 $2w$를 계산하는 
-    TM $M$을 구하라. 
+    입력 $w \in \{0,1\}$에 대해 이를 이진수로 해석해서 $2w$를 계산하는 TM $M$을 구하라. 
 \end{ex}
 \begin{ex}
-    입력 $w \in \{0,1\}$에 대해 이를 이진수로 해석해서 $w + 1$를 계산하는 
-    TM $M$을 구하라. 
+    입력 $w \in \{0,1\}$에 대해 이를 이진수로 해석해서 $w + 1$를 계산하는 TM $M$을 구하라. 
 \end{ex}
 \begin{ex}
-    두 자연수 $m, n$이 단항 표기법으로 0으로 구분되어 입력으로 주어진다.
-    예를 들어, 3, 5의 경우, 111011111로 주어진다. 이때 $m+n$을
-    단항 표기법으로 계산하는 TM $M$을 구하라. 
+    두 자연수 $m, n$이 단항 표기법으로 0으로 구분되어 입력으로 주어진다. 예를 들어, 3, 5의 경우, 111011111로 주어진다. 이때 $m+n$을 단항 표기법으로 계산하는 TM $M$을 구하라. 
 \end{ex}
 \begin{ex}
-    두 자연수 $m,n$이 단항 표기법으로 0으로 구분되어 입력으로 주어진다.
-    단항 표기법으로 $m \times n$을 계산하는 TM $M$을 구하라. 
+    두 자연수 $m,n$이 단항 표기법으로 0으로 구분되어 입력으로 주어진다. 단항 표기법으로 $m \times n$을 계산하는 TM $M$을 구하라. 
 \end{ex}
-지금까지는 간단한 예제만 다뤘지만, 나누기, log 등등 더 복잡한 계산도 
-충분히 가능하다는 사실을 알았을 것이다.
+지금까지는 간단한 예제만 다뤘지만, 나누기, log 등등 더 복잡한 계산도 충분히 가능하다는 사실을 알았을 것이다.
 \section{튜링 기계의 확장}
-우리가 지금까지 다뤄 온 이 만능기계는 굉장히 계산 능력이 뛰어나다. 그럼 튜링 기계를 조금만
-더 확장시켜서 더 계산 능력이 뛰어나게 할 수는 없을까? 테이프가 여러 줄인 튜링 기계를 생각하자.
+우리가 지금까지 다뤄 온 이 만능기계는 굉장히 계산 능력이 뛰어나다. 그럼 튜링 기계를 조금만 더 확장시켜서 더 계산 능력이 뛰어나게 할 수는 없을까? 테이프가 여러 줄인 튜링 기계를 생각하자.
 \begin{defn}
-\textbf{$k$-테입 튜링 기계}는 일반적인 튜링 기계에서 테입이 $k$개로 늘어난 형태다. 즉, 튜링 기계의 
-여섯 가지 요소가 다음과 같이 정의된다.
+\textbf{$k$-테입 튜링 기계}는 일반적인 튜링 기계에서 테입이 $k$개로 늘어난 형태다. 즉, 튜링 기계의 여섯 가지 요소가 다음과 같이 정의된다.
 \begin{enumerate}
     \item $\ldots$ 생략 $\ldots$
-    \item $\delta$는 $(Q-H) \times \overbrace{\Gamma \times \ldots \times \Gamma}^k \rightarrow 
-    Q \times \overbrace{\Gamma \times \ldots \times \Gamma}^k \times \{L, R, S\}^k $ 
+    \item $\delta$는 $(Q-H) \times \overbrace{\Gamma \times \cdots \times \Gamma}^k \rightarrow Q \times \overbrace{\Gamma \times \cdots \times \Gamma}^k \times \{L, R, S\}^{k} $ 
     \item $\ldots$ 생략 $\ldots$
 \end{enumerate}
 \end{defn}
@@ -1396,28 +1325,15 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
     $k$-테입 튜링 기계의 계산 능력은 튜링 기계와 동일하다. 
 \end{thm}
 \begin{pf*}
-    두 튜링 기계의 계산 능력이 동등하다는 것을 보이기 위해선 튜링 기계로 $k$-테입 튜링 기계를 
-    흉내내면 된다. (반대는 지극히 당연하므로 보이지 않아도 된다.) \\ 
-    $k$-테입의 내용을 흉내내기 위해선 다음과 같이 $k$ 개의 테입에서의 심볼을 하나의 별도의 심볼로
-    생각하면 된다. 즉, $k$개의 테입의 첫 번째 칸에 각각 $a,b,c,d$라고 적혀있으면, 튜링 기계에서는 
-    이를 $abcd$라는 하나의 심볼로 생각하면 된다. $k$-테입 튜링 기계의 경우, $k$개의 헤드를 가지고
-    있으므로 이를 표시해주기 위해 다를 테입 심볼을 사용한다. 예를 들어 $abcd$라는 테입 심볼에서
-    두 번째 테입에 헤드가 있으면 $a\underbar{b}cd$와 같은 방식으로 표시해 주면 된다. 
-    $k$ 테입의 전이 함수는 헤드의 움직임을 한 번에 수정할 수 있지만  
-    일반적인 튜링 기계는 이것이 불가능하므로 $k$번 전이함수를 쪼개서 그때 그때 헤드가
-    어디 있는지 탐색한 뒤 그에 맞는 전이를 하면 된다. 
+    두 튜링 기계의 계산 능력이 동등하다는 것을 보이기 위해선 튜링 기계로 $k$-테입 튜링 기계를 흉내내면 된다. (반대는 지극히 당연하므로 보이지 않아도 된다.) \\ 
+    $k$-테입의 내용을 흉내내기 위해선 다음과 같이 $k$ 개의 테입에서의 심볼을 하나의 별도의 심볼로 생각하면 된다. 즉, $k$개의 테입의 첫 번째 칸에 각각 $a,b,c,d$라고 적혀있으면, 튜링 기계에서는 이를 $abcd$라는 하나의 심볼로 생각하면 된다. $k$-테입 튜링 기계의 경우, $k$개의 헤드를 가지고 있으므로 이를 표시해주기 위해 다를 테입 심볼을 사용한다. 예를 들어 $abcd$라는 테입 심볼에서 두 번째 테입에 헤드가 있으면 $a\underbar{b}cd$와 같은 방식으로 표시해 주면 된다. $k$ 테입의 전이 함수는 헤드의 움직임을 한 번에 수정할 수 있지만  일반적인 튜링 기계는 이것이 불가능하므로 $k$번 전이함수를 쪼개서 그때 그때 헤드가 어디 있는지 탐색한 뒤 그에 맞는 전이를 하면 된다. 
 \end{pf*}
 \section{비결정론적 튜링 기계}
-테입을 늘리는 것만으로는 튜링 기계의 계산 능력을 확장시킬 수 없는 것 같다. 그렇다면 비결정론적이게
-만들면 가능할까? 아쉽게도 이렇게 해도 능력은 동등하다.
+테입을 늘리는 것만으로는 튜링 기계의 계산 능력을 확장시킬 수 없는 것 같다. 그렇다면 비결정론적이게 만들면 가능할까? 아쉽게도 이렇게 해도 능력은 동등하다.
 \begin{defn}
-\textbf{비결정론적 튜링 기계}(Nondeterministic Turing Machine, NTM)는 일반적인 튜링 기계에서 
-전이가 비결정론적인 튜링 기계를 말한다. 
+\textbf{비결정론적 튜링 기계}(Nondeterministic Turing Machine, NTM)는 일반적인 튜링 기계에서 전이가 비결정론적인 튜링 기계를 말한다. 
 \begin{enumerate}
-    \item $\ldots$ 생략 $\ldots$
-    \item $\Delta$는 $(Q-H) \times \Gamma \times Q \times \Gamma \times \{L, R, S\}$의 부분집합으로써 
-    함수가 아닌 전이 \textbf{관계}로 정의된다.
-    \item $\ldots$ 생략 $\ldots$
+    \item $\ldots$ 생략 $\ldots$ \item $\Delta$는 $(Q-H) \times \Gamma \times Q \times \Gamma \times \{L, R, S\}$의 부분집합으로써 함수가 아닌 전이 \textbf{관계}로 정의된다. \item $\ldots$ 생략 $\ldots$
 \end{enumerate}
 \end{defn}
 \begin{defn}
@@ -1431,28 +1347,10 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
     비결정론적 튜링 기계와 (결정론적) 튜링 기계의 계산 능력은 동등하다. 
 \end{thm}
 \begin{pf*}
-    비결정론적 튜링 기계 $M$과 동등한 결정론적 튜링 기계를 제시하면 된다. 
-    $M$은 비결정론적이므로 한 상황 $C$에서 여러가지 \textbf{상황} $C_1, \ldots, C_n$으로 
-    전이할 수 있다. 이때, $n$은 비결정론적 튜링 기계의 정의에 의해 $\vert Q \vert
-    \times \vert \Gamma \vert \times 3$이하의 값인 유한한 값을 갖는다. 이를 간단히 $r$이라 하자. \\ 
-    $M$의 계산 과정을 상황을 정점으로, 전이를 간선으로 표현하여 트리 $T$로 나타낼 수 있다.
-    이 트리에서 어떤 정점의 자식 노드의 개수는 $r$ 이하로 유한하다. 즉, 이 트리의 모든 정점을
-    정수 $1, \ldots, r$으로 나타낼 수 있다. 루트는 초기 상태인 $1$이고 그 자식들은
-    $11, \ldots, 1r$이다. 또한 $11$의 자식들을 $111, \ldots, 11r$이다. \\
-    이제 3-테입 결정론적 튜링 기계 $M'$이 이를 흉내내고자 한다. $M'$은 트리 $T$의 정점을
-    하나하나 탐색하면서 정지하는 상태가 있는지 탐색한다. 깊이 우선 탐색(depth first search, DFS)을
-    하게 되면 트리가 유한하다는 보장이 없으므로 원래 $M$에서 정지상태가 존재함에도 
-    끝나지 않을 수가 있기 때문에, 여기서는 너비 우선 탐색(breath first search, BFS)을
-    사용한다. \\ 
-    원래라면 큐(queue)를 이용하겠지만, 튜링 기계에서 그런 복잡한 자료구조를 구현하는 것은
-    어려우므로 오래걸리지만 조금 더 간단한 방식을 사용한다. 먼저 첫 번째 테입에는 입력
-    $w$를 보관한다. 두 번째 테입에는 $\{1, \ldots, r\}^*$인 문자열을 너비 우선 탐색의
-    순서로 하나씩 만들어간다. 이제 세번째 테입에서는 두 번째 테입에서 주어진 상황 문자열 
-    $C = c_1 \ldots c_n $가 주어지면 그걸 이용해 $w$ 입력이 어떻게 변할지 흉내낸다. 
-    즉, 입력 $w$에 대해 먼저 $c_1$을 참고해서 $M$의 $c_1$번째 전이를 흉내내는 작업을 
-    세 번째 타입에서 수행한다. 그 후, 다시 $a_2$를 적용하고 이를 계속 반복한다. 만약
-    해당 $C$가 정지 상황이면 $M'$도 정지하게 되고 그렇지 않으면 그러한 상황이 나올 때까지
-    계속 탐색하며 반복하므로 원래의 비결정론적 튜링 기계 $M$을 흉내낼 수 있다.
+    비결정론적 튜링 기계 $M$과 동등한 결정론적 튜링 기계를 제시하면 된다. $M$은 비결정론적이므로 한 상황 $C$에서 여러가지 \textbf{상황} $C_1, \ldots, C_n$으로 전이할 수 있다. 이때, $n$은 비결정론적 튜링 기계의 정의에 의해 $\vert Q \vert \times \vert \Gamma \vert \times 3$이하의 값인 유한한 값을 갖는다. 이를 간단히 $r$이라 하자. \\ 
+    $M$의 계산 과정을 상황을 정점으로, 전이를 간선으로 표현하여 트리 $T$로 나타낼 수 있다. 이 트리에서 어떤 정점의 자식 노드의 개수는 $r$ 이하로 유한하다. 즉, 이 트리의 모든 정점을 정수 $1, \ldots, r$으로 나타낼 수 있다. 루트는 초기 상태인 $1$이고 그 자식들은 $11, \ldots, 1r$이다. 또한 $11$의 자식들을 $111, \ldots, 11r$이다. \\
+    이제 3-테입 결정론적 튜링 기계 $M'$이 이를 흉내내고자 한다. $M'$은 트리 $T$의 정점을 하나하나 탐색하면서 정지하는 상태가 있는지 탐색한다. 깊이 우선 탐색(depth first search, DFS)을 하게 되면 트리가 유한하다는 보장이 없으므로 원래 $M$에서 정지상태가 존재함에도 끝나지 않을 수가 있기 때문에, 여기서는 너비 우선 탐색(breath first search, BFS)을 사용한다. \\ 
+    원래라면 큐(queue)를 이용하겠지만, 튜링 기계에서 그런 복잡한 자료구조를 구현하는 것은 어려우므로 오래걸리지만 조금 더 간단한 방식을 사용한다. 먼저 첫 번째 테입에는 입력 $w$를 보관한다. 두 번째 테입에는 $\{1, \ldots, r\}^*$인 문자열을 너비 우선 탐색의 순서로 하나씩 만들어간다. 이제 세번째 테입에서는 두 번째 테입에서 주어진 상황 문자열 $C = c_1 \ldots c_n $가 주어지면 그걸 이용해 $w$ 입력이 어떻게 변할지 흉내낸다. 즉, 입력 $w$에 대해 먼저 $c_1$을 참고해서 $M$의 $c_1$번째 전이를 흉내내는 작업을 세 번째 타입에서 수행한다. 그 후, 다시 $a_2$를 적용하고 이를 계속 반복한다. 만약 해당 $C$가 정지 상황이면 $M'$도 정지하게 되고 그렇지 않으면 그러한 상황이 나올 때까지 계속 탐색하며 반복하므로 원래의 비결정론적 튜링 기계 $M$을 흉내낼 수 있다.
 \end{pf*}
 \section{랜덤 접근 기계}
 지금까지 다룬 튜링 기계는 아주 간결하면서도 계산 능력이 뛰어나지만 솔직히 말하면 `쓸모가 없다.'
@@ -2380,7 +2278,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     람다 계산법와 튜링 기계의 계산 능력은 동등하다.
 \end{thm}
 \begin{pf*}
-    먼저 람다 계산법는 $\mu$-재귀 함수를 통해 튜링 기계를 흉내낼 수 있다. 튜링 기계가 
+    먼저 람다 계산법은 $\mu$-재귀 함수를 통해 튜링 기계를 흉내낼 수 있다. 튜링 기계가 
     람다 계산법를 흉내내는 과정은 자세히 다루진 않으나, 충분히 할 수 있을 거라고 믿자...
 \end{pf*}
 \section{연습문제}
@@ -2444,9 +2342,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
 먼저 튜링 기계를 0과 1만으로 잘 표현하는 방법에 대해서 알아보자. 다음 절에서 튜링 기계의 설계도를 
 입력으로 넣기 위해서 이런 작업을 한다. 혹시 이런 세세하고 귀찮은 과정에 관심이 없다면, `아니 튜링 기계는
 테입 빼면 적당히 유한한데 당연히 알잘딱하게 되는거 아님???'라고 생각하고 넘어가도 무방하다.\\ 
-일단 $\Sigma = \{0, 1\}, \Gamma = \{0, 1, \#\}$라고 하자. 제한된 언어로 계산 불가능함을 보이면
-어차피 더 일반적인 문제는 당연히 계산이 불가능하기 때문에 문제는 없다. (다른 알파벳이 있다고 하더라도 ASCII 코드처럼 
-적당히 부호화를 하면 된다.) \\ 
+일단 $\Sigma = \{0, 1\}, \Gamma = \{0, 1, \#\}$라고 하자. 제한된 언어로 계산 불가능함을 보이면 어차피 더 일반적인 문제는 당연히 계산이 불가능하기 때문에 문제는 없다. (다른 알파벳이 있다고 하더라도 ASCII 코드처럼 적당히 부호화를 하면 된다.) \\ 
 \begin{defn} \label{TM encoding}
     튜링 기계 $M = (Q, \{0,1\}, \{0, 1, \#\}, \delta, q_1, H)$를 다음과 같은 방식으로
     $\{0,1\}$상의 문자열으로 만들자.
@@ -2856,7 +2752,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
 1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 계산법, 1936년에 튜링이 제시했고
 우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
 재귀 함수는 수학에서 다루었던 함수의 측면에서 우리가 계산하지 못하는 함수가 무엇인지를 최소화의 근본적인
-한계를 통해 제시하였다. 람다 계산법는 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 
+한계를 통해 제시하였다. 람다 계산법은 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 
 모든 계산을 제시하였다. 튜링 기계는 계산하는 과정에 집중하여 우리가 계산하지 못하는 것이 무엇인지를
 제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
 이러한 모델들과 계산 가능성이 시사하는 바는 처치-튜링 논제에 의해 기술될 수 있다.
