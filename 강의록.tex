@@ -1899,17 +1899,11 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     $M$을 3가지 경우로 나눠서 생각하자.
     \begin{enumerate}
         \item $M$이 변수인 경우: 
-        먼저 $M = x$라고 하자. 그럼 좌항은 $\{P / y\} \{ N / x\} x = \{ P / y\} x$이다. 우항은
-        $\{ \{P / y\} N / x \} \{P / y\} x = \{ \{P / y\} N / x \} x = \{P / y\} N$이다. 
-        이번엔 $M = y$라고 하자. 그럼 좌항은 $\{P / y\} \{ N / x\} y = \{ P / y\} y = P$이다.
-        우항은 $x \notin FV(P)$ 이므로 
-        $\{ \{P / y\} N / x \} \{P / y\}  y = \{ \{P / y\} N / x \} P = P $이다. 
-        $M= z$인 경우, 좌항과 우항 모두 $z$가 된다.
-        \item $M = \lambda z. M'$인 경우: 먼저 적절하게 $\alpha$-연산이 이루어져서 $z \neq x,
-        z \neq y, z \notin FV(P)$라고 하자.  
+        먼저 $M = x$라고 하자. 그럼 좌항은 $\{P / y\} \{ N / x\} x = \{ P / y\} x$이다. 우항은 $\{ \{P / y\} N / x \} \{P / y\} x = \{ \{P / y\} N / x \} x = \{P / y\} N$이다. 이번엔 $M = y$라고 하자. 그럼 좌항은 $\{P / y\} \{ N / x\} y = \{ P / y\} y = P$이다. 우항은 $x \notin FV(P)$ 이므로 $\{ \{P / y\} N / x \} \{P / y\}  y = \{ \{P / y\} N / x \} P = P $이다. $M= z$인 경우, 좌항과 우항 모두 $z$가 된다.
+        \item $M = \lambda z. M'$인 경우: 먼저 적절하게 $\alpha$-연산이 이루어져서 $z \neq x, z \neq y, z \notin FV(P)$라고 하자.  
         \begin{align*}
             \{P / y\} \{ N / x\} (\lambda z. M') &= \lambda z. \{P / y\} \{ N / x\}  M' \\ 
-            &=  \lambda z. \{ \{P / y\} N / x \} \{P / y \}  M' \; (\text{by induction})\\ 
+            &=  \lambda z. \{ \{P / y\} N / x \} \{P / y \}  M' \; (\text{귀납법})\\ 
             &=   \{ \{P / y\} N / x \} \{P / y \}  \lambda z. M' 
         \end{align*}
         \item $M = M_1 \, M_2$인 경우:
@@ -1918,16 +1912,14 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
             & = (\{P / y\} \{ N / x\} M_1 ) \, 
             ( \{P / y\} \{ N / x\} M_2) \\
             &= (\{ \{P / y\} N / x \} \{P / y \} M_1) \, 
-            (\{ \{P / y\} N / x \} \{P / y \} M_2) \; (\text{by induction}) \\
+            (\{ \{P / y\} N / x \} \{P / y \} M_2) \; (\text{귀납법}) \\
             &= \{ \{P / y\} N / x \} \{P / y \} (M_1 \, M_2)
         \end{align*}
     \end{enumerate}
 \end{pf*}
-사실 직관적으로는 $N$ 치환을 먼저 하냐, $P$를 하고 $N$ 치환을 $P$ 치환에 맞게 적절히 바꿔주고
-나중에 하냐의 차이이므로 당연히 같다는 것을 알 수 있다.
-\begin{lem} \label{lem3}
-    $M, N \in \Lambda$에 대해, $N \twoheadrightarrow N'$이면 
-    $\{N / x\}M \twoheadrightarrow \{N' / x\}M$이다.
+사실 직관적으로는 $N$ 치환을 먼저 하냐, $P$를 하고 $N$ 치환을 $P$ 치환에 맞게 적절히 바꿔주고 나중에 하냐의 차이이므로 당연히 같다는 것을 알 수 있다.
+\begin{lem}\label{lem3}
+    $M, N \in \Lambda$에 대해, $N \twoheadrightarrow N'$이면 $\{N / x\}M \twoheadrightarrow \{N' / x\}M$이다.
 \end{lem}
 \begin{pf*} 
     이것도 앞의 증명처럼 케이스를 나누어서 생각할 수 있다.
@@ -1941,8 +1933,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
             \{N / x\} y = y \twoheadrightarrow y = \{N' / x\} y
         \end{align*}
         \item $M = P \, Q$인 경우:
-        그럼 $\{N /x \} M = \{N /x \} P \, \{N /x \} Q $이다. 귀납적으로 $\{N /x \} P 
-        \twoheadrightarrow \{N' /x\} P,\{N /x \} Q \twoheadrightarrow \{N' /x \} Q $이다.
+        그럼 $\{N /x \} M = \{N /x \} P \, \{N /x \} Q $이다. 귀납적으로 $\{N /x \} P \twoheadrightarrow \{N' /x\} P,\{N /x \} Q \twoheadrightarrow \{N' /x \} Q $이다.
         이제 $\twoheadrightarrow$의 정의에 따라 
         \begin{align*}
             \{N /x \} P \, \{N /x \} Q &\twoheadrightarrow \{N' / x \} P \, \{N' /x \} Q \\
@@ -1953,9 +1944,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         \begin{align*}
             \{N / x\} (\lambda x. P) = \{N' / x \} (\lambda x.P) = \lambda x. P
         \end{align*}
-        \item $M = \lambda y. P \; (y \neq x)$인 경우: 적절하게 $\alpha$-연산이 이루어졌다고
-        가정하자. $\lambda y. (\{N / x\} P)$에 대해, 귀납적으로 $\{N / x\} P \twoheadrightarrow \{N' / x \} P$임을
-        알 수 있다. $\twoheadrightarrow$의 정의에 의해
+        \item $M = \lambda y. P \; (y \neq x)$인 경우: 적절하게 $\alpha$-연산이 이루어졌다고 가정하자. $\lambda y. (\{N / x\} P)$에 대해, 귀납적으로 $\{N / x\} P \twoheadrightarrow \{N' / x \} P$임을 알 수 있다. $\twoheadrightarrow$의 정의에 의해
         \begin{align*}
             \{N / x\} (\lambda y. P)& = \lambda y. (\{N /x\} P) \\ 
             &\twoheadrightarrow \lambda y. (\{ N' / x \} P) \\
@@ -1965,21 +1954,18 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
     \end{enumerate}
 \end{pf*}
 \begin{lem}
-    $M \twoheadrightarrow M', N \twoheadrightarrow N'$이면
-    $\{N / x \} M \twoheadrightarrow \{ N' / x \} M'$이다.
+    $M \twoheadrightarrow M', N \twoheadrightarrow N'$이면 $\{N / x \} M \twoheadrightarrow \{ N' / x \} M'$이다.
 \end{lem}
 \begin{pf*}
     $M \twoheadrightarrow M'$의 정의에 따라 케이스를 나누어 생각할 수 있다.
     \begin{enumerate}
         \item $M = M'$: 도윰정리 \ref{lem3}에 의해 당연하다.
-        \item $M = \lambda y. M_1, M' = \lambda y. M_1', M_1 \twoheadrightarrow M_1'$:
-        적절히 $\alpha$-연산이 이루어졌다고 가정하자. $ \{N / x\}(\lambda y. M_1) = 
+        \item $M = \lambda y. M_1, M' = \lambda y. M_1', M_1 \twoheadrightarrow M_1'$: 적절히 $\alpha$-연산이 이루어졌다고 가정하자. $ \{N / x\}(\lambda y. M_1) = 
         \lambda y. (\{N / x\} M_1)$이므로 귀납법에 의해 $\{ N / x \} M_1 \twoheadrightarrow M_1' \{N' / x\}$이다.
-        즉, $\{N / x\} M = \{N / x \} \lambda y. M_1 \twoheadrightarrow \lambda 
-        \{N' / x\} y. M_1' = \{N' / x\} M' $이다.
+        즉, $\{N / x\} M = \{N / x \} \lambda y. M_1 \twoheadrightarrow \lambda \{N' / x\} y. M_1' = \{N' / x\} M' $이다.
         \item $ M = P \, Q, M' = P' \, Q', M_1 \twoheadrightarrow M_1' $:
         $ \{N / x\}M = \{N / x \} P \, \{N / x\} Q$이므로 귀납법에 의해 $\{N / x\} P 
-        \twoheadrightarrow \{N' / x \} P', \{N / x \} Q \twoheadrightarrow \{N' / x \} Q'$이다. 따라서 
+    \twoheadrightarrow \{N' / x \} P', \{N / x \} Q \twoheadrightarrow \{N' / x \} Q'$이다. 따라서 
         \begin{align*}
             \{N / x \} M = \{N / x \} P \, \{N / x\} Q
             \twoheadrightarrow \{N' / x \} P' \,  \{N / x \} Q
@@ -2592,11 +2578,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
 잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많은 모델들 중
 언어 모델은 다른 모델들과는 굉장히 이질적이다. 이 모델들은 모두 
 언어학자 \textbf{노암 촘스키}(Noam Chomsky)에 의해 제시되었다. 촘스키는 언어를 보다 형식적으로
-기술하기 위해서 언어 생성 모델을 제시하였고, 이러한 모델은 수학자와 컴퓨터과학자가 제시해 온 여러가지
-계산 모델들과는 독립적으로 제시되어 왔었다. 촘스키는 이러한 모델을 이용해 인간의 언어 생성 방식을
-기술하려고 하였고, 실제로도 이는 언어학에서 현대 통사론의 근간을 이루고 있다. 이후에 이러한 언어 
-생성 방식이 계산 모델이 계산하는 능력과 동일하다는 것이 밝혀졌고, 언어의 계산 능력적 위계가 제시되었다.
-이는 표 \ref{chomsky hierarchy}에서 확인할 수 있다.
+기술하기 위해서 언어 생성 모델을 제시하였고, 이러한 모델은 수학자와 컴퓨터 과학자가 제시해 온 여러가지 계산 모델들과는 독립적으로 제시되어 왔었다. 촘스키는 이러한 모델을 이용해 인간의 언어 생성 방식을 기술하려고 하였고, 실제로도 이는 언어학에서 현대 통사론의 근간을 이루고 있다. 이후에 이러한 언어 생성 방식이 계산 모델이 계산하는 능력과 동일하다는 것이 밝혀졌고, 언어의 계산 능력적 위계가 제시되었다. 이는 표 \ref{chomsky hierarchy}에서 확인할 수 있다.
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -2605,7 +2587,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     정규 언어       & 유한 오토마타       &   $\{ a^n \;\vert\; n\ge 0\}$    \\ \hline
     문맥무관 언어    & 내리누름 오토마타     & $\{ a^n b^n \;\vert\; n\ge 0\}$    \\ \hline
     문맥유관 언어    & 선형 유한 자동 기계   & $\{ a^n b^n c^n \;\vert\; n\ge 0\}$    \\ \hline
-    재귀 열거 언어    & 튜링 기계         &   \\ \hline
+    재귀 열거 언어    & 튜링 기계         & 정지 문제  \\ \hline
     \end{tabular}
     \caption{}
     \label{chomsky hierarchy}
@@ -2630,35 +2612,21 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     제한된 비결정론적 튜링 기계이다. 즉, 길이가 $n$인 입력 문자열에 대해 테이프 길이가 $n$인 것이다.
 \end{defn}
 \section{처치-튜링 논제}
-지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에
-대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에
-발표된 괴델의 불완정성 정리에서 출발한다. 이 정리를 통해 더 이상 우리는 수학의 모든 문제를 풀 수 
-없다는 것이 증명되었다. 따라서 우리가 풀 수 없는 문제가 무엇인지를 알고자 하는 것은 매우 당연한
-수순이었다. 이를 위해 1931년에 괴델과 에르브랑이 제시했고 우리가 \ref{mu-recursive} 절에서 다루었던 재귀 함수, 
-1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 계산법, 1936년에 튜링이 제시했고
-우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
-재귀 함수는 수학에서 다루었던 함수의 측면에서 우리가 계산하지 못하는 함수가 무엇인지를 최소화의 근본적인
-한계를 통해 제시하였다. 람다 계산법은 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 
-모든 계산을 제시하였다. 튜링 기계는 계산하는 과정에 집중하여 우리가 계산하지 못하는 것이 무엇인지를
-제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
+지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에 대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에 발표된 괴델의 불완정성 정리에서 출발한다. 이 정리를 통해 더 이상 우리는 수학의 모든 문제를 풀 수 없다는 것이 증명되었다. 따라서 우리가 풀 수 없는 문제가 무엇인지를 알고자 하는 것은 매우 당연한 수순이었다. 이를 위해 1931년에 괴델과 에르브랑이 제시했고 우리가 \ref{mu-recursive} 절에서 다루었던 재귀 함수, 1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 계산법, 1936년에 튜링이 제시했고 우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
+재귀 함수는 수학에서 다루었던 함수의 측면에서 우리가 계산하지 못하는 함수가 무엇인지를 최소화의 근본적인 한계를 통해 제시하였다. 람다 계산법은 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 계산을 제시하였다. 튜링 기계는 계산하는 과정에 집중하여 우리가 계산하지 못하는 것이 무엇인지를 제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
 이러한 모델들과 계산 가능성이 시사하는 바는 처치-튜링 논제에 의해 기술될 수 있다.
 \begin{thesis} 
-    \textbf{(처치-튜링 논제, Church-Turing Thesis)} 다음 명제는 서로 동치다.
+    \textbf{(처치-튜링 논제, Church-Turing Thesis)} 다음 명제는 서로 동치다.\footnote{참고로 이 논제는 처치와 튜링 둘 다 딱히 말한 적이 없다...}
     \begin{itemize}
         \item 자연수 상에서의 함수가 \textbf{효과적 방법}(effective method)으로 산술될 수 있다.
         \item 튜링 기계에 의해 계산가능한 함수다.
     \end{itemize}
-    (참고로, 이 논제는 처치와 튜링 둘 다 딱히 말한 적이 없다...)
 \end{thesis}
-먼저 위 논제는 왜 `논제'일까? 첫 번째로, 이는 증명되지 않았다. 두 번째로, 사실 증명이 불가능할 수 있다.
-왜냐하면 `효과적 방법'이 무엇인지 정확히 정의되지 않았다. 이 논제가 함의하는 바는 바로 우리 인간이
-사고하는 방식은 결국 튜링 기계가 사고하는 방식과 같다는 것을 의미한다. 튜링은 앞에서 서술했듯이,
-괴델의 불완전성 정리를 자신만의 방식으로 증명하기 위해 튜링 기계를 제시했다. 이는 결국 인간이 기술할 수
-있는 수학은 결국 튜링 기계가 계산하는 방식과 동일하다는 것을 내포하고 있다.  
-혹자는 이를 `정의'로 취급하여, 아예 `알고리즘'이란 튜링 기계에 의해 계산가능한 함수로써 정의하기도 한다.
+먼저 위 논제는 왜 `논제'일까? 첫 번째로, 이는 증명되지 않았다. 두 번째로, 사실 증명이 불가능할 수 있다. 왜냐하면 `효과적 방법'이 무엇인지 정확히 정의되지 않았다. 이 논제가 함의하는 바는 바로 우리 인간이 사고하는 방식은 결국 튜링 기계가 사고하는 방식과 같다는 것을 의미한다. 튜링은 앞에서 서술했듯이, 괴델의 불완전성 정리를 자신만의 방식으로 증명하기 위해 튜링 기계를 제시했다. 이는 결국 인간이 기술할 수 있는 수학은 결국 튜링 기계가 계산하는 방식과 동일하다는 것을 내포하고 있다.   혹자는 이를 `정의'로 취급하여, 아예 `알고리즘'이란 튜링 기계에 의해 계산가능한 함수로써 정의하기도 한다.\\
+우리는 정말 많은 `상식적인 계산 모델'을 배웠지만 전부 튜링 기계의 한계를 벗어나지 못했다. 어쩌면 이러한 계산 모델들의 한계가 전부 동일하다는 것은 우리 인간의 사고의 한계가 여기까지라는 것을 보여주는 것이 아닐까?
 \section{바쁜 비버 함수}
 튜링 기계를 이용해 정의한 한 재미있는 함수에 대해 알아보자.
-\begin{defn}
+\begin{defn}\label{bbdefn}
     \textbf{바쁜 비버 함수}(busy beaver function)는 다음과 같은 튜링 기계에 의해 정의된다.
     \begin{enumerate}
         \item 이 튜링 기계는 정지 상태를 포함하여 $n$ 개의 상태를 가진다.
@@ -2669,15 +2637,17 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     \end{enumerate}
     위와 같은 상태의
     개수가 $n$개인 튜링 기계 중 정지하는 것만 생각했을 때, 정지하고 난 뒤 테입에 적혀있는
-    1의 개수가 가장 많은 튜링 기계를 $n$ 번째 \textbf{바쁜 비버}(busy beaver)라고 한다. 이때
-    함수 $BB: \mathbb{N} \rightarrow \mathbb{N}$에 대해 $BB(n)$은 $n$ 번째 바쁜 비버가 
-    정지하고 난 뒤 테입에 적혀 있는 1의 개수로 정의된다. $BB(n)$를 \textbf{바쁜 비버 함수}라고 한다.
+    1의 개수가 가장 많은 튜링 기계를 $n$ 번째 \textbf{바쁜 비버}(busy beaver)라고 한다. 이때 함수 $BB: \mathbb{N} \rightarrow \mathbb{N}$에 대해 $BB(n)$은 $n$ 번째 바쁜 비버가 정지하고 난 뒤 테입에 적혀 있는 1의 개수로 정의된다. $BB(n)$를 \textbf{바쁜 비버 함수}라고 한다.
 \end{defn}
 \begin{ex}
     가능한 $n$-상태 튜링 기계의 개수는 $(4n+4)^{2n}$이다.
 \end{ex}
-당연하지만, $BB(n)$은 계산 불가능하다. `정지하는' 튜링 기계만 생각해야 하는데, 어떤
-튜링 기계가 정지하는지 안 하는지는 정지문제에 의해 자명하게 계산 불가능하기 때문이다. \\ 
+\begin{thm}
+    $BB(n)$은 계산 불가능하다.
+\end{thm}
+\begin{pf*}
+    `정지하는' 튜링 기계만 생각해야 하는데, 어떤  튜링 기계가 정지하는지 안 하는지는 정지문제에 의해 자명하게 계산 불가능하기 때문이다. 
+\end{pf*} 
 $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들을 제외한 $BB(n)$의 값은
 밝혀지지 않았다. 지금까지 밝혀진 $BB(n)$의 값들은 그림 (\ref{BB table})에서 확인할 수 있다.
 \begin{figure}[!ht]
@@ -2696,25 +2666,53 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     \caption{}
     \label{BB table}
 \end{figure}
-\begin{conj}
-    
-\end{conj}
+\begin{thm}
+    $ZF$ 공리계가 무모순이면 $BB(748)$가 얼마인지 증명할 수 없다.
+\end{thm}
+\begin{pf*}
+    \textbf{(느슨한 증명)}
+    간단하게 증명하자면, ZF 공리계에서 만들어질 수 있는 모든 명제를 하나하나 적으면서, 이를 모두 증명하고 있는 748-상태 튜링 기계를 만들면 된다. 궁금하면 \cite{yedidia2016relatively}를 확인해보자.
+\end{pf*}
+\begin{thm}
+    골드바흐 추측이 거짓이면 정지하는 27-상태 튜링 기계가 존재한다.
+\end{thm}
+\begin{thm}
+    리만 가설이 거짓이면 정지하는 744-상태 튜링 기계가 존재한다.
+\end{thm}
+즉, 바꿔 말하면 $BB(27)$이 얼마인지 구하는 것은 골드바흐 추측을 증명하는 것보다 어려운 일이라는 것이다.
+\begin{defn}
+    정의 \ref{bbdefn}에서 정지한 뒤 테입에 적혀 있는 1의 개수가 아니라 스텝 횟수로 생각하자. 이를 \textbf{미친 개구리}(fast frog)라고 하고, 함수 $FF: \mathbb{N} \rightarrow \mathbb{N}$에 대해 $FF(n)$은 $n$ 번째 미친 개구리가 정지할 때까지의 스텝 수로 정의된다. $FF(n)$을 \textbf{미친 개구리 함수}라고 한다.
+\end{defn}
+\begin{thm}
+    $FF(n)$은 계산 불가능하다.
+\end{thm}
+\begin{pf*}
+    자명하다.
+\end{pf*}
+\begin{defn}
+    \textbf{차분한 오리너구리 함수}(Placid platypus function) $pp(n)$은 정의 \ref{bbdefn}에서의 튜링 머신이 $n$개 이상의 1을 출력하기 위한 최소한의 상태 갯수로 정의된다. 즉, 바쁜 비버 함수의 역함수이다.
+\end{defn}
+\begin{thm}
+    $pp(n)$은 계산 불가능하다.
+\end{thm}
+\begin{pf*}
+    $BB(n)$이 계산 불가능하므로 당연히 $pp(n)$도 계산 불가능하다.
+\end{pf*}
+$BB(n)$과 $FF(n)$ 너무 빠르게 증가해서 계산 불가능한 거라면, $pp(n)$은 오히려 너무 느리게 증가해서 계산 불가능하다.
+\begin{thm}
+    $\lim_{n\rightarrow\infty} pp(n) = \infty$이다.
+\end{thm}
+\begin{pf*}
+    자명하다.
+\end{pf*}
 \section{연습문제}
-\begin{ec}
-    우리는 정리 \ref{Ldc not re}에서 재귀 열거 언어가 아닌 언어가 존재함을
-    직접 찾아냈다. 그런데 사실 이렇게 굳이 재귀 열거 언어가 아닌 언어를 
-    직접 찾을 필요도 없이 매우 간단하게 존재성만 증명할 수도 있다.
-    계산 불가능한 함수 $f:\mathbb{N} \rightarrow \mathbb{N}$가 존재함을
-    증명하라. (매우 간단하게!) 
-\end{ec}
 \begin{ec}
     Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
         An instance of the PCP is a collection $P$ of dominos.
     \begin{align*}
         P = \left\{\left[ \frac{t_1}{b_1} \right], \ldots ,\left[\frac{t_k}{b_k}\right] \right\}
     \end{align*}
-    A match is a sequence $i_1, \ldots , i_n$, where $t_{i_1} \ldots t_{i_n} = b_{i_1} \ldots b_{i_n} $. 
-    The problem is to determine whether $P$ has a match. 
+    A match is a sequence $i_1, \ldots , i_n$, where $t_{i_1} \ldots t_{i_n} = b_{i_1} \ldots b_{i_n} $. The problem is to determine whether $P$ has a match. 
     \begin{align*}
         PCP = \{ \langle P \rangle \;\vert\; P \text{ is an instance of the PCP with a match}\}
     \end{align*}
@@ -2731,24 +2729,12 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     \end{enumerate}
 \end{ec}
 \chapter{튜링 위계와 산술적 위계}
-지금까지는 풀기 가능한 문제(언어)들의 위계를 다루어보았으니, 이제는 풀기 불가능한 문제에 대한 위계를 
-세울 차례다.
-지금까지 많은 `풀기 불가능한 문제'들을 알아보았다. 예를 들어, 어떤 프로그램이 멈출지 말지 결정하는 것은
-불가능한 문제이고, 또 어떤 프로그램이 우리가 의도한 동작을 수행하고 끝마칠지 말지 결정하는 것 또한
-불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로
-후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도 
-위계가 존재할까? 이를 어떻게 표현할 수 있을까?
+지금까지는 풀기 가능한 문제(언어)들의 위계를 다루어보았으니, 이제는 풀기 불가능한 문제에 대한 위계를 세울 차례다. 지금까지 많은 `풀기 불가능한 문제'들을 알아보았다. 예를 들어, 어떤 프로그램이 멈출지 말지 결정하는 것은 불가능한 문제이고, 또 어떤 프로그램이 우리가 의도한 동작을 수행하고 끝마칠지 말지 결정하는 것 또한 불가능한 문제다. 만약의 후자의 문제를 풀 수 있는 가상의 무언가가 있으면 당연히 전자도 풀 수 있게 되므로 후자가 아마 전자보다 더 어려운 문제일 것이다. 그렇다면 이런 불가능한 프로그램들 사이에서도  위계가 존재할까? 이를 어떻게 표현할 수 있을까?
 \section{괴델 수}
-이 장에서는 오직 자연수에 대해서만 다룰 것이다. 그러나 현재까지 다뤄온 문자열이나
-앞으로 다룰 여러 가지 정형 논리식(well-formed formula)은 자연수가 아니므로 이를
-부호화 하는 과정이 필요하다. 정의 \ref{TM encoding}처럼 적당히 잘 부호화 될 것이라 
-믿는다면 이 절은 넘겨도 좋다.
+이 장에서는 오직 자연수에 대해서만 다룰 것이다. 그러나 현재까지 다뤄온 문자열이나 앞으로 다룰 여러 가지 정형 논리식(well-formed formula)은 자연수가 아니므로 이를 부호화 하는 과정이 필요하다. 정의 \ref{TM encoding}처럼 적당히 잘 부호화 될 것이라 믿는다면 이 절은 넘겨도 좋다.
 \begin{defn}
     \textbf{괴델 수}(Gödel numbering)는 다음과 같이 어떤 논리식을
-    하나의 자연수로 나타내는 방식이다. 
-    각 기호는 표 \ref{godel encoding} 같이 하나의 자연수에 각각
-    대응된다. (표 \ref{godel encoding}은 괴델이 원래 사용한 부호화 방식이지만 다른 방식을 사용해도
-    전혀 문제는 없다.)
+    하나의 자연수로 나타내는 방식이다. 각 기호는 표 \ref{godel encoding} 같이 하나의 자연수에 각각 대응된다.\footnote{이는 괴델이 사용한 부호화 방식이지만 당연하지만 다른 방식을 사용해도 전혀 문제는 없다.}
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|}
@@ -2779,9 +2765,8 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     이때 $p_n$은 $n$번째 소수이다. 어떤 논리식 $\psi$의 괴델 수는 간단하게 $G(\psi)$로 나타낸다.
 \end{defn}
 \begin{ex}
-    $1 = 1$의 괴델 수를 구하라. ($=$의 괴델 수는 17으로 한다.) \\ 
-    $1 = 1$은 $S\, 0 = S\, 0$과 같이 나타낼 수 있으므로 수열 $(3, 1, 17, 3, 1)$에 대응된다. 즉
-    괴델수는 
+    $1 = 1$의 괴델 수를 구하라. (단, $=$의 괴델 수는 17으로 한다.) \\ 
+    $1 = 1$은 $S\, 0 = S\, 0$과 같이 나타낼 수 있으므로 수열 $(3, 1, 17, 3, 1)$에 대응된다. 즉 괴델수는 
     \begin{align*}
         enc(3, 1, 13, 3, 1) = 2^3 \cdot 3^1 \cdot 5^{17} \cdot 7^3 \cdot 11^1 = 69085693359375000
     \end{align*}
@@ -2818,10 +2803,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 \end{defn}
 위와 같은 정의는 튜링 머신을 통해 새롭게 정의될 수 있다.
 \begin{defn}
-    \textbf{(느슨한 정의)} 집합 $A$에 대해 $A$-\textbf{신탁 튜링 기계}($A$-oracle turing machine) $M$은
-    \textbf{신탁}(oracle)이 붙어있는 튜링 기계이다.
-    여기서 신탁이란 자연수 $x$에 $\chi_A(x)$를 반환해주는
-    가상의 기계이다. 여기서 $L(M)$은 
+    집합 $A$에 대해 $A$-\textbf{신탁 튜링 기계}($A$-oracle turing machine) $M$은 \textbf{신탁}(oracle)이 붙어있는 튜링 기계이다. 여기서 신탁이란 자연수 $x$에 $\chi_A(x)$를 반환해주는 가상의 기계이다. 여기서 $L(M)$은 
     \begin{align*}
         L(M) = \{x \;\vert\; M\text{이 입력 } x\text{에 대해 정지한다.} \}
     \end{align*}
@@ -2902,6 +2884,8 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     정의역이다. $M$ \\
     ($\Rightarrow$) $A = $
 \end{pf*}
+\section{그 너머의 계산}
+ㅋㅋ
 \part{계산 복잡도}
 \chapter{시간 복잡도}
 \section{점근적 표기법}\label{asymptotic}
