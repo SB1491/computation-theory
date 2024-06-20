@@ -72,7 +72,7 @@
 \maketitle
 \chapter*{서문}
 언제 완성될지는 모르겠으나 일단은 시작해보고자 한다. 이 교재는 기본적으로 박근수 교수님의 강의록을 기반으로 한다. \\ 
-이 교재는 쓰는 사람의 `한국어 교재는 한국어 용어만, 영어 교재는 영어 용어만 사용해야 한다'는 이상한 철학에 의해 모든 용어는 한국어 용어를 기반으로 한다. 모든 번역은 이미 사용되고 있는 방식이나 한국수학회 수학용어를 기반으로 번역하였다. \\ 
+이 교재는 필자의 `한국어 교재는 한국어 용어만, 영어 교재는 영어 용어만 사용해야 한다'는 이상한 철학에 의해 모든 용어는 한국어 용어를 기반으로 한다. 모든 번역은 이미 사용되고 있는 방식이나 한국수학회 수학용어를 기반으로 번역하였다. \\ 
 다들 무엇 무엇의 정수와 같은 방식으로 제목을 작성하길래 필자도 따라해 보았다.
 \tableofcontents
 
@@ -174,15 +174,14 @@ $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오�
     \item $\delta^* (q, \epsilon) = q$
     \item $\forall w \in \Sigma^*, \forall a \in \Sigma, \delta^* (q, wa) = \delta(\delta^*(q,w),a)$
 \end{itemize}
-문자열 $w \in \Sigma^*$에 대해 $\delta^* (q_0, w ) \in F$면, DFA $M$이 $w$를 받아들인다고 한다.
-$M$의 언어 $L(M)$은 다음과 같이 정의 가능하다.
+문자열 $w \in \Sigma^*$에 대해 $\delta^* (q_0, w ) \in F$면, DFA $M$이 $w$를 \textbf{받아들인다}(accept)고 한다. $M$의 언어 $L(M)$은 다음과 같이 정의 가능하다.
 \begin{align*}
     L(M) = \{w \in \Sigma^* : \delta (q_0, w) \in F \}
 \end{align*}
-DFA의 상황(configuration)은 $(q_1, 0011)$과 같이 현재 상태와 입력 문자열의 읽지 않은 부분으로 결정된다. 한 번의 전이에 의해 DFA $M$의 상황이 변화하는 과정을 $\vdash$로 나타낸다. 중간 전이를 생략하고 싶으면 $\vdash^*$로 나타낸다.
+DFA의 \textbf{상황}(configuration)은 $(q_1, 0011)$과 같이 현재 상태와 입력 문자열의 읽지 않은 부분으로 결정된다. 한 번의 전이에 의해 DFA $M$의 상황이 변화하는 과정을 $\vdash_M$로 나타낸다. 중간 전이를 생략하고 싶으면 $\vdash_M^*$로 나타낸다.
 \begin{align*}
-    (q_0, 0011) &\vdash (q_1, 011) \\
-    (q_0, 0011) &\vdash^* (q_F, \epsilon)
+    (q_0, 0011) &\vdash_M (q_1, 011) \\
+    (q_0, 0011) &\vdash_M^* (q_F, \epsilon)
 \end{align*}
 유한 오토마타를 이해하기 쉽도록 우리는 이를 방향 그래프로 나타낸다.
 \begin{figure}[!ht]
@@ -232,10 +231,9 @@ DFA의 상황(configuration)은 $(q_1, 0011)$과 같이 현재 상태와 입력 
 \begin{ex}
     000을 부분문자열으로 가지고 111을 부분문자열으로 갖지 않는 문자열을 받아들이는 DFA를 구하라.
 \end{ex}
-어떤 입력을 받아도 빠져 나올 수 없는 죽은 상태(dead state)를 활용하면 된다. (죽은 상태는 모든 입력에 대해 자기 자신으로 돌아오게 만들면 된다.)
+어떤 입력을 받아도 빠져 나올 수 없는 죽은 상태(dead state)를 활용하면 된다. 죽은 상태는 모든 입력에 대해 자기 자신으로 돌아오게 만들면 된다.
 \section{비결정론적 유한 오토마타}
-여기서 다룰 오토마타는 약간 우리의 상식과는 어긋난다. 
-DFA의 경우 결정론적으로 어떤 입력을 받으면 반드시 그 다음 상태로 이동하게 된다. 즉, 다른 말로 하면 항상 `확실'하게 움직인다고 할 수 있다. 그러나 비결정론적 유한 오토마타(nondeterministic finite automata)는 다음 상태가 없거나 하나 이상일 수도 있다. 또한 아무런 입력을 받지 않고서라도 전이할 수 있다.
+여기서 다룰 오토마타는 약간 우리의 상식과는 어긋난다. DFA의 경우 결정론적으로 어떤 입력을 받으면 반드시 그 다음 상태로 이동하게 된다. 즉, 다른 말로 하면 항상 `확실'하게 움직인다고 할 수 있다. 그러나 비결정론적 유한 오토마타(nondeterministic finite automata)는 다음 상태가 없거나 하나 이상일 수도 있다. 또한 아무런 입력을 받지 않고서라도 전이할 수 있다.
 \begin{defn}
     \textbf{비결정론적 유한 오토마타}(nondeterministic finite automata, NFA) $M$은 다음과 같은 5가지 요소로 구성된다.
 \begin{enumerate}
@@ -260,13 +258,12 @@ DFA의 경우 결정론적으로 어떤 입력을 받으면 반드시 그 다음
 함수 $\Delta^*: Q \times \Sigma^* \rightarrow 2^{Q} $ 는 다음과 같이 정의할 수 있다. 
 \begin{itemize}
     \item $\Delta^* (q, \epsilon) = E(q)$
-    \item $\forall w \in \Sigma^* ,  \forall a \in \Sigma,
-    \Delta^* (q, wa) = E(\Delta(\Delta^*(q, w), a))$
+    \item $\forall w \in \Sigma^* ,  \forall a \in \Sigma, \Delta^* (q, wa) = E(\Delta(\Delta^*(q, w), a))$
 \end{itemize}
 너무 복잡하게 생각하지 말고, 알파벳 대신 문자열을 쭉 따라 갔을 때 갈 수 있는 모든 상태들의 집합으로 전이하는 함수라고 생각하면 된다.\\
 문자열 $w$에 대해 $\Delta^* (q_0, w)$의 원소들 중에 $F$의 원소가 하나라도 있으면 $M$이 $w$을 받아들인다고 한다. 즉, $L(M)$은 $M$이 받아들이는 모든 문자열의 집합이다. 
 \begin{ex}\label{010+01}
-    $(010+01)^*$ 를 받아들이는 NFA를 만들어라.
+    $(010+01)^*$ 를 받아들이는 NFA를 만들어라. 그림 \ref{(010+01)^*} 참조.
 \end{ex} 
 \begin{figure}[ht]
     \centering
@@ -528,7 +525,7 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 0의 개수로 가능한 가짓수는 무한하다. 따라서 유한 개의 상태만을 가진 DFA로는 구현해내는 것이
 불가능하므로 정규 언어가 아님을 알 수 있다. 
 
-\section{연습 문제}
+\section{연습문제}
 \begin{ec}
     언어 $L_n$에 대해 
     $L_n = \{x \;\vert\; x$는 이진수이고 $n$의 배수이다.$\}$라고 하자. 
@@ -919,10 +916,10 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 PA는 $\Delta$가 전이 `관계'이므로 기본적으로 비결정론적이다. 비결정론적이므로 NFA와 마찬가지로 최종 상태는 하나라고 가정할 수 있다. \\ 
 $((q, a, X), (p, Y))$에 대해, $q$는 현재 상태, $a$는 입력 알파벳, $X$는 현재 스택의 상단(top)에 있는 글자이다. $X$가 $\epsilon$일 때는 스택의 상단을 읽지 않는다는 뜻이다. 그리고 $p$는 그 다음 상태, $Y$는 $X$를 대체하는 글자이다. $((q,a,\epsilon),(p,A))$의 경우, $A$를 스택에 넣는 삽입(push) 연산이고, $((q,a,A),(p,\epsilon))$은 스택에서 $A$를 빼는 삭제(pop) 연산이다. \\
 PA는 시작할 때, 스택의 바닥을 의미하는 \#만을 가지고 있다. \#을 빼는 연산은 고려하지 않는다. \\ 
-PA의 상황(configuration)은 현재 상태, 아직 읽지 않은 입력 문자열, 현재 스택의 내용에 의해 결정된다. 어떤 한 번의 전이에 의해 PA의 상황이 변화하는 과정을 $\vdash$로 표현할 수 있다. 중간 과정을 생략하고 싶으면 $\vdash^*$와 같이 쓸 수도 있다. \\ 
+PA의 상황(configuration)은 현재 상태, 아직 읽지 않은 입력 문자열, 현재 스택의 내용에 의해 결정된다. 어떤 한 번의 전이에 의해 PA $M$의 상황이 변화하는 과정을 $\vdash_M$로 표현할 수 있다. 중간 과정을 생략하고 싶으면 $\vdash_M^*$와 같이 쓸 수도 있다. \\ 
 어떤 입력 문자열 $w$를 PA가 읽었을 때의 상태가 최종 상태이면 우리는 PA가 $w$를 받아들인다라고 한다. PA $M$이 받아들이는 문자열의 집합을 $L(G)$라고 표시하며 이는 다음과 같다.
 \begin{align*}
-    L(M) = \{w \in \Sigma^* \;\vert\; \exists p\in F, \exists u \in \Gamma^* , (q_0, w, \text{\#}) \vdash^* (p, \epsilon, u)\}
+    L(M) = \{w \in \Sigma^* \;\vert\; \exists p\in F, \exists u \in \Gamma^* , (q_0, w, \text{\#}) \vdash_M^* (p, \epsilon, u)\}
 \end{align*}
 PA를 간편하게 표현하기 위해 방향 그래프의 형태로 표시한다. $a, A/A'$에 대해 $a$는 입력 알파벳, $A$는 스택의 상단 알파벳, $A'$는 대체할 스택 알파벳이다. 
 \begin{ex}\label{0n10n_ex}
@@ -1018,7 +1015,7 @@ $M$과 동등한 문맥무관 무법 $G$는 다음과 같이 만들 수 있다.
     \item 처음에 삽입된 글자가 마지막에 삭제되는 경우: 이 경우를 $\langle pq \rangle \rightarrow a \langle rs \rangle b$로 흉내내려고 한다. 여기에서 $a$와 $r$은 처음 전이 때 읽은 글자와 다음 상태이고, $b$와 $s$는 마지막 전이 때 읽은 글자와 이전 상태이다.
     \item 처음에 삽입된 글자가 중간에 삭제되는 경우: 이 경우를 $\langle pq \rangle \rightarrow \langle pr \rangle \langle rq \rangle$로 흉내내려고 한다. 여기에서 $r$은 처음에 삽입된 글자가 삭제되었을 때의 상태이다.
 \end{enumerate}
-먼저 1 번이 발생하는 경우를 생각하자. $A$를 처음에 스택에 삽입된 글자, $a$와 $r$은 처음 전이 때 읽은 글자와 다음 상태, $b$와 $s$는 마지막 전이 때 읽은 글자와 이전 상태라고 하자. 즉 처음 전이가 $((p, a, \epsilon), (r, A))$, 마지막 전이가 $((s,b,A),(q,\epsilon))$이다. 이때 $G$는 $\langle pq \rangle \rightarrow a \langle rs \rangle b$를 갖는다. $x = ayb$라고 하자. 귀납법 가정에 의해 $(r, y, \epsilon) \vdash^* (s,\epsilon , \epsilon)$이므로 $\langle rs \rangle \overset{*}{\Rightarrow} y$이다. 따라서 $\langle pq \rangle \Rightarrow a \langle rs \rangle b \overset{*}{\Rightarrow} x$이 성립한다. \\ 
+먼저 1 번이 발생하는 경우를 생각하자. $A$를 처음에 스택에 삽입된 글자, $a$와 $r$은 처음 전이 때 읽은 글자와 다음 상태, $b$와 $s$는 마지막 전이 때 읽은 글자와 이전 상태라고 하자. 즉 처음 전이가 $((p, a, \epsilon), (r, A))$, 마지막 전이가 $((s,b,A),(q,\epsilon))$이다. 이때 $G$는 $\langle pq \rangle \rightarrow a \langle rs \rangle b$를 갖는다. $x = ayb$라고 하자. 귀납법 가정에 의해 $(r, y, \epsilon) \vdash_M^* (s,\epsilon , \epsilon)$이므로 $\langle rs \rangle \overset{*}{\Rightarrow} y$이다. 따라서 $\langle pq \rangle \Rightarrow a \langle rs \rangle b \overset{*}{\Rightarrow} x$이 성립한다. \\ 
 2 번이 발생하는 경우를 생각하자. $r$을 처음에 삽입된 글자가 삭제되었을 때의 상태라고 하고, $y$와 $z$를 각각 $r$ 이전과 이후에 읽은 문자열이라고 하자. $G$는 $\langle pq \rangle \rightarrow \langle pr \rangle \langle rq \rangle$를 가지므로 귀납법 가정에 의해 $\langle pr \rangle \overset{*}{\Rightarrow} y$이고 $\langle rq \rangle \overset{*}{\Rightarrow} x$이다. 따라서 $\langle pq\rangle \overset{*}{\Rightarrow} \langle pr \rangle \langle rq \rangle \overset{*}{\Rightarrow} x$이다. \\
 위와 비슷하게 $(\Leftarrow)$의 경우도 증명할 수 있다. 따라서 $w \in L(G)$인 경우에만 $w \in L(M)$이다. 
 \end{pf*}
@@ -1205,7 +1202,7 @@ DFA나 PA와는 달리 튜링 기계는 헤드가 이리저리 움직이면서 `
 \begin{defn}
     TM $M = (Q, \Sigma, \Gamma, \delta, q_0, H)$이 정의하는 언어 $L(M)$은 다음과 같다.
     \begin{align*}
-        L(M) = \{ w \in \Sigma^*  \;\vert\;  (q_0, \underline{\#}w) \vdash^* (h, w') \} 
+        L(M) = \{ w \in \Sigma^*  \;\vert\;  (q_0, \underline{\#}w) \vdash_M^* (h, w') \} 
     \end{align*}
     이때 $h\in H$이고, $w'$는 임의의 문자열이다.  
 \end{defn}
@@ -1230,7 +1227,7 @@ DFA나 PA와는 달리 튜링 기계는 헤드가 이리저리 움직이면서 `
 \end{ex}
 이처럼 튜링 기계의 계산 능력은 DFA, PA보다 아주 뛰어나다. 그런데 재귀 열거 언어에는 약간 문제가 있다. 어떤 문자열이 TM이 정의하는 언어에 속하면 정지하겠지만 속하지 않는 경우에는 정지하지 않고 무한히 돌아가기 때문에 우리가 무한한 시간 동안 기다리지 않는 이상 어떤 문자열이 언어 집합에 속하지 않는지 알 수 없다는 문제가 있다. 따라서 우리가 알기 쉬운 재귀 언어에 대해 알아보자.
 \begin{defn}
-    언어 $L$에 대해 TM $M$에 대해 정지상태가 $\{y,n\}$이라 하자. $w \in L$이면 $(q_0, \underline{\#}w) \vdash^* (y, w')$이고 $w \notin L$이면 $(q_0, \underline{\#}w) \vdash^* (n, w')$를 만족하면 $M$이 $L$을 결정한다고 하고, $L$을 결정하는 $M$이 존재하면 $L$을 \textbf{재귀 언어}라고 부른다.
+    언어 $L$에 대해 TM $M$에 대해 정지상태가 $\{y,n\}$이라 하자. $w \in L$이면 $(q_0, \underline{\#}w) \vdash_M^* (y, w')$이고 $w \notin L$이면 $(q_0, \underline{\#}w) \vdash_M^* (n, w')$를 만족하면 $M$이 $L$을 결정한다고 하고, $L$을 결정하는 $M$이 존재하면 $L$을 \textbf{재귀 언어}라고 부른다.
 \end{defn}
 \begin{thm}
     재귀 언어 종류는 재귀 열거 언어 종류의 부분집합이다.
@@ -1245,7 +1242,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
 \begin{defn}
     $f: \Sigma^* \rightarrow \Sigma^*$인 함수에 대해 TM $M$이
     \begin{align*}
-        (q_0, \underline{\#}w) \vdash^* (h, \underline{\#}f(w))
+        (q_0, \underline{\#}w) \vdash_M^* (h, \underline{\#}f(w))
     \end{align*}
     을 만족하면 $M$이 $f$를 \textbf{계산한다}(compute)고 한다. \\ 
     이때 $f$를 \textbf{계산 가능한 함수}(computable function)라고 한다. 
@@ -1292,7 +1289,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
 \begin{defn}
     NTM $M$이 정의하는 언어 $L(M)$은 다음과 같다.
     \begin{align*}
-        L(M) = \{w \in \Sigma^* \;\vert\; (q_0, \underbar{\#}w) \vdash^* (h, *)\}
+        L(M) = \{w \in \Sigma^* \;\vert\; (q_0, \underline{\#}w) \vdash_M^* (h, *)\}
     \end{align*}
     이때 $M$이 비결정론적이므로 계산 과정 중 하나라도 정지상태로 들어간다면 $w \in L(M)$이다. 
 \end{defn}
@@ -1412,7 +1409,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
     \end{align*}
     를 갖는다. 그러면 $M$이 
     \begin{align*}
-        (q_0, \underline{\#}w) \vdash^* (h, \underline{\#})
+        (q_0, \underline{\#}w) \vdash_M^* (h, \underline{\#})
     \end{align*}
     전이하는 과정을, $G$는 
     \begin{align*}
@@ -1774,11 +1771,9 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n
         이를 적용하면 $x$가 된다.
     \end{enumerate} 
 \end{defn}
-이러한 계산 모델은 아주 간단해 보이지만 실은 우리가 앞서 힘들게 정의했던 튜링 기계와 계산 능력이
-동등하다. 어떻게 계산이 이루어지는지 알아보기 위해 먼저 여러가지 것들을 정의하자.
+이러한 계산 모델은 아주 간단해 보이지만 실은 우리가 앞서 힘들게 정의했던 튜링 기계와 계산 능력이 동등하다. 어떻게 계산이 이루어지는지 알아보기 위해 먼저 여러가지 것들을 정의하자.
 \begin{defn}
-    람다식 $E$의 \textbf{자유변수}(free variable) $FV(E)$는 $E$에서 $\lambda$에 의해 묶여있지 않은
-    변수들의 집합이다. 즉 다음과 같이 정의된다.
+    람다식 $E$의 \textbf{자유변수}(free variable) $FV(E)$는 $E$에서 $\lambda$에 의해 묶여있지 않은 변수들의 집합이다. 즉 다음과 같이 정의된다.
     \begin{align*}
         FV(x) &= \{ x \} \\ 
         FV(\lambda x. E) &= FV(E) \backslash \{x\} \\ 
@@ -1804,8 +1799,7 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n
                 E & E/x \in S \\
                 x & \text{그 외} 
             \end{cases}  \\ 
-        S \, (\lambda x. E) &= 
-        \lambda y. (S \, \{ y/x\} \, E) \; (\text{완전히 새로운 } y) \\ 
+        S \, (\lambda x. E) &= \lambda y. (S \, \{ y/x\} \, E) \; (\text{완전히 새로운 } y) \\ 
         S \, (E1 \, E2) &= (S \, E1) (S \, E2) 
     \end{align*} 
     참고로, 치환 $S, T$를 나란히 $S \, T$라고 쓰면, $T$를 적용하고 $S$를 적용한다는 뜻이다.
@@ -1820,11 +1814,9 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n
         $(\lambda x. E1) \, E2 \rightarrow \{ E_2 / x\}E_1$을 해주는 연산이다.
     \end{itemize}
 \end{defn}
-여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 계산법에서 
-중요한 연산은 바로 $\beta$-연산이다. 
+여기서 $\alpha$-연산의 경우 단순히 변수명을 바꿔주는 연산이다. 람다 계산법에서 중요한 연산은 바로 $\beta$-연산이다. 
 \begin{defn}
-    \textbf{레덱스}(redex)란 람다식에서 $\beta$-연산이 가능한 부분, 즉 
-    $( \lambda x. E_1 ) \, E_2$인 부분을 의미한다.
+    \textbf{레덱스}(redex)란 람다식에서 $\beta$-연산이 가능한 부분, 즉 $( \lambda x. E_1 ) \, E_2$인 부분을 의미한다.
 \end{defn}
 \begin{defn}
     레덱스가 없는 람다식을 \textbf{정상식}(normal form)이라고 한다.
@@ -1837,41 +1829,28 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n
         \item $(\lambda y. y) \, x$
         \item $(\lambda x.x \, x) \, (\lambda x. x \, x)$
     \end{enumerate}
-    1은 더이상 $\beta$-연산이 불가능하므로 정상식이다. 2는 한 번 $\beta$-연산을 할 수 
-    있으므로 정상식이 아니다. 3은 무한히 $\beta$-연산을 할 수 있으므로
-    정상식이 아니다.
+    1은 더이상 $\beta$-연산이 불가능하므로 정상식이다. 2는 한 번 $\beta$-연산을 할 수 있으므로 정상식이 아니다. 3은 무한히 $\beta$-연산을 할 수 있으므로 정상식이 아니다.
 \end{ex}
-예제 \ref{normal form ex}의 3에서 알 수 있듯이, 정상식으로 끝날 수 없는 람다식도
-존재하는 것 같다. 그러나 람다식이 만약 정상식으로 끝난다면 그 정상식은 유일하다. 이를
-보이기 위해 여러가지 것들을 정의하자.
+예제 \ref{normal form ex}의 3에서 알 수 있듯이, 정상식으로 끝날 수 없는 람다식도 존재하는 것 같다. 그러나 람다식이 만약 정상식으로 끝난다면 그 정상식은 유일하다. 이를 보이기 위해 여러가지 것들을 정의하자.
 \begin{thm} \label{church-rosser}
-    \textbf{(처치-로서 정리)} 모든 람다식 $M, N_1, N_2$에 대해 $M$에 
-    임의의 $\beta$-연산들을 한 결과가 각각 $N_1, N_2$이라고 하자. 이때,
-    $N_1, N_2$에 각각 $\beta$-연산들을 해서 도출되는 공통의 람다식 $X$가 존재한다.
-    이를 좀 더 형식적으로 기술하면 다음과 같다.
+    \textbf{(처치-로서 정리)} 모든 람다식 $M, N_1, N_2$에 대해 $M$에  임의의 $\beta$-연산들을 한 결과가 각각 $N_1, N_2$이라고 하자. 이때, $N_1, N_2$에 각각 $\beta$-연산들을 해서 도출되는 공통의 람다식 $X$가 존재한다. 이를 좀 더 형식적으로 기술하면 다음과 같다.
     \begin{align*}
-        \forall M, N_1, N_2 \in \Lambda, (M \rightarrow_\beta^* N_1) \wedge 
-        (M \rightarrow_\beta^* N_2) \rightarrow \exists X \in \Lambda,
-        (N_1 \rightarrow_\beta^* X) \wedge (N_2 \rightarrow_\beta^* X)
+        \forall M, N_1, N_2 \in \Lambda, (M \rightarrow_\beta^* N_1) \wedge (M \rightarrow_\beta^* N_2) \rightarrow \exists X \in \Lambda, (N_1 \rightarrow_\beta^* X) \wedge (N_2 \rightarrow_\beta^* X)
     \end{align*}
-    여기서 $\rightarrow_\beta^*$는 $\beta$-연산의 
-    반사적이고 추이적인 폐포, $\Lambda$는 람다식을 모은 집합이다.
+    여기서 $\rightarrow_\beta^*$는 $\beta$-연산의 반사적이고 추이적인 폐포, $\Lambda$는 람다식을 모은 집합이다.
 \end{thm}
 이 정리를 증명하기 위해서는 먼저 여러가지 정의와 도윰정리가 필요하다.
 \begin{defn}
-    이항 관계 $\rightarrow$가 다음을 만족하면 \textbf{다이아몬드 성질}(diamond
-    property)을 만족한다고 하자.
+    이항 관계 $\rightarrow$가 다음을 만족하면 \textbf{다이아몬드 성질}(diamond property)을 만족한다고 하자.
     \begin{align*}
-        \forall M, N_1, N_2, (M \rightarrow N_1) \wedge (M \rightarrow N_2) 
-        \rightarrow \exists X, (N_1 \rightarrow X) \wedge (N_2 \rightarrow X)
+        \forall M, N_1, N_2, (M \rightarrow N_1) \wedge (M \rightarrow N_2) \rightarrow \exists X, (N_1 \rightarrow X) \wedge (N_2 \rightarrow X)
     \end{align*}
 \end{defn}
 \begin{lem} \label{diamond property lemma}
-    어떤 관계 $\rightarrow$가 다이아몬드 성질을 만족하면 $\rightarrow$의 전이적이고 추이적인
-    폐포 $\rightarrow^*$ 또한 다이아몬드 성질을 만족한다.
+    어떤 관계 $\rightarrow$가 다이아몬드 성질을 만족하면 $\rightarrow$의 전이적이고 추이적인 폐포 $\rightarrow^*$ 또한 다이아몬드 성질을 만족한다.
 \end{lem}
 \begin{pf*}
-    존나 당연한데?
+    자명하다.
 \end{pf*}
 처치-로서 정리는 $\beta$-연산의 반사적이고 추이적인 폐포가 다이아몬드 성질을 만족한다는 것이다.
 $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게도 이는 그렇지 않다. 대신에 
@@ -2259,7 +2238,7 @@ $\langle w \rangle$를 접합한 것을 $\langle M, w \rangle$로 표시한다.
 \section{보편 만능 기계}
 컴퓨터가 지금까지 인류가 만들어온 기계와 다른 점은 무엇일까? 형광등은 불을 밝힐 수만 있다. 세탁기는 세탁만 할 수 있다.
 하지만 컴퓨터는 이렇게 책도 쓸 수 있고, 게임도 할 수 있고, 계산도 할 수 있다. 즉, 어디에서나 사용가능한 
-\textbf{보편 만능 기계}다. 이러한 보편 만능성은 튜링 기계가 다른 튜링 기계를 흉내낼 수 있다는 점에서 출발한다. \\ 
+\textbf{보편 만능 기계}(universal computing machine)다. 이러한 보편 만능성은 튜링 기계가 다른 튜링 기계를 흉내낼 수 있다는 점에서 출발한다. \\ 
 보편 만능 튜링 기계 $M_u$는 $\langle M, w\rangle$를 입력으로 받아서 $M$이 $w$를 가지고 돌린 후
 그 결과를 출력하는 튜링 기계다. 
 \begin{defn}
@@ -2409,59 +2388,37 @@ $L_2$도 계산 불가능하다는 것을 보이고 싶을 때 변환을 사용�
     if x == y:
         print("Hello!")
 \end{lstlisting}
-    위 코드를 컴파일 해보면 `Type Error'가 발생할 것이다. Int형 변수인 x와 bool형 변수인 y를 
-    비교하였기 때문이다. 물론 우리는 이러한 코드를 컴파일하기 전에 IDE에서 빨간줄 등을 통해 코드가 
-    잘못되었다는 사실을 알려주기 때문에 이를 굳이 컴파일하지는 않는다. 그럼 과연 코드를 돌리기 전에
-    타입을 검사해주는 type checker는 항상 맞을까? 언제나 옳은 답(타입 오류가 없으면 없다고 해주고, 
-    있으면 있다고 해주는)을 내놓는 type checker는 존재할까? 이와 같은 type checker가 존재하지 않는다는
-    사실을 증명해라. 
+    위 코드를 컴파일 해보면 타입 오류(type error)가 발생할 것이다. Int형 변수인 x와 bool형 변수인 y를 비교하였기 때문이다. 물론 우리는 이러한 코드를 컴파일하기 전에 IDE에서 빨간줄 등을 통해 코드가 잘못되었다는 사실을 알려주기 때문에 이를 굳이 컴파일하지는 않는다. 그럼 과연 코드를 돌리기 전에 타입을 검사해주는 타입 검사기(type checker)는 항상 맞을까? 언제나 옳은 답\footnote{타입 오류가 없으면 없다고 해주고, 있으면 있다고 해주는}을 내놓는 타입 검사기는 존재할까? 이와 같은 타입 검사기가 존재하지 않는다는 사실을 증명해라. 
 \end{ex}
 \begin{pf*}
     다음 코드를 생각하자. 
 \begin{lstlisting}[language=Python]
     // M is a turing machine
-    // terminates(M) returns true when M halts
+    // terminates(M, x) returns true when M halts for input x
     // or returns false 
-    if terminates(M):
+    if terminates(M, x):
         1 == True 
     else:
         print("Hello!")
 \end{lstlisting}
-만약 $M$이 정지한다면 이 코드는 type error가 발생한다. 만약 정지하지 않는다면, 이 코드는 type error가
-발생하지 않을 것이다. 만약 완전한 type checker가 존재한다면 type error를 검증할 수 있고, 즉 이를 통해 
-$M$이 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하므로 완전한 type checker는 존재하지 않는다. 
+만약 $M$이 정지한다면 이 코드는 타입 오류가 발생한다. 만약 정지하지 않는다면, 이 코드는 타입 유류가 발생하지 않을 것이다. 만약 완벽한 타입 검사기가 존재한다면 타입 오류를 검증할 수 있고, 즉 이를 통해 $M$이 $x$에 대해 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하므로 완전한 타입 검사기는 존재하지 않는다. 
 \end{pf*}
-그래서 요즘 사용하는 type checker는 `안 되는 것 같아 보이지만 
-사실은 맞는 프로그램'을 검증하는 것을 포기한다. 위 증명에서 
-사용된 코드의 경우, 아마 python IDE에서 사용하는 type checker의 경우 빨간 줄을 표시할 것이다. 
-즉, 최소한 type checker가 된다고 했으면 무조건 type에 있어서는 오류를 내뿜지 않는 프로그램이다. 
-(그렇다면 syntax error는 어떨까? 궁금하면 3장으로 돌아가자.) \\ 
-지금까지 알아본 예제들을 보면 뭔가 튜링 기계에 관련된 문제는 전부 계산 불가능한 것 같다.
-이는 실제로도 맞다는 것을 보이자.
+그래서 요즘 사용하는 타입 검사기는 `안 되는 것 같아 보이지만 사실은 맞는 프로그램'을 검증하는 것을 포기한다. 위 증명에서 사용된 코드의 경우, 아마 python IDE에서 사용하는 타입 검사기의 경우 빨간 줄을 표시할 것이다. 즉, 최소한 타입 검사기가 된다고 했으면 무조건 타입에 있어서는 오류를 내뿜지 않는 프로그램이다. \footnote{그렇다면 syntax error는 어떨까? 궁금하면 3장으로 돌아가자.} \\
+지금까지 알아본 예제들을 보면 뭔가 튜링 기계에 관련된 문제는 전부 계산 불가능한 것 같다. 이는 실제로도 맞다는 것을 보이자.
 \begin{thm}
     \textbf{(라이스 정리)} $C$를 모든 재귀 열거 언어를 모은 집합의 공집합이나 
     전체 집합이 아닌 부분집합이라고 하자. $L_C = \{ \langle M \rangle \; \vert 
     \; L(M) \in C\}$는 계산 불가능하다. 
 \end{thm}
 \begin{pf*}
-    먼저 일반성을 잃지 않고 $\emptyset \notin C$라고 하자. 만약 그렇지 않다면 $\overline{C}$를 
-    고려하면 된다.
-    $C$는 공집합이 아니므로 $L\in C$인 언어 $L$을 고려하자. $L$은 재귀 열거 언어이므로
-    $L(M_L) = L$인 튜링 기계 $M_L$이 존재한다. $L_C$가 만약 재귀 언어라면 항상 정지하는
-    $M_C$가 존재한다. 이제 $L_\epsilon$을 $L_C$로 변환하자. $L_\epsilon$의 입력 
-    $\langle M \rangle$을 $\langle M' \rangle$으로 바꿔주는 계산 가능한 함수 $f$를 생각하자.
-    $M'$는 다음과 같은 일을 한다.
+    먼저 일반성을 잃지 않고 $\emptyset \notin C$라고 하자. 만약 그렇지 않다면 $\overline{C}$를 고려하면 된다. $C$는 공집합이 아니므로 $L\in C$인 언어 $L$을 고려하자. $L$은 재귀 열거 언어이므로 $L(M_L) = L$인 튜링 기계 $M_L$이 존재한다. $L_C$가 만약 재귀 언어라면 항상 정지하는 $M_C$가 존재한다. 이제 $L_\epsilon$을 $L_C$로 변환하자. $L_\epsilon$의 입력  $\langle M \rangle$을 $\langle M' \rangle$으로 바꿔주는 계산 가능한 함수 $f$를 생각하자. $M'$는 다음과 같은 일을 한다.
     \begin{enumerate}
         \item 먼저 주어진 입력 $w$를 따로 보관한다.
         \item $\epsilon$에 대해 $M$을 돌리고 $M$이 정지하면 $w$에 대해 $M_L$을 돌린다.
     \end{enumerate}
-    그러면 만약 $M$이 $\epsilon$에 대해 정지하면 $M'$은 $M_L$과 동일한 결과를 가지게 된다.
-    즉, $L(M') = L$이다. 만약 $M$이 $\epsilon$에 대해 정지하지 않으면 $M'$은 항상 정지하지 않는다.
-    즉, $L(M') = \emptyset$이다. $L \in C$이고 $\emptyset \notin C$이므로 $M_C$가 $L(M') = L$인지
-    아닌지 알려준다. 이를 통해 $M$이 $\epsilon$에 대해 정지하는지 안 하는지 알 수 있으므로 모순이다.
+    그러면 만약 $M$이 $\epsilon$에 대해 정지하면 $M'$은 $M_L$과 동일한 결과를 가지게 된다. 즉, $L(M') = L$이다. 만약 $M$이 $\epsilon$에 대해 정지하지 않으면 $M'$은 항상 정지하지 않는다. 즉, $L(M') = \emptyset$이다. $L \in C$이고 $\emptyset \notin C$이므로 $M_C$가 $L(M') = L$인지 아닌지 알려준다. 이를 통해 $M$이 $\epsilon$에 대해 정지하는지 안 하는지 알 수 있으므로 모순이다.
 \end{pf*}
-라이스 정리가 함의하는 바는 우리가 사실 과제로 제출해온 코드가 정말로 스펙에 맞는 코드인지
-알 길이 없다는 뜻이다. 그래서 우리는 수많은 테스트케이스를 넣어 `이만하면 맞겠지'를 검증하는 것 뿐이다.
+라이스 정리가 함의하는 바는 우리가 사실 과제로 제출해온 코드가 정말로 스펙에 맞는 코드인지 알 길이 없다는 뜻이다. 그래서 우리는 수많은 테스트 케이스를 넣어 `이만하면 맞겠지'를 검증하는 것 뿐이다.
 \section{계산 가능한 것들}
 그럼 우리가 지금까지 다뤄왔던 정규 언어와 문맥무관 언어는 결정가능할까? 
 다행히도 이는 모두 계산 가능하다.
@@ -2549,9 +2506,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     \end{enumerate}
 \end{pf*}
 이제 문맥무관 문법 $G_1, G_2$에 대해 $L(G_1) = L(G_2)$임을 판정하는 것 또한
-정규 언어처럼 계산 가능할 것 같지만, 실제로는 그렇지 않다. 정리 \ref{DFA equiv decidable}에서
-사용한 논리를 그대로 사용할 수 없는게 정규 언어는 여집합 연산에 대해 닫혀있지만, 문맥무관 언어는
-그렇지 않기 때문이다. 이를 증명하기 위해 먼저 다른 유사한 정리를 알아보자.
+정규 언어처럼 계산 가능할 것 같지만, 실제로는 그렇지 않다. 정리 \ref{DFA equiv decidable}에서 사용한 논리를 그대로 사용할 수 없는게 정규 언어는 여집합 연산에 대해 닫혀있지만, 문맥무관 언어는 그렇지 않기 때문이다. 이를 증명하기 위해 먼저 다른 유사한 정리를 알아보자.
 \begin{thm}
     \label{all CFG undecidable}
     다음과 같이 정의된 언어 $A_\text{CFG}$는 계산 불가능하다.
@@ -2566,13 +2521,8 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     다음과 같이 정의된 언어 $EQ_\text{CFG}$는 계산 불가능하다.
 \end{thm}
 \begin{pf*}
-    \textbf{(간략화된 증명)}
-    먼저 $L(M_{EQ}) = EQ_\text{CFG}$인 튜링 기계 $M_{EQ}$가 존재한다고 가정하자. 
-    $G'$을 $L(G') = \Sigma^*$인 문맥무관 문법이라고 할 때,
-    $M_{EQ}$에 입력을 $\langle G, G' \rangle$으로 주면 $L(G) = \Sigma^*$인지 계산 가능하다.
-    즉, $EQ_\text{CFG}$가 계산 가능하면, $A_\text{CFG}$도 계산 가능하다. 그러나, 정리 \ref{all CFG undecidable}에 의해
-     이는 모순이므로 
-    $EQ_\text{CFG}$는 계산 불가능하다.
+    \textbf{(느슨한 증명)}
+    먼저 $L(M_{EQ}) = EQ_\text{CFG}$인 튜링 기계 $M_{EQ}$가 존재한다고 가정하자. $G'$을 $L(G') = \Sigma^*$인 문맥무관 문법이라고 할 때, $M_{EQ}$에 입력을 $\langle G, G' \rangle$으로 주면 $L(G) = \Sigma^*$인지 계산 가능하다. 즉, $EQ_\text{CFG}$가 계산 가능하면, $A_\text{CFG}$도 계산 가능하다. 그러나, 정리 \ref{all CFG undecidable}에 의해 이는 모순이므로 $EQ_\text{CFG}$는 계산 불가능하다.
 \end{pf*}
 \section{촘스키 위계}
 잠시 계산에서 벗어나 우리가 지금까지 다뤄왔던 언어로 돌아와보자. 지금까지 다뤄왔던 많은 모델들 중
@@ -2608,8 +2558,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     $L = \{ a^n b^n c^n \;\vert\; n \ge 1\}$를 만드는 문맥 유관 문법을 구하라. 예제 \ref{UG_ex} 참조.
 \end{ex}
 \begin{defn}
-    \textbf{선형 유한 자동 기계}(linear bounded automata, LBA)란 테입의 길이가 입력 문자열의 길이 만큼 
-    제한된 비결정론적 튜링 기계이다. 즉, 길이가 $n$인 입력 문자열에 대해 테이프 길이가 $n$인 것이다.
+    \textbf{선형 유한 자동 기계}(linear bounded automata, LBA)란 테입의 길이가 입력 문자열의 길이 만큼 제한된 비결정론적 튜링 기계이다. 즉, 길이가 $n$인 입력 문자열에 대해 테이프 길이가 $n$인 것이다.
 \end{defn}
 \section{처치-튜링 논제}
 지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에 대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에 발표된 괴델의 불완정성 정리에서 출발한다. 이 정리를 통해 더 이상 우리는 수학의 모든 문제를 풀 수 없다는 것이 증명되었다. 따라서 우리가 풀 수 없는 문제가 무엇인지를 알고자 하는 것은 매우 당연한 수순이었다. 이를 위해 1931년에 괴델과 에르브랑이 제시했고 우리가 \ref{mu-recursive} 절에서 다루었던 재귀 함수, 1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 계산법, 1936년에 튜링이 제시했고 우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
@@ -2649,7 +2598,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     `정지하는' 튜링 기계만 생각해야 하는데, 어떤  튜링 기계가 정지하는지 안 하는지는 정지문제에 의해 자명하게 계산 불가능하기 때문이다. 
 \end{pf*} 
 $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들을 제외한 $BB(n)$의 값은
-밝혀지지 않았다. 지금까지 밝혀진 $BB(n)$의 값들은 그림 (\ref{BB table})에서 확인할 수 있다.
+밝혀지지 않았다. 지금까지 밝혀진 $BB(n)$의 값들은 그림 \ref{BB table}에서 확인할 수 있다.
 \begin{figure}[!ht]
     \centering 
     \begin{tabular}{|l|l|}
@@ -2690,7 +2639,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
     자명하다.
 \end{pf*}
 \begin{defn}
-    \textbf{차분한 오리너구리 함수}(Placid platypus function) $pp(n)$은 정의 \ref{bbdefn}에서의 튜링 머신이 $n$개 이상의 1을 출력하기 위한 최소한의 상태 갯수로 정의된다. 즉, 바쁜 비버 함수의 역함수이다.
+    \textbf{차분한 오리너구리 함수}(placid platypus function) $pp(n)$은 정의 \ref{bbdefn}에서의 튜링 머신이 $n$ 개 이상의 1을 출력하기 위한 최소한의 상태 갯수로 정의된다. 즉, 바쁜 비버 함수의 역함수이다.
 \end{defn}
 \begin{thm}
     $pp(n)$은 계산 불가능하다.
@@ -2698,7 +2647,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 \begin{pf*}
     $BB(n)$이 계산 불가능하므로 당연히 $pp(n)$도 계산 불가능하다.
 \end{pf*}
-$BB(n)$과 $FF(n)$ 너무 빠르게 증가해서 계산 불가능한 거라면, $pp(n)$은 오히려 너무 느리게 증가해서 계산 불가능하다.
+$BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불가능한 거라면, $pp(n)$은 오히려 너무 느리게 증가해서 계산 불가능하다.
 \begin{thm}
     $\lim_{n\rightarrow\infty} pp(n) = \infty$이다.
 \end{thm}
@@ -3211,59 +3160,41 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
 \end{align*}
 CLIQUE $\in$ NP임을 보여라.
 \end{ex}
-이제 수학계 7대 난제인 P-NP 문제를 드디어 이해할 수 있게 됐다. 
-일단 P $\subseteq$ NP인 것은 당연히 자명하다. 그럼 P $\supseteq$ NP도 성립하는가? 아니면
-P $\neq$ NP인가? 수많은 컴퓨터 과학자들의 노력이 있었으나 아쉽게도 이는 밝혀지지 않았다.
-참고로 필자는 당연히 $P \neq NP$라고 믿는다.\footnote{물리학자들이었다면
-이미 이 명제는 공리화가 되었을 것이다.}
+이제 수학계 7대 난제인 P-NP 문제를 드디어 이해할 수 있게 됐다. 일단 P $\subseteq$ NP인 것은 당연히 자명하다. 그럼 P $\supseteq$ NP도 성립하는가? 아니면 P $\neq$ NP인가? 수많은 컴퓨터 과학자들의 노력이 있었으나 아쉽게도 이는 밝혀지지 않았다. 참고로 필자는 당연히 $P \neq NP$라고 믿는다.\footnote{물리학자들이었다면 이미 이 명제는 공리화가 되었을 것이다.}
 \begin{conj}
     \textbf{(만인의 추측)} $P \neq NP$이다.
 \end{conj} 
 \section{NP-완전}
-우리가 상사에게 아주 어려운 문제를 풀라고 지시받았다. 아무리 풀려고 노력해봐도 답을 구할 수가 없을 때
-상사에게 뭐라고 말해야 할까?
+우리가 상사에게 아주 어려운 문제를 풀라고 지시받았다. 아무리 풀려고 노력해봐도 답을 구할 수가 없을 때 상사에게 뭐라고 말해야 할까?
 \begin{enumerate}
     \item 그냥 자기가 멍청하다고 말한다.
     \item 이 문제는 답이 없다고 말한다.
     \item 다른 천재들도 이 문제를 풀어봤으나 그들도 구하지 못했다고 말한다.
 \end{enumerate}
-1의 경우 멍청해보이고, 2의 경우 답이 없다는 걸 보이기 전까지는 무례한 대답이다. 3이 가장 설득력 있는
-답안이라고 할 수 있는데, 이러한 관점에서 NP-완전라는 것을 정의하기로 한다.\footnote{M. Garey와 
-D.Johnson의 책인 
-Computers and Intractability: A Guide to the Thoery of NP-Completeness에 있는 유명한 예제이다.}
+1의 경우 멍청해보이고, 2의 경우 답이 없다는 걸 보이기 전까지는 무례한 대답이다. 3이 가장 설득력 있는 답안이라고 할 수 있는데, 이러한 관점에서 NP-완전라는 것을 정의하기로 한다.\footnote{M. Garey와 D.Johnson의 책인 Computers and Intractability: A Guide to the Thoery of NP-Completeness에 있는 유명한 예제이다.}
 \begin{defn}
-    함수 $f: \Sigma^* \rightarrow \Sigma^*$에 대해 다항시간 내에 작동하고, $f(w)$를 테입에 적고 정지하는 
-    튜링 기계 $M$이 존재하면 $f$를 \textbf{다항시간 내 계산 가능한 함수}(polynomial
-    time computable function)라고 한다.
+    함수 $f: \Sigma^* \rightarrow \Sigma^*$에 대해 다항시간 내에 작동하고, $f(w)$를 테입에 적고 정지하는 튜링 기계 $M$이 존재하면 $f$를 \textbf{다항시간 내 계산 가능한 함수}(polynomial time computable function)라고 한다.
 \end{defn}
 \begin{defn}
-    언어(문제) $A$에 대해 다음과 같은 조건을 만족시키면 $A$를 $B$로 \textbf{다항시간 내에 변환 
-    가능}(polynomial time reducible)하다고 하고 $A \le_p B$라고 표기한다. \\ 
-    모든 $w$에 대해 다음을 만족시키는 다항시간 내 계산 가능한 함수 $f: \Sigma^* \rightarrow \Sigma^*$이
-    존재한다.
-    $$w \in A \Longleftrightarrow f(w) \in B$$
+    언어(문제) $A$에 대해 다음과 같은 조건을 만족시키면 $A$를 $B$로 \textbf{다항시간 내에 변환 가능}(polynomial time reducible)하다고 하고 $A \le_p B$라고 표기한다. \\ 
+    모든 $w$에 대해 다음을 만족시키는 다항시간 내 계산 가능한 함수 $f: \Sigma^*  \rightarrow \Sigma^*$이 존재한다.
+    \begin{align*}
+        w \in A \Longleftrightarrow f(w) \in B
+    \end{align*}
     이러한 $f$를 $A$에서 $B$로의 \textbf{다항시간 변환}(polynomial time reduction)이라고 한다. 
 \end{defn}
 \begin{thm}
     $A \le_p B$이고 $B \in P$이면 $A \in P$이다.
 \end{thm}
 \begin{pf*}
-    $M$을 $B$를 다항시간 내에 결정하는 알고리즘, $f$를 $A$에서 $B$로의 다항시간 변환이라고 하자. 
-    우리는 다음과 같이 다항시간 내에 $A$를 결정하는 알고리즘 $N$을 구성할 수 있다.
+    $M$을 $B$를 다항시간 내에 결정하는 알고리즘, $f$를 $A$에서 $B$로의 다항시간 변환이라고 하자. 우리는 다음과 같이 다항시간 내에 $A$를 결정하는 알고리즘 $N$을 구성할 수 있다.
     \begin{enumerate}
         \item 입력 $w$에 대해 $f(w)$를 계산한다.
         \item $M$을 입력 $f(w)$에 돌려서 받아들이면 받아들이고, 받아들이지 않으면 받아들이지 않는다.
     \end{enumerate}
 \end{pf*}
 \begin{ex}
-    \textbf{리터럴}(literal)이란 불 변수나 불 변수의 역을 의미한다. 이때 리터럴들이 $\vee$로 연결 된 것을
-    \textbf{절}(clause)라고 한다. 이러한 절들이 논리곱 $\wedge$로 연결된 것을 \textbf{논리곱 
-    정규형}(Conjunctive Normal Form, CNF)이라 한다. 각 절이 정확히 $k$개의 리터럴로 되어 있는 CNF를
-    $k$-CNF라 한다. 만약 부울식의 변수 값을 잘 할당하여 참이 될 수 있으면 
-    \textbf{만족 가능}(satisfiable)하다고 
-    한다. 예를 들어 $(a \; \vee\; b \;\vee\; \overline{c} ) \;\wedge\; (d \;\vee\; 
-    \overline{e}\; \vee\; f)$는 
-    3-CNF이고 만족 가능하다. \\ 
+    \textbf{리터럴}(literal)이란 불 변수나 불 변수의 역을 의미한다. 이때 리터럴들이 $\vee$로 연결 된 것을 \textbf{절}(clause)이라고 한다. 이러한 절들이 논리곱 $\wedge$로 연결된 것을 \textbf{논리곱 정규형}(Conjunctive Normal Form, CNF)이라 한다. 각 절이 정확히 $k$개의 리터럴로 되어 있는 CNF를 $k$-CNF라 한다. 만약 부울식의 변수 값을 잘 할당하여 참이 될 수 있으면 \textbf{만족 가능}(satisfiable)하다고 한다. 예를 들어 $(a \; \vee\; b \;\vee\; \overline{c} ) \;\wedge\; (d \;\vee\; \overline{e}\; \vee\; f)$는 3-CNF이고 만족 가능하다. \\ 
     이때 문제 \textbf{3-SAT}는 다음과 같이 정의된다. 
     \begin{align*}
         \text{3-SAT} = \{\langle \phi \rangle \;\vert\; \text{3-CNF }\phi\text{가 만족 가능하다.} \}
@@ -3283,8 +3214,7 @@ Computers and Intractability: A Guide to the Thoery of NP-Completeness에 있는
 \begin{thm}
     $A \in$ NP-완전이고 $A \in$ P면, P = NP이다.
 \end{thm}
-즉, 어떤 NP-완전인 언어 $A$를 해결하는 다항시간 알고리즘을 발견한다면 무려 P=NP임을 증명할 수 있게 된다. (참고로 어떤 NP 문제의 다항시간 알고리즘이 존재하지 않는다면 
-NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\ 
+즉, 어떤 NP-완전인 언어 $A$를 해결하는 다항시간 알고리즘을 발견한다면 무려 P=NP임을 증명할 수 있게 된다.\footnote{당연하지만 어떤 NP 문제의 다항시간 알고리즘이 존재하지 않는다면 NP-완전이 아니어도 알아서 P $\neq$ NP임을 알 수 있다.} \\ 
 그런데 어떤 언어가 NP-완전임을 보이는 것은 쉽지 않은 일이다. 왜냐하면 세상에 존재하는 모든 NP 문제를 어떤 언어 $A$로 다항시간 내에 환원 가능함을 보여야 하기 때문이다. 그러나 아주 놀랍게도 쿡과 레빈이 이 문제를 해결해 냈다.
 \begin{thm}
     \label{SAT np-complete}
@@ -3456,14 +3386,12 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
          \caption{}
          \label{illegal_window}
     \end{table}
-    어떤 두 붙어있는 행을 생각하자. 위 행의 칸 중 상태(헤드)와 붙어있지 않은 칸은 값이 변하지 않아야 한다. 그리고 상태(헤드)와 붙어있는 칸은 전이 관계에 따라 적절하게 값이 변해야 한다. 이 둘은 전부 창문을 통해 적법한지 확인할 수 있다.
-    따라서 귀납적으로 만약 첫 행이 시작 상황이고 모든 창문이 적법하다면 
-    적절한 도표를 이룬다는 사실을 알 수 있다.\\
+    어떤 두 붙어있는 행을 생각하자. 위 행의 칸 중 상태(헤드)와 붙어있지 않은 칸은 값이 변하지 않아야 한다. 그리고 상태(헤드)와 붙어있는 칸은 전이 관계에 따라 적절하게 값이 변해야 한다. 이 둘은 전부 창문을 통해 적법한지 확인할 수 있다. 따라서 귀납적으로 만약 첫 행이 시작 상황이고 모든 창문이 적법하다면 적절한 도표를 이룬다는 사실을 알 수 있다.\\
     이제 $\phi_{move}$를 만들어보자. $\phi_{move}$는 창문이 적법한지 검사해서 도표가 적절히 전이 관계에 따라 구성되는지 확인한다. 각 창문은 총 6개의 칸로 이루어지는데 이는 고정된 숫자이므로 복잡도에는 영향을 주지 않는다. 
     \begin{align*}
         \phi_{move} = \bigwedge_{1 \le i < n^k, 1<j<n^k} ((i,j)\text{-창문은 적법하다.})
     \end{align*}
-    $(i,j)$-창문은 $cell[i,j]$가 창문에서 가운데 위에 있는 창문이다. 적법한 창문인지 검사하는 과정을 조금 더 자세히 쓰면 다음과 같다.
+    $(i,j)$-창문은 $cell[i,j]$가 창문에서 가운데 위에 있는 창문이다. 적법한 창문인지 검사하는 과정을 조금 더 엄밀하게 쓰면 다음과 같다.
     \begin{align*}
         \bigvee_{(a_1, \ldots, a_6)\text{는 적법}} \left(
         x_{i,j-1,a_1} \wedge x_{i,j,a_2} \wedge x_{i, j+1, a_3} \wedge
@@ -3471,7 +3399,7 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \right)
     \end{align*}
     이제 이러한 변환이 다항 시간 내에 이루어짐을 보이자. 그러기 위해서 $\phi$의 크기를 구해야 한다. 표는 $n^{2k}$개의 칸들로 이루어지고, 각 칸에서 가능한 문자의 개수는 
-    튜링 기계 $N$에 의해 결정되므로(즉 상수이므로 무시할 수 있음) 변수의 개수는 $O(n^{2k})$이다. \\ 
+    튜링 기계 $N$에 의해 결정되므로\footnote{상수이므로 무시할 수 있다는 뜻이다.} 변수의 개수는 $O(n^{2k})$이다. \\ 
     이제 각 4가지 부분에 대해 크기를 구해보자. $\phi_{cell}$는 각 칸에 대해 검사하므로 크기가 칸의 개수에 비례한다. 즉 크기는 $O(n^{2k})$이다. $\phi_{start}$는 첫 행만 검사하므로 크기는 $O(n^k)$이다. $\phi_{move}$와 $\phi_{accept}$는 이와 비슷한 이유로 크기가 $O(n^{2k})$임을 알 수 있다. 따라서 $\phi$의 전체 크기는 $O(n^{2k})$이므로 이는 다항시간 변환임을 알 수 있다.\\
     즉, 모든 NP 문제는 다항 시간 내에 SAT 문제로 환원가능하므로 SAT는 NP-완전이다.
 \end{pf*}
@@ -3480,8 +3408,9 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     \begin{pf*}
         우리가 이미 알고 있는 NP-완전 문제인 SAT 문제를 적절히 변환하면 된다. 예를 들어, $(a_1 \vee a_2 \vee \ldots \vee a_n)$와
         같은 절은 다음과 같이 새로운 변수 $z_1, \ldots, z_{n-3}$를 도입해 변형하면 된다.
-        $$(a_1 \vee a_2 \vee z_1) \wedge (\overline{z_1} \vee a_3 \vee z_2) \wedge \ldots \wedge 
-        (\overline{z_{n-3}} \vee a_{n-1} \vee a_{n})$$
+        \begin{align*}
+            (a_1 \vee a_2 \vee z_1) \wedge (\overline{z_1} \vee a_3 \vee z_2) \wedge \ldots \wedge (\overline{z_{n-3}} \vee a_{n-1} \vee a_{n})
+        \end{align*}
         이는 당연히 다항시간 변환이다.
     \end{pf*}
 \end{ex}
@@ -3535,94 +3464,96 @@ NP-완전가 아니어도 알아서 P $\neq$ NP임을 알 수 있다.) \\
     이는 어려운 문제이므로 논문 \cite{kobayashi1985structure}를 참고해라.
 \end{ec}
 \begin{ec}
+    어떤 튜링 기계 $M$과 함수 $f(n):\mathbb{N} \rightarrow \mathbb{R}$에 대해 $M = O(f(n))$임을 결정하는 것은 계산 불가능하다는 것을 증명해라.
+\end{ec}
+\begin{ec}
     정리 \ref{SAT np-complete}인 쿡-레빈 정리의 증명에서 우리는 $2\times 3$ 크기의 창문을 사용했다. 더 작은 창문을 사용하면 안 되는 걸까? $2\times 2$ 크기의 창문을 사용하면 증명이 가능할지 서술하라.
 \end{ec}
 \chapter{공간 복잡도}
 우리는 지금까지 시간 복잡도에 대해 알아보았다. 시간도 중요한 자원이지만, 우리에게는 시간만 부족한 것이 아니다. 우리는 아쉽지만 한정된 돈으로 인해 제한된 메모리를 갖고 프로그램을 작성해야 하므로 우리가 만든 알고리즘이 얼마나 많은 공간을 차지하는지를 알아보자.
+\section{복잡도 분석}
 \begin{defn}
-    항상 정지하는 결정론적 TM $M$에 대해, $M$의 \textbf{공간 복잡도}(space complexity)는
-    함수 $f: \mathbb{N} \rightarrow \mathbb{N}$로 나타낸다. 이때 $f(n)$은 길이가 $n$인 입력에
-    대해 최대로 사용하는 테입의 길이를 의미한다. 
+    항상 정지하는 결정론적 TM $M$에 대해, $M$의 \textbf{공간 복잡도}(space complexity)는 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$로 나타낸다. 이때 $f(n)$은 길이가 $n$인 입력에 대해 헤드가 접근하는 테입의 최대 개수를 의미한다. 
 \end{defn}
 \begin{defn}
-    모든 상황에 대해 정지하는 비결정론적 TM $M$에 대해, $M$의 공간 복잡도는 $M$의 모든 상황 중
-    최대로 사용하는 테입의 길이를 의미한다.
+    모든 상황에 대해 정지하는 비결정론적 TM $M$에 대해, $M$의 \textbf{공간 복잡도}는 $M$의 모든 상황 중 헤드가 접근하는 테입의 최대 개수를 의미한다.
 \end{defn}
 공간 복잡도 또한 시간 복잡도처럼 점근적 표기로 표현하는 것이 유용하다.
 \begin{defn}
-    함수 $f : \mathbb{N} \rightarrow \mathbb{R}^+$에 대해 
-    \textbf{공간 복잡도 모임}(space complexity class)는 다음과 같이
-    정의된다.
+    함수 $f : \mathbb{N} \rightarrow \mathbb{R}^+$에 대해 \textbf{공간 복잡도 모임}(space complexity class)은 다음과 같이 정의된다.
     \begin{itemize}
-        \item $\text{SPACE}(f(n))$은 공간 복잡도가 $O(f(n))$인 
-        결정론적 튜링 기계로 결정할 수 있는 언어들의 모임이다.
-        \item $\text{NSPACE}(f(n))$은 공간 복잡도가 $O(f(n))$인
-        비결정론적 튜링 기계로 결정할 수 있는 언어들의 모임이다.
+        \item $\text{SPACE}(f(n))$은 공간 복잡도가 $O(f(n))$인 결정론적 튜링 기계로 결정할 수 있는 언어들의 모임이다.
+        \item $\text{NSPACE}(f(n))$은 공간 복잡도가 $O(f(n))$인 비결정론적 튜링 기계로 결정할 수 있는 언어들의 모임이다.
     \end{itemize}
 \end{defn} 
 \begin{ex}
-    정리 \ref{SAT np-complete}에서 정의한 언어 \textbf{SAT}가 
-    $\text{SPACE}(O(n))$임을 보여라. \\ 
-    우리는 \textbf{SAT} 정도는 당연히 다항 시간 내에 풀지 못할 것이라고 믿고
-    있기 때문에 공간 복잡도도 어려울 것이라고 예상하지만, 공간은 시간과 달리 
-    재활용해서 사용할 수 있다. 다음과 같은 튜링 기계 $M$을 구상하자. 
+    정리 \ref{SAT np-complete}에서 정의한 언어 \textbf{SAT}가 $\text{SPACE}(O(n))$임을 보여라. \\ 
+    우리는 \textbf{SAT} 정도는 당연히 다항 시간 내에 풀지 못할 것이라고 믿고 있기 때문에 공간 복잡도도 어려울 것이라고 예상하지만, 공간은 시간과 달리 재활용해서 사용할 수 있다. 다음과 같은 튜링 기계 $M$을 구상하자. 
     \begin{enumerate}
-        \item 입력 $\langle \phi \rangle$에 대해 $\phi$의 변수 
-        $x_1, \ldots, x_k$의 진리 부여치를 테입에 적는다. 
-        \item 1에서 적은 진리 부여치에 따라 $\phi$의 값을 계산하고
-        만약 $1$이 나오면 받아들이고, 0이 나오면 다른 진리 부여치 값을
-        적은 뒤 이를 반복한다.
+        \item 입력 $\langle \phi \rangle$에 대해 $\phi$의 변수 $x_1, \ldots, x_k$의 진리 부여치를 테입에 적는다. 
+        \item 1에서 적은 진리 부여치에 따라 $\phi$의 값을 계산하고 만약 $1$이 나오면 받아들이고, 0이 나오면 다른 진리 부여치 값을 적은 뒤 이를 반복한다.
         \item 만약 전부 0이 나오면 받아들이지 않는다.
     \end{enumerate}
-    $M$은 당연히 $O(k)$의 공간을 사용하고 $k<n$이므로 $M$은 $O(n)$에 
-    속한다는 것을 알 수 있다.
+    $M$은 당연히 $O(k)$의 공간을 사용하고 $k<n$이므로 $M$은 $O(n)$에 속한다는 것을 알 수 있다.
 \end{ex}
 \begin{ex}
     다음과 같은 언어 $ALL_\text{NFA}$를 생각하자.
     \begin{align*}
-        ALL_{\text{NFA}} = \{ \langle A \rangle \;\vert\; 
-        A \text{는 NFA이고 } L(A) = \Sigma^*\}
+        ALL_{\text{NFA}} = \{ \langle A \rangle \;\vert\; A \text{는 NFA이고 } L(A) = \Sigma^*\}
     \end{align*}
-    $(\overline{ALL_{\text{NFA}}}) \in \text{NSPACE}(n)$임을 보여라.
+    $\overline{ALL_{\text{NFA}}} \in \text{NSPACE}(n)$임을 보여라.
 \end{ex}
-시간 복잡도를 다룰 때는 비결정론적 튜링 기계를 결정론적 튜링 기계로
-다루는 일은 매우 어려운 일이었다. 하지만 공간 복잡도의 관점에서는 훨씬 적은 공간만으로도
-이를 다룰 수 있다.
-\begin{thm}
+시간 복잡도를 다룰 때는 비결정론적 튜링 기계를 결정론적 튜링 기계로 다루는 일은 매우 어려운 일이었다. 하지만 공간 복잡도의 관점에서는 훨씬 적은 공간만으로도 이를 다룰 수 있다.
+\begin{thm}\label{savitch thm}
     \textbf{(사비치 정리, Savitch's theorem)}
-    $f(n) \ge n$인 함수 $f: \mathbb{N} \rightarrow \mathbb{R}$에
-    대하여 다음이 성립한다.
+    $f(n) \ge n$인 함수 $f: \mathbb{N} \rightarrow \mathbb{R}$에 대하여 다음이 성립한다.
     \begin{align*}
         \text{NSPACE}(f(n)) \subseteq \text{SPACE}((f(n))^2)
     \end{align*}
 \end{thm}
 \begin{pf*}
-    $A$를 결정하는 비결정론적 튜링 기계 $N$에 대해 $N \in \text{NSPACE}(f(n))$이라고
-    하자. 이제 $A$를 결정하는 결정론적 튜링 기계 $M$을 구성하자. 
-    $M$을 만드는 데 있어서 가장 핵심적인 알고리즘인 CANYIELD을 구성하자.
-    CANYIELD는 $N$이 어떤 상황에서 다른 상황까지 정해진 스텝 안에 진행될 수
-    있는지 판단하는 알고리즘이다. 즉, $\text{CANYIELD}(c_1, c_2, t)$는 $N$의
-    상황 $c_1$에서 $t$번의 스텝 안에 $c_2$까지 진행되는 것이 가능한지 판단하는 알고리즘이다.
-    편의성을 위해 우리는 $t = 2^k$라고 가정하자. CANYIELD는 다음과
-    같이 구성될 수 있다.
+    $A$를 결정하는 비결정론적 튜링 기계 $N$에 대해 $N \in \text{NSPACE}(f(n))$이라고 하자. 이제 $A$를 결정하는 결정론적 튜링 기계 $M$을 구성하자. $M$을 만드는 데 있어서 가장 핵심적인 알고리즘인 CANYIELD을 구성하자. CANYIELD는 $N$이 어떤 상황에서 다른 상황까지 정해진 스텝 안에 진행될 수 있는지 판단하는 알고리즘이다. 즉, $\text{CANYIELD}(c_1, c_2, t)$는 $N$의 상황 $c_1$에서 $t$번의 스텝 안에 $c_2$까지 진행되는 것이 가능한지 판단하는 알고리즘이다. 편의성을 위해 우리는 $t = 2^k$라고 가정하자. CANYIELD는 다음과 같이 구성될 수 있다.
     \begin{enumerate}
         \item 만약 $t = 1$이라면 $c_1 = c_2$이거나 $N$의 전이 관계 중
-        $c_1 \vdash c_2$가 되는 규칙이 있는지 찾고 있으면 받아들이고 없다면
-        받아들이지 않는다.
+        $c_1 \vdash_N c_2$가 되는 규칙이 있는지 찾고 있으면 받아들이고 없다면 받아들이지 않는다.
         \item 만약 $t > 1$이라면 $N$의 각 상황 $c_m$에 대해 공간 $f(n)$을 사용하여 3을 계산한다.
-        \item $\text{CANYIELD}(c_1, c_m, \frac{t}{2}), \text{CANYIELD}(c_m, c_2, \frac{t}{2})$를
-        계산한 뒤, 둘 다 받아들이면 받아들인다.
+        \item $\text{CANYIELD}(c_1, c_m, \frac{t}{2}), \text{CANYIELD}(c_m, c_2, \frac{t}{2})$를 계산한 뒤, 둘 다 받아들이면 받아들인다.
         \item 만약 3에서 모든 상황에 대해 받아들여지지 않으면 받아들이지 않는다.
     \end{enumerate}
-    이제 CANYIELD를 이용해 $N$을 흉내내는 $M$을 정의하자. 일단 먼저 편의성을 위하여
-    $N$의 계산이 끝나면 테입의 내용을 지우고 가장 왼쪽으로 헤드를 이동한 뒤 정지하는 
-    상황 $c_\text{accept}$에 들어간다고 하자. 
+    이제 CANYIELD를 이용해 $N$을 흉내내는 $M$을 정의하자. 일단 먼저 편의성을 위하여 $N$의 계산이 끝나면 테입의 내용을 지우고 가장 왼쪽으로 헤드를 이동한 뒤 정지하는 상황 $c_\text{accept}$에 들어간다고 하자. 또한, 입력 $w$에 대해 $N$의 시작 상태를 $c_\text{start}$라고 하자. $n = \vert w \vert$라고 할 때, $N$이 $f(n)$만큼의 테입을 쓸 때 가질 수 있는 상황의 개수가 $2^{df(n)}$을 넘지 않도록 상수 $d$를 적절히 결정하자.\footnote{이는 테입 알파벳의 개수에 의존한다.} 그럼, $N$이 최대 $2^{df(n)}$ 스텝만큼만 움직이므로 $M$을 다음과 같이 구상할 수 있다.
+    \begin{enumerate}
+        \item 입력 $w$에 대해 $\text{CANYIELD}(c_{\text{start}}, c_{\text{accept}}, 2^{df(n)})$을 계산한다.
+    \end{enumerate}
+    CANYIELD는 재귀적으로 구성되므로 이를 $(c_1, c_2, t)$를 저장하기 위한 스택이 필요하다. $N$은 최대 $O(f(n))$만큼의 테입을 사용하므로 $(c_1, c_2, t)$의 크기는 $O(f(n))$이다.  $t=2^{df(n)}$이라 했고, $t$는 재귀 한 번마다 절반이 되므로 스택의 최대 길이는 $O(\log{2^{df(n)}}) = O(f(n))$이다. 따라서 총 필요한 스택의 크기는 $O((f(n))^2)$이다. \footnote{근데 문제가 있다. 여기서 우리는 이미 $N$이 $f(n)$만큼의 공간을 사용한다는 사실을 알고 있다고 가정하고 시작했다. 만약 이를 모르면 어떻게 할까? 연습문제 \ref{savitch thm exec}로 가자.}
 \end{pf*}
 \section{PSPACE}
+\begin{defn}
+    \textbf{PSPACE}는 다음과 같의 정의된다.
+    \begin{align*}
+        \text{PSPACE} = \bigcup_k \text{SPACE}(n^k)
+    \end{align*}
+\end{defn}
+NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE = PSPACE이므로 따로 정의하지 않는다.
+\begin{thm}
+    $\text{P} \subseteq \text{PSPACE}$이다. 
+\end{thm}
+\begin{pf*}
+    시간보다 많이 공간을 사용할 수 없기 때문에 자명하다.
+\end{pf*}
+\begin{thm}
+    $\text{NP} \subseteq \text{PSPACE}$이다.
+\end{thm}
+\begin{pf*}
+    자명하다.
+\end{pf*}
 \section{PSPCAE-완전}
 \section{L과 NL}
 \section{NL-완전}
 \section{NL = coNL}
+\section{연습문제}
+\begin{ec}\label{savitch thm exec}
+    정리 \ref{savitch thm}의 증명을 완성하라. (힌트: 시간을 완전히 포기하고 $f(n) = 1, 2, 3, \cdots$를 하나하나 차근차근 해보면 된다.)
+\end{ec}
 \chapter{복잡도 위계}
 우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은
 아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리 
