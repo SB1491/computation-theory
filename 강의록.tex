@@ -41,8 +41,10 @@
 \newtheorem{lem}[defn]{도움정리}
 \newtheorem{axm}[defn]{공리}
 \newtheorem{conj}[defn]{추측}
+\newtheorem*{ans*}{해설}
 \newtheorem*{pf}{증명}
-\newenvironment{pf*}{\pushQED{\qed}\pf}{\popQED\endpf}
+\newenvironment{pf*}{\pushQED{\qed}\pf}
+{\popQED\endpf}
 \title{
     \hrule
     \vspace{0.5cm}
@@ -115,7 +117,7 @@ $\Sigma^*$의 부분집합을 \textbf{언어}(language)라 부른다. 주로 $L$
        L_1 \cdot L_2 = \{uv: u \in L_1, v \in L_2\} 
     \end{align*}
     예를 들어, $L_1 = \{0, 00\}, L_2 = \{1, 11\}$일 때, $L_1 L_2 = \{01, 011, 001, 0011\}$ 이다. 또한 $L^0 = \{ \epsilon\}, L^{k} = L^{k-1} L (k \ge 1)$이다.  
-    \item $L^*$는 $L$을 0번 이상 접합하여 만들어지는 모든 문자열의 집합이다.
+    \item $L^*$는 $L$을 0번 이상 접합하여 만들어지는 모든 문자열의 집합이다. 이를 \textbf{클리니 스타}(Kleene star)라고 한다.
     \begin{align*}
         L^* = L^0 \cup L^1 \cup L^2 \cup \ldots 
     \end{align*}
@@ -147,18 +149,22 @@ $\Sigma^*$의 부분집합을 \textbf{언어}(language)라 부른다. 주로 $L$
 \end{defn}
 어떤 `조건'들을 만족시키는 언어집합을 표현하기 위해서 우리는 정규식을 사용한다.
 \begin{defn}
-정규식으로 표현되는 언어를 \textbf{정규 언어}(regular language)라
-부른다.
+정규식으로 표현되는 언어를 \textbf{정규 언어}(regular language)라 부른다.
 \end{defn}
 \begin{ex}
-    1이 1개인 문자열의 집합을 표시하는 정규식은 $0^* 1 0^*$이다.
+    1이 1개인 문자열의 집합을 표시하는 정규식을 구하라.
 \end{ex}
+\begin{ans*}
+    $0^* 1 0^*$
+\end{ans*}
 \begin{ex}
-  길이가 짝수인 문자열의 집합을 표시하는 정규식은 $((0+1)(0+1))^*$이다.  
+  길이가 짝수인 문자열의 집합을 표시하는 정규식을 구하라.
 \end{ex} 
+\begin{ans*}
+    $((0+1)(0+1))^*$
+\end{ans*}
 \begin{ex}
-$\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오지 않는 
-문자열의 집합을 표시하는 정규식을 구하라.
+$\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오지 않는 문자열의 집합을 표시하는 정규식을 구하라.
 \end{ex}
 \begin{ex}
 111이 딱 한 번 나타나는 문자열의 집합을 표시하는 정규식을 구하라.
@@ -209,8 +215,11 @@ DFA의 \textbf{상황}(configuration)은 $(q_1, 0011)$과 같이 현재 상태�
 \end{figure}
 그림 \ref{1 odd}는 1이 홀수개 있는 DFA를 나타낸다. 원이 두 개 그려진 상태는 최종 상태를 의미한다. 나머지는 잘 이해할 것이라 믿는다. 
 \begin{ex}\label{010 DFA}
-    010을 부분문자열으로 갖는 문자열을 받아들이는 DFA를 구하라. 그림 \ref{010 figure} 참조.
+    010을 부분문자열으로 갖는 문자열을 받아들이는 DFA를 구하라.
 \end{ex}
+\begin{ans*}
+    그림 \ref{010 figure} 참조.
+\end{ans*}
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
@@ -231,9 +240,11 @@ DFA의 \textbf{상황}(configuration)은 $(q_1, 0011)$과 같이 현재 상태�
     \label{010 figure}
 \end{figure}
 \begin{ex}\label{010^C DFA}
-    010을 부분문자열으로 갖지 않는 문자열을 받아들이는 DFA를 구하라.\\ 
-    예제 \ref{010 DFA}에서 $F$와 $Q-F$를 서로 바꿔주면 된다. 이와 같이 DFA에서는 어떤 언어 집합의 여집합을 표현하는 것이 매우 편리하다.\footnote{한 번 예제 \ref{010 DFA}, 예제 \ref{010^C DFA}를 정규식으로 표현해보자.}
+    010을 부분문자열으로 갖지 않는 문자열을 받아들이는 DFA를 구하라.
 \end{ex}
+\begin{ans*}
+    예제 \ref{010 DFA}에서 $F$와 $Q-F$를 서로 바꿔주면 된다. 이와 같이 DFA에서는 어떤 언어 집합의 여집합을 표현하는 것이 매우 편리하다.\footnote{한 번 예제 \ref{010 DFA}, 예제 \ref{010^C DFA}를 정규식으로 표현해보면서 많이 어렵다는 것을 느끼자.}
+\end{ans*}
 \begin{ex}
     000 또는 111을 갖지 않는 문자열을 받아들이는 DFA를 구하라.
 \end{ex}
@@ -272,8 +283,11 @@ DFA의 \textbf{상황}(configuration)은 $(q_1, 0011)$과 같이 현재 상태�
 너무 복잡하게 생각하지 말고, 알파벳 대신 문자열을 쭉 따라 갔을 때 갈 수 있는 모든 상태들의 집합으로 전이하는 함수라고 생각하면 된다.\\
 문자열 $w$에 대해 $\Delta^* (q_0, w)$의 원소들 중에 $F$의 원소가 하나라도 있으면 $M$이 $w$을 받아들인다고 한다. 즉, $L(M)$은 $M$이 받아들이는 모든 문자열의 집합이다. 
 \begin{ex}\label{010+01}
-    $(010+01)^*$ 를 받아들이는 NFA를 만들어라. 그림 \ref{(010+01)^*} 참조.
+    $(010+01)^*$ 를 받아들이는 NFA를 만들어라. 
 \end{ex} 
+\begin{ans*}
+    그림 \ref{(010+01)^*} 참조.
+\end{ans*}
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
@@ -323,7 +337,9 @@ while $\exists$ marked state $P \in Q_D$
 \begin{ex}
     예제 \ref{010 DFA}의 NFA를 DFA로 만들어라. 
 \end{ex} 
-먼저 원래의 NFA를 생각하자. 시작 상태는 $q_0$이다. $q_0$에서 0을 입력받으면 $q_1$로 가고, 1을 입력받으면 죽은 상태로 가게 된다. $q_1$에서 0을 입력받으면 죽은 상태로 가게 되고, 1을 입력받으면 $q_2, q_0$으로 동시에 가게 된다.(빈 문자열에 의한 전이도 가능하므로) 따라서 DFA를 만들 때에는 $\{q_0, q_2\}$라는 상태를 하나 더 만들어주면 된다. ${q_0, q_2}$에서 0을 입력받으면, $q_0$에서는 $q_1$로 가고, $q_2$에서는 ${q_0, q_1}$로 동시에 갈 수 있으므로 $\{q_0, q_1\}$이라는 상태를 하나 더 만들어주면 된다. 1을 입력받으면 죽은 상태로 간다. 이를 계속해서 반복하고, $F_N$의 원소가 하나라도 있는 상태를 최종 상태로 만들어주면 그림 \ref{01001DFA}을 얻을 수 있다.
+\begin{ans*}
+    먼저 원래의 NFA를 생각하자. 시작 상태는 $q_0$이다. $q_0$에서 0을 입력받으면 $q_1$로 가고, 1을 입력받으면 죽은 상태로 가게 된다. $q_1$에서 0을 입력받으면 죽은 상태로 가게 되고, 1을 입력받으면 $q_2, q_0$으로 동시에 가게 된다.(빈 문자열에 의한 전이도 가능하므로) 따라서 DFA를 만들 때에는 $\{q_0, q_2\}$라는 상태를 하나 더 만들어주면 된다. ${q_0, q_2}$에서 0을 입력받으면, $q_0$에서는 $q_1$로 가고, $q_2$에서는 ${q_0, q_1}$로 동시에 갈 수 있으므로 $\{q_0, q_1\}$이라는 상태를 하나 더 만들어주면 된다. 1을 입력받으면 죽은 상태로 간다. 이를 계속해서 반복하고, $F_N$의 원소가 하나라도 있는 상태를 최종 상태로 만들어주면 그림 \ref{01001DFA}을 얻을 수 있다.
+\end{ans*}
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=2.5cm,on grid,auto]
@@ -472,9 +488,10 @@ $Q-F$로 대체하면 된다.
 \end{pf*} 
 \begin{ex}
     \textbf{(소속문제)} 정규 언어 $L$에 문자열 $w$이 속하는지 결정하라. 
-
-$L$을 표시하는 DFA를 만들고 이를 읽어서 결정하면 된다.\footnote{ 조금의 스포일러를 하자면 앞으로의 소속 문제는 꽤나 어렵거나 심지어는 풀 수 없는(!) 문제라는 것을 알게 될 것이다. }
 \end{ex} 
+\begin{ans*}
+$L$을 표시하는 DFA를 만들고 이를 읽어서 결정하면 된다.\footnote{ 조금의 스포일러를 하자면 앞으로의 소속 문제는 꽤나 어렵거나 심지어는 풀 수 없는(!) 문제라는 것을 알게 될 것이다.}
+\end{ans*}
 \begin{ex}
     $L_1 \cup L_2$가 정규 언어이고 $L_1$이 유한 언어집합이라고 하자. $L_2$가
     정규 언어인지 아닌지 증명하라. 
@@ -515,9 +532,9 @@ $w = a_1 \ldots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \
 \begin{ex} \label{0n1n}
 $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
-먼저 $L$을 정규 언어라고 하자. 그럼 임의의 $t$에 대해, $w = 0^t 1^t$라고 하자. 그럼
-$w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^t \notin L$
-이므로 펌프 정리에 의해 $L$은 정규 언어가 아니다. 
+\begin{ans*}
+    먼저 $L$을 정규 언어라고 하자. 그럼 임의의 $t$에 대해, $w = 0^t 1^t$라고 하자. 그럼 $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^t \notin L$이므로 펌프 정리에 의해 $L$은 정규 언어가 아니다. 
+\end{ans*}
 \begin{ex}
     $L = \{a^{n^2} \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
@@ -525,9 +542,7 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
      $L = \{0^n 1^m \;\vert\; n \neq m\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
 \begin{ex} 
-    $L = \{ab^nc^n \;\vert\; n \ge 0\} \cup 
-\{ a^k w \;\vert\; k \neq 1, w\text{는 } a\text{로 시작하지 않는 문자열} \}$이 펌프 정리가 성립하지만
-정규 언어가 아님을 증명하라.
+    $L = \{ab^nc^n \;\vert\; n \ge 0\} \cup \{ a^k w \;\vert\; k \neq 1, w\text{는 } a\text{로 시작하지 않는 문자열} \}$이 펌프 정리가 성립하지만 정규 언어가 아님을 증명하라.
 \end{ex}
 정규 언어인지 아닌지 알아내는 직관적인 방법은 `이 언어를 DFA로 표현하는 것이 가능한가?'를
 생각해보면 된다. 예를 들어, 예제 \ref{0n1n}의 경우 0의 개수를 저장해 둔 뒤 1의 개수와 비교해야 하는데,
@@ -586,10 +601,12 @@ $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^
 문맥무관 언어의 예시로는 프로그래밍 언어(Fortran, C 등)가 있다. 
 \begin{ex} \label{0n1n_CFG}
 $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구하라.
-\begin{align*}
-    S \rightarrow 0S1 \; \vert \; \epsilon 
-\end{align*}
 \end{ex}
+\begin{ans*}
+    \begin{align*}
+        S \rightarrow 0S1 \; \vert \; \epsilon 
+    \end{align*}
+\end{ans*}
 예를 들어 0011을 만드는 유도 과정은 다음과 같다.
 \begin{align*}
     S &\Rightarrow 0S1 \\
@@ -598,10 +615,12 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구�
 \end{align*}
 \begin{ex}\label{bracket_CFG}
      `()(())'와 같이 적절히 닫혀있는 괄호를 만드는 문맥무관 문법을 구하라.
-     \begin{align*}
+\end{ex} 
+\begin{ans*}
+    \begin{align*}
         S \rightarrow (S) \; \vert \; SS \; \vert \; \epsilon 
      \end{align*}
-\end{ex} 
+\end{ans*}
 \begin{ex}\label{same0and1}
     $L = \{w \;\vert\; w\text{의 0과 1의 개수가 같다.}\}$를 만드는 문맥무관 문법을 구하라.
     \begin{align*}
@@ -611,9 +630,8 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구�
 \begin{ex} $L = \{ 0^n 1^m \; \vert \; n \le m \le 2n\}$를 만드는 문맥무관 문법을 구하라.
 \end{ex}
 \begin{ex} 
-    $L = \{ 0^n 1^m \; \vert \; n \neq m\}$를 만드는 문맥무관 문법을 구하라.
+    $L = \{ 0^n 1^m \; \vert \; n \neq m\}$를 만드는 문맥무관 문법을 구하라.(힌트:     $n>m$일 때와 $n < m$일 때를 구분하여 생각하면 된다.)
 \end{ex}
-$n>m$일 때와 $n < m$일 때를 구분하여 생각하면 된다.
 \begin{ex} $L = \{ a^m b^n c^u d^v \;\vert\; m+n = u+v\}$를 만드는 문맥무관 문법을 구하라.
 \end{ex}
 \begin{ex} \label{3+5*7}
@@ -656,12 +674,14 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 \end{pf*}
 \begin{ex}
     예제 \ref{010+01}의 NFA와 동등한 정규문법을 구하라. 
+\end{ex}
+\begin{ans*}
     \begin{align*}
         q_0 & \rightarrow 0q_1 \; \vert \; \epsilon \\ 
         q_1 & \rightarrow 1q_2 \\ 
         q_2 & \rightarrow 0q_0 \; \vert \; q_0
     \end{align*}
-\end{ex}
+\end{ans*}
 \begin{ex}
    다음과 같은 정규문법과 동등한 NFA를 구하라.
    \begin{align*}
@@ -669,6 +689,9 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
        A & \rightarrow abS \; \vert \; a 
    \end{align*} 
 \end{ex}
+\begin{ans*}
+    그림 \ref{regular grammar} 참조.
+\end{ans*}
 \begin{figure}[!ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
@@ -685,9 +708,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \caption{} 
     \label{regular grammar}
 \end{figure}
-문맥무관 문법은 정규문법을 통해 정규 언어를 표현할 수 있지만 
-정규 언어의 경우 $\{0^n1^n\}$와 같은 언어집합을 표현하지 못한다. 
-따라서 정규 언어는 문맥무관 언어의 진부분집합임을 알 수 있다. 
+문맥무관 문법은 정규문법을 통해 정규 언어를 표현할 수 있지만 정규 언어의 경우 $\{0^n1^n\}$와 같은 언어집합을 표현하지 못한다. 따라서 정규 언어는 문맥무관 언어의 진부분집합임을 알 수 있다. 
 \section{파스 트리}
 어떤 문장(문자열)의 구조를 잘 파악하기 위해 파스트리를 정의하자.
 \begin{defn}
@@ -704,10 +725,14 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 \end{defn}
 
 \begin{ex}
-    예제 \ref{0n1n_CFG}와 같은 문맥무관 문법에 대해 
-    다음과 같은 유도과정을 나타내는 파스트리를 그려라.
-    $$S \Rightarrow 0S1 \Rightarrow 00S11 \Rightarrow 0011$$
+    예제 \ref{0n1n_CFG}와 같은 문맥무관 문법에 대해 다음과 같은 유도과정을 나타내는 파스트리를 그려라.
+    \begin{align*}
+        S \Rightarrow 0S1 \Rightarrow 00S11 \Rightarrow 0011
+    \end{align*}
 \end{ex}
+\begin{ans*}
+    그림 \ref{parse tree ex} 참조.
+\end{ans*}
 \begin{figure}[!ht]
     \centering
     \begin{forest}
@@ -723,13 +748,18 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
         ]
     \end{forest}
     \caption{}
+    \label{parse tree ex}
 \end{figure}
 \begin{ex} \label{bracket_parse}
     예제 \ref{bracket_CFG}와 같은 문맥무관 문법에 대해 
     다음과 같은 유도과정을 나타내는 파스트리를 그려라.
-    $$S \Rightarrow SS \Rightarrow S(S) \Rightarrow S()
-    \Rightarrow (S)() \Rightarrow ()()$$
+    \begin{align*}
+        S \Rightarrow SS \Rightarrow S(S) \Rightarrow S() \Rightarrow (S)() \Rightarrow ()()
+    \end{align*}
 \end{ex}
+\begin{ans*}
+    그림 \ref{()()} 참조.
+\end{ans*}
 \begin{figure}
     \centering
     \begin{forest}
@@ -741,18 +771,12 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
     \caption{}
     \label{()()}
 \end{figure}
-유도과정에서 항상 맨 왼쪽에 있는 변수에 생성규칙을 적용하는 것을 
-\textbf{좌측 유도}(leftmost derivation)라 부른다. 한 개의 파스 트리에
-대해서는 순서에 따라 여러가지 유도과정이 가능하다. 그러나 좌측 유도는 
-당연히 오직 한 가지만 존재한다. 
-또한 당연하게도 우측 유도도 존재한다. 단지 이 책에서는 좌측 유도를 기준으로 할 것이다.
+유도과정에서 항상 맨 왼쪽에 있는 변수에 생성규칙을 적용하는 것을 \textbf{좌측 유도}(leftmost derivation)라 부른다. 한 개의 파스 트리에 대해서는 순서에 따라 여러가지 유도과정이 가능하다. 그러나 좌측 유도는 당연히 오직 한 가지만 존재한다.  또한 당연하게도 우측 유도도 존재한다. 단지 이 책에서는 좌측 유도를 기준으로 할 것이다.
 \begin{ex}
-    예제 \ref{bracket_parse}에서의 유도과정을 좌측유도로 표현하고 이 파스트리가
-    그림 \ref{()()}와 같다는 것을 보여라.
+    예제 \ref{bracket_parse}에서의 유도과정을 좌측유도로 표현하고 이 파스트리가 그림 \ref{()()}와 같다는 것을 보여라.
 \end{ex}
 \begin{defn}
-    문맥무관 문법 $G$에 대해 어떤 $w \in L(G)$에 대해 
-    2 개 이상의 파스트리를 가지면 우리는 문법 $G$가 \textbf{애매하다}(ambiguous)라 한다.
+    문맥무관 문법 $G$에 대해 어떤 $w \in L(G)$에 대해 2 개 이상의 파스트리를 가지면 우리는 문법 $G$가 \textbf{애매하다}(ambiguous)라 한다.
 \end{defn}
 \begin{ex}
     다음 문법 $G$를 고려하자.
@@ -807,12 +831,11 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
 \end{defn} 
 \begin{ex}
     언어 $L = \{a^nb^nc^md^m \; \vert \; n,m \ge 1\} \cup \{a^nb^mc^md^n \; \vert \; n,m \ge 1\}$
-    는 본질적으로 애매함을 보여라. \\ 
-     이를 증명하는 것은 매우 까다롭다. 따라서 이 교재에서는 그 증명을 생략하고, 직관적으로 생각해보자.
-    예를 들어, $w = aabbccdd$에 대해 앞의 언어 집합에 해당하는 문법으로 만드는 파스 트리와
-    뒤의 언어 집합에 해당하는 문법으로 만드는 파스 트리는 다를 수밖에 없다. 
-    따라서 $L$은 본질적으로 애매하다.
+    는 본질적으로 애매함을 보여라.
 \end{ex}
+\begin{ans*}
+    이를 증명하는 것은 매우 까다롭다. 따라서 이 교재에서는 그 증명을 생략하고, 직관적으로 생각해보자. 예를 들어, $w = aabbccdd$에 대해 앞의 언어 집합에 해당하는 문법으로 만드는 파스 트리와 뒤의 언어 집합에 해당하는 문법으로 만드는 파스 트리는 다를 수밖에 없다. 따라서 $L$은 본질적으로 애매하다.
+\end{ans*}
 \section{표준형}
 여기서부터 다루는 문맥무관 언어 $L$은 $\epsilon$을 포함하지 않는다고 가정하자. 
 \begin{defn}
@@ -866,6 +889,8 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
         A &\rightarrow B \; \vert \; S \\ 
         B &\rightarrow b \; \vert \; \epsilon 
     \end{align*} 
+\end{ex}
+\begin{ans*}
     \begin{align*}
         S &\rightarrow AA_1 \; \vert \; UB \; \vert \; a \;\vert\; SA \;\vert\; AS \\ 
         A &\rightarrow b \;\vert\; A A_1 \;\vert\; UB \;\vert\; a \;\vert\; SA \;\vert\; AS \\ 
@@ -873,7 +898,7 @@ $G$는 \textbf{정규문법}이다. $A,B \in V, w \in \Sigma^{*}$에 대해
         U &\rightarrow a \\ 
         B &\rightarrow b
     \end{align*}
-\end{ex}
+\end{ans*}
 촘스키 표준형으로 문법을 바꾸면 매우 비직관적으로 변하게 되는데, 그럼에도 불구하고 촘스키 표준형이 필요한 이유는 무엇일까?  \\ 
 첫 번째로, 촘스키 표준형으로 문법을 바꾸면 파싱을 하는데 있어서 문법이 제한되므로 애매성을 줄여준다. 촘스키 표준형으로 바꾸면 어떤 문자열 $w$가 문맥무관 언어 $L(G)$에 속하는지 결정하는 문제를 CYK 알고리즘을 통해 $O(n^3)$에 쉽게 해결하는 것이 가능하다.\footnote{본래라면 지수 시간이 걸린다.} \footnote{나중에 정의 \ref{CYK}에서 이게 무엇인지 다루니까 이해가 되지 않는다면 조금만 기다리자.} \\ 
 \begin{figure}[!ht]
@@ -932,8 +957,11 @@ PA의 상황(configuration)은 현재 상태, 아직 읽지 않은 입력 문자
 \end{align*}
 PA를 간편하게 표현하기 위해 방향 그래프의 형태로 표시한다. $a, A/A'$에 대해 $a$는 입력 알파벳, $A$는 스택의 상단 알파벳, $A'$는 대체할 스택 알파벳이다. 
 \begin{ex}\label{0n10n_ex}
-    $\{0^n10^{n} \;\vert\; n \ge 0 \}$을 받아들이는 PA를 구하라. 그림 \ref{0n10n}을 보라.
+    $\{0^n10^{n} \;\vert\; n \ge 0 \}$을 받아들이는 PA를 구하라. 
 \end{ex}
+\begin{ans*}
+    그림 \ref{0n10n} 참조.
+\end{ans*}
 \begin{figure}[!ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=2.5cm,on grid,auto]
@@ -981,27 +1009,30 @@ PA를 간편하게 표현하기 위해 방향 그래프의 형태로 표시한�
 
 \end{pf*}
 \begin{ex}
-다음 문맥무관 문법과 동등한 PA를 구하라. 그림 \ref{cfg=pa} 참조.
+다음 문맥무관 문법과 동등한 PA를 구하라. 
 \begin{align*}
     S \rightarrow 0S1 \;\vert\; 1S0 \;\vert\; SS \;\vert\; \epsilon
 \end{align*}
-\begin{figure}[!ht]
-    \centering
-    \begin{tikzpicture}[shorten >=1pt,node distance=2.5cm,on grid,auto]
-    \node[state, initial, left of=q1] (p) {$p$};
-    \node[state] (q) {$q$};
-    \node[state, right of=q1, accepting] (r) {$r$};
-    \path[->]
-    (q1) edge [loop above] node[text width=2cm, align=center]{$0, 0 / \epsilon$ \\ 
-     $ 1, 1 / \epsilon$ \\$ \epsilon, S / 0S1$ \\ $\epsilon, S / 1S0$ \\ $\epsilon, S / SS $
-      \\ $ \epsilon, S / \epsilon $} (q1)
-    (q0) edge [above] node{$\epsilon, \# / S\#$} (q1)
-    (q1) edge [above] node{$\epsilon, \# / \# $} (q2);
-    \end{tikzpicture}
-    \caption{} 
-    \label{cfg=pa}
-\end{figure}
 \end{ex}
+\begin{ans*}
+    그림 \ref{cfg=pa} 참조.
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}[shorten >=1pt,node distance=2.5cm,on grid,auto]
+        \node[state, initial, left of=q1] (p) {$p$};
+        \node[state] (q) {$q$};
+        \node[state, right of=q1, accepting] (r) {$r$};
+        \path[->]
+        (q1) edge [loop above] node[text width=2cm, align=center]{$0, 0 / \epsilon$ \\ 
+         $ 1, 1 / \epsilon$ \\$ \epsilon, S / 0S1$ \\ $\epsilon, S / 1S0$ \\ $\epsilon, S / SS $
+          \\ $ \epsilon, S / \epsilon $} (q1)
+        (q0) edge [above] node{$\epsilon, \# / S\#$} (q1)
+        (q1) edge [above] node{$\epsilon, \# / \# $} (q2);
+        \end{tikzpicture}
+        \caption{} 
+        \label{cfg=pa}
+    \end{figure}
+\end{ans*}
 \begin{thm}
 임의의 PA $M$에 대하여, $L(M)$을 표현하는 문맥무관 문법 $G$가 존재한다. 
 \end{thm}
@@ -1069,17 +1100,19 @@ $A_1 \overset{*}{\Rightarrow} uxy$에 대해 $A_1$까지의 높이는 $k+1$ 이�
 \caption{}
 \end{figure}
 \begin{ex} \label{anbncn}
-    $L = \{a^n b^n c^n \;\vert\; n \ge 0 \}$이 문맥무관 언어가 아님을 보여라. \\ 
-    $w = a^t b^t c^t$라고 하자. $\vert vxy \vert \le t$이므로 $vy$는 $a,b,c$모두를 포함할 수 없다. 따라서 $uv^2 x y^2 z \notin L$이므로 문맥무관 언어가 아니다. 
+    $L = \{a^n b^n c^n \;\vert\; n \ge 0 \}$이 문맥무관 언어가 아님을 보여라. 
 \end{ex}
+\begin{ans*}
+    $w = a^t b^t c^t$라고 하자. $\vert vxy \vert \le t$이므로 $vy$는 $a,b,c$모두를 포함할 수 없다. 따라서 $uv^2 x y^2 z \notin L$이므로 문맥무관 언어가 아니다. 
+\end{ans*}
 \begin{ex}
     $L = \{ww \;\vert\; w \in \{0,1\}^*\}$이 문맥무관 언어가 아님을 보여라. 
 \end{ex}
 \begin{ex}
-    $L = \{a^n \;\vert\; n \text{ is prime}\}$이 문맥무관 언어가 아님을 보여라.
+    $L = \{a^n \;\vert\; n \text{은 소수}\}$이 문맥무관 언어가 아님을 보여라.
 \end{ex}
 \begin{thm}
-    문맥무관 언어는 (1) 합집합, (2) 접합, (3)Kleene 스타 연산에 대하여 닫혀 있다.
+    문맥무관 언어는 (1) 합집합, (2) 접합, (3) 클리니 스타 연산에 대하여 닫혀 있다.
 \end{thm}
 \begin{pf*}
     \begin{enumerate}
@@ -1205,7 +1238,7 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
         \item $H \subseteq Q$는 정지상태들의 집합
     \end{enumerate}
 \end{defn}
-튜링 기계는 한쪽으로 무한한 길이의 테입과 하나의 제어기, 그리고 테입을 가르키는 헤드로 구성된다. $\delta$는 함수이므로 튜링 기계는 결정론적으로 움직인다. $L$은 헤드가 왼쪽으로 한 칸, $R$는 오른쪽으로 한 칸, $S$는 헤드가 가만히 있는다는 뜻이다. 그리고 헤드는 테입의 맨 왼쪽 끝에서 왼쪽으로 움직이지 않는다고 가정한다.\\ 
+튜링 기계는 한쪽으로 무한한 길이의 테입과 하나의 제어기, 그리고 테입을 가르키는 헤드로 구성된다. 테입은 \textbf{칸}(cell)으로 구성되어 있다. $\delta$는 함수이므로 튜링 기계는 결정론적으로 움직인다. $L$은 헤드가 왼쪽으로 한 칸, $R$는 오른쪽으로 한 칸, $S$는 헤드가 가만히 있는다는 뜻이다. 그리고 헤드는 테입의 맨 왼쪽 끝에서 왼쪽으로 움직이지 않는다고 가정한다.\\ 
 DFA나 PA와는 달리 튜링 기계는 헤드가 이리저리 움직이면서 `입력을 다 읽는다'라는 개념이 없으므로, 언제 이 기계가 동작을 멈출 것인지를 명시해주어야 한다. 따라서 정지 상태 $h \in H$에 진입하면 튜링 기계는 정지한다.  \\ 
 튜링 기계의 \textbf{상황}(configuration)은 현재 제어기의 상태 $q$, 테입의 내용 $w$와 헤드가 가르키고 있는 위치로 구성된다. 헤드 왼쪽에 있는 문자열이 $u$, 오른쪽에 있는 문자열이 $v$, 가르키고 있는 문자열을 $a$라 할때 현재 상황은 $(q, u\underline{a}v)$로 나타낸다.  
 \begin{defn}
@@ -3027,7 +3060,7 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
 \begin{pf*}
     유클리디안 알고리즘을 사용하면 당연하게 다항시간 내($O(n)$)에 해결이 가능하다. 
 \end{pf*}
-\begin{ex}
+\begin{ex}\label{PATH}
     문제 \textbf{PATH}는 다음과 같이 정의된다.
     \begin{align*}
         \text{PATH}= \{\langle G, s, t \rangle \;\vert\; \text{방향 그래프 } G\text{에 대해 }s
@@ -3482,7 +3515,7 @@ CLIQUE $\in$ NP임을 보여라.
 우리는 지금까지 시간 복잡도에 대해 알아보았다. 시간도 중요한 자원이지만, 우리에게는 시간만 부족한 것이 아니다. 우리는 아쉽지만 한정된 돈으로 인해 제한된 메모리를 갖고 프로그램을 작성해야 하므로 우리가 만든 알고리즘이 얼마나 많은 공간을 차지하는지를 알아보자.
 \section{복잡도 분석}
 \begin{defn}
-    항상 정지하는 결정론적 TM $M$에 대해, $M$의 \textbf{공간 복잡도}(space complexity)는 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$로 나타낸다. 이때 $f(n)$은 길이가 $n$인 입력에 대해 헤드가 접근하는 테입의 최대 개수를 의미한다. 
+    항상 정지하는 결정론적 TM $M$에 대해, $M$의 \textbf{공간 복잡도}(space complexity)는 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$로 나타낸다. 이때 $f(n)$은 길이가 $n$인 입력에 대해 헤드가 테입에서 접근하는 칸의 최대 개수를 의미한다. 
 \end{defn}
 \begin{defn}
     모든 상황에 대해 정지하는 비결정론적 TM $M$에 대해, $M$의 \textbf{공간 복잡도}는 $M$의 모든 상황 중 헤드가 접근하는 테입의 최대 개수를 의미한다.
@@ -3588,20 +3621,57 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
     귀찮구나...
 \end{pf*}
 \section{L과 NL}
-우리는 지금까지 입력 스트링의 길
+우리는 지금까지 입력 스트링의 길이로 인해 $f(n) \ge n$인 경우만 봤다. 그러나 우리가 꼭 이러한 계산 모델만 생각할 이유는 없다. 예를 들어, 컴퓨터가 블루레이 디스크로 입력을 받는다고 하자. 그럼 컴퓨터의 메인 메모리보다 더 큰 크기의 입력이 들어오지만, 실제로 메인 메모리를 다 사용하지는 않을 것이다. 또한, 우리는 그 블루레이 디스크에 새로운 내용을 덧쓸 수 없고 오직 읽을 수밖에 없다. 이러한 경우를 고려하기 위해, 이제 계산 모델을 조금 수정해서 $f(n) < n$인 경우도 고려해보도록 하자.
+\begin{thm}
+    \textbf{읽기 전용 2-테입 튜링 기계}는 다음과 같이 정의된다.
+    \begin{enumerate}
+        \item 첫 번째 테입에 입력 스트링이 들어오고 이 테입은 수정할 수 없다. 
+        \item 두 번째 테입은 비어있고, 수정할 수 있다.
+    \end{enumerate}
+\end{thm}
+\begin{defn}
+    읽기 전용 2-테입 튜링 기계의 \textbf{공간 복잡도}(space complexity) $f(n)$은 길이가 $n$인 입력에 대해 헤드가 두 번째 테입에서 접근하는 칸 최대 개수를 의미한다.\footnote{첫 번째 테입은 어차피 읽기 전용이므로 고려하지 않는다.}
+\end{defn}
+\begin{ex}
+    어떤 1-테입 튜링 기계 $M$과 이와 동등한 읽기 전용 2-테입 튜링 기계 $M'$에 대해 $M$이 PSPACE인 것과 $M'$이 PSPACE인 것이 동치임을 보여라.
+\end{ex}
+앞으로 이 장에서 사용하는 계산 모델은 읽기 전용 2-테입 튜링 기계이다. $f(n) \ge n$인 경우는 별 다를 바가 없다는 것을 알았으니, $f(n) < n$인 경우를 알아보기 위해 다음을 정의하자. 
+\begin{defn}
+    \textbf{L}은 다음과 같이 정의된다.
+    \begin{align*}
+        \text{L} = \text{SPACE}(\log{n})
+    \end{align*}
+\end{defn}
+\begin{defn}
+    \textbf{NL}은 다음과 같이 정의된다.
+    \begin{align*}
+        \text{NL} = \text{NSPACE}(\log{n})
+    \end{align*}
+\end{defn}
+왜 $\sqrt{n}, (\log{n})^2$ 같은 함수가 아니라 굳이 $\log{n}$으로 정의했는지 궁금할 수 있는데, 꽤나 많은 컴퓨터 과학적으로 의미있는 문제들이 $O(\log{n})$ 공간에 풀리기 때문이다. 그 예들을 알아보자.
+\begin{ex}
+    언어 $A = \{ 0^n 1^n \;\vert\; n \ge 0\}$은 L이다.
+\end{ex} 
+\begin{ans*}
+    0과 1을 읽으면서 0과 1의 개수를 두 번째 테입에 이진수로 기록하면 된다. 그럼 $O(\log{n})$만을 이용해서 결정할 수 있으므로, $A \in \text{L}$이다.
+\end{ans*}
+\begin{ex}
+    예제 \ref{PATH}에서의 PATH 문제에 대해, $\text{PATH} \in \text{NL}$임을 보여라.
+\end{ex}
+\begin{ans*}
+    귀찮구나.
+\end{ans*}
 \section{NL-완전}
+\begin{conj}
+    \textbf{(만인의 추측)} $\text{L} \neq \text{NL}$이다.
+\end{conj}
 \section{NL = coNL}
 \section{연습문제}
 \begin{ec}\label{savitch thm exec}
-    정리 \ref{savitch thm}의 증명을 완성하라. (힌트: 시간을 완전히 포기하고 $f(n) = 1, 2, 3, \cdots$를 하나하나 차근차근 해보면 된다.)
+    정리 \ref{savitch thm}의 증명을 완성하라. (힌트: 튜링 기계가 시간을 완전히 포기하고 $f(n) = 1, 2, 3, \cdots$를 하나하나 차근차근 해보면 된다.)
 \end{ec}
 \chapter{복잡도 위계}
-우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은
-아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리 
-서로 비교하는 것은 매우 어려운 일로 보인다. 하지만 분명히 
-직관적으로 $O(n^3)$에 소속되는 언어가
-$O(n^2)$에 소속되는 언어보다 많을 걸로 예상되는데, 이 장에서는
-그 직관이 맞다는 것을 증명한다.
+우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은 아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리  서로 비교하는 것은 매우 어려운 일로 보인다. 하지만 분명히 직관적으로 $O(n^3)$에 소속되는 언어가 $O(n^2)$에 소속되는 언어보다 많을 걸로 예상되는데, 이 장에서는 그 직관이 맞다는 것을 증명한다.
 \section{공간적 위계}
 \begin{thm}
     \textbf{(공간적 위계 이론, spcae hierarchy theorem)}
