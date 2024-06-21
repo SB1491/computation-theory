@@ -1173,7 +1173,7 @@ for $d=1$ to $n-1$
     $S \in V_{1,5}$이므로 $baaba$는 이 문법이 만드는 언어에 속한다.
 \end{ex}
 \section{결정 내리누름 오토마타}
-앞에서 배운 PA는 기본적으로 비결정론적이다. 그럼 결정론적인 PA를 만들면 문맥무관 언어를 모두 표현할 수 있을까? 유한 오토마타에서는 결정론적이든 비결정론적이든 계산 능력이 동일했으나, PA에서는 아쉽게도 그렇지 않다. 
+지금까지 배운 PA는 기본적으로 비결정론적이다. 그럼 결정론적인 PA를 만들면 문맥무관 언어를 모두 표현할 수 있을까? 유한 오토마타에서는 결정론적이든 비결정론적이든 계산 능력이 동일했으나, PA에서는 아쉽게도 그렇지 않다. 
 \begin{defn}
     \textbf{결정 내리누름 오토마타}(deterministic pushdown automata, DPA)의 전이함수 $\delta$는 $Q \times (\Sigma\cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\})$에서 $Q \times \Gamma^*$로의 부분 함수(partial function)로 정의한다. DPA가 입력이나 스택을 읽지 않고 전이할 수 있도록 하는 것이 편리하므로 부분 함수로 정의하는 것이다. 비결정성을 막기 위해 DPA의 전이함수는 다음과 같은 제약조건을 갖는다. 
 \begin{itemize}
@@ -1578,7 +1578,7 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
     \end{align*}
 \end{ex}
 그럼 이제 원시 재귀 함수로 모든 계산 가능한 함수를 표현할 수 있을 것 같지만, 아쉽게도 그렇지 못하다.
-\begin{thm}
+\begin{thm}\label{prf nc}
     원시 재귀 함수가 아닌 함수 중 계산 가능한 함수가 존재한다.
 \end{thm} 
 \begin{pf*}
@@ -1690,34 +1690,24 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
             \State $m \gets m+1$
         \EndWhile
 \end{algorithmic}
-이 방법의 문제점은 $g$가 최소화 가능하면 멈추지만 만약 최소화 가능하지 않다면 정지하지 않고 무한히 작동한다.
-즉, 계산 가능한 문제라고 할 수 없다. 따라서 우리는 어떤 함수가 최소화 가능한지 판별하는 것은 `쉽지 않다.'\\
-그럼 앞에서 원시 재귀 함수가 아닌 함수들 중 계산 가능한 함수가 있다는 것을 보일 때 사용한 논리를 $\mu$-재귀
-함수에 대해서도 동일하게 적용할 수 있을까? 이는 불가능하다. 앞의 논리를 생각해보자. 튜링 기계가 
-$g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n+1$개 나열한 뒤 $f_n(n) + 1$을 
-계산하면 된다. 하지만 이 `나열'하는 과정에서 우리는 $\mu$-재귀 함수만 나열해야 하는데 이때 $\mu$-재귀 함수의
-조건 중에는 `최소화 가능한' 함수들의 최소화로 이루어진다라는 조건이 있다. 이때 우리가 아는 한
-튜링 기계는 어떤 함수가 최소화 가능한지 계산할 수 없다. 
-따라서 $\mu$-재귀 함수를 나열한다는 것 자체가 불가능하며 앞에서 사용한 논리를 사용할 수 없다. 
+이 방법의 문제점은 $g$가 최소화 가능하면 멈추지만 만약 최소화 가능하지 않다면 정지하지 않고 무한히 작동한다. 즉, 계산 가능한 문제라고 할 수 없다. 따라서 우리는 어떤 함수가 최소화 가능한지 판별하는 것은 `쉽지 않다.'\\
+그럼 정리 \ref{prc nc}의 증명에서 원시 재귀 함수가 아닌 함수들 중 계산 가능한 함수가 있다는 것을 보일 때 사용한 논리를 $\mu$-재귀 함수에 대해서도 동일하게 적용할 수 있을까? 이는 불가능하다. 앞의 논리를 생각해보자. 튜링 기계가 $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n+1$개 나열한 뒤 $f_n(n) + 1$을 계산하면 된다. 하지만 이 `나열'하는 과정에서 우리는 $\mu$-재귀 함수만 나열해야 하는데 이때 $\mu$-재귀 함수의 조건 중에는 `최소화 가능한' 함수들의 최소화로 이루어진다라는 조건이 있다. 이때 우리가 아는 한 튜링 기계는 어떤 함수가 최소화 가능한지 계산할 수 없다. 따라서 $\mu$-재귀 함수를 나열한다는 것 자체가 불가능하며 정리 \ref{prc nc}의 증명에서 사용한 논리를 사용할 수 없다. 
 \begin{ex}
-    로가리슴 함수 $log(m,n) = \left\lceil \log_{m+2}(n+1)\right\rceil$가 $\mu$-재귀 함수임을
-    보여라.($\log$가 범위를 벗어나지 않도록 정의했다.)
+    로가리슴 함수 $\log(m,n) = \left\lceil \log_{m+2}(n+1)\right\rceil$가 $\mu$-재귀 함수임을
+    보여라.($\log $가 범위를 벗어나지 않도록 정의했다.)
     \begin{align*}
-        log(m,n) = \mu p \; [greater\text{-}or\text{-}equal((m+2)^p, n+1)]
+        \log(m,n) = \mu p \; [greater\text{-}or\text{-}equal((m+2)^p, n+1)]
     \end{align*}
 \end{ex}
-\begin{thm}
-    함수 $f: \mathbb{N}^k \rightarrow \mathbb{N}$가 $\mu$-재귀 함수라는 것은
-    $f$가 튜링 기계에 의해 계산 가능하다는 것과 동치이다.  
+\begin{thm}\label{mu eqauls tm}
+    함수 $f: \mathbb{N}^k \rightarrow \mathbb{N}$가 $\mu$-재귀 함수라는 것은 $f$가 튜링 기계에 의해 계산 가능하다는 것과 동치이다.  
 \end{thm}
 \begin{pf*}
     먼저 $(\Rightarrow)$를 증명하자. 
 
     $f$가 $\mu$-재귀 함수라 하자. 먼저 기본 함수들이 계산 가능한 것은 자명하다. 
 
-    다음으로 $f:\mathbb{N}^k \rightarrow \mathbb{N}$가 
-    $g: \mathbb{N}^l \rightarrow \mathbb{N}$와 $h_1, \ldots, h_l:\mathbb{N}^k \rightarrow 
-    \mathbb{N}$의 합성으로 정의되었다고 하자. 이는 튜링 기계로 다음과 같이 계산할 수 있다.
+    다음으로 $f:\mathbb{N}^k \rightarrow \mathbb{N}$가  $g: \mathbb{N}^l \rightarrow \mathbb{N}$와 $h_1, \ldots, h_l:\mathbb{N}^k \rightarrow \mathbb{N}$의 합성으로 정의되었다고 하자. 이는 튜링 기계로 다음과 같이 계산할 수 있다.
     \begin{algorithmic}
         \State $m_1 \gets h_1(n_1, \ldots, n_k)$
         \State $\vdots$
@@ -1736,8 +1726,7 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n
         \State \textbf{output} $v$
         \EndIf
     \end{algorithmic}
-    마지막으로 $f$가 $\mu m \; [g(n_1, \ldots, n_k, m)]$과 같이 정의되면 앞에서 봤듯이 
-    다음과 같이 계산할 수 있다.
+    마지막으로 $f$가 $\mu m \; [g(n_1, \ldots, n_k, m)]$과 같이 정의되면 앞에서 봤듯이 다음과 같이 계산할 수 있다.
     \begin{algorithmic}
         \State $m \gets 0$
         \While{$g(n_1, \ldots, n_k, m) \neq 1$}
@@ -1746,10 +1735,7 @@ $g(n) = f_n(n) + 1$을 계산하기 위해서는 먼저 $f_0, f_1, \ldots$를 $n
     \end{algorithmic}
     이때 $g$는 정의에 의해 최소화 가능한 함수이므로 이 알고리즘은 항상 정지한다.\\
     이제 반대 방향($\Leftarrow$)을 증명하자.\\
-    먼저 편의를 위해 튜링 기계 $M = (Q, \Sigma, \Gamma, \delta,
-    s, \{h\})$이 계산 가능한 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$을 
-    계산한다고 하자. (인자가 여러개인 함수도 
-    유사하게 확장하여 증명할 수 있다.) 이제 함수 $f$가 $\mu$-재귀 함수임을 보이면 된다. \\
+    먼저 편의를 위해 튜링 기계 $M = (Q, \Sigma, \Gamma, \delta, s, \{h\})$이 계산 가능한 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$을 계산한다고 하자.\footnote{인자가 여러개인 함수도 유사하게 확장하여 증명할 수 있다. 연습문제 \ref{several mu} 참고.} 이제 함수 $f$가 $\mu$-재귀 함수임을 보이면 된다. \\
     일반성을 잃지 않고 $Q, \Sigma, \Gamma$가 서로소라고 하자. $b = \vert Q \vert + \vert \Sigma \vert 
     + \vert \Gamma \vert$라고 하고 함수 $E:Q \cup \Sigma \cup \Gamma \rightarrow \{0, 1 
     \ldots, b-1\}$를 일대일 함수라고 하자. 우리는 $M$의 상황을 $b$를 통해 표현할 것이다. 상황 $(q,
@@ -2150,6 +2136,8 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         1 \text{ else } \text{mult } n \, (f \, (\text{pred } n))
     \end{align*}
     $fac$ 2를 연산하는 과정을 $Y$-결합자를 이용해 표현해라. ($Y \, (fac \, 2)$를 계산하라는 뜻이다.)
+\end{ex}
+\begin{ans*}
     \begin{align*}
         &Y \, fac \, 2 \\ 
         &= fac \, (Y \, fac) \, 2 \\ 
@@ -2170,7 +2158,7 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
         &= \text{mult } 2 \, (\text{mult } 1 \, 1) \\
         &= 2 
     \end{align*}
-\end{ex}
+\end{ans*}
 \begin{ex}
     정의 \ref{minimalization}에서 정의한 최소화 함수 $min$을 람다식을 이용해 정의하라.
 \end{ex}
@@ -2226,12 +2214,14 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
       \end{enumerate}
 \end{ec}
 \begin{ec}
-    최소화를 정의할 때 정의 \ref{minimalization}에서는 상수를 1로 두었다. 
-    꼭 1이어야 할까? 다음과 같이 어떤 음이 아닌 정수 $k$여도 괜찮을까?
+    최소화를 정의할 때 정의 \ref{minimalization}에서는 상수를 1로 두었다. 꼭 1이어야 할까? 다음과 같이 어떤 음이 아닌 정수 $k$여도 괜찮을까?
     \begin{align*}
         f(n_1, \ldots, n_k) = \{g(n_1, \ldots, n_k, m) = k\text{가 되게 하는 최소 } m\}
     \end{align*}
     위와 같은 정의여도 $\mu$-재귀 함수는 계산 가능한 함수와 동등한가?
+\end{ec}
+\begin{ec}\label{several mu}
+    정리 \ref{mu eqauls tm}의 증명에서 함수의 인자가 여러 개일 때의 증명을 완성하여라.
 \end{ec}
 \part{계산 가능성}
 \chapter{계산 가능성}
@@ -3084,8 +3074,7 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
 \begin{ex}
     문제 \textbf{LONGPATH}는 다음과 같이 정의된다.
     \begin{align*}
-    \text{LONGPATH} = \{ \langle G,s, t, k\rangle & \;\vert\; \text{가중치가 있는 그래프 }
-      G \text{에 대해 } s \text{에서 } \\ 
+    \text{LONGPATH} = \{ \langle G,s, t, k\rangle & \;\vert\; \text{가중치가 있는 그래프 } G \text{에 대해 } s \text{에서 } \\ 
     & t \text{까지 가중치의 합이 } k \text{이상인 경로가 존재한다.} \}
     \end{align*}
     LONGPATH $\in $ NP임을 보여라. 
@@ -3103,21 +3092,16 @@ P를 정의하면서 우리는 다음과 같은 이점을 얻을 수 있다.
     즉, NP $= \bigcup_k$NTIME$(n^k)$이다.
 \end{thm}
 \begin{pf*}
-    $A \in $ NP라 하자. $V$는 $A$의 다항시간 검증자라고 하자. 
-    먼저 어떤 비결정론적 TM $N$에 대해 다항시간 내에 $A$가 결정됨을 보이고 싶다.
-    다음과 같이 $N$을 구성하자.
+    $A \in $ NP라 하자. $V$는 $A$의 다항시간 검증자라고 하자. 먼저 어떤 비결정론적 TM $N$에 대해 다항시간 내에 $A$가 결정됨을 보이고 싶다. 다음과 같이 $N$을 구성하자.
     \begin{enumerate}
         \item 비결정론적으로 길이 $n^k$이하의 문자열 $c$를 고른다.
         \item $V$를 $\langle w,c \rangle$에 대해 돌린다.
         \item $V$가 받아들이면 받아들이고, 아니면 받아들이지 않는다. 
     \end{enumerate}
     $V$는 다항시간 검증자이므로 $N$은 다항시간 내에 정지함을 알 수 있다. \\ 
-    이제 반대 방향을 검증하자. $A$가 비결정론적 TM $N$에 의해 다항시간 내에 결정된다고 할때, 다항시간
-    검증자 $V$는 다음과 같이 구성할 수 있다.
+    이제 반대 방향을 검증하자. $A$가 비결정론적 TM $N$에 의해 다항시간 내에 결정된다고 할때, 다항시간 검증자 $V$는 다음과 같이 구성할 수 있다.
     \begin{enumerate}
-        \item 앞에서 $V$를 흉내내는 과정을 생각하면 된다. 입력 $\langle w,c \rangle$에 대해 $N$을 $w$에
-        대해 $c$를 참고하면서 비결정론적 튜링 기계에서 다양한 상황 중 하나를 선택해 가면서 흉내낸다. (앞에서
-        비결정론적 튜링 기계를 흉내내는 결정론적 튜링 기계를 생각하면 된다.) 
+        \item 앞에서 $V$를 흉내내는 과정을 생각하면 된다. 입력 $\langle w,c \rangle$에 대해 $N$을 $w$에 대해 $c$를 참고하면서 비결정론적 튜링 기계에서 다양한 상황 중 하나를 선택해 가면서 흉내낸다.\footnote{정리 \ref{NTM pf}에서 비결정론적 튜링 기계를 흉내내는 결정론적 튜링 기계를 생각하면 된다.} 
         \item 만약 이 $N$이 받아들이면 받아들이고, 아니면 받아들이지 않는다.
     \end{enumerate}
 \end{pf*}
