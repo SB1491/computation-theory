@@ -201,7 +201,7 @@ $\{a, b, c\} \in \Sigma$에 대해 첫 번째 나온 알파벳이 다시 나오�
 \end{itemize}
 문자열 $w \in \Sigma^*$에 대해 $\delta^* (q_0, w ) \in F$면, DFA $M$이 $w$를 \textbf{받아들인다}(accept)고 한다. $M$의 언어 $L(M)$은 다음과 같이 정의 가능하다.
 \begin{align*}
-    L(M) = \{w \in \Sigma^* : \delta (q_0, w) \in F \}
+    L(M) = \{w \in \Sigma^* : \delta^* (q_0, w) \in F \}
 \end{align*}
 DFA의 \textbf{상황}(configuration)은 $(q_1, 0011)$과 같이 현재 상태와 입력 문자열의 읽지 않은 부분으로 결정된다. 한 번의 전이에 의해 DFA $M$의 상황이 변화하는 과정을 $\vdash_M$로 나타낸다. 중간 전이를 생략하고 싶으면 $\vdash_M^*$로 나타낸다.
 \begin{align*}
