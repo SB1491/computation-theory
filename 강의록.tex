@@ -10,7 +10,7 @@
 \usepackage{fancyhdr}
 \usepackage{tikz}
 
-\usetikzlibrary{automata,positioning,arrows,shapes.multipart,shapes.geometric}
+\usetikzlibrary{automata,positioning,chains,scopes,arrows,shapes.multipart,shapes.geometric}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{fit}
 \usetikzlibrary{backgrounds}
@@ -313,7 +313,7 @@ DFA의 \textbf{상황}(configuration)은 $(q_1, 0011)$과 같이 현재 상태�
     \label{(010+01)^*}
 \end{figure}
 그림 \ref{(010+01)^*}을 보면 알겠지만, DFA와는 다르게 어떤 입력은 전이하는 간선이 없으며, 입력을 받지 않고서도 전이가 가능하다. 또한, NFA의 최종 상태는 하나로 만들 수 있다. 모든 $q \in F$에 대해 $(q, \epsilon, q_F )$를 넣어주면 된다.
-\begin{ex}
+\begin{ex}\label{100nfa}
     끝에서 세 번째 글자가 1인 문자열을 받아들이는 NFA를 구하라. 
 \end{ex}
 NFA를 보다보면 대체 왜 현실에서 만들기도 힘든 비결정론적인 오토마타가 필요한지 의문이 들 것이다. 이는 여러 가지 이유가 있다.
@@ -345,7 +345,7 @@ while $\exists$ marked state $P \in Q_D$
 이제 이렇게 만든 NFA $N$과 DFA $D$의 동등성을 확인해야 하는데, $\Delta^*(q_0, w) = \delta(E(q_0), w)$임을 보이면 된다. 이는 귀납법으로 충분히 `할 수 있다'. 또한 NFA의 상태 수는 유한하므로 당연히 $Q_N$의 멱집합도 유한하다. 따라서 이후 증명은 생략하도록 한다. 
 \end{pf*}
 \begin{ex}
-    예제 \ref{010 DFA}의 NFA를 DFA로 만들어라. 
+    예제 \ref{010+01}의 NFA를 DFA로 만들어라. 
 \end{ex} 
 \begin{ans*}
     먼저 원래의 NFA를 생각하자. 시작 상태는 $q_0$이다. $q_0$에서 0을 입력받으면 $q_1$로 가고, 1을 입력받으면 죽은 상태로 가게 된다. $q_1$에서 0을 입력받으면 죽은 상태로 가게 되고, 1을 입력받으면 빈 문자열에 의한 전이도 가능하므로 $q_2, q_0$으로 동시에 가게 된다. 따라서 DFA를 만들 때에는 $\{q_0, q_2\}$라는 상태를 하나 더 만들어주면 된다. ${q_0, q_2}$에서 0을 입력받으면, $q_0$에서는 $q_1$로 가고, $q_2$에서는 ${q_0, q_1}$로 동시에 갈 수 있으므로 $\{q_0, q_1\}$이라는 상태를 하나 더 만들어주면 된다. 1을 입력받으면 죽은 상태로 간다. 이를 계속해서 반복하고, $F_N$의 원소가 하나라도 있는 상태를 최종 상태로 만들어주면 그림 \ref{01001DFA}을 얻을 수 있다.
@@ -372,7 +372,7 @@ while $\exists$ marked state $P \in Q_D$
     \caption{} 
     \label{01001DFA}
 \end{figure}
-\begin{ex} 예제 \ref{010^C DFA}의 NFA를 동등한 DFA로 바꾸어라.
+\begin{ex} 예제 \ref{100nfa}의 NFA를 동등한 DFA로 바꾸어라.
 \end{ex}
 \section{정규 언어 = DFA = NFA}
 이제 정규 언어와 DFA, NFA가 나타내는 언어 집합이 같다는 것을 보일 것이다.
@@ -485,14 +485,12 @@ while $\exists$ marked state $P \in Q_D$
 \end{pf*}
 \section{정규 언어의 특징}
 \begin{thm}\label{RE feature}
-정규 언어는 (1) 합집합, (2) 접합, (3) Kleene 곱($*$), (4) 여집합, (5)교집합에
-대해 닫혀있다.
+정규 언어는 (1) 합집합, (2) 접합, (3) 클리니 별($*$), (4) 여집합, (5) 교집합에 대해 닫혀있다.
 \end{thm}
 \begin{pf*}
-    (1) $\sim$ (3)은 정의에 의해 당연하다.
+(1) $\sim$ (3)은 정의에 의해 당연하다.
 
-(4) 정규 언어 $L$을 받아들이는 DFA는 존재하므로, DFA의 최종 상태 $F$를
-$Q-F$로 대체하면 된다.
+(4) 정규 언어 $L$을 받아들이는 DFA는 존재하므로, DFA의 최종 상태 $F$를 $Q-F$로 대체하면 된다.
 
 (5) $L_1 \cap L_2  = \overline{\overline{L_1} \cup \overline{L_2}}$
 \end{pf*} 
@@ -519,14 +517,11 @@ $L$을 표시하는 DFA를 만들고 이를 읽어서 결정하면 된다.\footn
 \end{thm}
 마치 $y$를 펌프처럼 늘릴 수 있다고 해서 펌프정리(pumping lemma)라고 한다. 
 \begin{pf*}
-    정규 언어 $L$을 받아들이는 DFA $M$에 대해 $M$의 상태의 개수를 $t$라 하자.
-$w = a_1 \ldots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \ldots a_i) = q_i$
-라고 하자. 이때 $M$은 $t$ 개의 상태만을 가지므로, $q_j = q_k \; (0 \le j < k \le t) $가
-존재한다. 즉, $y = a_{j+1} \ldots a_k$라고 하면 $xy^iz \in L$이므로 펌프 정리를 증명할 수 있다.  
+    정규 언어 $L$을 받아들이는 DFA $M$에 대해 $M$의 상태의 개수를 $t$라 하자. $w = a_1 \ldots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \ldots a_i) = q_i$라고 하자. 이때 $M$은 $t$ 개의 상태만을 가지므로, $q_j = q_k \; (0 \le j < k \le t) $가 존재한다. 즉, $y = a_{j+1} \ldots a_k$라고 하면 $xy^iz \in L$이므로 펌프 정리를 증명할 수 있다.  
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[shorten >=1pt,node distance=0.5cm,on grid,auto]
-    \node[state, initial, left of=s, xshift=1cm] (s) {};
+    \node[state, initial, left of=rs, xshift=-1cm] (s) {};
     \node[state] (rs) {};
     \node[state, accepting, right of=rs, xshift=-1cm] at (4, 0) (e) {};
     \path[->]
@@ -543,7 +538,7 @@ $w = a_1 \ldots a_n \; (a_i \in \Sigma, n \ge t)$에 대해 $\delta^*(q_0, a_1 \
 $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
 \begin{ans*}
-    먼저 $L$을 정규 언어라고 하자. 그럼 임의의 $t$에 대해, $w = 0^t 1^t$라고 하자. 그럼 $w=xyz$에 대해 $y = 0^k (k \le t)$이므로, $i=0$일 때, $xy^iz= 0^{t-k} 1^t \notin L$이므로 펌프 정리에 의해 $L$은 정규 언어가 아니다. 
+    먼저 $L$을 정규 언어라고 하자. 그럼 임의의 $t$에 대해, $w = 0^t 1^t$라고 하자. 그럼 $w=xyz$에 대해 $y = 0^k \;(k \le t)$이므로, $i=2$일 때, $xy^iz= 0^{t+k} 1^t \notin L$이므로 펌프 정리에 의해 $L$은 정규 언어가 아니다. 
 \end{ans*}
 \begin{ex}
     $L = \{a^{n^2} \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
@@ -552,13 +547,9 @@ $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
      $L = \{0^n 1^m \;\vert\; n \neq m\}$은 정규 언어가 아님을 증명하라.
 \end{ex}
 \begin{ex} 
-    $L = \{ab^nc^n \;\vert\; n \ge 0\} \cup \{ a^k w \;\vert\; k \neq 1, w\text{는 } a\text{로 시작하지 않는 문자열} \}$이 펌프 정리가 성립하지만 정규 언어가 아님을 증명하라.
+    $L = \{ab^n c^n \;\vert\; n \ge 0\} \cup \{ a^k w \;\vert\; k \neq 1, w\text{는 } a\text{로 시작하지 않는 문자열} \}$이 펌프 정리가 성립하지만 정규 언어가 아님을 증명하라.
 \end{ex}
-정규 언어인지 아닌지 알아내는 직관적인 방법은 `이 언어를 DFA로 표현하는 것이 가능한가?'를
-생각해보면 된다. 예를 들어, 예제 \ref{0n1n}의 경우 0의 개수를 저장해 둔 뒤 1의 개수와 비교해야 하는데,
-0의 개수로 가능한 가짓수는 무한하다. 따라서 유한 개의 상태만을 가진 DFA로는 구현해내는 것이
-불가능하므로 정규 언어가 아님을 알 수 있다. 
-
+정규 언어인지 아닌지 알아내는 직관적인 방법은 `이 언어를 유한한 메모리로 표현하는 것이 가능한가?'를 생각해보면 된다. 예를 들어, 예제 \ref{0n1n}의 경우 0의 개수를 저장해 둔 뒤 1의 개수와 비교해야 하는데, 0의 개수로 가능한 가짓수는 무한하다. 따라서 유한 개의 상태만을 가진 DFA로는 구현해내는 것이 불가능하므로 정규 언어가 아님을 알 수 있다. 
 \section{연습문제}
 \begin{ec}
     언어 $L_n$에 대해 
@@ -583,7 +574,7 @@ $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \chapter{문법과 오토마타} 
 \section{문법}
 \begin{defn}
-    문법(grammar) $G$는 $(V, \Sigma, S, P)$로 구성된다.
+    \textbf{문법}(grammar) $G$는 $(V, \Sigma, S, P)$로 구성된다.
 \end{defn} 
 \begin{enumerate}
     \item $V$는 변수들의 유한 집합
@@ -591,12 +582,9 @@ $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
     \item $S \in V$는 시작변수
     \item $P$는 생성규칙들의 유한 집합이다. 
 \end{enumerate}
-여기서 생성규칙이란 $x\in (V \cup \Sigma)^* V 
-(V \cup \Sigma )^*, y \in (V \cup \Sigma)^*$에 대해 $x \rightarrow y$의 형태를 가진다.
-이 단원에서는 약간 문법을 제한한 형태만을 다룰 것이다. 
+여기서 생성규칙이란 $x\in (V \cup \Sigma)^* V (V \cup \Sigma )^*, y \in (V \cup \Sigma)^*$에 대해 $x \rightarrow y$의 형태를 가진다. 이 장에서는 약간 문법을 제한한 형태만을 다룰 것이다. 
 \begin{defn}
-    문법 중 문맥무관 문법(context-free grammar) $G$는 $A \in V, x \in (V \cup \Sigma)^*$ 에 대해
-다음과 같은 생성규칙만을 가진다.
+문법 중 \textbf{문맥무관 문법}(context-free grammar) $G$는 $A \in V, x \in (V \cup \Sigma)^*$ 에 대해 다음과 같은 생성규칙만을 가진다.
 \begin{align*}
     A \rightarrow x
 \end{align*}
@@ -608,7 +596,7 @@ $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
 \begin{align*}
     L(G) = \{ w \; \vert \; S \overset{*}{\Rightarrow} w \}
 \end{align*}
-문맥무관 언어의 예시로는 프로그래밍 언어(Fortran, C 등)가 있다.
+문맥무관 언어의 예시로는 보통의 프로그래밍 언어(Fortran, C 등)가 있다.
 \begin{ex}\label{0n1n_CFG}
 $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구하라.
 \end{ex}
@@ -941,17 +929,27 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구�
 \end{defn}
 \begin{figure}[!ht]
     \centering
-    \begin{tikzpicture}[
-        stack/.style={rectangle split, rectangle split parts=#1,draw, anchor=center}
-    ]
-
-    \node[stack = 5](A){
-        \nodepart{three}A
-        \nodepart{four}B
-        \nodepart{five}\#
-    };    
-    \end{tikzpicture}%
-    \caption{그림그리기귀찮아.....}
+    \begin{tikzpicture}[node distance=0mm, every node/.style=  {draw,minimum size=8mm}]
+        \node (deb) {State Control};
+        { [start chain=1]
+        \node [on chain] at (3,-2){$a$};
+        \node [on chain] {$a$};
+        \node [on chain] {$b$};
+        \node [on chain] {$b$};
+        }
+       
+        { [start chain=2 going below]
+        \node [on chain] at (-2,-3){$z$};
+        \node [on chain] {$y$};
+        \node [on chain] {$x$};
+        \node [on chain] {\#};
+        }
+        \begin{scope}[->,>=latex']
+           \draw (deb.east) -| (1-1);
+            \draw (deb.south) |- (2-1.east);
+        \end{scope}
+        \end{tikzpicture}
+    \caption{내리누름 오토마타}
 \end{figure}
 PA는 $\Delta$가 전이 `관계'이므로 기본적으로 비결정론적이다. 비결정론적이므로 NFA와 마찬가지로 최종 상태는 하나라고 가정할 수 있다. \\ 
 $((q, a, X), (p, Y))$에 대해, $q$는 현재 상태, $a$는 입력 알파벳, $X$는 현재 스택의 상단(top)에 있는 글자이다. $X$가 $\epsilon$일 때는 스택의 상단을 읽지 않는다는 뜻이다. 그리고 $p$는 그 다음 상태, $Y$는 $X$를 대체하는 글자이다. $((q,a,\epsilon),(p,A))$의 경우, $A$를 스택에 넣는 삽입(push) 연산이고, $((q,a,A),(p,\epsilon))$은 스택에서 $A$를 빼는 삭제(pop) 연산이다. \\
@@ -1364,11 +1362,11 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
 \begin{defn} \label{ram definition}
     \textbf{(느슨한 정의)}
     \textbf{랜덤 접근 기계}(Random Access Machine, RAM)는 여러 개의 \textbf{레지스터}(register), 한 방향으로 무한한 길이의 테이프, \textbf{프로그램 카운터}(program counter, PC)로 이루어진다. 레지스터를 각각 $R_0, R_1, \ldots$, 테이프의 각 조각을 $T[1], T[2], \ldots $, 프로그램 카운터를 $\kappa$라고 하자. 각 레지스터와 테이프 한 조각은 임의의 자연수를 저장할 수 있다. \\ 
-    랜덤 접근 기계는 여러개의 \textbf{인스트럭션}(instruction)으로 이루어진 고정된 \textbf{프로그램}(program)을 기반으로 작동한다.\footnote{혹시 컴퓨터 구조 과목을 공부했다면, CPU에 있는 ISA와 근본적으로 다른게 없다는 걸 느끼면 된다.}
+    랜덤 접근 기계는 여러개의 \textbf{명령어}(instruction)으로 이루어진 고정된 \textbf{프로그램}(program)을 기반으로 작동한다.\footnote{혹시 컴퓨터 구조 과목을 공부했다면, CPU에 있는 ISA와 근본적으로 다른게 없다는 걸 느끼면 된다.}
     \begin{figure}[!ht] 
         \centering
         \begin{tabular}{ ccc }
-            인스트럭션 & 피연산자 & 뜻 \\ 
+            명령어 & 피연산자 & 뜻 \\ 
             \hline
             \hline
             read & $j$ & $R_0 \gets T[R_j]$ \\ 
@@ -1402,14 +1400,14 @@ TM은 앞에서 다루었던 DFA, PA와는 달리 정지한 후 테이프에 문
         \caption{}
         \label{iiiii}
     \end{figure}
-    가능한 인스트럭션 종류로는 그림 \ref{iiiii}이 있다.\footnote{하나의 예일 뿐이며 다른 인스트럭션들로도 충분히 다양한 연산이 가능하다.} 레지스터는 0, 프로그램 카운터는 1로 초기화 된다. $\kappa$의 값은 몇 번째 인스트럭션을 수행해야 하는지를 가르킨다. 한 인스트럭션이 수행될 때마다 특별하게 $\kappa$의 값을 지정해주는 인스트럭션이 아닌 이상 1씩 증가한다. $\kappa$가 0이 되면, 즉 halt 인스트럭션을 수행하면 랜덤 접근 기계는 정지한다.
+    가능한 명령어 종류로는 그림 \ref{iiiii}이 있다.\footnote{하나의 예일 뿐이며 다른 명령어들로도 충분히 다양한 연산이 가능하다.} 레지스터는 0, 프로그램 카운터는 1로 초기화 된다. $\kappa$의 값은 몇 번째 명령어를 수행해야 하는지를 가르킨다. 한 명령어가 수행될 때마다 특별하게 $\kappa$의 값을 지정해주는 명령어가 아닌 이상 1씩 증가한다. $\kappa$가 0이 되면, 즉 halt 명령어를 수행하면 랜덤 접근 기계는 정지한다.
 \end{defn}
 이 책에서는 랜덤 접근 기계의 좀 더 정확한 정의를 다루지 않으나, 위에서 정의한 내용만으로  충분히 이해할 수 있을거라 믿는다. 
 \begin{thm}
     랜덤 접근 기계와 튜링 기계의 계산 능력은 동등하다.
 \end{thm}
 \begin{pf*}
-    \textbf{(느슨한 증명)} 랜덤 접근 기계의 가장 중요한 특징은 레지스터에 저장된 주소값을 통해 바로 메모리 내의 값을 접근할 수 있다는 점인데, $3$-테입 튜링 기계를 이용해 첫 번째 테입에서는 레지스터를 담당하고 두번째 테입은 메모리를 담당하고 마지막 테입은 인스트럭션 입력을 받는 테입으로 활용하면 랜덤 접근 기계를 흉내낼 수 있다.
+    \textbf{(느슨한 증명)} 랜덤 접근 기계의 가장 중요한 특징은 레지스터에 저장된 주소값을 통해 바로 메모리 내의 값을 접근할 수 있다는 점인데, $3$-테입 튜링 기계를 이용해 첫 번째 테입에서는 레지스터를 담당하고 두번째 테입은 메모리를 담당하고 마지막 테입은 명령어 입력을 받는 테입으로 활용하면 랜덤 접근 기계를 흉내낼 수 있다.
 \end{pf*}
 \section{무제한 문법}
 이제 튜링 기계와 동등한 계산 능력을 가지고 있는 언어를 알아볼 차례다. 
@@ -2795,7 +2793,53 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     소인수분해의 유일성에 의해 자명하다.
 \end{pf*}
 \section{부분 재귀 함수}
+\begin{defn}
+    튜링 기계를 괴델 수로 부호화하여 나열했을 때 $e$번째 튜링 기계를 $P_e$라고 한다. 여기서 $e$를 \textbf{색인}(index)이라고 한다.
+\end{defn}
+\begin{defn}
+    $P_e$에 의해 계산되는 부분 함수를 $\varphi_e$라고 한다. 변수가 $n$ 개면 $\varphi_e^{(n)}$이라고 한다.
+\end{defn}
+\begin{thm}
+    모든 $\varphi_x^{(n)}$에 대해 $\varphi_x^{(n)} = \varphi_y^{(n)}$인 색인 $y$가 $\aleph_0$ 개 존재한다.\footnote{자연수 집합의 크기만큼 존재한다와 같은 말이다.}
+\end{thm}
+\begin{pf*}
+    튜링 기계에 의미없는 명령어를 계속해서 추가하면 된다.
+\end{pf*}
+\begin{thm}
+    \textbf{(정상 표현 정리, Normal Form Theorem)} 모든 $\varphi_e$에 대해 다음을 만족하는 술어 $T(e, x, y )$와 원시 재귀 함수 $U(y)$가 존재한다.
+    \begin{align*}
+        \varphi_e (x) = U (\mu y \; [T(e,x,y)])
+    \end{align*}
+    여기서 $T(e, x, y)$를 \textbf{클리니 T-술어}(Kleene T-predicate)라고 한다.
+\end{thm}
+\begin{thm}
+    \textbf{(열거 정리, Enumeration Theorem)} 
+    모든 $\varphi_e (x)$에 대해 $\varphi_z^{(2)} (e, x) = \varphi_e (x)$인 부분 함수 $\varphi_z^{(2)}$가 존재한다.
+\end{thm}
+\begin{thm}
+    \textbf{(s-m-n 정리, s-m-n Theorem)} 모든 $m, n \ge 1$에 대해 다음을 만족시키는 일대일 대응 원시 재귀 함수 $s_n^m$가 존재한다. 
+    \begin{align*}
+        \forall x, y_1, \ldots, y_m, \varphi^{(n)}_{s_n^m (x, y_1, \ldots, y_m)} = \lambda z_1, \ldots, z_n \; [\varphi_x^{(m+n)} (y_1, \ldots, y_m, z_1, \ldots, z_n)]
+    \end{align*} 
+\end{thm}
+\begin{defn}
+    $\langle x, y \rangle =  \frac{1}{2}(x^2 + 2xy + y^2 + 3x + y)$라고 하자.\footnote{연습문제 \ref{1to1x,y} 참조.} 유사하게 $ \langle x_1, \ldots, x_{n+1} \rangle = \langle \langle x_1 , \ldots, x_n \rangle,  x_{n+1} \rangle$로 정의할 수 있다. 
+\end{defn}
+\begin{defn}
+    $x, y, e < s$이고 $y$가 튜링 기계 $P_e$에 대해 $s$ 번의 스텝 미만으로 결정되어 출력되는 결과값이면 $\varphi_{e, s} (x) = y$라고 하자. 이러한 $y$가 존재하면 $\varphi_{e,s} (x)$는 \textbf{수렴한다}(converge)고 하고, $\varphi_{e, s} (x)\downarrow$라고 쓴다. 그렇지 않으면 \textbf{발산한다}(diverge)고 하고, $\varphi_{e, s} (x) \uparrow$라고 쓴다.
+\end{defn}
+\begin{defn}
+    만약 $\varphi_{e, s} (x) \downarrow = y$를 만족시키는 $s$가 존재하면 $\varphi_e (x) \downarrow = y$라고 쓴다.
+\end{defn}
+\begin{ex}
+    다음 두 언어가 재귀 언어임을 보여라.
+    \begin{enumerate}
+        \item $L_1 = \{\langle e, x, s\rangle \;\vert\; \varphi_{e, s} (x) \downarrow \}$
+        \item $L_2 = \{ \langle e, x, y, s \rangle \;\vert\; \varphi_{e, s} (x) = y\}$
+    \end{enumerate}
+\end{ex}
 \section{튜링 위계}
+직관적으로, $y \in A$인지 아닌지를 이용해 $x \in B$를 계산할 수 있으면 우리는 $B$가 $A$ 안에서 계산 가능하다고 하고, 이를 $B \le_T A$라고 쓴다. 이를 엄밀하게 정의하고 이를 이용한 다양한 튜링 완전성을 알아보자.
 \begin{defn}
     집합 $A$에 대한 \textbf{특성 함수}(characteristic function) $\chi_A$는 다음과 같이 정의된다.
     \begin{align*}
@@ -2822,7 +2866,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     으로 정의된다.
 \end{defn}
 \begin{defn}
-    부분 함수 $\psi$에 대해
+    부분 함수 $\psi$에 대해 다음과 같은 정의를 알아보자.
     \begin{enumerate}
         \item 집합 $A$에 대해 다음과 같은 성질을 만족하는 
         $A$-신탁 튜링 기계 $M$이 존재하면 부분 함수 $\psi$가 
@@ -2832,7 +2876,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
             x \in L(M) \wedge M\text{의 출력값은 } y
         \end{align*} 
         이는 $\psi \le_T A$와 같이 표기한다. 대응되는 튜링 기계로 $\psi$를 표현하고 싶을 경우
-        $\psi = \Phi_M^A$와 같이 표기하기도 한다. 
+        $\psi = \Phi_M^A$ 또는 $\psi = \{e\}^A$와 같이 표기하기도 한다. 
         \item $M$이 $x$에 대해 정지하지 않으면 $\psi(x)$는 \textbf{발산}(diverge)한다고 하고
         $\psi(x) \uparrow$로 표기한다.
     \end{enumerate}
@@ -2843,13 +2887,22 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{pf*}
     책 \cite{kleene1952introduction}에 나와있다고 하는데 안 읽어봐서 모른다...
 \end{pf*}
+\begin{thm}
+    \textbf{(상대화된 열거 정리, Relativized Enumeration Theorem)}
+\end{thm}
+\begin{thm}
+    \textbf{(상대화된 s-m-n 정리, Relativized s-m-n Theorem)}
+\end{thm}
+\begin{thm}
+    \textbf{(상대화된 재귀 이론, Relativized Recursion Theorem)}
+\end{thm}
 \section{산술적 위계}
 \begin{defn}
     \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
     정의되는 양화사로 다음과 같이 정의된다. 
     \begin{align*}
-        \forall n < t \; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
-        \exists n < t \; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
+        (\forall n < t )\; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
+        (\exists n < t )\; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
     \end{align*}
     여기서 $\phi$는 논리식(formula)이다. 
 \end{defn}
@@ -2862,7 +2915,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
         \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \ldots \forall m_k \; \psi$이고
         $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
-        \item 만약 $\phi \in \Sigma_0^n, \Pi_0^n$이면 $\phi \in \Delta_0^n$이다.
+        \item 만약 $\phi \in \Sigma_n^0, \Pi_n^0$이면 $\phi \in \Delta_n^0$이다.
     \end{itemize}
     즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로
     결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고
@@ -2896,8 +2949,16 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     정의역이다. $M$ \\
     ($\Rightarrow$) $A = $
 \end{pf*}
-\section{그 너머의 계산}
+\section{그 너머의 계산 모델들}
 ㅋㅋ
+\section{연습문제}
+\begin{ec}\label{1to1x,y}
+    함수 $f(x, y): \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N} $이 다음과 같이 정의된다고 하자.
+    \begin{align*}
+        f(x, y) = \frac{1}{2}(x^2 + 2xy + y^2 + 3x + y)
+    \end{align*}
+    함수 $f(x, y)$가 일대일 대응임을 보여라.
+\end{ec}
 \part{계산 복잡도}
 \chapter{시간 복잡도}
 \section{점근적 표기법}\label{asymptotic}
