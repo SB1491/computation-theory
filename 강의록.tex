@@ -824,7 +824,7 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구�
     $L$은 \textbf{본질적으로 애매하다}(inherently ambiguous)고 한다.
 \end{defn} 
 \begin{ex}
-    언어 $L = \{a^nb^nc^md^m \; \vert \; n,m \ge 1\} \cup \{a^nb^mc^md^n \; \vert \; n,m \ge 1\}$
+    언어 $L = \{a^n b^n c^m d^m \; \vert \; n,m \ge 1\} \cup \{a^n b^m c^m d^n \; \vert \; n,m \ge 1\}$
     는 본질적으로 애매함을 보여라.
 \end{ex}
 \begin{ans*}
@@ -930,7 +930,7 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구�
 \begin{figure}[!ht]
     \centering
     \begin{tikzpicture}[node distance=0mm, every node/.style=  {draw,minimum size=8mm}]
-        \node (deb) {State Control};
+        \node (deb) {상태 제어기};
         { [start chain=1]
         \node [on chain] at (3,-2){$a$};
         \node [on chain] {$a$};
@@ -1262,13 +1262,59 @@ DFA나 PA와는 달리 튜링 기계는 헤드가 이리저리 움직이면서 `
     $L = \{0^n \;\vert\; n \ge 1\}$을 정의하는 TM $M$을 구하라.
 \end{ex}
 \begin{ans*}
-    진짜.. 그릴거다..
+    그림 \ref{0n TM} 참조.
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto]
+        \node[state] (A) {$A$};
+        \node[state, initial, left of=A] (S) {$S$};
+        \node[state, accepting, right of=A] (H) {$H$};
+        \path[->]
+        (S) edge [above] node{$\# / \#, R$} (A)
+        (A) edge [loop above] node[text width=2cm, align=center]{$0 / 0, R$} (A)
+        (A) edge [above] node{$\# / \#, S$} (H);
+        \end{tikzpicture}
+        \caption{} 
+        \label{0n TM}
+    \end{figure}
 \end{ans*}
 \begin{ex}
     $L = \{0^n1^n \;\vert\; n \ge 1\}$을 정의하는 TM $M$을 구하라.
 \end{ex}
 \begin{ans*}
-    진짜진짜 그릴거다..
+    그림 \ref{0n1nTM} 참조.
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}[shorten >=1pt,node distance=2.7cm,bend angle=40,on grid,auto]
+        \node[state] (0*) {$0^*$};
+        \node[state, initial, left of=0*] (S) {$S$};
+        \node[state, right of=0*] (1*) {$1^*$};
+        \node[state, right of=1*] (back) {back}; 
+        \node[state, below of=back] (S') {$S'$};
+        \node[state, left of=S'] (x) {$x$};
+        \node[state, left of=x] (y) {$y$};
+        \node[state, below of=S'] (check) {check};
+        \node[state, accepting, left of=check] (H) {$H$};
+        \path[->]
+        (S) edge [above] node{$\# / \#, R$} (0*)
+        (0*) edge [loop above] node[text width=2cm, align=center]{$0 / 0, R$} (0*)
+        (0*) edge [above] node{$1 / 1, R$} (1*)
+        (1*) edge [loop above] node[text width=2cm, align=center]{$1 / 1, R$} (1*)
+        (1*) edge [above] node{$\# / \#, L$} (back)
+        (back) edge [loop above] node[text width=2cm, align=center]{$0 / 0, L$ \\ $1 / 1 , L$} (back)
+        (back) edge [right] node{$\# / \#, R$} (S')
+        (S') edge [above] node{$0 / x, R$} (x)
+        (x) edge [loop below] node[text width=2cm, align=center]{$0 / 0, R$ \\ $y / y , R$} (x)
+        (x) edge [above] node{$1 / y, L$} (y)
+        (y) edge [loop below] node[text width=2cm, align=center]{$y / y, L$ \\ $0 / 0 , L$} (y)
+        (y) edge [bend left, above] node{$x / x, R$} (S')
+        (S') edge [right] node{$y / y, R$} (check)
+        (check) edge [loop below] node[text width=2cm, align=center]{$y / y, R$} (check)
+        (check) edge [above] node{$\# / \#, S$} (H);
+        \end{tikzpicture}
+        \caption{}
+        \label{0n1nTM}
+    \end{figure}
 \end{ans*}
 \begin{ex}
     $L = \{a^n b^n c^n \;\vert\; n \ge 1\}$을 정의하는 TM $M$을 구하라.
