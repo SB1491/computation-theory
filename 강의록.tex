@@ -2428,9 +2428,7 @@ $\langle w \rangle$를 접합한 것을 $\langle M, w \rangle$로 표시한다.
     결론이 나오므로 모순이다. 즉, $L_h$는 재귀 언어가 아니다.
 \end{pf*}
 \section{정지 문제의 응용}
-정지 문제는 우리가 해결하고 싶어하는 컴퓨터 과학의 문제들에 대해서 `그건 불가능하다.'라고 말할 수 있게
-해주는 아주 좋은 증명 도구이다. 우리는 정지 문제를 이용해서 다양한 문제를 증명할 것이기 때문에
-그 문제를 적절히 변환시켜줄 필요가 있다.
+정지 문제는 우리가 해결하고 싶어하는 컴퓨터 과학의 문제들에 대해서 `그건 불가능하다.'라고 말할 수 있게 해주는 아주 좋은 증명 도구이다. 우리는 정지 문제를 이용해서 다양한 문제를 증명할 것이기 때문에 그 문제를 적절히 변환시켜줄 필요가 있다.
 \begin{defn}
     언어 $L_1$에서 언어 $L_2$로의 \textbf{변환}(reduction)이란 
     \begin{align*}
@@ -2497,7 +2495,8 @@ $L_2$도 계산 불가능하다는 것을 보이고 싶을 때 변환을 사용�
     다음 코드를 생각하자. 
 \begin{lstlisting}[language=Python]
     // M is a turing machine
-    // terminates(M, x) returns true when M halts for input x
+    // terminates(M, x) returns true 
+    // when M halts for input x
     // or returns false 
     if terminates(M, x):
         1 == True 
