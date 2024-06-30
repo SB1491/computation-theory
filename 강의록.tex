@@ -1103,18 +1103,19 @@ $A_1 \overset{*}{\Rightarrow} uxy$에 대해 $A_1$까지의 높이는 $k+1$ 이�
 \end{tikzpicture}
 \caption{}
 \end{figure}
-\begin{ex} \label{anbncn}
+\begin{ex}\label{anbncn}
     $L = \{a^n b^n c^n \;\vert\; n \ge 0 \}$이 문맥무관 언어가 아님을 보여라. 
 \end{ex}
 \begin{ans*}
     $w = a^t b^t c^t$라고 하자. $\vert vxy \vert \le t$이므로 $vy$는 $a,b,c$모두를 포함할 수 없다. 따라서 $uv^2 x y^2 z \notin L$이므로 문맥무관 언어가 아니다. 
 \end{ans*}
-\begin{ex}
+\begin{ex}\label{ww}
     $L = \{ww \;\vert\; w \in \{0,1\}^*\}$이 문맥무관 언어가 아님을 보여라. 
 \end{ex}
 \begin{ex}
     $L = \{a^n \;\vert\; n \text{은 소수}\}$이 문맥무관 언어가 아님을 보여라.
 \end{ex}
+직관적으로 어떤 언어가 문맥무관 언어인지 아닌지를 판단하기 위해서는 내리누름 오토마타의 한계가 무엇인지를 생각해보면 된다. 먼저, PA는 DFA와는 달리 저장 공간이 무한하다. 하지만 저장된 내용을 한 번 읽으면 그 내용을 무조건 잊어야 한다. 또한, 그 내용을 역순으로밖에 볼 수가 없다. 따라서 예제 \ref{anbncn}이나 \ref{ww}이 문맥무관 언어가 아닌 것이다.
 \begin{thm}
     문맥무관 언어는 (1) 합집합, (2) 접합, (3) 클리니 스타 연산에 대하여 닫혀 있다.
 \end{thm}
