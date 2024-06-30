@@ -922,7 +922,7 @@ $L = \{ 0^n 1^n \; \vert \; n \ge 0\}$을 만드는 문맥무관 문법을 구�
         \item $Q$는 상태들의 유한 집합
         \item $\Sigma$는 입력 알파벳
         \item $\Gamma$는 스택 알파벳(시작 글자인 \#을 포함한다.)
-        \item $\Delta$는 $Q \times (\Sigma \cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\}) \times (Q \times \Sigma^*)$의 부분 집합인 전이 관계
+        \item $\Delta$는 $Q \times (\Sigma \cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\}) \times (Q \times \Gamma^*)$의 부분 집합인 전이 관계
         \item $q_0 \in Q$는 초기 상태
         \item $F \subseteq Q$는 최종 상태들의 집합
     \end{enumerate}
