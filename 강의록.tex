@@ -2337,7 +2337,14 @@ $\beta$-연산이 다이아몬드 성질을 만족하면 좋겠지만 아쉽게�
 \end{ex}
 튜링 기계 $M$에 들어가는 입력 문자열 $w$도 0과 1을 각각 0과 00으로 표시하고 글자 사이에 1을 넣어 
 부호 $\langle w \rangle$을 만들 수 있다. 즉, $\langle 0110 \rangle = 010010010$이다. $\langle M \rangle$과
-$\langle w \rangle$를 접합한 것을 $\langle M, w \rangle$로 표시한다. 
+$\langle w \rangle$를 접합한 것을 $\langle M, w \rangle$로 표시한다.
+\begin{defn}
+    튜링 기계의 상황 $(q_0, u\underline{x}v)$는 다음과 같이 부호화 될 수 있다.
+    \begin{enumerate}
+        \item $u$와 $v$는 0과 1을 각각 0과 00으로 표시하고 글자 사이에 1을 넣어 부호화 할 수 있다.
+        \item $q_0$와 $\underline{x}$는 $\langle x\rangle 1 \langle q_0\rangle$와 같이 표현하여 이를 11로 감싸고 $q_i$는 $0^i$, $x$는 0 또는 00으로 표현한다.
+    \end{enumerate}
+\end{defn} 
 \section{보편 만능 기계}
 컴퓨터가 지금까지 인류가 만들어온 기계와 다른 점은 무엇일까? 형광등은 불을 밝힐 수만 있다. 세탁기는 세탁만 할 수 있다.
 하지만 컴퓨터는 이렇게 책도 쓸 수 있고, 게임도 할 수 있고, 계산도 할 수 있다. 즉, 어디에서나 사용가능한 
@@ -2497,7 +2504,8 @@ $L_2$도 계산 불가능하다는 것을 보이고 싶을 때 변환을 사용�
     다음 코드를 생각하자. 
 \begin{lstlisting}[language=Python]
     // M is a turing machine
-    // terminates(M, x) returns true when M halts for input x
+    // terminates(M, x) returns true 
+    // when M halts for input x
     // or returns false 
     if terminates(M, x):
         1 == True 
@@ -2506,7 +2514,7 @@ $L_2$도 계산 불가능하다는 것을 보이고 싶을 때 변환을 사용�
 \end{lstlisting}
 만약 $M$이 정지한다면 이 코드는 타입 오류가 발생한다. 만약 정지하지 않는다면, 이 코드는 타입 유류가 발생하지 않을 것이다. 만약 완벽한 타입 검사기가 존재한다면 타입 오류를 검증할 수 있고, 즉 이를 통해 $M$이 $x$에 대해 정지하지 않는지를 알 수 있다. 하지만 이는 불가능하므로 완전한 타입 검사기는 존재하지 않는다. 
 \end{ans*}
-그래서 요즘 사용하는 타입 검사기는 `안 되는 것 같아 보이지만 사실은 맞는 프로그램'을 검증하는 것을 포기한다. 위 증명에서 사용된 코드의 경우, 아마 python IDE에서 사용하는 타입 검사기의 경우 빨간 줄을 표시할 것이다. 즉, 최소한 타입 검사기가 된다고 했으면 무조건 타입에 있어서는 오류를 내뿜지 않는 프로그램이다. \footnote{그렇다면 syntax error는 어떨까? 궁금하면 3장으로 돌아가자.} \\
+그래서 요즘 사용하는 타입 검사기는 `안 되는 것 같아 보이지만 사실은 맞는 프로그램'을 검증하는 것을 포기한다. 위 증명에서 사용된 코드의 경우, 아마 python IDE에서 사용하는 타입 검사기의 경우 빨간 줄을 표시할 것이다. 즉, 최소한 타입 검사기가 된다고 했으면 무조건 타입에 있어서는 오류를 내뿜지 않는 프로그램이다.\footnote{그렇다면 syntax error는 어떨까? 궁금하면 3장으로 돌아가자.} \\
 지금까지 알아본 예제들을 보면 뭔가 튜링 기계에 관련된 문제는 전부 계산 불가능한 것 같다. 이는 실제로도 맞다는 것을 보이자.
 \begin{thm}
     \textbf{(라이스 정리)} $C$를 모든 재귀 열거 언어를 모은 집합의 공집합이나 
@@ -2618,10 +2626,25 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
     \end{align*}
 \end{thm}
 \begin{pf*}
-    먼저 $L(M_A) = A_\text{CFG}$인 튜링 기계 $M_A$가 존재한다고 가정하자. 
+    먼저 $L(M_A) = A_\text{CFG}$인 튜링 기계 $M_A$가 존재한다고 가정하자. 이 튜링 기계를 이용해서 $L_h$를 결정하고자 한다. $L(M_h) = L_h$인 튜링 기계 $M_h$와 그 입력 $\langle M, w\rangle$에 대해 $M$이 $w$를 받아들이지 않을 때에만 문맥무관 언어 $G$가 모든 문자열을 생성하도록 $G$를 만들자. $G$는 문맥무관 언어이므로 $L(P) = L(G)$인 내리누름 오토마타 $P$가 존재한다. 
+
+    여기서 우리는 $P$가 $M$의 상황의 나열 $C_1, \ldots, C_n$에 대해 받아들여지는 상황의 나열, 즉 제대로 $M$의 전이 규칙에 따라 전이하여 정지 상태에 들어가는 상황이 아닌 문자열을 전부 받아들이도록 구성할 것이다. 이는 비결정론적으로 다음과 같이 4 갈래로 구성된다. 
+    \begin{enumerate}
+        \item 첫번째 갈래는 입력이 제대로 형식을 갖추고 있는지 확인한다. 만약 형식이 맞지 않는다면(\#\#의 꼴이 나온다던가) 받아들인다.
+        \item 두번째 갈래는 $C_1$이 제대로 $\langle M, w\rangle$의 상황인지를 확인한다. 만약 제대로 된 상황이 아니면 받아들인다.
+        \item 세번째 갈래는 $C_n$이 정지상태에 들어가는지 확인한다. 정지상태가 아니라면 받아들인다.
+        \item 네번째 갈래는 $C_i$에서 $C_{i+1}$로 제대로 전이 규칙을 따라 전이되었는지 확인한다. $C_i$를 읽을 때는 이를 스택에 삽입하고, 이를 $C_{i+1}^R$를 읽을 때 꺼내면서 상황을 비교한다.\footnote{확인을 용이하게 하기 위해 상황 문자열의 역으로 비교한다.} 헤드 근처가 아니면 테입의 내용은 동일하므로 같은지만 검사하다가 헤드에 도달하게 되면 전이가 제대로 이루어졌는지 확인한다.
+    \end{enumerate}
+    \begin{align*}
+        \# \underset{\rightarrow}{\; C_1\;} \#  \underset{\leftarrow}{\; C_2^R\; } \# \underset{\rightarrow}{\; C_2 \;} \# \underset{\leftarrow}{\; C_3^R \;}\#\ldots \# C_n \#
+    \end{align*}
+    따라서 $P$를 통해 $\langle M, w \rangle $에서의 받아들여지는 상황의 나열이 존재성을 확인할 수 있으므로 $L_h$도 결정할 수 있다. 이는 모순이므로 $A_{CFG}$는 계산 불가능하다.
 \end{pf*}
 \begin{thm}
     다음과 같이 정의된 언어 $EQ_\text{CFG}$는 계산 불가능하다.
+    \begin{align*}
+        EQ_{CFG} = \{ \langle G_1, G_2 \rangle \;\vert\; G_1, G_2 \text{는 문맥무관 문법이고 } L(G_1) = L(G_2) \}
+    \end{align*}
 \end{thm}
 \begin{pf*}
     \textbf{(느슨한 증명)}
@@ -2885,6 +2908,30 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         \item $L_2 = \{ \langle e, x, y, s \rangle \;\vert\; \varphi_{e, s} (x) = y\}$
     \end{enumerate}
 \end{ex}
+\begin{defn}
+    집합 $A$가 어떤 부분 재귀 함수의 정의역이면 $A$를 부분 재귀라고 한다.
+\end{defn}
+\begin{defn}    
+    집합 $W_e$를 다음과 같이 정의하자.
+    \begin{align*}
+        W_e = \text{dom} \varphi_e = \{x \;\vert\; \varphi_e (x) \downarrow\} = \{x \;\vert\; (\exists y) T(e,x,y)\}
+    \end{align*}
+    이와 비슷하게 $W_{e,s}$는 다음과 같의 정의할 수 있다.
+    \begin{align*}
+        W_{e,s} = \text{dom}\varphi_{e,s}
+    \end{align*}
+\end{defn}
+\begin{defn}
+    향후를 위해 여러가지 집합을 정의해두자.
+    \begin{align*}
+        K_1 &= \{ x \;\vert\; W_x \neq \emptyset \} \\ 
+        \mathrm{Fin} &= \{ x \;\vert\; \vert W_x \vert < \infty \} \\ 
+        \mathrm{Inf} &= \{ x \;\vert\; \vert W_x \vert \ge \aleph_0 \} \\ 
+        \mathrm{Tot} &= \{ x \;\vert\; W_x = \mathbb{N} \} \\ 
+        \mathrm{Con} &= \{ x \;\vert\; W_x = \mathbb{N} \wedge \forall i, j, \varphi_x (i) = \varphi_ x (j) \} \\
+        \mathrm{Cof} &= \{x \;\vert\; \vert \overline{W_x}\vert < \infty \}
+    \end{align*}
+\end{defn}
 \section{튜링 위계}
 직관적으로, $y \in A$인지 아닌지를 이용해 $x \in B$를 계산할 수 있으면 우리는 $B$가 $A$ 안에서 계산 가능하다고 하고, 이를 $B \le_T A$라고 쓴다. 이를 엄밀하게 정의하고 이를 이용한 다양한 튜링 완전성을 알아보자.
 \begin{defn}
@@ -2899,10 +2946,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \end{defn}
 \begin{defn}
     $A \subseteq \mathbb{N}$라고 하자. 부분 함수 $\psi$가 
-    $\chi_A$와 함께
-    정의 \ref{primitive recursive definition}와 
-    정의 \ref{minimalization}에서 사용되는 함수 구성 방식을 사용해서 구성되면 $A$에 대해 
-    \textbf{부분 재귀적}(partial recursive)이다라고 한다. 여기서는 $\psi$가 $A$-부분 재귀라고 표기한다. 
+    $\chi_A$와 함께 정의 \ref{primitive recursive definition}와 정의 \ref{minimalization}에서 사용되는 함수 구성 방식을 사용해서 구성되면 $A$에 대해 \textbf{부분 재귀적}(partial recursive)이다라고 한다. 여기서는 $\psi$가 $A$-부분 재귀라고 표기한다.
 \end{defn}
 위와 같은 정의는 튜링 머신을 통해 새롭게 정의될 수 있다.
 \begin{defn}
@@ -2915,15 +2959,12 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{defn}
     부분 함수 $\psi$에 대해 다음과 같은 정의를 알아보자.
     \begin{enumerate}
-        \item 집합 $A$에 대해 다음과 같은 성질을 만족하는 
-        $A$-신탁 튜링 기계 $M$이 존재하면 부분 함수 $\psi$가 
-        $A$에 대해 \textbf{튜링 완전}(Turing complete)하다고 한다.
+        \item 집합 $A$에 대해 다음과 같은 성질을 만족하는 $A$-신탁 튜링 기계 $M$이 존재하면 부분 함수 $\psi$가 $A$에 대해 \textbf{튜링 완전}(Turing complete)하다고 한다.
         \begin{align*}
             \forall x \forall y,  \psi(x) = y \Leftrightarrow 
             x \in L(M) \wedge M\text{의 출력값은 } y
         \end{align*} 
-        이는 $\psi \le_T A$와 같이 표기한다. 대응되는 튜링 기계로 $\psi$를 표현하고 싶을 경우
-        $\psi = \Phi_M^A$ 또는 $\psi = \{e\}^A$와 같이 표기하기도 한다. 
+        이는 $\psi \le_T A$와 같이 표기한다. 대응되는 튜링 기계로 $\psi$를 표현하고 싶을 경우 $\psi = \Phi_M^A$ 또는 $\psi = \{e\}^A$와 같이 표기하기도 한다. 
         \item $M$이 $x$에 대해 정지하지 않으면 $\psi(x)$는 \textbf{발산}(diverge)한다고 하고
         $\psi(x) \uparrow$로 표기한다.
     \end{enumerate}
@@ -2964,9 +3005,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
         \item 만약 $\phi \in \Sigma_n^0, \Pi_n^0$이면 $\phi \in \Delta_n^0$이다.
     \end{itemize}
-    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로
-    결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고
-    한다.
+    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로 결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고 한다.
 \end{defn}
 \begin{ex}
     다음 논리식이 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$중 어떤 모임에 소속되는지 구하라.
@@ -2988,12 +3027,10 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     
 \end{thm}
 \begin{thm}
-    \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과
-    $A \in \Sigma_1^0$인 것은 동치이다. 
+    \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과 $A \in \Sigma_1^0$인 것은 동치이다. 
 \end{thm}
 \begin{pf*}
-    ($\Leftarrow$) $A$가 재귀 열거 언어이므로 $A$는 어떤 $\mu$-재귀 함수 $\phi$의
-    정의역이다. $M$ \\
+    ($\Leftarrow$) $A$가 재귀 열거 언어이므로 $A$는 어떤 $\mu$-재귀 함수 $\phi$의 정의역이다. $M$ \\
     ($\Rightarrow$) $A = $
 \end{pf*}
 \section{그 너머의 계산 모델들}
@@ -3011,40 +3048,26 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \section{점근적 표기법}\label{asymptotic}
 지금까지는 어떤 문제가 계산할 수 있는 문제인지 알아봤다. 이제는 조금 더 현실적인 문제로 돌아올 차례다. 그럼 이제 풀 수 있는 문제들은 모두 풀 수 있을까? 다르게 말하면 `현실적으로' 푸는 것이 가능할까? 이에 대해 알아보기 위해 우리는 문제가 얼마나 어려운지 다룰 것이다.
 \begin{defn}
-    항상 정지하는 결정론적 TM $M$에 대해 $M$의 \textbf{시간 복잡도}(time complexity)는 함수 $f:
-    \mathbb{N} \rightarrow \mathbb{N}$로 나타낸다. 이때 $f(n)$은 입력 문자열의 길이 $n$에 대해
-    $M$의 최대 스텝(step)을 의미한다.
+    항상 정지하는 결정론적 TM $M$에 대해 $M$의 \textbf{시간 복잡도}(time complexity)는 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$로 나타낸다. 이때 $f(n)$은 입력 문자열의 길이 $n$에 대해 $M$의 최대 스텝(step)을 의미한다.
 \end{defn}
-우리가 어떤 알고리즘(튜링 머신)의 시간 복잡도를 계산할 때 입력(입력 문자열)의 크기 $n$에 따라 정확히
-몇 스텝인지 아는 것은 매우 어렵고, 크게 의미있지 않다. 따라서 우리는 
-개략적으로만 알고리즘의 복잡도를 분석하는데
-이를 \textbf{점근적 분석}(asymptotic analysis)이라 한다. 우리는 아주 큰 입력에 
-대해서만 알고리즘을 고려할 것이므로
-사사로운 것들에 구애받지 않아도 된다. 
+우리가 어떤 알고리즘(튜링 머신)의 시간 복잡도를 계산할 때 입력(입력 문자열)의 크기 $n$에 따라 정확히 몇 스텝인지 아는 것은 매우 어렵고, 크게 의미있지 않다. 따라서 우리는 개략적으로만 알고리즘의 복잡도를 분석하는데 이를 \textbf{점근적 분석}(asymptotic analysis)이라 한다. 우리는 아주 큰 입력에  대해서만 알고리즘을 고려할 것이므로 사사로운 것들에 구애받지 않아도 된다. 
 \begin{defn} \label{big-o defn}
-    함수 $f, g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음과 같은 성질을 만족하는 
-    양수의 정수 $c, n_0$가 존재하면 $f(n) = O(g(n))$이라 한다. $n \ge n_0$에 대해
+    함수 $f, g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음과 같은 성질을 만족하는 양수의 정수 $c, n_0$가 존재하면 $f(n) = O(g(n))$이라 한다. $n \ge n_0$에 대해
     \begin{align*}
         f(n) \le cg(n)
     \end{align*}
-    이를 빅-$O$ 표기법(Big-O notation)이라 하며, 
-    이때 $g(n)$을 $f(n)$의 \textbf{점근적 상한} (asymptotic upper bound)이라 한다.
+    이를 빅-$O$ 표기법(Big-O notation)이라 하며, 이때 $g(n)$을 $f(n)$의 \textbf{점근적 상한} (asymptotic upper bound)이라 한다.
 \end{defn}
-수학적으로 어렵게 적어놨지만, 시간 복잡도 $f(n)$에 대해 가장 압도적인(dominate) 항만 계수를 빼고
- 생각하겠다는 뜻이다.
-예를 들어 $f(n) = 3n^3 + 2n^2 +72n + 3000$에 대해 $n$이 커지면 $\lim_{n \rightarrow \infty} 
-\frac{f(n)}{n^3} = 3$으로 수렴가능하므로 $f(n) = O(n^3)$임을 알 수 있다.\footnote{정말 그럴까?
-연습문제 \ref{On lim} 참고.}
+수학적으로 어렵게 적어놨지만, 시간 복잡도 $f(n)$에 대해 가장 압도적인(dominate) 항만 계수를 빼고 생각하겠다는 뜻이다. 예를 들어 $f(n) = 3n^3 + 2n^2 +72n + 3000$에 대해 $n$이 커지면 $\lim_{n \rightarrow \infty} 
+\frac{f(n)}{n^3} = 3$으로 수렴가능하므로 $f(n) = O(n^3)$임을 알 수 있다.\footnote{정말 그럴까? 연습문제 \ref{On lim} 참고.}
 \begin{defn}\label{small-o defn}
-    함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면
-    $f(n) = o(g(n))$이라 한다. 
+    함수 $f,g : \mathbb{N} \rightarrow \mathbb{R}^{+}$에 대해 다음 성질을 만족하면 $f(n) = o(g(n))$이라 한다. 
     \begin{align*}
         \lim_{n\rightarrow \infty} \frac{f(n)}{g(n)} = 0
     \end{align*}
     이를 스몰-$o$ 표기법(Small-o notation)이라 한다. 
 \end{defn}
-빅-$O$의 경우, 어떤 함수보다 작거나 같다는 걸 표현하기 위해 사용하고, 스몰-$o$의 경우,
-어떤 함수보다 같지 않고 작다는 것을 표현하기 위해 사용된다. 
+빅-$O$의 경우, 어떤 함수보다 작거나 같다는 걸 표현하기 위해 사용하고, 스몰-$o$의 경우, 어떤 함수보다 같지 않고 작다는 것을 표현하기 위해 사용된다. 
 \begin{ex}
     다음 점근적 표기법이 올바르다는 것을 증명하라.\footnote{사실 증명할 필요없고 그냥 맞다는 것을 느끼면 된다.}
     \begin{enumerate}
@@ -3057,9 +3080,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \end{ex}
 \section{복잡도 분석}\label{time complexity}
 \begin{defn}
-    함수 $t: \mathbb{N} \rightarrow \mathbb{R}^{t}$에 대해 \textbf{시간 복잡도 모임}(time complexity class)\footnote{모임이라고 적어뒀지만 결국엔 $2^{\{0,1\}^*}$의 부분 집합이므로 사실은 집합이 맞다. 그러나 $\{0,1\}^*$와 같은 언어 집합의 복잡도를 다루는 것이 아닌 더 깊고 이상한 복잡도를 다룰 경우, 집합이 아닐 수도 있다고는 하는데 필자도 잘은 모른다...} 
-    TIME$(t(n))$은 시간 복잡도가 $O(t(n))$인 튜링 기계로 결정할 수 있는 언어들의 
-    모임이다. 
+    함수 $t: \mathbb{N} \rightarrow \mathbb{R}^{t}$에 대해 \textbf{시간 복잡도 모임}(time complexity class)\footnote{모임이라고 적어뒀지만 결국엔 $2^{\{0,1\}^*}$의 부분 집합이므로 사실은 집합이 맞다. 그러나 $\{0,1\}^*$와 같은 언어 집합의 복잡도를 다루는 것이 아닌 더 깊고 이상한 복잡도를 다룰 경우, 집합이 아닐 수도 있다고는 하는데 필자도 잘은 모른다...} TIME$(t(n))$은 시간 복잡도가 $O(t(n))$인 튜링 기계로 결정할 수 있는 언어들의 모임이다. 
 \end{defn}
 \begin{ex}
     언어 $L = \{0^n1^n \;\vert\; n \ge 0\}$을 받아들이는 튜링 기계 $M_1$에 대한 점근적 상한을 구하라.
@@ -3067,10 +3088,8 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         \item 입력 문자열 전체를 스캔하면서 1 오른쪽에 0이 있으면 받아들이지 않는다. 
         \item 0과 1이 테입에 남아있지 않을 때까지 3.을 반복한다. 
         \item 0이 나오면 이를 지우고, 1이 나올때까지 오른쪽으로 가다가 1이 
-        나오면 이를 지우고 다시 왼쪽으로 가서
-        가장 왼쪽 0이 나올때까지 움직이다가 이를 지우고 다시 반복한다. 
-        \item 만약 3 이후에 0만 남아 있거나 1만 남아 있으면 문자열을 받아들이지 
-        않고, 만약 다 지워지면 이를 받아들인다. 
+        나오면 이를 지우고 다시 왼쪽으로 가서 가장 왼쪽 0이 나올때까지 움직이다가 이를 지우고 다시 반복한다. 
+        \item 만약 3 이후에 0만 남아 있거나 1만 남아 있으면 문자열을 받아들이지 않고, 만약 다 지워지면 이를 받아들인다. 
     \end{enumerate} 
 \end{ex}
 \begin{ans*}
@@ -3083,8 +3102,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         \item 입력 문자열을 전체를 스캔하면서 1 오른쪽에 0이 있으면 받아 들이지 않는다. 
         \item 0과 1이 남아있지 않을 때까지 3$\sim$4를 반복한다.
         \item 입력을 스캔하면서 0과 1의 개수를 세서 홀수면 받아들이지 않는다.
-        \item 입력을 스캔하면서 0 오른쪽에 0이 있으면 오른쪽에 있는 0을 지우고, 1에 대해서도 동일한
-        작업을 한다. 이를 계속해서 반복한다.
+        \item 입력을 스캔하면서 0 오른쪽에 0이 있으면 오른쪽에 있는 0을 지우고, 1에 대해서도 동일한 작업을 한다. 이를 계속해서 반복한다.
         \item 0, 1이 남아있지 않으면 받아들이고, 아니면 받아들이지 않는다.
     \end{enumerate}
 \end{ex}
