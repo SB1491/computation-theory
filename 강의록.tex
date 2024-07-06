@@ -3031,8 +3031,9 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     \end{itemize}
     즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로 결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고 한다.
 \end{defn}
+앞으로 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$은 생략해서 $\Sigma_n, \Pi_n, \Delta_0$으로 쓴다.\footnote{저 위에 0 말고 다른 것이 붙는다면 상당히 `위험'해진다...}
 \begin{ex}
-    다음 논리식이 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$중 어떤 모임에 소속되는지 구하라.
+    다음 논리식이 $\Sigma_n, \Pi_n, \Delta_n$중 어떤 모임에 소속되는지 구하라.
     \begin{enumerate}
         \item $\forall x < 10 \; (x < 100)$ 
         \item $\forall y \exists x \; (y < x)$
@@ -3051,12 +3052,85 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     
 \end{thm}
 \begin{thm}
-    \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과 $A \in \Sigma_1^0$인 것은 동치이다. 
+    \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과 $A \in \Sigma_1$인 것은 동치이다. 
 \end{thm}
 \begin{pf*}
     ($\Leftarrow$) $A$가 재귀 열거 언어이므로 $A$는 어떤 $\mu$-재귀 함수 $\phi$의 정의역이다. $M$ \\
     ($\Rightarrow$) $A = $
 \end{pf*}
+\begin{ex}
+    $\mathrm{Fin} \in \Sigma_2$임을 보여라.
+\end{ex}
+\begin{ans*}
+    
+\end{ans*}
+\begin{ex}
+    $\mathrm{Cof} \in \Sigma_3$임을 보여라.
+\end{ex}
+\begin{ans*}
+    
+\end{ans*}
+\section{포스트 정리와 위계 정리}
+\begin{defn}
+    $\Sigma_n$-완전
+\end{defn}
+\begin{thm}
+    \textbf{(포스트 정리, Post's Theorem)} 모든 $n \ge 0$에 대해 다음이 성립한다.
+    \begin{enumerate}
+        \item $B \in \Sigma_{n+1} \Leftrightarrow B$는 어떤 $\Pi_n$에서 재귀 열거이다.
+        \item $n > 0$에 대해 $\emptyset^{(n)}$는 $\Sigma_n$-완전이다.
+        \item $B \in \Sigma_{n+1} \Leftrightarrow B$는 $\emptyset^{(n)}$에서 재귀 열거이다.
+        \item $B \in \Delta_{n+1} \Leftrightarrow B \le_T \emptyset^{(n)}$  
+    \end{enumerate}
+\end{thm}
+\begin{pf*}
+    
+\end{pf*}
+\begin{thm}
+    \textbf{(위계 이론, Hierarchy Theorem)} 모든 $n > 0$에 대해 $\Delta_n \subset \Sigma_n$이고 $\Delta_n \subset \Pi_n$이다. 
+\end{thm}
+위계 이론은 그림 \ref{arithmetic hierarchy figure}과 같이 도식화 할 수 있다.
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}[node distance=2cm,semithick,-latex]
+        \node(1){$\Delta_1^0$};
+        \node(1a)[above right of=1]{$\Sigma_1^0$};
+        \node(1b)[below right of=1]{$\Pi_1^0$};
+        \node(2)[above right of=1b]{$\Delta_2^0$};
+        \path (1) edge (1a);
+        \path (1) edge (1b);
+        \path (1a) edge (2);
+        \path (1b) edge (2);
+        
+        \node(2a)[above right of=2]{$\Sigma_2^0$};
+        \node(2b)[below right of=2]{$\Pi_2^0$};
+        \node(3)[above right of = 2b]{};
+        \path (2) edge (2a);
+        \path (2) edge (2b);
+        \path (2a) edge (3);
+        \path (2b) edge (3);
+        
+        \node(3)[right of = 3,node distance=0.5cm]{$\ldots$};
+        \node [above of=3,node distance = 1cm]{$\ldots$};
+        \node [below of=3,node distance = 1cm]{$\ldots$};
+        
+        \node(3)[right of = 3, node distance = 0.7cm]{$\Delta_\alpha^0$};
+        
+        \node(3a)[above right of=3]{$\Sigma_\alpha^0$};
+        \node(3b)[below right of=3]{$\Pi_\alpha^0$};
+        \node(4)[below right of=3a]{$\quad\Delta_{\alpha+1}^0$};
+        \path (3) edge (3a);
+        \path (3) edge (3b);
+        \path (3a) edge (4);
+        \path (3b) edge (4);
+        
+        \node (5) [right of=4,node distance = 1cm]{$\ldots$};
+        \node (5a) [above of=5,node distance = 1cm]{$\ldots$};
+        \node (5b) [below of=5,node distance = 1cm]{$\ldots$};
+    \end{tikzpicture}
+    \caption{}
+    \label{arithmetic hierarchy figure}
+\end{figure}
 \section{그 너머의 계산 모델들}
 ㅋㅋ
 \section{연습문제}
