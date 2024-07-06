@@ -2270,7 +2270,7 @@ $succ(plus(m,n)) = succ(id_3(m, n, plus(m, n)))$이므로 $id$와 같은 `당연
     정리 \ref{mu eqauls tm}의 증명에서 함수의 인자가 여러 개일 때의 증명을 완성하여라.
 \end{ec}
 \part{계산 가능성}
-\chapter{계산 가능성}
+\chapter{계산 가능성}\label{computability}
 우리는 지금까지 튜링 기계의 뛰어난 계산 능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
 이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링 기계는 정말 모든 일을
 할 수 있을까? 혹시 튜링 기계가 못하는 일이 있을까? 정말 아쉽게도 튜링 기계가 하지 못하는 일은 존재한다.
@@ -2635,7 +2635,7 @@ NFA와 정규식에 대해서는 따로 적어두진 않으나, 자명하게 가
 지금까지 현대 수학과 컴퓨터 과학의 가장 중요한 근간인 계산 가능성 이론에 대해 다루어보았다. 이러한 다양한 계산 모델이 나오게 된 배경에는 1931년에 발표된 괴델의 불완정성 정리에서 출발한다. 이 정리를 통해 더 이상 우리는 수학의 모든 문제를 풀 수 없다는 것이 증명되었다. 따라서 우리가 풀 수 없는 문제가 무엇인지를 알고자 하는 것은 매우 당연한 수순이었다. 이를 위해 1931년에 괴델과 에르브랑이 제시했고 우리가 \ref{mu-recursive} 절에서 다루었던 재귀 함수, 1933년에 처치가 제시했고 우리가 \ref{lambda calculus} 절에서 다루었던 람다 계산법, 1936년에 튜링이 제시했고 우리가 \ref{turing machine} 절에서 다루었던 튜링 기계가 각각 제시되었다. \\
 재귀 함수는 수학에서 다루었던 함수의 측면에서 우리가 계산하지 못하는 함수가 무엇인지를 최소화의 근본적인 한계를 통해 제시하였다. 람다 계산법은 최대한 간단한 모델을 통해서 최소한의 규칙만으로 우리가 다룰 수 있는 계산을 제시하였다. 튜링 기계는 계산하는 과정에 집중하여 우리가 계산하지 못하는 것이 무엇인지를 제시하였다. 그리고 각각 모델에서 제시하는 계산 가능성은 서로 동일하다는 것 또한 증명되었다. \\
 이러한 모델들과 계산 가능성이 시사하는 바는 처치-튜링 논제에 의해 기술될 수 있다.
-\begin{thesis} 
+\begin{thesis}\label{ct thesis}
     \textbf{(처치-튜링 논제, Church-Turing Thesis)} 다음 명제는 서로 동치다.\footnote{참고로 이 논제는 처치와 튜링 둘 다 딱히 말한 적이 없다...}
     \begin{itemize}
         \item 자연수 상에서의 함수가 \textbf{효과적 방법}(effective method)으로 산술될 수 있다.
@@ -2805,6 +2805,23 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     소인수분해의 유일성에 의해 자명하다.
 \end{pf*}
 \section{부분 재귀 함수}
+여기서 잠시 재귀 언어와 재귀 열거 언어를 함수의 관점에서 재정의하자.\footnote{\ref{computability} 장에서 정의했던 것들도 몇 개 재정의하였다.}
+\begin{defn}
+집합 $A$에 대한 \textbf{특성 함수}(characteristic function) $\chi_A$는 다음과 같이 정의된다.
+    \begin{align*}
+        \chi_A(x) = 
+        \begin{cases}
+            0 & (x \notin A) \\ 
+            1 & (x \in A)
+        \end{cases}
+    \end{align*}
+\end{defn}
+\begin{defn}
+    집합 $A$에 대해 특성 함수 $\chi_A$가 존재하면 $A$를 \textbf{재귀적}(recursive)이라고 한다. 
+\end{defn}
+\begin{defn}
+    어떤 집합 $A \subseteq \mathbb{N}$에 대해, $A$가 어떤 부분 재귀 함수의 정의역이면 $A$를 \textbf{재귀 열거}(recursive enumerate, r.e.)라고 한다.
+\end{defn}
 \begin{defn}
     튜링 기계를 괴델 수로 부호화하여 나열했을 때 $e$번째 튜링 기계를 $P_e$라고 한다. 여기서 $e$를 \textbf{색인}(index)이라고 한다.
 \end{defn}
@@ -2829,13 +2846,13 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     모든 $\varphi_e (x)$에 대해 $\varphi_z^{(2)} (e, x) = \varphi_e (x)$인 부분 함수 $\varphi_z^{(2)}$가 존재한다.
 \end{thm}
 \begin{thm}
-    \textbf{(s-m-n 정리, s-m-n Theorem)} 모든 $m, n \ge 1$에 대해 다음을 만족시키는 일대일 대응 원시 재귀 함수 $s_n^m$가 존재한다. 
+    \textbf{(s-m-n 정리, s-m-n Theorem)} 모든 $m, n \ge 1$에 대해 다음을 만족시키는 일대일 원시 재귀 함수 $s_n^m$가 존재한다. 
     \begin{align*}
         \forall x, y_1, \ldots, y_m, \varphi^{(n)}_{s_n^m (x, y_1, \ldots, y_m)} = \lambda z_1, \ldots, z_n \; [\varphi_x^{(m+n)} (y_1, \ldots, y_m, z_1, \ldots, z_n)]
     \end{align*} 
 \end{thm}
 \begin{defn}
-    $\langle x, y \rangle =  \frac{1}{2}(x^2 + 2xy + y^2 + 3x + y)$라고 하자.\footnote{연습문제 \ref{1to1x,y} 참조.} 유사하게 $ \langle x_1, \ldots, x_{n+1} \rangle = \langle \langle x_1 , \ldots, x_n \rangle,  x_{n+1} \rangle$로 정의할 수 있다. 
+    편의를 위해 $\langle x, y \rangle =  \frac{1}{2}(x^2 + 2xy + y^2 + 3x + y)$라고 하자.\footnote{연습문제 \ref{1to1x,y} 참조.} 유사하게 $ \langle x_1, \ldots, x_{n+1} \rangle = \langle \langle x_1 , \ldots, x_n \rangle,  x_{n+1} \rangle$로 정의할 수 있다. 
 \end{defn}
 \begin{defn}
     $x, y, e < s$이고 $y$가 튜링 기계 $P_e$에 대해 $s$ 번의 스텝 미만으로 결정되어 출력되는 결과값이면 $\varphi_{e, s} (x) = y$라고 하자. 이러한 $y$가 존재하면 $\varphi_{e,s} (x)$는 \textbf{수렴한다}(converge)고 하고, $\varphi_{e, s} (x)\downarrow$라고 쓴다. 그렇지 않으면 \textbf{발산한다}(diverge)고 하고, $\varphi_{e, s} (x) \uparrow$라고 쓴다.
@@ -2844,7 +2861,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     만약 $\varphi_{e, s} (x) \downarrow = y$를 만족시키는 $s$가 존재하면 $\varphi_e (x) \downarrow = y$라고 쓴다.
 \end{defn}
 \begin{ex}
-    다음 두 언어가 재귀 언어임을 보여라.
+    다음 두 집합이 재귀임을 보여라.
     \begin{enumerate}
         \item $L_1 = \{\langle e, x, s\rangle \;\vert\; \varphi_{e, s} (x) \downarrow \}$
         \item $L_2 = \{ \langle e, x, y, s \rangle \;\vert\; \varphi_{e, s} (x) = y\}$
@@ -2863,10 +2880,11 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         W_{e,s} = \text{dom}\varphi_{e,s}
     \end{align*}
 \end{defn}
-\begin{defn}
+\begin{defn}\label{index set example}
     향후를 위해 여러가지 집합을 정의해두자.
     \begin{align*}
-        K_1 &= \{ x \;\vert\; W_x \neq \emptyset \} \\ 
+        K &= \{ x \;\vert\; x \in W_x \} \\ 
+        K_0 &= \{ \langle x, y \rangle \;\vert\; x \in W_y \} \\       K_1 &= \{ x \;\vert\; W_x \neq \emptyset \} \\ 
         \mathrm{Fin} &= \{ x \;\vert\; \vert W_x \vert < \infty \} \\ 
         \mathrm{Inf} &= \{ x \;\vert\; \vert W_x \vert \ge \aleph_0 \} \\ 
         \mathrm{Tot} &= \{ x \;\vert\; W_x = \mathbb{N} \} \\ 
@@ -2874,21 +2892,81 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         \mathrm{Cof} &= \{x \;\vert\; \vert \overline{W_x}\vert < \infty \}
     \end{align*}
 \end{defn}
-\section{튜링 위계}
-직관적으로, $y \in A$인지 아닌지를 이용해 $x \in B$를 계산할 수 있으면 우리는 $B$가 $A$ 안에서 계산 가능하다고 하고, 이를 $B \le_T A$라고 쓴다. 이를 엄밀하게 정의하고 이를 이용한 다양한 튜링 완전성을 알아보자.
+\begin{thm}
+    $K$는 재귀 열거이다.
+\end{thm}
+\begin{thm}
+    $K$는 재귀가 아니다.
+\end{thm}
+\begin{thm}
+    $K_0$는 재귀가 아니다.
+\end{thm}
 \begin{defn}
-    집합 $A$에 대한 \textbf{특성 함수}(characteristic function) $\chi_A$는 다음과 같이 정의된다.
+    집합 $A, B$에 대해 다음을 만족하는 재귀적인 함수 $f$가 존재하면 $A$는 $B$로 \textbf{다대일 환원 가능}(many-one reducible)하다고 하거나 $m$-환원 가능하다고 한다.
     \begin{align*}
-        \chi_A(x) = 
-        \begin{cases}
-            0 & (x \notin A) \\ 
-            1 & (x \in A)
-        \end{cases}
+        f(A) &\subseteq B \\ 
+        f(\overline{A}) &\subseteq \overline{B}
     \end{align*}
+    이를 $A \le_m B$라고 적는다.
 \end{defn}
 \begin{defn}
+    $A \le_M B$에 대해 재귀 함수 $f$가 일대일 함수면 $A$는 $B$로 \textbf{일대일 환원 가능}(one-one reducible)하다고 한다. 이는 $A \le_1 B$라고 적는다.
+\end{defn}
+\begin{ex}
+    $K \le_1 K_0$임을 보여라.
+\end{ex}
+\begin{defn}
+    $\le_m$와 $\le_1$에 관련된 동치 관계들을 정의하자.
+    \begin{align*}
+        A \equiv_m B &\Leftrightarrow A \le_m B \wedge B \le_m A \\ 
+        A \equiv_1 B &\Leftrightarrow A \le_1 B \wedge B \le_1 A \\ 
+        \deg_m (A) &= \{ B \;\vert\; A \equiv_m B\} \\ 
+        \deg_1 (A) &= \{ B \;\vert\; A \equiv_1 B\} 
+    \end{align*}
+\end{defn}
+\begin{ex}
+    $A \le_m B$이고 $B$가 재귀적이면 $A$는 재귀적이다.
+\end{ex}
+\begin{ex}
+    $K \le_1 \mathrm{Tot}$이다.
+\end{ex}
+\begin{ans*}
+    다음과 같은 함수 $\psi(x,y)$를 정의하자.
+    \begin{align*}
+        \psi(x, y) = 
+        \begin{cases}
+            1 & x \in K, \\
+            \text{정의되지 않음}    &   \text{o.w.}
+        \end{cases}
+    \end{align*}
+    $\psi(x,y)$는 자명하게 재귀 열거이다. s-m-n 정리에 의해 $\varphi_{f(x)} (y) = \psi (x, y)$인 일대일 재귀 함수 $f$가 존재한다. 
+\end{ans*}
+\begin{defn}
+    $A \subseteq \mathbb{N}$에 대해 모든 $x, y$에 대해 다음이 성립하면 $A$를 \textbf{색인 집합}(index set)이라고 한다.
+    \begin{align*}
+        x \in A \wedge \varphi_x = \varphi_y \Rightarrow y \in A
+    \end{align*}
+    정의 \ref{index set example}에서 정의한 집합들은 전부 색인 집합이다.
+\end{defn}
+\begin{thm}
+    색인 집합 $A$가 공집합이나 $\mathbb{N}$가 아니면 $K \le_1 A$이거나 $K \le_1 \overline{A}$이다.
+\end{thm}
+\begin{pf*}
+    모든 $y$에 대해 $\varphi_{e_0}$가 정의되지 않도록 하는 $e_0$를 고르자. 만약 $e_0 \in $ 흠 p21인데 할까말까
+\end{pf*}
+\begin{defn}
+    재귀 열거 집합 $A$에 대해 모든 재귀 열거 집합 $W_e$에 대해 $W_e \le A$이면 \textbf{1-완전}(1-complete)하다고 한다. 
+\end{defn}
+\begin{ex}
+    $K_0, K, K_1$는 1-완전함을 보여라. 
+\end{ex}
+아쉽게도 위에서 정의한 다른 색인 집합들은 1-완전하지 않다는 것을 좀 뒤에 보일 예정이다.
+\section{튜링 위계}
+지금까지는 `상식적으로' 다룰 수 있는 것들에 대해 알아보았다. 이제 그 너머로 나아가보자.
+직관적으로, $y \in A$인지 아닌지를 이용해 $x \in B$를 계산할 수 있으면 우리는 $B$가 $A$ 안에서 계산 가능하다고 하고, 이를 $B \le_T A$라고 쓴다. 이를 엄밀하게 정의하고 이를 이용한 다양한 튜링 완전성을 알아보자.
+\begin{defn}
     $A \subseteq \mathbb{N}$라고 하자. 부분 함수 $\psi$가 
-    $\chi_A$와 함께 정의 \ref{primitive recursive definition}와 정의 \ref{minimalization}에서 사용되는 함수 구성 방식을 사용해서 구성되면 $A$에 대해 \textbf{부분 재귀적}(partial recursive)이다라고 한다. 여기서는 $\psi$가 $A$-부분 재귀라고 표기한다.
+    $\chi_A$와 함께 정의 \ref{primitive recursive definition}와 정의 \ref{minimalization}에서 사용되는 함수 구성 방식을 사용해서 구성되면 $A$에 대해 \textbf{부분 재귀적}(partial recursive)이다라고 한다. 이를 줄여서 $\psi$가 $A$-부분 재귀라고 표기한다.
 \end{defn}
 위와 같은 정의는 튜링 머신을 통해 새롭게 정의될 수 있다.
 \begin{defn}
@@ -2917,6 +2995,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{pf*}
     책 \cite{kleene1952introduction}에 나와있다고 하는데 안 읽어봐서 모른다...
 \end{pf*}
+이를 통해 논제 \ref{ct thesis}에서의 처치-튜링 논제를 더 확장해서 $A$-부분 재귀적이라는 것은 $A$를 통해 효과적 방법으로 기술되는 것과 동치라고 말할 수 있다.
 \begin{thm}
     \textbf{(상대화된 열거 정리, Relativized Enumeration Theorem)}
 \end{thm}
@@ -2926,6 +3005,9 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{thm}
     \textbf{(상대화된 재귀 이론, Relativized Recursion Theorem)}
 \end{thm}
+\begin{defn}
+    
+\end{defn}
 \section{산술적 위계}
 \begin{defn}
     \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
