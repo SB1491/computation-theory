@@ -2869,7 +2869,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     \end{enumerate}
 \end{ex}
 \begin{defn}
-    집합 $A$가 어떤 부분 재귀 함수의 정의역이면 $A$를 부분 재귀라고 한다.
+    집합 $A$가 어떤 부분 재귀 함수의 정의역이면 $A$를 재귀 열거라고 한다.
 \end{defn}
 \begin{defn}    
     집합 $W_e$를 다음과 같이 정의하자.
@@ -2962,6 +2962,35 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     $K_0, K, K_1$는 1-완전함을 보여라. 
 \end{ex}
 아쉽게도 위에서 정의한 다른 색인 집합들은 1-완전하지 않다는 것을 좀 뒤에 보일 예정이다.
+\begin{defn}
+    재귀적인 일대일 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$를 \textbf{재귀적 순열}(recursive permutation)이라고 한다.
+\end{defn}
+\begin{defn}
+    \textbf{재귀적 불변량}(recursively invariant)이란 재귀적 순열 안에서 변하지 않는 집합의 성질을 말한다.
+\end{defn}
+\begin{ex}
+    다음 중 재귀적 불변량인 것과 아닌 것을 골라라.
+    \begin{enumerate}
+        \item $A$는 재귀 열거다.
+        \item $\vert A \vert = n$
+        \item $A$는 재귀적이다.
+        \item $2 \in A$
+        \item $A$는 색인 집합이다.
+    \end{enumerate}
+\end{ex}
+\begin{ans*}
+    1, 2, 3은 재귀적 불변량이고 4, 5는 아니다.
+\end{ans*}
+\begin{defn}
+    집합 $A, B$에 대해 $p(A) = B$인 재귀적 순열 $p$가 존재하면 $A$와 $B$는 \textbf{재귀적 동형}(recursively isomorphic)이라고 한다. 이는 $A \equiv B$라고 쓴다. 
+\end{defn}
+\begin{thm}
+    \textbf{(마이힐 동형 정리, Myhill Isomorphism Theorem)}$A \equiv B \Leftrightarrow A \equiv_1 B$이다.
+\end{thm}
+\begin{pf*}
+    먼저 $(\Rightarrow)$는 자명하므로 넘어가자. \\ 
+    $(\Leftarrow)$를 생각하자. 함수 $f$를 통해 $A \le_1 B$, $g$를 통해 $B \le_1 A$를 안다고 하자.
+\end{pf*}
 \section{튜링 위계}
 지금까지는 `상식적으로' 다룰 수 있는 것들에 대해 알아보았다. 이제 그 너머로 나아가보자.
 직관적으로, $y \in A$인지 아닌지를 이용해 $x \in B$를 계산할 수 있으면 우리는 $B$가 $A$ 안에서 계산 가능하다고 하고, 이를 $B \le_T A$라고 쓴다. 이를 엄밀하게 정의하고 이를 이용한 다양한 튜링 완전성을 알아보자.
@@ -2985,7 +3014,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
             \forall x \forall y,  \psi(x) = y \Leftrightarrow 
             x \in L(M) \wedge M\text{의 출력값은 } y
         \end{align*} 
-        이는 $\psi \le_T A$와 같이 표기한다. 대응되는 튜링 기계로 $\psi$를 표현하고 싶을 경우 $\psi = \Phi_M^A$ 또는 $\psi = \{e\}^A$와 같이 표기하기도 한다. 
+        이는 $\psi \le_T A$와 같이 표기한다. 대응되는 튜링 기계로 $\psi$를 표현하고 싶을 경우 $\psi = \Phi_M^A$ 또는 $\psi = \{\; e \; \}^A$와 같이 표기하기도 한다. 
         \item $M$이 $x$에 대해 정지하지 않으면 $\psi(x)$는 \textbf{발산}(diverge)한다고 하고
         $\psi(x) \uparrow$로 표기한다.
     \end{enumerate}
@@ -3007,50 +3036,101 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     \textbf{(상대화된 재귀 이론, Relativized Recursion Theorem)}
 \end{thm}
 \begin{defn}
-    $\{e\}^A_s (x) = y$
-\end{defn}
-\section{산술적 위계}
-\begin{defn}
-    \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
-    정의되는 양화사로 다음과 같이 정의된다. 
-    \begin{align*}
-        (\forall n < t )\; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
-        (\exists n < t )\; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
-    \end{align*}
-    여기서 $\phi$는 논리식(formula)이다. 
+    $x, y, e < s, s > 0$이고 $\{\; e\; \}^A (x) = y$가 $\hat{P}_e$에서 $s$ 스텝보다 작은 스텝으로 계산되고 계산에서 $s$보다 작은 숫자들인 $z < s$만 사용되면 $\{\; e\; \}^A_s (x) = y$라고 적는다.
 \end{defn}
 \begin{defn}
-    자연수 $n$에 대해 모임 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$는 다음과 같이 귀납적으로 정의된다.
-    \begin{itemize}
-        \item 유계 양화사로만 구성된 논리식 $\psi$에 대해 $\phi \Leftrightarrow \psi$이면 $\phi \in 
-        \Sigma_0^0, \Pi_0^0, \Delta_0^0$이다. 
-        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \ldots \exists m_k \; \psi$이고
-        $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
-        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \ldots \forall m_k \; \psi$이고
-        $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
-        \item 만약 $\phi \in \Sigma_n^0, \Pi_n^0$이면 $\phi \in \Delta_n^0$이다.
-    \end{itemize}
-    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로 결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고 한다.
-\end{defn}
-앞으로 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$은 생략해서 $\Sigma_n, \Pi_n, \Delta_n$으로 쓴다.\footnote{저 위에 0 말고 다른 것이 붙는다면 상당히 `위험'해진다...}
-\begin{ex}
-    다음 논리식이 $\Sigma_n, \Pi_n, \Delta_n$중 어떤 모임에 소속되는지 구하라.
     \begin{enumerate}
-        \item $\forall x < 10 \; (x < 100)$ 
-        \item $\forall y \exists x \; (y < x)$
-        \item $\exists y \forall x \; (y < x)$
-        \item $n$은 홀수이다.
+        \item $W^A_e = \mathrm{dom} \{\; e\; \}^A$로 정의한다. 비슷하게 $W^A_{e, s}$도 정의할 수 있다.
+        \item $\Phi_e^A (x) = \{\; e\; \}^A (x)$로 정의한다. 비슷하게 $\Phi_{e,s}^A (x)$도 정의할 수 있다. 
+        \item $\{\; e \; \} (x) = \{\;e\;\}^{\emptyset} (x)$로 정의한다.
+    \end{enumerate}
+\end{defn}
+\begin{defn}
+    \begin{enumerate}
+        \item 만약 $\{\;e\;\}^A$가 $B$의 특성 함수가 되도록 하는 $e$가 존재하면 $B$가 $A$에서 \textbf{재귀적}(recursive) 또는 $A$로 \textbf{튜링-환원가능}(Turing-reducible)하다고 한다. 이는 $B \le_T A$라고 적는다.
+        \item 만약 $B = W_e^A$인 $e$가 존재하면 $B$가 $A$에서 \textbf{재귀 열거}라고 한다. 
+    \end{enumerate}
+\end{defn}
+\begin{thm}
+    $B \le_T A$인 것과 $B$와 $\overline{B}$가 $A$에서 재귀 열거인 것은 동치이다.
+\end{thm}
+\begin{defn}
+    \begin{enumerate}
+        \item 만약 $A \le_T B$이고 $B \le_T A$이면 $A \equiv_T B$이다.
+        \item $A$의 \textbf{튜링 차수}(Turing degree)는 다음과 같이 정의된다.
         \begin{align*}
-            &n\text{은 홀수이다.} \\ 
-            &\Leftrightarrow \forall k (n \neq 2k) \\ 
-            &\Leftrightarrow \exists k (n = 2k + 1)
+            \deg (A) = \{B \;\vert\; B \equiv_T A\}
         \end{align*}
     \end{enumerate}
+\end{defn}
+재귀 열거가 아닌 것들 중 $K$를 가장 처음 다루었는데, 이를 이용해서 튜링 기계를 더 확장해보자. 
+\begin{defn}
+    \begin{enumerate}
+        \item $K^A$는 다음과 같이 정의된다.
+        \begin{align*}
+            K^A = \{x \;\vert\; \Phi_x^A (x) \downarrow \} = \{ x \; \vert \; x \in W_x^A \}
+        \end{align*}
+        $K^A$를 $A$의 \textbf{널뛰기}(jump)라고 하고, 간단히 $A'$로 쓴다.
+        \item $A^{(n)}$는 $A$의 $n$ 번째 널뛰기로 $A^{(0)} = A, A^{(n+1)} = \left( A^{(n)}\right)'$와 같이 정의된다.
+    \end{enumerate}
+\end{defn}
+\begin{thm}
+    \textbf{(널뛰기 정리, Jump Theorem)} 
+    \begin{enumerate}
+        \item $A'$는 $A$에서 재귀 열거이다.
+        \item $A' \nleq_T A$
+        \item $B \le_1 A'$이면 $B$는 $A$에서 재귀 열거이다.
+        \item $A$가 $B$에서 재귀 열거이고 $B \le_T C$이면 $A$는 $C$에서 재귀 열거이다.
+        \item $B \le_T A \Leftrightarrow B' \le_1 A$
+        \item $B \equiv_T A$이면 $B' \equiv_1 A'$이다.
+        \item $A$가 $B$에서 재귀 열거인 것과 $A$가 $\overline{B}$에서 재귀 열거인 것은 동치이다.
+    \end{enumerate}
+\end{thm}
+\begin{pf*}
+    흠 시발 언제 적지 p54
+\end{pf*}
+\begin{defn}
+    $\mathbf{0}^{(n)}$는 다음과 같이 정의된다.
+    \begin{align*}
+        \mathbf{0}^{(n)} = \deg (\emptyset^{(n)})
+    \end{align*}
+\end{defn}
+\begin{ex}
+    다음과 같이 무한한 차수의 위계를 세울 수 있다는 것을 증명하라.
+    \begin{align*}
+        \mathbf{0} < \mathbf{0}' < \mathbf{0}'' < \cdots < \mathbf{0}^{(n)} < \cdots
+    \end{align*}
 \end{ex}
-먼저 재귀 열거 언어가 어떤 모임에 소속되는지를 구하자. 
+\begin{ex}
+    다음을 증명하라.
+    \begin{align*}
+        \mathbf{0} = \deg (\emptyset) = \{B \;\vert\; B\text{는 재귀적이다.}\}
+    \end{align*}
+\end{ex}
+\section{산술적 위계}
+\begin{defn}
+    집합 $B$가 재귀적이면 $\Sigma_0^0 (\Pi_0^0)$ 안에 있다고 한다. 이를 $B \in \Sigma_0^0 (\Pi_0^0)$이라고 쓴다.
+\end{defn}
+\begin{defn}
+    \begin{enumerate}
+        \item $n \ge 1$에 대해 다음을 만족하는 재귀적 관계 $R$이 존재하면 $B$가 $\Sigma_n^0$ 안에 있다고 한다.
+        \begin{align*}
+            x \in B \Leftrightarrow (\exists y_1) (\forall y_2) (\exists y_3) \ldots (Q y_n) \; R(x, y_1, \ldots, y_n)
+        \end{align*}
+        $n$이 홀수면 $Q = \exists$, $n$이 짝수면 $Q = \forall$이다. 
+        \item $n \ge 1$에 대해 다음을 만족하는 관계 $R$이 존재하면 $B$가 $\Pi_n^0$ 안에 있다고 한다.
+        \begin{align*}
+            x \in B \Leftrightarrow (\forall y_1) (\exists y_2)(\forall y_3) \ldots (Q y_n) \; R(x, y_1, \ldots, y_n)
+        \end{align*}
+        $n$이 홀수면 $Q = \forall$, $n$이 짝수면 $Q = \exists$이다. 각각에 대해 $B \in \Sigma_n^0, \Pi_n^0$과 같이 쓴다.
+        \item $B \in \Sigma_n^0 \cap \Pi_n^0$이면 $B \in \Delta_n^0$이다.
+        \item $B \in \cup_n (\Sigma_n^0 \cup \Pi_n^0)$이면 $B$를 산술적이라고 한다.
+    \end{enumerate}
+\end{defn}
+여기선 앞으로 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$은 간단히 $\Sigma_n, \Pi_n, \Delta_n$으로 쓴다.\footnote{저 위에 0 말고 다른 것이 붙는다면 상당히 `위험'해진다...}
+
 \begin{thm}
     \textbf{(양화사 축약 정리, Quantifier Contraction Theorem)}
-    
 \end{thm}
 \begin{thm}
     \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과 $A \in \Sigma_1$인 것은 동치이다. 
@@ -3134,9 +3214,6 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     \caption{}
     \label{arithmetic hierarchy figure}
 \end{figure}
-\begin{oq}
-    $\deg (\emptyset)< a < \deg (\emptyset')$인 $a$가 존재할까? 어떻게 하면 잘 정의할 수 있을까?
-\end{oq}
 \section{그 너머의 계산 모델들}
 ㅋㅋ
 \section{연습문제}
