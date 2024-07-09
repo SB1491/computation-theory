@@ -4067,7 +4067,7 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
         \item $\forall a, b \in A, (a, b) \in R \rightarrow (b, a) \in R$이면
         $R$을 \textbf{대칭적}(symmetric)이라고 한다.
         \item $\forall a, b, c\in A, (a, b) \in R \wedge (b, c) \in R \rightarrow 
-        (a, c) \in R$이명 $R$을 \textbf{추이적}(transitive)이라고 한다.
+        (a, c) \in R$이면 $R$을 \textbf{추이적}(transitive)이라고 한다.
         \item $R$이 반사적이고 대칭적이고 추이적이면 $R$을 \textbf{동치 관계}(equivalent relation)라고
         한다.
     \end{enumerate}
@@ -4094,7 +4094,7 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
 \section{기수}
 \begin{defn}
     $f: X \rightarrow Y$인 일대일 대응이 존재하면
-    두 집합 $X, Y$의 \textbf{기수}(cardinality)(또는 크기)가 같다고 한다.
+    두 집합 $X, Y$의 \textbf{기수}(cardinality) (또는 크기)가 같다고 한다.
      이는 다음과 같이 적는다.
     \begin{align*}
         \vert X \vert = \vert Y \vert
@@ -4120,6 +4120,12 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
     이때, 함수 $g(x) = \{x\}$는 $g: X \rightarrow 2^X$인 일대일 함수이므로
     $\vert X \vert \le \vert 2^X \vert$이다. 따라서 $\vert X \vert < \vert 2^X \vert$이다.
 \end{pf*}
+\begin{thm}
+    \textbf{(칸토어-베른슈타인 정리, Cantor-Bernstein Theorem)} 집합 $X, Y$에 대해 일대일(단사) 함수 $f: X \rightarrow Y$와 $g: Y \rightarrow X$가 존재한다면, 일대일 대응(전단사) 함수 $h: X \rightarrow Y$가 존재한다.
+\end{thm}
+\begin{thm}
+    $\vert X \vert \le \vert Y \vert$이고 $\vert Y \vert \le \vert X \vert$이면 $\vert X \vert = \vert Y \vert$이다.
+\end{thm}
 \section{페아노 공리계}
 \begin{defn}\label{Ndefn}
     다음 성질들을 만족하는 집합 $\mathbb{N}$을 가리켜 \textbf{자연수}(natural number) 집합이라고 한다.
