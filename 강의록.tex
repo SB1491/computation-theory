@@ -2982,14 +2982,19 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     1, 2, 3은 재귀적 불변량이고 4, 5는 아니다.
 \end{ans*}
 \begin{defn}
-    집합 $A, B$에 대해 $p(A) = B$인 재귀적 순열 $p$가 존재하면 $A$와 $B$는 \textbf{재귀적 동형}(recursively isomorphic)이라고 한다. 이는 $A \equiv B$라고 쓴다. 
+    집합 $A, B$에 대해 $p(A) = B$인 재귀적 순열 $p$가 존재하면 $A$와 $B$는 \textbf{재귀적 동형 타입}(recursively isomorphic type)이라고 한다. 이는 $A \equiv B$라고 쓴다. 
 \end{defn}
 \begin{thm}
-    \textbf{(마이힐 동형 정리, Myhill Isomorphism Theorem)}$A \equiv B \Leftrightarrow A \equiv_1 B$이다.
+    \textbf{(마이힐 동형 정리, Myhill Isomorphism Theorem)} $A \equiv B \Leftrightarrow A \equiv_1 B$이다.
 \end{thm}
 \begin{pf*}
     먼저 $(\Rightarrow)$는 자명하므로 넘어가자. \\ 
-    $(\Leftarrow)$를 생각하자. 함수 $f$를 통해 $A \le_1 B$, $g$를 통해 $B \le_1 A$를 안다고 하자.
+    $(\Leftarrow)$를 생각하자. 함수 $f$를 통해 $A \le_1 B$, $g$를 통해 $B \le_1 A$를 안다고 하자. 이제 $h(A) = B$가 되도록 하는 재귀적 함수 $h$를 정의하자. $h = \bigcup_s h_s$와 같이 $h$를 구성할 것이다. $h_0 = \emptyset$이다. 이제 $h_s$를 통해 $h_{s+1}$을 귀납적으로 구성하자. \\
+    \begin{enumerate}
+        \item $s+1 = 2x + 1$: $h_s$는 일대일이고 $\mathrm{dom} h_s$는 유한하고 모든 $y \in \mathrm{dom} h_s$에 대해 $y \in A \Leftrightarrow h_s (y) \in B$가 성립한다고 하자. $h_s(x)$가 정의되면 아무것도 하지 않는다. $h_s(x)$가 정의되지 않으면  
+        \item $s+1 = 2x + 2$: 
+    \end{enumerate}
+
 \end{pf*}
 \section{튜링 위계}
 지금까지는 `상식적으로' 다룰 수 있는 것들에 대해 알아보았다. 이제 그 너머로 나아가보자.
