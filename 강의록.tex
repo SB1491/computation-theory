@@ -3109,36 +3109,94 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \end{ex}
 \section{산술적 위계}
 \begin{defn}
-    집합 $B$가 재귀적이면 $\Sigma_0^0 (\Pi_0^0)$ 안에 있다고 한다. 이를 $B \in \Sigma_0^0 (\Pi_0^0)$이라고 쓴다.
+    \textbf{유계 양화사}(bounded quantifier)란 양화사 $\forall, \exists$에 의해
+    정의되는 양화사로 다음과 같이 정의된다. 
+    \begin{align*}
+        (\forall n < t )\; \phi \Leftrightarrow \forall n (n < t \wedge \phi) \\
+        (\exists n < t )\; \phi \Leftrightarrow \exists n (n < t \wedge \phi)
+    \end{align*}
+    여기서 $\phi$는 논리식(formula)이다. 
+\end{defn}
+\begin{defn}
+    자연수 $n$에 대해 모임 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$는 다음과 같이 귀납적으로 정의된다.
+    \begin{itemize}
+        \item 유계 양화사로만 구성된 논리식 $\psi$에 대해 $\phi \Leftrightarrow \psi$이면 $\phi \in 
+        \Sigma_0^0, \Pi_0^0, \Delta_0^0$이다. 
+        \item 만약 $\phi \Leftrightarrow \exists m_1 \exists m_2 \ldots \exists m_k \; \psi$이고
+        $\psi \in \Pi_n^0$이면 $\phi \in \Sigma_{n+1}^0$이다.  
+        \item 만약 $\phi \Leftrightarrow \forall m_1 \forall m_2 \ldots \forall m_k \; \psi$이고
+        $\psi \in \Sigma_n^0$이면 $\phi \in \Pi_{n+1}^0$이다.  
+        \item 만약 $\phi \in \Sigma_n^0, \Pi_n^0$이면 $\phi \in \Delta_n^0$이다.
+    \end{itemize}
+    즉, $\forall $과 $\exists$가 몇 번 뒤바뀌어서 나오는지에 따라 $\Sigma_n^0, \Pi_n^0$ 중 하나로 결정된다. 이때, $\phi \in \bigcup_n (\Sigma_n^0 \cup \Pi_n^0 )$이면 $\phi$를 \textbf{산술적}(arithmetic)이라고 한다.
+\end{defn}
+\begin{defn}
+    집합 $B$에 대해 $\phi \in \Sigma_n^0 (\Pi_n^0)$가 $B$의 특성 함수가 되면, $B$가 $\Sigma_n^0 (\Pi_n^0)$ 안에 있다고 한다. 이를 $B \in \Sigma_n^0 (\Pi_n^0)$이라고 쓴다.\footnote{논리식에서의 $\Sigma_n^0 (\Pi_n^0)$와 집합에서의 $\Sigma_n^0 (\Pi_n^0)$는 엄밀하게는 다르지만 근본적으로 차이가 없으니 같은 표기법을 쓴다.}
 \end{defn}
 \begin{defn}
     \begin{enumerate}
-        \item $n \ge 1$에 대해 다음을 만족하는 재귀적 관계 $R$이 존재하면 $B$가 $\Sigma_n^0$ 안에 있다고 한다.
-        \begin{align*}
-            x \in B \Leftrightarrow (\exists y_1) (\forall y_2) (\exists y_3) \ldots (Q y_n) \; R(x, y_1, \ldots, y_n)
-        \end{align*}
-        $n$이 홀수면 $Q = \exists$, $n$이 짝수면 $Q = \forall$이다. 
-        \item $n \ge 1$에 대해 다음을 만족하는 관계 $R$이 존재하면 $B$가 $\Pi_n^0$ 안에 있다고 한다.
-        \begin{align*}
-            x \in B \Leftrightarrow (\forall y_1) (\exists y_2)(\forall y_3) \ldots (Q y_n) \; R(x, y_1, \ldots, y_n)
-        \end{align*}
-        $n$이 홀수면 $Q = \forall$, $n$이 짝수면 $Q = \exists$이다. 각각에 대해 $B \in \Sigma_n^0, \Pi_n^0$과 같이 쓴다.
         \item $B \in \Sigma_n^0 \cap \Pi_n^0$이면 $B \in \Delta_n^0$이다.
         \item $B \in \cup_n (\Sigma_n^0 \cup \Pi_n^0)$이면 $B$를 산술적이라고 한다.
     \end{enumerate}
 \end{defn}
-여기선 앞으로 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$은 간단히 $\Sigma_n, \Pi_n, \Delta_n$으로 쓴다.\footnote{저 위에 0 말고 다른 것이 붙는다면 상당히 `위험'해진다...}
-
-\begin{thm}
-    \textbf{(양화사 축약 정리, Quantifier Contraction Theorem)}
-\end{thm}
-\begin{thm}
-    \textbf{(정규 표현 정리, Normal Form Theroem)} 집합(언어) $A$가 재귀 열거인 것과 $A \in \Sigma_1$인 것은 동치이다. 
+여기선 앞으로 $\Sigma_n^0, \Pi_n^0, \Delta_n^0$은 간단히 $\Sigma_n, \Pi_n, \Delta_n$으로 쓴다.\footnote{저 위에 0 말고 다른 것이 붙는다면 상당히 `위험'해진다...} 
+\begin{ex}
+    다음 논리식이 $\Sigma_n, \Pi_n, \Delta_n$중 어떤 모임에 소속되는지 구하라.
+    \begin{enumerate}
+        \item $\forall x < 10 \; (x < 100)$ 
+        \item $\forall y \exists x \; (y < x)$
+        \item $\exists y \forall x \; (y < x)$
+        \item $n$은 홀수이다.
+        \begin{align*}
+            &n\text{은 홀수이다.} \\ 
+            &\Leftrightarrow \forall k (n \neq 2k) \\ 
+            &\Leftrightarrow \exists k (n = 2k + 1)
+        \end{align*}
+    \end{enumerate}
+\end{ex}
+유계 양화사는 우리가 잘 알지 못하는 논리학의 용어이다. 이를 우리가 아는 원시 재귀 함수와 같다는 것을 보이자. 
+\begin{defn}
+    $n \ge 1$에 대해 \textbf{유계 최소화}(bounded minimalization)는 함수 $g$에 대해 다음과 같이 정의되는 함수 $f$다.  
+    \begin{align*}
+        f(x, y_1, \ldots , y_n) = 
+        \begin{cases}
+            g(z, y_1, \ldots, y_n) = 1 \text{를 만족하는 최소 } z \le x & \exists z \le x \\ 
+            0   & \text{o.w.}
+        \end{cases}
+    \end{align*}
+    이를 간단히 쓰면 다음과 같이 쓸 수 있다.
+    \begin{align*}
+        f(x, y_1, \ldots, y_n) = \mu z \le x \; [g(z, y_1, \ldots, y_n) = 1]
+    \end{align*}
+\end{defn}
+\begin{thm}\label{prf bm pf}
+    원시 재귀 함수는 유계 최소화에 대해 닫혀있다. 
 \end{thm}
 \begin{pf*}
-    ($\Leftarrow$) $A$가 재귀 열거 언어이므로 $A$는 어떤 $\mu$-재귀 함수 $\phi$의 정의역이다. $M$ \\
-    ($\Rightarrow$) $A = $
+    $f$가 다음과 같이 원시 재귀 함수 $g$의 유계 최소화로 얻을 수 있는 함수라고 하자.
+    \begin{align*}
+        f(x, y_1, \ldots, y_n) = \mu z \le x \; [g(z, y_1, \ldots, y_n) = 1]
+    \end{align*}
+    이제 다음을 얻을 수 있다.\footnote{$y_1, \ldots, y_n$을 간단히 $\vec{y}$로 쓰자.}
+    \begin{align*}
+        g(f(x, \vec{y}), \vec{y}) = 1 &\Rightarrow f(x+1, \vec{y}) = f(x, \vec{y}) \\ 
+        g(f(x, \vec{y}), \vec{y}) \neq 1 \wedge g(x+1, \vec{y}) = 1 &\Rightarrow f(x+1,\vec{y}) = x + 1 \\ 
+        g(f(x, \vec{y}) \vec{y}) \neq 1 \wedge g(x+1, \vec{y}) \neq 1 &\Rightarrow f(x+1, \vec{y}) = 0
+    \end{align*}
+    이를 이용해 $f$를 조건으로 정의된 함수로 정의할 수 있으므로 $f$는 원시 재귀 함수다.\footnote{연습문제 \ref{prf bm pf ec}로...}
 \end{pf*}
+\begin{thm}
+    원시 재귀 술어 $P$는 $P \in \Sigma_0 (\Pi_0)$이다.
+\end{thm}
+\begin{pf*}
+    \textbf{(느슨한 증명)} $ \neg, \vee$ 등 논리식의 구성 요소는 원시 재귀 함수로 표현할 수 있고, 유계 양화사 또한 정리 \ref{prf bm pf}에 의해 원시 재귀 함수로 표현할 수 있으므로 $P \in \Sigma_0 (\Pi_0)$이다.
+\end{pf*}
+\begin{defn}
+    \begin{enumerate}
+        \item $A \in \Sigma_n \Leftrightarrow \overline{A} \Pi_n$
+        \item $A $
+    \end{enumerate}
+\end{defn}
 \begin{ex}
     $\mathrm{Fin} \in \Sigma_2$임을 보여라.
 \end{ex}
@@ -3223,6 +3281,16 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         f(x, y) = \frac{1}{2}(x^2 + 2xy + y^2 + 3x + y)
     \end{align*}
     함수 $f(x, y)$가 일대일 대응임을 보여라.
+\end{ec}
+\begin{ec}\label{prf bm pf ec}
+    다음과 같은 조건 분류 원시 재귀 함수 $D$를 정의하자.
+    \begin{align*}
+        D(x, y, z) = v \Leftrightarrow (x \neq 0 \wedge v = y) \vee (x = 0 \wedge v = z)
+    \end{align*}
+    \begin{enumerate}
+        \item $D$가 원시 재귀 함수임을 보여라.
+        \item 정리 \ref{prf bm pf}의 증명에서의 $f$를 $D$를 이용해 제시하라.
+    \end{enumerate}
 \end{ec}
 \part{계산 복잡도}
 \chapter{시간 복잡도}
