@@ -4102,15 +4102,33 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
     p354
 \end{pf*}
 \section{NL = coNL}
+NP와 coNP가 같은지는 밝혀지지 않았다. 그럼 NL과 coNL은 어떨까? 
+\begin{thm}
+    NL $=$ coNL이다. 
+\end{thm}
+\begin{pf*}
+    p355
+\end{pf*}
+
 \section{연습문제}
 \begin{ec}\label{savitch thm exec}
     정리 \ref{savitch thm}의 증명을 완성하라. (힌트: 튜링 기계가 시간을 완전히 포기하고 $f(n) = 1, 2, 3, \cdots$를 하나하나 차근차근 해보면 된다.)
 \end{ec}
 \chapter{복잡도 위계}
-우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은 아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리  서로 비교하는 것은 매우 어려운 일로 보인다. 하지만 분명히 직관적으로 $O(n^3)$에 소속되는 언어가 $O(n^2)$에 소속되는 언어보다 많을 걸로 예상되는데, 이 장에서는 그 직관이 맞다는 것을 증명한다.
+우리는 지금까지 $L \overset{?}{=} NL \overset{?}{=} P \overset{?}{=} NP$와 같은 아직 풀리지 않은 문제들에 대해 알아보았다. 이렇게 보면 복잡도 클래스끼리  서로 비교하는 것은 매우 어려운 일로 보인다. 하지만 분명히 직관적으로 $O(n^3)$에 소속되는 언어가 $O(n^2)$에 소속되는 언어보다 많을 걸로 예상되는데, 이 장에서는 그 직관이 맞다는 것을 증명한다. 먼저 앞으로 정의를 편하게 하기 위해 다음을 정의하자. 
+\begin{defn}
+    계산 가능한 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$에 대해 $f(n)$는 최소 $O(\log n)$이라고 하자.\footnote{고상한 표현으로 $f(n) = \Omega(\log n)$이라고 쓸 수도 있다.} $f$가 $O(f(n))$만큼의 공간만 사용하여 문자열 $1^n$을 $f(n)$의 이진수 표현으로 바꿔주면 $f$를 \textbf{공간 건설 가능한 함수}(space constructible function)라고 한다. 
+\end{defn}
+\begin{ex}
+    다음 함수들이 공간 건설 가능한 함수임을 보여라.
+    \begin{enumerate}
+        \item $\log n$
+        \item $n^2$
+    \end{enumerate}
+\end{ex}
 \section{공간적 위계}
 \begin{thm}
-    \textbf{(공간적 위계 이론, spcae hierarchy theorem)}
+    \textbf{(공간적 위계 이론, spcae hierarchy theorem)} 
 \end{thm}
 \begin{pf*}
     
