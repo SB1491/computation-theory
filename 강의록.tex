@@ -2935,12 +2935,36 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{thm}
     $K$는 재귀 열거이다.
 \end{thm}
+\begin{pf*}
+    $K$는 다음 부분 재쉬 함수의 정의역이다.
+    \begin{align*}
+        \psi(x) =  
+        \begin{cases}
+            x & \phi_x(x) \downarrow \\
+            \text{정의 안함} & \text{o.w.}
+        \end{cases}
+    \end{align*}
+\end{pf*}
 \begin{thm}
     $K$는 재귀가 아니다.
 \end{thm}
+\begin{pf*}
+    만약 $K$가 재귀면 $K$의 특성 함수인 $\chi_K  $가 존재한다. 그럼 다음 함수 $f$도 재귀여야 한다.
+    \begin{align*}
+        f (x) = 
+        \begin{cases}
+            \varphi_x (x) + 1 & x \in K \\ 
+            0 & x \notin K
+        \end{cases}
+    \end{align*}
+    그러나 모든 $x$에 대해 $f \neq \varphi_x$이므로 $f$는 재귀가 아니다.
+\end{pf*}
 \begin{thm}
     $K_0$는 재귀가 아니다.
 \end{thm}
+\begin{pf*}
+    $x \in K$인 것과 $\langle x, x \rangle \in K_0$인 것은 동치이다. 즉, $K_0$가 특성함수를 가지면 $K$도 특성함수를 가지게 되므로 모순이다.
+\end{pf*}
 \begin{defn}
     집합 $A, B$에 대해 다음을 만족하는 재귀적인 함수 $f$가 존재하면 $A$는 $B$로 \textbf{다대일 환원 가능}(many-one reducible)하다고 하거나 $m$-환원 가능하다고 한다.
     \begin{align*}
@@ -2967,7 +2991,7 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{ex}
     $A \le_m B$이고 $B$가 재귀적이면 $A$는 재귀적이다.
 \end{ex}
-\begin{ex}
+\begin{ex}\label{KleTot}
     $K \le_1 \mathrm{Tot}$이다.
 \end{ex}
 \begin{ans*}
@@ -2992,14 +3016,42 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     색인 집합 $A$가 공집합이나 $\mathbb{N}$가 아니면 $K \le_1 A$이거나 $K \le_1 \overline{A}$이다.
 \end{thm}
 \begin{pf*}
-    모든 $y$에 대해 $\varphi_{e_0}$가 정의되지 않도록 하는 $e_0$를 고르자. 만약 $e_0 \in $ 흠 p21인데 할까말까
+    모든 $y$에 대해 $\varphi_{e_0}$가 정의되지 않도록 하는 $e_0$를 고르자. 만약 $e_0 \in \overline{A}$이면 $K \le_1 A$이다. 반대고 $e_0 \in A$이면 $K \le_1 \overline{A}$이다. $A \neq \emptyset$이므로 $e_1 \in A$를 고를 수 있다. $A$는 색인 집합이므로 $\varphi_{e_1} \neq \varphi_{e_0}$이다. s-m-n 정리에 의해 다음과 같은 일대일 재귀 함수 $f$를 만들 수 있다.
+    \begin{align*}
+        \varphi_{f(x)}(y) = 
+        \begin{cases}
+            \varphi_{e_1} (y) & x \in K \\ 
+            \text{정의 안 됨} & x \notin K
+        \end{cases}
+    \end{align*}
+    이제 다음을 알 수 있다.
+    \begin{align*}
+        x \in K \Rightarrow \varphi_{f(x)} = \varphi_{e_1} \Rightarrow f(x) \in A \\ 
+        x \in \overline{K} \Rightarrow \varphi_{f(x)} = \varphi_{e_0} \Rightarrow f(x) \in \overline{A}
+    \end{align*}
 \end{pf*}
+\begin{ex}
+    $K \le_1 \text{Tot}, K \le_1 \overline{\text{Tot}}$임을 보여라.
+\end{ex}
 \begin{defn}
     재귀 열거 집합 $A$에 대해 모든 재귀 열거 집합 $W_e$에 대해 $W_e \le A$를 만족하면 $A$를 \textbf{1-완전}(1-complete)하다고 한다.
 \end{defn}
 \begin{ex}
     $K_0, K, K_1$는 1-완전함을 보여라. 
 \end{ex}
+\begin{ans*}
+    먼저 $K_0$는 자명하게 1-완전하다. 그럼 $K_0 \le_1 K \le_1 K_1$을 보이자. 
+    \begin{enumerate}
+        \item $K_0 \le_1 K$: 
+        다음과 같이 함수 $\psi (x, y, z)$를 정의하자. 
+        \begin{align*}
+            \psi(x, y, z) = \varphi_x (y) 
+        \end{align*}
+        s-m-n 정리에 의해 $\varphi_{f(x)}(y) = \psi(x, y, z)$인 일대일 재귀 함수 $f$가 존재한다.
+        \item $K \le_1 K_1$:
+        예제 \ref{KleTot}의 증명을 변형하면 자명하다.
+    \end{enumerate}
+\end{ans*}
 아쉽게도 위에서 정의한 다른 색인 집합들은 1-완전하지 않다는 것을 좀 뒤에 보일 예정이다.
 \begin{defn}
     재귀적인 일대일 함수 $f: \mathbb{N} \rightarrow \mathbb{N}$를 \textbf{재귀적 순열}(recursive permutation)이라고 한다.
@@ -3030,10 +3082,13 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     먼저 $(\Rightarrow)$는 자명하므로 넘어가자. \\ 
     $(\Leftarrow)$를 생각하자. 함수 $f$를 통해 $A \le_1 B$, $g$를 통해 $B \le_1 A$를 안다고 하자. 이제 $h(A) = B$가 되도록 하는 재귀적 함수 $h$를 정의하자. $h = \bigcup_s h_s$와 같이 $h$를 구성할 것이다. $h_0 = \emptyset$이다. 이제 $h_s$를 통해 $h_{s+1}$을 귀납적으로 구성하자. \\
     \begin{enumerate}
-        \item $s+1 = 2x + 1$인 경우: $h_s$는 일대일이고 $\mathrm{dom} h_s$는 유한하고 모든 $y \in \mathrm{dom} h_s$에 대해 $y \in A \Leftrightarrow h_s (y) \in B$가 성립한다고 하자. $h_s(x)$가 정의되면 아무것도 하지 않는다. $h_s(x)$가 정의되지 않으면 $\{f(x), f(h_s^{-1} f(x)), \ldots,  f(h_s^{-1} f)^n (x), \ldots \}$에서 $y$가 $h_s$의 치역에 없을 때까지 탐색한다. 이제 $h_{s+1} = y$로 정의할 수 있다.
+        \item $s+1 = 2x + 1$인 경우: $h_s$는 일대일이고 $\mathrm{dom} h_s$는 유한하고 모든 $y \in \mathrm{dom} h_s$에 대해 $y \in A \Leftrightarrow h_s (y) \in B$가 성립한다고 하자. $h_s(x)$가 정의되면 아무것도 하지 않는다. $h_s(x)$가 정의되지 않으면
+        \begin{align*}
+            \{f(x), f(h_s^{-1} f(x)), \ldots,  f(h_s^{-1} f)^n (x), \ldots \}
+        \end{align*}
+        에서 $y$가 $h_s$의 치역에 없을 때까지 탐색한다. 이제 $h_{s+1} = y$로 정의할 수 있다.
         \item $s+1 = 2x + 2$인 경우: $h^{-1}$에 대해서도 유사하게 할 수 있다.
     \end{enumerate}
-
 \end{pf*}
 \section{튜링 위계}
 지금까지는 `상식적으로' 다룰 수 있는 것들에 대해 알아보았다. 이제 그 너머로 나아가보자. 직관적으로, $y \in A$인지 아닌지를 이용해 $x \in B$를 계산할 수 있으면 우리는 $B$가 $A$ 안에서 계산 가능하다고 하고, 이를 $B \le_T A$라고 쓴다. 이를 엄밀하게 정의하고 이를 이용한 다양한 튜링 완전성을 알아보자.
@@ -3239,23 +3294,29 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{pf*}
     \textbf{(느슨한 증명)} $ \neg, \vee$ 등 논리식의 구성 요소는 원시 재귀 함수로 표현할 수 있고, 유계 양화사 또한 정리 \ref{prf bm pf}에 의해 원시 재귀 함수로 표현할 수 있으므로 $P \in \Sigma_0 (\Pi_0)$이다.
 \end{pf*}
-\begin{defn}
+\begin{thm}
     \begin{enumerate}
         \item $A \in \Sigma_n \Leftrightarrow \overline{A} \Pi_n$
         \item $A $
     \end{enumerate}
-\end{defn}
+\end{thm}
 \begin{ex}
     $\mathrm{Fin} \in \Sigma_2$임을 보여라.
 \end{ex}
 \begin{ans*}
-    
+    \begin{align*}
+        x \in \mathrm{Fin} &\Leftrightarrow \vert W_x \vert < \infty \\ 
+        &\Leftrightarrow (\exists s) (\forall t) [t \le s \vee W_{x,t} = W_{x, s}]
+    \end{align*}
 \end{ans*}
 \begin{ex}
     $\mathrm{Cof} \in \Sigma_3$임을 보여라.
 \end{ex}
 \begin{ans*}
-    
+    \begin{align*}
+        x \in \mathrm{Cof} &\Leftrightarrow \vert \overline{W_x}\vert < \infty \\ 
+        &\Leftrightarrow (\exists y) (\forall z) (\exists s) [z \le y \vee z \in W_{x,s}]
+    \end{align*}
 \end{ans*}
 \section{포스트 정리와 위계 정리}
 \begin{defn}
