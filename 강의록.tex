@@ -558,18 +558,23 @@ $L = \{0^n 1^n \;\vert\; n \ge 0\}$은 정규 언어가 아님을 증명하라.
     모든 $n\ge 1$에 대해 $L_n$은 정규 언어임을 보여라. 
 \end{ec}
 \begin{ec}
-    Let the \textbf{rotational closure} of language A be $RC(A) = \{yx\;\vert\; xy \in A\}$.
+    언어 $A$의 \textbf{순서 뒤집기}(rotational closure)는 다음과 같이 정의된다. 
+    \begin{align*}
+        RC(A) = \{yx\;\vert\; xy \in A\}
+    \end{align*}
     \begin{enumerate}
-        \item Show that for any language $A$, we have $RC(A) = RC(RC(A))$.
-        \item Show that if language $A$ is regular then $RC(A)$ is regular.
+        \item 모든 언어 $A$에 대해, $RC(A) = RC(RC(A))$임을 보여라.
+        \item $A$가 정규 언어면 $RC(A)$도 정규 언어임을 보여라.
     \end{enumerate}
 \end{ec}
 \begin{ec}
-    Consider the Language $L= \{a^i b^j c^k \;\vert\; i, j, k \ge 0$ 
-    and if $i = 1$ then $j=k\}$.
+    다음과 같은 언어 $L$을 생각하자.
+    \begin{align*}
+        L= \{a^i b^j c^k \;\vert\; i, j, k \ge 0 \text{이고, } i = 1\text{이면 } j=k\text{이다.}\}
+    \end{align*}
     \begin{enumerate}
-        \item Show that $L$ satisfies pumping lemma.
-        \item Is $L$ regular? Verify your answer.
+        \item $L$이 펌프 정리를 만족함을 보여라. 
+        \item $L$은 정규 언어인지 아닌지 증명해라.
     \end{enumerate}
 \end{ec}
 \chapter{문법과 오토마타} 
@@ -1217,17 +1222,20 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
     예제 \ref{bracket_CFG}과 \ref{same0and1}의 답이 정말 맞을까? 이를 증명해라.
 \end{ec}
 \begin{ec}
-    Let $C$ be a context free language and $R$ be a regular language. Show that $C \cap R$ is a context free. 
+    $C$가 문맥무관 언어, $R$이 정규 언어라고 하자. $C \cap R$이 문맥무관 언어임을 보여라.
 \end{ec}
 \begin{ec}
-    Consider the Language $L = \{a^n b^n c^m d^m \;\vert\; n, m \ge 1\} \\ \cup \{a^n b^m c^m d^n \;\vert\; n,m \ge 1\}$.
+    다음과 같은 언어 $L$을 생각하자. 
+    \begin{align*}
+        L = \{a^n b^n c^m d^m \;\vert\; n, m \ge 1\} \cup \{a^n b^m c^m d^n \;\vert\; n,m \ge 1\}
+    \end{align*}
     \begin{enumerate}
-        \item Show that $L$ is context free.
-        \item Show that $L$ is inherently ambiguous. 
+        \item $L$이 문맥무관 언어임을 보여라. 
+        \item $L$이 본질적으로 애매함을 보여라.  
     \end{enumerate}
 \end{ec}
 \begin{ec}
-    Give a context free grammar that generates language $L$ ($N_a(w)$ means the number of occurrence of $a$ in $w$) 
+    다음과 같은 언어 $L$을 생성하는 문법 $G$를 구하라.\footnote{$N_a(w)$는 스트링 $w$에서 $a$의 개수를 의미한다.}
     \begin{align*}
         L = \{ w \;\vert\; w \in \{0,1\}^*, N_0(w) \neq N_1(w) \}
     \end{align*}
@@ -1235,7 +1243,7 @@ DPA가 받아들이는 언어를 \textbf{결정 문맥무관 언어}라고 부�
 \chapter{튜링 기계와 재귀 언어} 
 \section{튜링 기계} \label{turing machine}
 지금까지 우리는 정규식, 유한 오토마타를 이용해 정규 언어를 표현했고, 문맥무관 문법, 내리누름 오토마타를 이용해 그보다 더 넓은 집합인 문맥무관 언어를 표현했다. 그럼 가장 넓은 언어집합을 표현할 수 있는 오토마타는 무엇일까? `궁극적인 오토마타'인 튜링 기계에 대해 알아보자. 
-\begin{defn}
+\begin{defn}\label{tmdefn}
     \textbf{튜링 기계}(Turing Machine, TM) $M$은 여섯 가지 요소 $(Q, \Sigma, \Gamma, \delta, q_0, H)$로 구성된다. 
     \begin{enumerate}
         \item $Q$는 상태들의 유한 집합
@@ -2255,46 +2263,30 @@ let x = 1:x in f x
 \end{pf*}
 \section{연습문제}
 \begin{ec}
-    Construct a 1-tape Turing Machine which accepts the given language $L$.
+    다음 언어 $L$을 받아들이는 1-테입 튜링 기계를 제시하라.\footnote{$N_a(w)$는 스트링 $w$에서 $a$의 개수를 의미한다.}
     \begin{align*}
         L = \{w \;\vert\; w \in \{0,1\}^*, N_0(w) > N_1(w) \}
     \end{align*}
-    ($N_a(w)$ means the number of $a$ in $w$.)
 \end{ec}
 \begin{ec}
-    Construct a 1-tape Turing Machine which converts a binary number to 
-    a unary number.(ex. 1011 $\rightarrow$ 11111111111)
+    이진수를 입력 받으면 일진수로 반환하여 출력하는 1-테입 튜링 기계를 제시하라. 예를 들어, 1011을 입력 받으면 11111111111를 출력한다.
 \end{ec}
 \begin{ec}
-    Let's think about a \textbf{restricted Turing Machine}. 
-    In the definition of Turing Machine in the textbook, 
-    the movement of head could have three choices(left, right, stay). 
-    Is it equivalent to the Turing Machine in the textbook if the head 
-    cannot stay and always have to move left or right?
+    다음과 같은 \textbf{제한된 튜링 기계}를 생각하자. 정의 \ref{tmdefn}에서의 튜링 기계의 헤드는 총 3가지의 움직임을 할 수 있었다.\footnote{왼쪽, 오른쪽, 가만히 있기} 제한된 튜링 기계에서는 헤드가 매 스텝마다 가만히 있지 못하고 무조건 왼쪽이나 오른쪽으로 움직여야 한다고 하자. 그럼 제한된 튜링 기계의 게산 능력은 원래 튜링 기계의 계산 능력과 동등한가? 이를 밝혀라.
 \end{ec}
 \begin{ec}
-    A pushdown automata only have one stack. A \textbf{$k$-stack machine} is 
-    a deterministic PA with $k$ stacks. In one movement, the $k$-stack machine 
-    can (1) change to a new state and (2) replace the top symbol of each stack
-     with $\epsilon$ or several stack symbols. The transition rule of $k$-stack
-      machine looks like $\delta(q, a, X_1, \ldots, X_n) = (p, Y_1, \ldots, Y_n)$.
-    \\
-    Show that if a language $L$ is accepted by a Turing machine, then $L$ is
-     accepted by a two-stack machine.
+    내리누름 오토마타는 하나의 스택만을 갖고 있었다. \textbf{$k$-스택 기계}($k$-스택 기계)는 스택이 $k$ 개 있는 결정론적 내리누름 오토마타이다. 한 번의 스텝에서 $k$-스택 기계는 (1) 새로운 상태로 바꾸고 (2) 각 스택에 삽입 도는 삭제 연산을 할 수 있다. $k$-스택 기계의 전이 규칙을 엄밀하게 작성하면 다음과 같다. 
+    \begin{align*}
+        \delta(q, a, X_1, \ldots, X_n) = (p, Y_1, \ldots, Y_n)
+    \end{align*} 
+    $2$-스택 기계의 계산 능력은 튜링 기계와 동등함을 보여라.
 \end{ec}
 \begin{ec}
-    The \textbf{counter machine} has the same structure as the multistack machine, 
-    but each stack is a `counter'. A counter can hold any nonnegative integer, but 
-    we can only distinguish the value of counter between zero and nonzero. In one
-     move, counter machine can (1) change state and (2) add or substract 1 from any
-      of its counters, independently. We do not think subtracting 1 from a counter 
-      that is currently 0. 
-      \begin{enumerate}
-        \item Show that every recursive enumerable language is accepted by 
-        a three-counter machine.
-        \item Show that every recursive enumerable language is accepted by 
-        a two-counter machine.
-      \end{enumerate}
+    $k$-\textbf{계수기 기계}(counter machine)는 $k$-스택 기계와 비슷한 구조를 가지고 있다. $k$-스택 기계와 다른 점은 각 스택이 스택이 아니라 `계수기'라는 점이다. 각 계수기는 음이 아닌 정수를 저장할 수 있고, 우리는 계수기의 값이 0인지 아닌지만을 확인할 수 있다. 한 번의 스텝에서 (1) 새로운 상태로 바꾸고 (2) 각 계수기에서 1을 더하거나 뺄 수 있다. 이때 0이 저장된 계수기에서 1을 빼는 연산은 고려하지 않는다.
+    \begin{enumerate}
+        \item 모든 재귀 열거 언어 $L$에 대해 $L$을 받아들이는 3-계수기 기계가 존재함을 보여라. 
+        \item 모든 재귀 열거 언어 $L$에 대해 $L$을 받아들이는 2-계수기 기계가 존재함을 보여라. 
+    \end{enumerate}
 \end{ec}
 \begin{ec}
     최소화를 정의할 때 정의 \ref{minimalization}에서는 상수를 1로 두었다. 꼭 1이어야 할까? 다음과 같이 어떤 음이 아닌 정수 $k$여도 괜찮을까?
@@ -2308,14 +2300,9 @@ let x = 1:x in f x
 \end{ec}
 \part{계산 가능성}
 \chapter{계산 가능성}\label{computability}
-우리는 지금까지 튜링 기계의 뛰어난 계산 능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며,
-이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링 기계는 정말 모든 일을
-할 수 있을까? 혹시 튜링 기계가 못하는 일이 있을까? 정말 아쉽게도 튜링 기계가 하지 못하는 일은 존재한다.
-자, 이제 컴퓨터 과학의 시작이자 하이라이트를 맛볼 준비가 되었다.
+우리는 지금까지 튜링 기계의 뛰어난 계산 능력에 대해 알아보았다. 튜링 기계는 정말 다양한 일을 할 수 있으며, 이러한 기초적인 개념에서 확장되어 현재 우리가 사용하는 컴퓨터가 되었다. 그런데 튜링 기계는 정말 모든 일을 할 수 있을까? 혹시 튜링 기계가 못하는 일이 있을까? 정말 아쉽게도 튜링 기계가 하지 못하는 일은 존재한다. 자, 이제 컴퓨터 과학의 시작이자 하이라이트를 맛볼 준비가 되었다.
 \section{튜링 기계의 부호화}
-먼저 튜링 기계를 0과 1만으로 잘 표현하는 방법에 대해서 알아보자. 다음 절에서 튜링 기계의 설계도를 
-입력으로 넣기 위해서 이런 작업을 한다. 혹시 이런 세세하고 귀찮은 과정에 관심이 없다면, `아니 튜링 기계는
-테입 빼면 적당히 유한한데 당연히 알잘딱하게 되는거 아님???'라고 생각하고 넘어가도 무방하다.\\ 
+먼저 튜링 기계를 0과 1만으로 잘 표현하는 방법에 대해서 알아보자. 다음 절에서 튜링 기계의 설계도를 입력으로 넣기 위해서 이런 작업을 한다. 혹시 이런 세세하고 귀찮은 과정에 관심이 없다면, `아니 튜링 기계는 테입 빼면 적당히 유한한데 당연히 알잘딱하게 되는거 아님???'라고 생각하고 넘어가도 무방하다.\\ 
 일단 $\Sigma = \{0, 1\}, \Gamma = \{0, 1, \#\}$라고 하자. 제한된 언어로 계산 불가능함을 보이면 어차피 더 일반적인 문제는 당연히 계산이 불가능하기 때문에 문제는 없다.\footnote{다른 알파벳이 있다고 하더라도 ASCII 코드처럼 적당히 부호화를 하면 된다.} \\ 
 \begin{defn}\label{TM encoding}
     튜링 기계 $M = (Q, \{0,1\}, \{0, 1, \#\}, \delta, q_1, H)$를 다음과 같은 방식으로
@@ -2325,8 +2312,7 @@ let x = 1:x in f x
         \item $\Sigma = \{0,1\}$에서 0과 1은 각각 0과 00으로 표시한다. 
         \item $\Gamma = \{0,1,\#\}$에서 0, 1, \#는 각각 0, 00, 000으로 표시한다.
         \item $L, R, S$는 각각 0, 00, 000으로 표시한다.
-        \item $\delta(q,a) = (p, b, d)$는 각 $q,a,p,b,d$의 부호들 사이에 $1$을 두고
-        차례로 나열한다. 즉, $\delta(q_1, 0) = (q_2, 1, L)$은 01010010010이다. 
+        \item $\delta(q,a) = (p, b, d)$는 각 $q,a,p,b,d$의 부호들 사이에 $1$을 두고 차례로 나열한다. 즉, $\delta(q_1, 0) = (q_2, 1, L)$은 01010010010이다. 
         \item TM $M$의 부호는 전이의 부호들 사이에 11을 두고 사전 순서로 나열하고, 앞뒤에 111을 붙인것이다. 
         \item 초기 상태는 항상 $q_1$이다. 
         \item 정지 상태는 전이의 첫째 원소에 나타나지 않는 상태이다. 만약 무조건 결정되게 하고 싶다면 $H = \{y, n\}$인데, 이때 $y$는 두 정지 상태 중 사전 순서가 작은 것이고 $n$은 큰 것이다.
@@ -2755,7 +2741,7 @@ $BB(n)$은 매우 빠르게 증가하는 함수이며, 몇 개의 작은 값들�
 \begin{pf*}
     $BB(n)$이 계산 불가능하므로 당연히 $pp(n)$도 계산 불가능하다.
 \end{pf*}
-$BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불가능한 거라면, $pp(n)$은 오히려 너무 느리게 증가해서 계산 불가능하다.
+$BB(n)$, $FF(n)$는 너무 빠르게 증가해서 계산 불가능한 거라면, $pp(n)$은 오히려 너무 느리게 증가해서 계산 불가능하다.
 \begin{thm}
     $\lim_{n\rightarrow\infty} pp(n) = \infty$이다.
 \end{thm}
@@ -2764,25 +2750,22 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \end{pf*}
 \section{연습문제}
 \begin{ec}
-    Let's define \textbf{Post Correspondence Problem}(PCP) precisely.
-        An instance of the PCP is a collection $P$ of dominos.
+    \textbf{포스트의 일치 문제}(Post Correspondence Problem, PCP)는 다음과 같이 정의된다. $P$는 다음과 같은 도미노의 집합으로 구성된다.
     \begin{align*}
         P = \left\{\left[ \frac{t_1}{b_1} \right], \ldots ,\left[\frac{t_k}{b_k}\right] \right\}
     \end{align*}
-    A match is a sequence $i_1, \ldots , i_n$, where $t_{i_1} \ldots t_{i_n} = b_{i_1} \ldots b_{i_n} $. The problem is to determine whether $P$ has a match. 
+    $P$의 \textbf{짝맞음}(match)은 $t_{i_1} \ldots t_{i_n} = b_{i_1} \ldots b_{i_n} $인 수열 $i_1, \ldots , i_n$이다. PCP는 $P$의 짝맞음이 존재하는지 결정하는 문제이다.
     \begin{align*}
-        PCP = \{ \langle P \rangle \;\vert\; P \text{ is an instance of the PCP with a match}\}
+        \text{PCP} = \{ \langle P \rangle \;\vert\; P \text{는 도미노의 집합이고 짝맞음이 존재한다.}\}
     \end{align*}
     \begin{enumerate}
-        \item     
-        To prove that PCP is undecidable, we need to define a new problem, 
-        \textbf{Modified Post Correspondence Problem}(MPCP). 
+        \item PCP가 결정 불가능함을 보이기 위해 새로운 문제인 PCP1을 정의하자.
         \begin{align*}
-            MPCP = \{\langle P \rangle \; \vert \; P &\text{ is an instance of PCP with} 
-            \\ & \text{ a match that starts with the first domino} \}
+            \text{PCP1} = \{\langle P \rangle \; \vert \; P &\text{는 도미노들의 집합이고} 
+            \\ & \text{짝맞음이 }P \text{의 첫 번째 도미노로 시작한다.} \}
         \end{align*}
-        Show that MPCP is undecidable.
-        \item Show that PCP is undecidable.
+        PCP1이 결정 불가능함을 보여라.
+        \item PCP가 결정 불가능함을 보여라.
     \end{enumerate}
 \end{ec}
 \chapter{튜링 위계와 산술적 위계}
@@ -3184,14 +3167,6 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         \item $A$가 $B$에서 재귀 열거인 것과 $A$가 $\overline{B}$에서 재귀 열거인 것은 동치이다.
     \end{enumerate}
 \end{thm}
-\begin{pf*}
-    \begin{enumerate}
-        \item 앞서서 한 증명들을 생각해보면 자명하다.
-        \item 자명하다.
-        \item 자명하다.
-        \item $A \neq \emptyset $이면 $A$는 어떤 $B$-재귀적인 함수의 치역이므로 
-    \end{enumerate}
-\end{pf*}
 \begin{defn}
     $\mathbf{0}^{(n)}$는 다음과 같이 정의된다.
     \begin{align*}
@@ -3294,12 +3269,6 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
 \begin{pf*}
     \textbf{(느슨한 증명)} $ \neg, \vee$ 등 논리식의 구성 요소는 원시 재귀 함수로 표현할 수 있고, 유계 양화사 또한 정리 \ref{prf bm pf}에 의해 원시 재귀 함수로 표현할 수 있으므로 $P \in \Sigma_0 (\Pi_0)$이다.
 \end{pf*}
-\begin{thm}
-    \begin{enumerate}
-        \item $A \in \Sigma_n \Leftrightarrow \overline{A} \Pi_n$
-        \item $A $
-    \end{enumerate}
-\end{thm}
 \begin{ex}
     $\mathrm{Fin} \in \Sigma_2$임을 보여라.
 \end{ex}
@@ -3319,9 +3288,6 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     \end{align*}
 \end{ans*}
 \section{포스트 정리와 위계 정리}
-\begin{defn}
-    $\Sigma_n$-완전
-\end{defn}
 \begin{thm}
     \textbf{(포스트 정리, Post's Theorem)} 모든 $n \ge 0$에 대해 다음이 성립한다.
     \begin{enumerate}
@@ -3331,11 +3297,6 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
         \item $B \in \Delta_{n+1} \Leftrightarrow B \le_T \emptyset^{(n)}$  
     \end{enumerate}
 \end{thm}
-\begin{pf*}
-    \begin{enumerate}
-        \item 
-    \end{enumerate}
-\end{pf*}
 \begin{thm}
     \textbf{(위계 이론, Hierarchy Theorem)} 모든 $n > 0$에 대해 $\Delta_n \subset \Sigma_n$이고 $\Delta_n \subset \Pi_n$이다. 
 \end{thm}
@@ -3381,8 +3342,6 @@ $BB(n)$, $FF(n)$, 아커만 함수는 너무 빠르게 증가해서 계산 불�
     \caption{}
     \label{arithmetic hierarchy figure}
 \end{figure}
-\section{그 너머의 계산 모델들}
-ㅋㅋ
 \section{연습문제}
 \begin{ec}\label{1to1x,y}
     함수 $f(x, y): \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N} $이 다음과 같이 정의된다고 하자.
@@ -4141,10 +4100,6 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
 \begin{thm}
     TQBF는 PSPACE-완전이다.
 \end{thm}
-\begin{pf*}
-    일단은 생략.
-    먼저 TQBF가 PSPACE임은 예제 \ref{TQBF PSPAPCE}에서 보였으므로 넘어간다. 이제 TQBF가 PSPACE-하드임을 보이자. 먼저 편의를 위해 언어 $A$가 튜링 기계 $M$에 의해 공간 $n^k$를 사용하여 계산된다고 가정하자. 
-\end{pf*}
 \section{L과 NL}
 우리는 지금까지 입력 스트링의 길이로 인해 $f(n) \ge n$인 경우만 봤다. 그러나 우리가 꼭 이러한 계산 모델만 생각할 이유는 없다. 예를 들어, 컴퓨터가 블루레이 디스크로 입력을 받는다고 하자. 그럼 컴퓨터의 메인 메모리보다 더 큰 크기의 입력이 들어오지만, 실제로 메인 메모리를 다 사용하지는 않을 것이다. 또한, 우리는 그 블루레이 디스크에 새로운 내용을 덧쓸 수 없고 오직 읽을 수밖에 없다. 이러한 경우를 고려하기 위해, 이제 계산 모델을 조금 수정해서 $f(n) < n$인 경우도 고려해보도록 하자.
 \begin{thm}
@@ -4241,14 +4196,6 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
 \begin{oq}
     $\text{P} = \text{L}$인가?
 \end{oq}
-\section{NL = coNL}
-앞에서 언급했듯 NP와 coNP가 같은지는 아직 밝혀지지 않았다. 그럼 NL과 coNL은 어떨까? 이는 놀랍게도 같다.
-\begin{thm}
-    NL $=$ coNL이다. 
-\end{thm}
-\begin{pf*}
-    일단은 생략. p355
-\end{pf*}
 \section{연습문제}
 \begin{ec}\label{savitch thm exec}
     정리 \ref{savitch thm}의 증명을 완성하라. (힌트: 튜링 기계가 시간을 완전히 포기하고 $f(n) = 1, 2, 3, \cdots$를 하나하나 차근차근 해보면 된다.)
@@ -4270,9 +4217,6 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
 \begin{thm}
     \textbf{(공간적 위계 이론, spcae hierarchy theorem)} 모든 공간 건설 가능한 함수 $f : \mathbb{N} \rightarrow \mathbb{N}$에 대해 $O(f(n))$에 결정 가능하지만 $o(f(n))$에는 결정 불가능한 언어 $A$가 존재한다.
 \end{thm}
-\begin{pf*}
-    p365
-\end{pf*}
 \begin{thm}
     $0 \le \epsilon_1 < \epsilon_2$에 대해 다음이 성립한다.
     \begin{align*}
@@ -4427,17 +4371,6 @@ NPSPACE도 정의하고 싶지만, 어차피 사비치 정리에 의해 NPSPACE 
 \end{defn}
 \begin{axm}
     정의 \ref{Ndefn}와 같은 자연수 집합이 존재한다는 공리계가 \textbf{페아노 공리계}(Peano's axioms)다.
-\end{axm}
-\section{ZFC 공리계}
-\begin{axm}
-    \label{axiom of choice}
-    \textbf{(선택 공리, axiom of choice)} 임의의 집합 $S$에 대해 $\emptyset \notin S$이면
-    $S$의 원소인 각각의 집합에서 그 집합의 원소를 하나씩 뽑는 선택 함수(choice function)가
-    존재한다. 이는 다음과 같이 적을 수 있다.
-    \begin{align*}
-        \forall S [(\emptyset \notin S) \Rightarrow (\exists f 
-        \in (\cup S)^S, \forall A \in S  \; (f (A) \in A))]
-    \end{align*} 
 \end{axm}
 \section{괴델의 불완정성 정리}
 \begin{thm}
